@@ -361,5 +361,246 @@
     },
     "countryNote": "US manufacturer and shipping information reviewed. Check the selected variant and current stock before ordering.",
     "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-laundry-powder",
+    "title": "Ecostore Ultra Sensitive Laundry Powder",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "Fragrance-free claim"
+    ],
+    "description": "The Ultra Sensitive powder from Ecostore’s fragrance-free home-care range, listed separately from the brand’s scented laundry powders.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-powder-1kg",
+    "image": "https://ecostore.com/cdn/shop/files/LPUA1U_LaundryPowder_UltraSensitiveCombo_1KG_Front-1.png?v=1763591409&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-powder-1kg",
+    "imageAlt": "Ecostore Ultra Sensitive Laundry Powder — official brand image",
+    "claim": "Ecostore states that this Ultra Sensitive laundry powder is free from fragrance and colourants.",
+    "notes": "This profile applies only to the Ultra Sensitive version. Ecostore also sells scented laundry powders. Check the exact pack and current ingredients before purchase.",
+    "use": "Laundry use only. Follow the pack’s dosing, machine, fabric-care and safety directions. Keep away from children and pets.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-powder-1kg"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-laundry-liquid",
+    "title": "Ecostore Ultra Sensitive Laundry Liquid",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "Fragrance-free claim"
+    ],
+    "description": "A concentrated laundry liquid in Ecostore’s Ultra Sensitive range, distinct from the company’s fragranced laundry liquids.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-liquid-1l",
+    "image": "https://ecostore.com/cdn/shop/files/1-LLU1U_LaundryLiquid_UltraSensitive_1L_Bounty_baccc307-bf34-433f-a5ec-acdcfb6899a1.png?v=1788317780&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-liquid-1l",
+    "imageAlt": "Ecostore Ultra Sensitive Laundry Liquid — official brand image",
+    "claim": "Ecostore states that this Ultra Sensitive laundry liquid is free from fragrance and colourants.",
+    "notes": "Only the Ultra Sensitive variant is included. Similar-looking Ecostore laundry liquids may contain fragrance, so verify the full name and current label.",
+    "use": "Laundry use only. Follow the pack’s dosing, machine, fabric-care and safety directions. Keep away from children and pets.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-liquid-1l"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-fabric-softener",
+    "title": "Ecostore Ultra Sensitive Fabric Softener",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "Fragrance-free claim"
+    ],
+    "description": "The fragrance-free Ultra Sensitive fabric softener, for readers who choose to use this optional laundry step.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-fabric-softener-1l",
+    "image": "https://ecostore.com/cdn/shop/files/LFU1U_FabricSoftner_US_1L_Front-1_ebfaef3e-a4b8-4568-9076-ae2cda908929.png?v=1763592393&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-fabric-softener-1l",
+    "imageAlt": "Ecostore Ultra Sensitive Fabric Softener — official brand image",
+    "claim": "Ecostore states that this Ultra Sensitive fabric softener is free from fragrance and colourants.",
+    "notes": "This is a fabric conditioner, not a detergent, and softener is an optional step. Do not confuse it with Ecostore’s fragranced fabric-softener variants.",
+    "use": "Laundry use only. Follow the current pack and fabric-care directions. Keep away from children and pets; do not pour directly onto fabric unless the label directs it.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-fabric-softener-1l"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-laundry-soaker",
+    "title": "Ecostore Ultra Sensitive Laundry Soaker & Stain Remover",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free laundry soaker and stain remover from Ecostore’s Ultra Sensitive range.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-soaker-stain-remover-1kg",
+    "image": "https://ecostore.com/cdn/shop/files/LS1U_UltraSensitive_LaundrySoaker_1kg_Front_v4-1_9cc716b5-47ba-4b4d-9887-da4518c6197f.png?v=1763592393&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-soaker-stain-remover-1kg",
+    "imageAlt": "Ecostore Ultra Sensitive Laundry Soaker and Stain Remover — official brand image",
+    "claim": "Ecostore describes this Ultra Sensitive laundry soaker and stain remover as fragrance-free and free from colourants.",
+    "notes": "This is a concentrated laundry treatment. A fragrance-free claim does not remove the need to follow the warning label or check other ingredients.",
+    "use": "Follow the current pack’s soak, stain-treatment and safety directions. Keep away from children and pets, protect eyes and skin, and never mix cleaning products.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-laundry-soaker-stain-remover-1kg"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-dish-liquid",
+    "title": "Ecostore Ultra Sensitive Dish Liquid",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Dish care",
+      "Fragrance-free claim"
+    ],
+    "description": "A hand-dishwashing liquid in Ecostore’s Ultra Sensitive range, separate from its lemon, grapefruit and other scented dish liquids.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-dish-liquid-500ml",
+    "image": "https://ecostore.com/cdn/shop/files/DLUA05U_DishLiquid_US_500ml-1_e7fc7919-7a39-45e3-84d8-7d5180bbc93c.png?v=1773168968&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-dish-liquid-500ml",
+    "imageAlt": "Ecostore Ultra Sensitive Dish Liquid — official brand image",
+    "claim": "Ecostore states that this Ultra Sensitive dish liquid is free from fragrance and colourants.",
+    "notes": "This liquid is for washing dishes by hand, not for dishwashers. Only the Ultra Sensitive version is included here; other Ecostore dish liquids are fragranced.",
+    "use": "Use for hand dishwashing according to the pack. Keep away from children and pets, avoid eye contact, and do not mix cleaning products.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-dish-liquid-500ml"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "ecostore-ultra-sensitive-multi-purpose-cleaner",
+    "title": "Ecostore Ultra Sensitive Multi-purpose Cleaner",
+    "brand": "Ecostore",
+    "category": "Home & Laundry",
+    "tags": [
+      "Household cleaning",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free multipurpose household cleaner from Ecostore’s Ultra Sensitive range.",
+    "officialUrl": "https://ecostore.com/en-au/products/ultra-sensitive-multi-purpose-cleaner-500ml",
+    "image": "https://ecostore.com/cdn/shop/files/CSTU05U_UltraSensitiveMulti-purposeCleaner_500ml-1_90100dc5-5d09-4b42-8b68-b0b7d78b1a7d.png?v=1763592392&width=2048",
+    "imageSourceUrl": "https://ecostore.com/en-au/products/ultra-sensitive-multi-purpose-cleaner-500ml",
+    "imageAlt": "Ecostore Ultra Sensitive Multi-purpose Cleaner — official brand image",
+    "claim": "Ecostore states that this Ultra Sensitive multipurpose cleaner is free from fragrance and colourants.",
+    "notes": "Surface compatibility and directions matter even for a fragrance-free cleaner. Check the current label before using it on a new surface.",
+    "use": "Use only on surfaces permitted by the current label. Ventilate while cleaning, keep away from children and pets, and never mix cleaning products.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.ecostore.sg/ultra-sensitive/",
+      "AU": "https://ecostore.com/en-au/products/ultra-sensitive-multi-purpose-cleaner-500ml"
+    },
+    "countryNote": "The Singapore brand site lists this product in its fragrance-free Ultra Sensitive range; the Australian brand site provides the product-specific page. Check current local stock and packaging.",
+    "discoveryUrl": "https://www.ecostore.sg/home-care/"
+  },
+  {
+    "id": "cerave-hydrating-cleanser-au",
+    "title": "CeraVe Hydrating Cleanser — Australia",
+    "brand": "CeraVe",
+    "category": "Skin & Body",
+    "tags": [
+      "Face & body cleanser",
+      "Fragrance-free claim"
+    ],
+    "description": "A non-foaming cleanser for normal-to-dry skin, documented from CeraVe’s Australian product page.",
+    "officialUrl": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser",
+    "image": "https://www.cerave.com.au/-/media/project/loreal/brand-sites/cerave/americas/au/derm-badge/hydrating-cleanser-derm-logo-sm.jpg?rev=557834b4e9e74e8ea72d17f1b30f0f85",
+    "imageSourceUrl": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser",
+    "imageAlt": "CeraVe Hydrating Cleanser — official Australian brand image",
+    "claim": "CeraVe Australia describes this Hydrating Cleanser as fragrance-free.",
+    "notes": "This entry is for the Australian Hydrating Cleanser page. Check the exact regional bottle and current ingredients; similarly named CeraVe cleansers are separate formulas.",
+    "use": "A rinse-off face and body cleanser. Follow the local pack directions, avoid contact with eyes, and stop use if irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser"
+    },
+    "countryNote": "Australia-specific official brand page reviewed. This entry does not infer an identical formula or availability elsewhere in Asia-Pacific.",
+    "discoveryUrl": "https://honestyforyourskin.co.uk/best-fragrance-free-skincare-brands/"
+  },
+  {
+    "id": "paulas-choice-2-bha-liquid",
+    "title": "Paula’s Choice 2% BHA Liquid Exfoliant",
+    "brand": "Paula’s Choice",
+    "category": "Skin & Body",
+    "tags": [
+      "Leave-on exfoliant",
+      "Fragrance-free claim"
+    ],
+    "description": "A leave-on salicylic-acid exfoliant with official regional product pages for Singapore and Australia.",
+    "officialUrl": "https://paulaschoice.sg/products/skin-perfecting-2-bha-liquid-exfoliant",
+    "image": "https://paulaschoice.sg/cdn/shop/files/2_-bha-liquid-exfoliant-118ml_770b5819-7767-4427-bbba-e52021307ac7.jpg?v=1751516226",
+    "imageSourceUrl": "https://paulaschoice.sg/products/skin-perfecting-2-bha-liquid-exfoliant",
+    "imageAlt": "Paula’s Choice 2% BHA Liquid Exfoliant — official Singapore brand image",
+    "claim": "Paula’s Choice Singapore labels this product alcohol- and fragrance-free; the Australian brand page also describes it as fragrance-free.",
+    "notes": "This is an acid exfoliant, not a basic moisturiser. It may not suit every skin type or routine. Review the full directions and ingredients, introduce cautiously, and use sun protection as directed by the brand.",
+    "use": "Follow the regional product directions for frequency and application. Avoid the eyelids and lower lash line, stop if irritation occurs, and seek professional advice for persistent skin problems.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://paulaschoice.sg/products/skin-perfecting-2-bha-liquid-exfoliant",
+      "AU": "https://www.paulaschoice.com.au/products/skin-perfecting-2-bha-liquid-exfoliant"
+    },
+    "countryNote": "Official Paula’s Choice product pages were checked for Singapore and Australia. Current sizes, price and stock may differ between markets.",
+    "discoveryUrl": "https://honestyforyourskin.co.uk/best-fragrance-free-skincare-brands/"
+  },
+  {
+    "id": "clinique-dramatically-different-lotion-au",
+    "title": "Clinique Dramatically Different Moisturizing Lotion+ — Australia",
+    "brand": "Clinique",
+    "category": "Skin & Body",
+    "tags": [
+      "Face moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A facial moisturising lotion documented from Clinique’s official Australian product page.",
+    "officialUrl": "https://www.clinique.com.au/product/1687/26651/skin-care/moisturisers/dramatically-different-moisturizing-lotion",
+    "image": "https://www.clinique.com.au/media/export/cms/products/600x750/cl_sku_Z4A701_600x750_0.png",
+    "imageSourceUrl": "https://www.clinique.com.au/product/1687/26651/skin-care/moisturisers/dramatically-different-moisturizing-lotion",
+    "imageAlt": "Clinique Dramatically Different Moisturizing Lotion Plus — official Australian brand image",
+    "claim": "Clinique Australia describes Dramatically Different Moisturizing Lotion+ as 100% fragrance-free.",
+    "notes": "This profile applies to the linked Lotion+ formula. Clinique has several products with similar Dramatically Different names, and their ingredients and textures differ.",
+    "use": "For external facial skin care. Follow the local product directions and stop use if irritation occurs. Ask a clinician about persistent symptoms or post-procedure use.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://www.clinique.com.au/product/1687/26651/skin-care/moisturisers/dramatically-different-moisturizing-lotion"
+    },
+    "countryNote": "Australia-specific official brand page reviewed. This profile does not infer the same formulation or official availability in other markets.",
+    "discoveryUrl": "https://honestyforyourskin.co.uk/best-fragrance-free-skincare-brands/"
   }
 ]
