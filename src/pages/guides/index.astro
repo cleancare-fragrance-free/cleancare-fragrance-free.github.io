@@ -11,7 +11,7 @@ import { featuredPosts } from '../../data/featured-posts.mjs';
   <h2 id="featured-title">Five featured posts. Follow the source.</h2>
   <p class="intro">Articles, videos, and conversations selected from the group’s Featured tab. Open a card for a short overview and the original source.</p>
   <div class="journal-grid">{featuredPosts.map(article => <ArticleCard article={article}/>)}</div>
-  <p class="editorial-note">Source-linked summaries, not full reproductions. Illustrative stock photos from Pexels; photographer credits and licence links appear on each page. Photos are not from the original posts and do not imply endorsement. Featured order checked September 29, 2026.</p>
+  <p class="editorial-note">Source-linked summaries, not full reproductions. Cards use credited illustrative stock photos or official publisher artwork; full credits appear on each page. Images do not imply endorsement. Featured order checked September 29, 2026.</p>
 </section>
 <h2>Clean Care articles &amp; guides</h2>
 <form id="journal-filters" class="filters" role="search" aria-label="Find Clean Care guides"><label class="search-label">Find a guide<input id="journal-search" type="search" placeholder="Try laundry, symptoms, or labels…"/></label><label>Browse a topic<select id="journal-topic"><option value="">All topics</option>{[...new Set(articles.map(a => a.topic))].map(topic => <option>{topic}</option>)}</select></label><button class="reset" type="reset">Reset</button></form>

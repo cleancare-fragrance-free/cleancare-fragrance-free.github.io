@@ -7,6 +7,9 @@ export function getStaticPaths() {
   return featuredPosts.map(post => ({ params: { slug: post.slug }, props: { post } }));
 }
 const { post } = Astro.props;
+const photoUrl = (photo, width) => photo.provider === 'pexels'
+  ? `${photo.src}?auto=compress&cs=tinysrgb&w=${width}`
+  : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
 <Layout title={`${post.title} | Clean Care`} description={post.description}>
   <header class="container story-header">
@@ -16,8 +19,8 @@ const { post } = Astro.props;
     <p class="intro">{post.description}</p>
     <p class="article-meta">Source: {post.sourceName}{post.sourceDate && ` · ${post.sourceDate}`}</p>
     <figure class="story-cover">
-      <img class="featured-photo" src={`${post.photo.src}?auto=compress&cs=tinysrgb&w=1400`} alt={post.photo.alt} width="1400" height="800" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: post.photo.position}}/>
-      <figcaption>Photo: <a href={post.photo.sourceUrl} rel="noreferrer">{post.photo.photographer} / Pexels</a> · <a href={post.photo.licenseUrl} rel="noreferrer">Photo licence</a>. Illustrative stock photo—not from the original post. Depicted products and settings are not endorsements or evidence of safety or harm.</figcaption>
+      <img class="featured-photo" src={photoUrl(post.photo, 1400)} alt={post.photo.alt} width="1400" height="800" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: post.photo.position}}/>
+      <figcaption>Image: <a href={post.photo.sourceUrl} rel="noreferrer">{post.photo.photographer}</a>{post.photo.licenseUrl && <> · <a href={post.photo.licenseUrl} rel="noreferrer">Photo licence</a></>}. {post.photo.note} Depicted people, products, and settings are not endorsements or evidence of safety or harm.</figcaption>
     </figure>
   </header>
   <div class="container story-body">

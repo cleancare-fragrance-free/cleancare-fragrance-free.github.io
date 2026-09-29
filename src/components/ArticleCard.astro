@@ -4,12 +4,15 @@ import { url } from '../lib/paths';
 const { article } = Astro.props;
 const titleId = 'article-title-' + article.slug;
 const skyBadge = ['air', 'laundry'].includes(article.art);
+const photoUrl = (photo, width) => photo.provider === 'pexels'
+  ? `${photo.src}?auto=compress&cs=tinysrgb&w=${width}`
+  : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
 <a class="journal-card" href={url(article.href || 'guides/' + article.slug + '/')}
   data-article-slug={article.slug} data-featured={article.order ? 'true' : undefined} aria-labelledby={titleId}>
   <div class="journal-card-image">
     <div class="journal-card-art" aria-hidden="true">
-      {article.photo ? <img src={`${article.photo.src}?auto=compress&cs=tinysrgb&w=800`} srcset={`${article.photo.src}?auto=compress&cs=tinysrgb&w=400 400w, ${article.photo.src}?auto=compress&cs=tinysrgb&w=800 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
+      {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={`${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
     </div>
     <span class:list={['article-badge', { 'article-badge--sky': skyBadge }]}>{article.topic}</span>
   </div>

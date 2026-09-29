@@ -2,13 +2,29 @@
 // Summaries are original, not reproductions of third-party articles or comments.
 const group = 'https://www.facebook.com/groups/391954731491131/posts/';
 // Pexels photo pages and licence verified 2026-09-29. Illustrative use only.
+// The Miranda Kerr card uses the official episode artwork from the publisher.
 const photos = [
   { id: '7398431', photographer: 'Estela Crln', page: 'laundry-on-a-clothesline-7398431', alt: 'Clothes drying on a line against a blue sky', position: 'center' },
   { id: '7814722', photographer: 'Mikhail Nilov', page: 'a-perfume-bottle-7814722', alt: 'A perfume bottle on a textured surface with water droplets', position: 'center' },
-  { id: '6045180', photographer: 'Skylar Kang', page: 'bathroom-with-various-cosmetology-products-6045180', alt: 'Personal-care bottles arranged beside a tiled bathtub', position: 'center 85%' },
+  {
+    provider: 'publisher',
+    src: 'https://drhyman.com/cdn/shop/articles/Frame_1000007099.png?v=1762959610',
+    photographer: 'The Dr. Hyman Show',
+    sourceUrl: 'https://drhyman.com/blogs/content/podcast-ep1089',
+    alt: 'Miranda Kerr and Dr. Mark Hyman in the official artwork for their interview',
+    position: 'center 46%',
+    note: 'Official episode image from the publisher.',
+  },
   { id: '7546721', photographer: 'Max Vakhtbovych', page: 'living-room-with-natural-light-from-the-window-7546721', alt: 'A bright living room with a sofa and large windows', position: 'center' },
   { id: '7262767', photographer: 'Sarah Chai', page: 'bottles-of-shower-supplies-in-bathroom-7262767', alt: 'Green dispenser bottles and a shower fixture against white tiles', position: 'center' },
-].map(photo => ({ ...photo, src: `https://images.pexels.com/photos/${photo.id}/pexels-photo-${photo.id}.jpeg`, sourceUrl: `https://www.pexels.com/photo/${photo.page}/`, licenseUrl: 'https://www.pexels.com/license/' }));
+].map(photo => photo.src ? photo : ({
+  ...photo,
+  provider: 'pexels',
+  src: `https://images.pexels.com/photos/${photo.id}/pexels-photo-${photo.id}.jpeg`,
+  sourceUrl: `https://www.pexels.com/photo/${photo.page}/`,
+  licenseUrl: 'https://www.pexels.com/license/',
+  note: 'Illustrative stock photo—not from the original post.',
+}));
 export const featuredPosts = [
   {
     slug: 'scent-pollution-in-japan', title: 'The Sweet Danger of Scent Pollution',
@@ -30,10 +46,10 @@ export const featuredPosts = [
   },
   {
     slug: 'miranda-kerr-fragrance-conversation', title: 'Miranda Kerr on fragrance in everyday products',
-    topic: 'Featured video', art: 'research', format: 'Video', sourceName: 'Mark Hyman, MD · shared interview clip',
+    topic: 'Featured video', art: 'research', format: 'Video', sourceName: 'The Dr. Hyman Show · Miranda Kerr interview',
     description: 'An interview clip that started a conversation about fragrance and personal-care routines.',
-    postUrl: group + '1991315638221691/', sourceUrl: group + '1991315638221691/',
-    sourceLabel: 'Watch the shared clip on Facebook',
+    postUrl: group + '1991315638221691/', sourceUrl: 'https://drhyman.com/blogs/content/podcast-ep1089',
+    sourceLabel: 'Watch the original interview', sourceDate: 'November 12, 2025',
     summary: 'This featured post shares a Mark Hyman video clip of Miranda Kerr discussing synthetic fragrance in everyday products. It offers a starting point for conversations about ingredient choices and the products people use at home.',
     context: 'This is an interview perspective, not a research paper. The post’s broad language about harm should not be read as evidence that every synthetic fragrance is toxic at every exposure level. Open the shared post to see the original clip and publisher attribution; no transcript is reproduced here.',
   },
@@ -56,4 +72,10 @@ export const featuredPosts = [
     summary: 'The featured post links to a Washington Post Instagram video with Dr. Trisha Pasricha. The visible source caption introduces concerns about phthalates in personal-care products and identifies the footage as a video from 2024.',
     context: 'This summary is based on the shared caption, not a full transcript. Phthalates are a group of chemicals, not another name for fragrance. A claim about one substance or exposure cannot automatically be extended to every fragranced product. Follow the original publisher for the full explanation and its supporting references.',
   },
-].map((post, index) => ({ ...post, order: index + 1, checked: '2026-09-29', href: 'featured/' + post.slug + '/', photo: photos[index], imageCredit: `Photo: ${photos[index].photographer} / Pexels. Illustrative stock photo, not an image from the original post.` }));
+].map((post, index) => {
+  const photo = photos[index];
+  const imageCredit = photo.provider === 'pexels'
+    ? `Photo: ${photo.photographer} / Pexels. ${photo.note}`
+    : `Image: ${photo.photographer}. ${photo.note}`;
+  return { ...post, order: index + 1, checked: '2026-09-29', href: 'featured/' + post.slug + '/', photo, imageCredit };
+});
