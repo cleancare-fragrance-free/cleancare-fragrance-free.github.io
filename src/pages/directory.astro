@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import products from '../data/products.json';
+import { countries, regions } from '../data/countries.mjs';
+import { url } from '../lib/paths';
+---
+<Layout title="Fragrance-free products by country | Clean Care"><section class="container section directory"><p class="eyebrow">Practical alternatives</p><h1>Fragrance-free options by country.</h1><p class="intro">Once you understand what you want to avoid, use this directory to compare product categories and check official brand sources and country-specific details.</p><p class="notice">These profiles link to official brand pages, without affiliate links. Sources now cover the United States, United Kingdom, Singapore, Australia and New Zealand. Other countries await review. A country listing identifies a checked brand source, not guaranteed stock or delivery. Manufacturer claims are not independent safety assessments. Read <a href={url('guides/')}>the articles</a> first to understand the evidence.</p>
+<div class="location-picker"><div role="group" aria-label="Choose a region" class="region-buttons"><button type="button" data-region-button="" aria-pressed="true">All regions</button>{regions.map(region => <button type="button" data-region-button={region.code} aria-pressed="false">{region.name}</button>)}</div><p class="eyebrow">Choose a country</p><div role="group" aria-label="Choose a country" class="country-buttons"><button type="button" data-country-button="" aria-pressed="true">All countries</button>{countries.map(country => <button type="button" data-country-button={country.code} data-parent-region={country.region} aria-pressed="false">{country.name}</button>)}</div></div>
+<form id="filters" class="filters" role="search"><label class="search-label">Search the directory<input name="q" id="search" type="search" placeholder="Try laundry, cleanser, or dye-free…"/></label><label>Category<select name="category" id="category"><option value="">All categories</option><option>Skin & Body</option><option>Home & Laundry</option><option>Haircare</option></select></label><button type="reset" class="reset">Reset filters</button></form>
+<noscript><p class="notice">JavaScript is needed to filter the directory. All profiles are displayed below.</p></noscript><p id="result-count" role="status" aria-live="polite">{products.length} product profiles</p><div id="products">{countries.filter(country => products.some(product => Object.hasOwn(product.countries, country.code))).map(country => <section class="country-group" data-country={country.code} aria-labelledby={"country-" + country.code}><h2 id={"country-" + country.code}>{country.name}</h2><p class="editorial-note">Official sources for this country. Check current stock, delivery, and local packaging with the brand.</p><div class="product-grid">{products.filter(product => Object.hasOwn(product.countries, country.code)).map(product => <ProductCard product={product}/>)}</div></section>)}</div><div id="empty" class="empty" hidden><h2>No matches just yet.</h2><p id="empty-message">Try a broader search or reset the filters. Some countries do not yet have listings.</p><button class="button" id="empty-reset">Reset filters</button></div></section></Layout>
+<script>
+import products from '../data/products.json';
+import { countries, regions, countryInRegion } from '../data/countries.mjs';
+import { matchesProduct } from '../lib/filter.mjs';
+const form = document.querySelector<HTMLFormElement>('#filters')!;
+const query = document.querySelector<HTMLInputElement>('#search')!;
+const category = document.querySelector<HTMLSelectElement>('#category')!;
+let selectedCountry = '';
+let selectedRegion = '';
+const regionButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-region-button]')];
+const countryButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-country-button]')];
+const groups = [...document.querySelectorAll<HTMLElement>('[data-country]')];
+const cards = [...document.querySelectorAll<HTMLElement>('[data-product-id]')];
+function readURL() { const params = new URLSearchParams(location.search); query.value = params.get('q') || ''; category.value = params.get('category') || ''; selectedCountry = countries.some(c => c.code === params.get('country')) ? params.get('country')! : ''; selectedRegion = regions.some(r => r.code === params.get('region')) ? params.get('region')! : ''; if (selectedCountry && !countryInRegion(selectedCountry, selectedRegion)) selectedRegion = countries.find(c => c.code === selectedCountry)!.region; }
+function render(updateURL = true) {
+  const state = { query: query.value, category: category.value, country: selectedCountry };
+  regionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.regionButton === selectedRegion)));
+  countryButtons.forEach(button => { button.hidden = !!button.dataset.countryButton && !countryInRegion(button.dataset.countryButton, selectedRegion); button.setAttribute('aria-pressed', String(button.dataset.countryButton === selectedCountry)); });
+  const visibleProducts = new Set<string>();
+  cards.forEach(card => { const product = products.find(p => p.id === card.dataset.productId)!; card.hidden = !countryInRegion(card.closest<HTMLElement>("[data-country]")!.dataset.country, selectedRegion) || !matchesProduct(product, state) || (!!state.country && card.closest<HTMLElement>("[data-country]")?.dataset.country !== state.country); if (!card.hidden) visibleProducts.add(product.id); });
+  groups.forEach(group => { group.hidden = ![...group.querySelectorAll<HTMLElement>('[data-product-id]')].some(card => !card.hidden); });
+  const noCountryListings = !products.some(product => Object.keys(product.countries).some(code => (!selectedCountry || code === selectedCountry) && countryInRegion(code, selectedRegion)));
+  document.querySelector('#empty-message')!.textContent = noCountryListings ? 'No product sources have been checked for this selection yet. This does not mean fragrance-free products are unavailable there.' : 'No products match these filters. Try a broader search or reset the filters.';
+  const count = visibleProducts.size;
+  document.querySelector('#result-count')!.textContent = `${count} product profile${count === 1 ? '' : 's'}`;
+  document.querySelector<HTMLElement>('#empty')!.hidden = count !== 0;
+  if (updateURL) { const params = new URLSearchParams(); if (state.query) params.set('q', state.query); if (state.category) params.set('category', state.category); if (state.country) params.set('country', state.country); if (selectedRegion) params.set('region', selectedRegion); history.replaceState(null, '', location.pathname + (params.size ? `?${params}` : '')); }
+}
+regionButtons.forEach(button => button.addEventListener('click', () => { selectedRegion = button.dataset.regionButton!; selectedCountry = ''; render(); }));
+countryButtons.forEach(button => button.addEventListener('click', () => { selectedCountry = button.dataset.countryButton!; render(); }));
+form.addEventListener('submit', event => event.preventDefault());
+form.addEventListener('input', () => render());
+form.addEventListener('reset', () => { query.value = ''; category.value = ''; selectedCountry = ''; selectedRegion = ''; render(); });
+document.querySelector('#empty-reset')!.addEventListener('click', () => form.reset());
+window.addEventListener('popstate', () => { readURL(); render(false); });
+readURL(); render(false);
+</script>

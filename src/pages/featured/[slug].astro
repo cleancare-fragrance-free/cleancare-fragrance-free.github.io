@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { featuredPosts } from '../../data/featured-posts.mjs';
+import { url } from '../../lib/paths';
+export function getStaticPaths() {
+  return featuredPosts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+---
+<Layout title={`${post.title} | Clean Care`} description={post.description}>
+  <header class="container story-header">
+    <a class="text-link" href={url('guides/#featured')}>← Featured from the group</a>
+    <p class="eyebrow">Featured {post.format.toLowerCase()} · {post.order} of 5</p>
+    <h1>{post.title}</h1>
+    <p class="intro">{post.description}</p>
+    <p class="article-meta">Source: {post.sourceName}{post.sourceDate && ` · ${post.sourceDate}`}</p>
+    <figure class="story-cover">
+      <img class="featured-photo" src={`${post.photo.src}?auto=compress&cs=tinysrgb&w=1400`} alt={post.photo.alt} width="1400" height="800" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: post.photo.position}}/>
+      <figcaption>Photo: <a href={post.photo.sourceUrl} rel="noreferrer">{post.photo.photographer} / Pexels</a> · <a href={post.photo.licenseUrl} rel="noreferrer">Photo licence</a>. Illustrative stock photo—not from the original post. Depicted products and settings are not endorsements or evidence of safety or harm.</figcaption>
+    </figure>
+  </header>
+  <div class="container story-body">
+    <article class="prose story-prose">
+      <p class="eyebrow">Original Clean Care summary</p>
+      <h2>What this post is about</h2><p>{post.summary}</p>
+      <h2>Read it in context</h2><p>{post.context}</p>
+      <h2 id="sources">The post and its source</h2>
+      <p><a class="button" href={post.sourceUrl} rel="noreferrer">{post.sourceLabel} ↗</a></p>
+      {post.sourceUrl !== post.postUrl && <p><a class="text-link" href={post.postUrl} rel="noreferrer">View the featured Facebook post ↗</a></p>}
+      {post.additionalSource && <p><a class="text-link" href={post.additionalSource.url} rel="noreferrer">{post.additionalSource.title} ↗</a></p>}
+      <p class="editorial-note">Facebook, Instagram, or YouTube may require sign-in. Original articles and media remain with their publishers. No member comments, profile details, or personal health stories have been republished.</p>
+      <aside class="notice">For background on ingredient labels and fragrance safety, see the <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics">FDA’s fragrance information</a> and our <a href={url('evidence/')}>evidence library</a>. This page is educational, not a diagnosis or medical advice.</aside>
+    </article>
+    <aside class="story-sidebar"><p class="eyebrow">From the community</p><h3>A source you can follow.</h3><p>Selected from the first five posts in the group’s Featured tab on September 29, 2026. The order on Facebook may change.</p><a class="text-link" href="https://www.facebook.com/groups/391954731491131/announcements" rel="noreferrer">Visit the Featured tab ↗</a><hr/><a class="text-link" href={url('guides/')}>Browse all guides →</a></aside>
+  </div>
+  <section class="container section"><h2>More from the featured collection</h2><div class="journal-grid">{featuredPosts.filter(item => item.slug !== post.slug).slice(0,3).map(article => <ArticleCard article={article}/>)}</div></section>
+</Layout>
+<style>
+  .featured-photo { display: block; width: 100%; height: clamp(240px, 42vw, 520px); object-fit: cover; border-radius: var(--radius-image); }
+</style>

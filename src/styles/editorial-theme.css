@@ -1,0 +1,174 @@
+/* Shared editorial surfaces. Article-card styles live with ArticleCard.astro. */
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-family); font-weight: 600; }
+h1 { letter-spacing: -0.045em; line-height: 1.15; }
+h2 { letter-spacing: -0.035em; line-height: 1.3; }
+h3 { letter-spacing: -0.02em; line-height: 1.35; }
+h1 em, .check-intro h1 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-sage);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 9px;
+}
+.intro { font-size: 16px; line-height: 1.9; }
+.eyebrow { color: var(--muted); font-size: 11px; letter-spacing: 0.16em; }
+.announcement { background: var(--accent-sky); color: var(--text); }
+.site-header { background: var(--canvas); border-color: var(--border); }
+.brand { font-weight: 600; }
+.brand-dot, .brand svg { color: var(--accent-sage); }
+.header-inner nav { font-size: 12px; line-height: 1.7; }
+.header-inner nav a { transition: color 0.2s ease; }
+.header-inner nav a:hover { color: var(--text); text-decoration-color: var(--accent-active); }
+
+/* Dark text keeps the soft apricot CTA background readable. */
+.button, .header-cta {
+  background: var(--accent-active);
+  color: var(--text);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 13px;
+  min-height: 44px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.button:hover, .header-cta:hover {
+  background: var(--accent-active);
+  box-shadow: 0 5px 16px rgba(244, 162, 97, 0.28);
+}
+button, .check-secondary, .reset { border-radius: var(--radius-pill); }
+.check-secondary { border-color: var(--border); background: var(--card); }
+.text-link { color: var(--text); font-size: 13px; font-weight: 600; }
+.text-link:hover { color: var(--text); text-decoration-color: var(--accent-active); }
+.prose a { color: var(--text); text-decoration-color: var(--accent-sage); text-decoration-thickness: 2px; }
+.prose a:hover { text-decoration-color: var(--accent-active); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, summary:focus-visible { outline-color: var(--text); }
+
+/* Consistent card geometry across articles, resources, products and the quiz. */
+.category-card, .category-card:nth-child(n), .product-card,
+.resource-card, .check-card, .guide-list-card, .article-tile {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.category-grid, .product-grid, .resource-list { gap: 32px; }
+.category-card, .card-body, .resource-card { padding: 24px; }
+.category-card h3, .product-card h3, .resource-card h3 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.category-card p, .product-card p, .resource-card>p:last-child { font-size: 14px; line-height: 1.8; }
+.category-top, .category-arrow { color: var(--text); }
+.category-card:hover, .guide-list-card:hover { background: var(--card); border-color: var(--accent-sage); }
+.tags span, .card-kicker span {
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent-sky);
+  color: var(--text);
+  padding: 7px 11px;
+  font-size: 10px;
+}
+.tags { gap: 8px; }
+.availability { line-height: 1.8; }
+.brand-product-image { background: var(--card); }
+.product-profile-hero img { border-color: var(--border); border-radius: var(--radius-image); }
+.product-profile h1, .story-header h1, .journal h1 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.17;
+  letter-spacing: -0.045em;
+}
+.story-cover { overflow: hidden; }
+.story-cover .article-visual { border-radius: var(--radius-image); }
+.story-sidebar { background: var(--accent-sky); border-color: var(--border); border-radius: var(--radius-card); }
+.story-sidebar h3, .check-card h3, .check-card legend { font-family: var(--font-family); font-weight: 600; }
+.story-sidebar hr { border-color: var(--border); }
+.notice, .empty, .check-card .check-privacy, .check-card .check-limit {
+  background: var(--accent-sky);
+  border-radius: var(--radius-image);
+  color: var(--text);
+}
+.notice { border-left-color: var(--accent-sage); }
+.check-option { border-color: var(--border); border-radius: var(--radius-image); background: var(--card); }
+.check-option:has(input:checked) { background: var(--accent-sky); border-color: var(--accent-sage); }
+.check-option:hover { border-color: var(--accent-sage); }
+.check-option input { accent-color: var(--text); }
+
+/* Quiet page framing lets the image-led journal remain the focal point. */
+.journal { padding-top: 64px; }
+.journal .intro { max-width: 760px; }
+.journal .filters { margin-top: 36px; }
+.filters input, .filters select {
+  border-color: var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  padding-inline: 18px;
+  height: 50px;
+}
+.filters label { font-size: 12px; font-weight: 500; }
+.reset { color: var(--text); padding-inline: 14px; }
+.region-buttons button, .country-buttons button {
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+.location-picker button:hover { background: var(--accent-sky); }
+.location-picker button[aria-pressed="true"] {
+  background: var(--accent-active);
+  color: var(--text);
+  border-color: var(--accent-active);
+}
+.location-picker button:focus-visible { outline-color: var(--text); }
+.guide-feature, .research-scene, .hero-scene,
+.alternatives-band, .quiz-invitation {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.guide-feature, .quiz-invitation { background: var(--accent-sky); }
+.page-one strong { font-size: 24px; line-height: 1.2; }
+.page-one p { font-size: 10px; line-height: 1.7; margin-top: 18px; }
+.alternatives-band { background: var(--card); border: 1px solid var(--border); }
+.principles { background: var(--card); border-color: var(--border); }
+.closing { background: var(--accent-sky); }
+footer { background: var(--canvas); }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .journal { padding-top: 40px; }
+  .journal h1, .story-header h1, .product-profile h1,
+  .article h1, .directory h1 { font-size: clamp(30px, 8vw, 40px); }
+  .intro { font-size: 15px; }
+  .journal .filters { display: grid; grid-template-columns: 1fr; }
+  .header-inner nav { font-size: 11px; }
+  .header-cta { font-size: 10px; }
+  .page-one strong { font-size: 20px; }
+  .page-one p { font-size: 9px; margin-top: 12px; }
+  .category-grid, .product-grid, .resource-list { gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .category-card:hover { transform: none; }
+  .button, .header-cta, .header-inner nav a { transition: none; }
+}

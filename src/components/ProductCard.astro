@@ -1,0 +1,9 @@
+---
+import { countryName } from '../data/countries.mjs';
+import { url } from '../lib/paths';
+const { product } = Astro.props;
+---
+<article class="product-card verified-card" data-product-id={product.id}>
+<a class="brand-product-image" href={url('products/' + product.id + '/')}><img src={product.image} alt={product.imageAlt} loading="lazy" decoding="async" width="600" height="600" referrerpolicy="no-referrer"/></a>
+<div class="card-body"><div class="card-kicker">{product.category}<span>Brand source</span></div><h3><a href={url('products/' + product.id + '/')}>{product.title}</a></h3><p>{product.description}</p><div class="tags">{product.tags.map(tag => <span>{tag}</span>)}</div><p class="availability">{Object.keys(product.countries).map(countryName).join(", ")} · source checked {product.checked}</p><a class="text-link" href={url('products/' + product.id + '/')}>Read the product profile →</a></div>
+</article>

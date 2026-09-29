@@ -1,0 +1,365 @@
+[
+  {
+    "id": "faith-in-nature-shampoo",
+    "title": "Faith in Nature Fragrance Free Shampoo",
+    "brand": "Faith in Nature",
+    "category": "Haircare",
+    "tags": [
+      "Fragrance-free claim",
+      "No essential oils claim"
+    ],
+    "description": "A 400 ml rinse-off shampoo. The brand describes this specific version as free from fragrance and essential oils.",
+    "officialUrl": "https://www.faithinnature.co.uk/products/fragrance-free-shampoo-400ml",
+    "image": "https://www.faithinnature.co.uk/cdn/shop/files/FF_S_400_Site_Product_Images_920x980px_72dpi_RGB.png?crop=center&height=1500&v=1790243976&width=1500",
+    "imageAlt": "Faith in Nature Fragrance Free Shampoo 400 ml — official brand product photo",
+    "claim": "The manufacturer describes this version as fragrance-free and free from essential oils.",
+    "notes": "The page contains inconsistent sulfate-related wording. We do not repeat a sulfate-free claim. Read the latest ingredients on the bottle and ask the brand about discrepancies.",
+    "use": "A rinse-off hair cleanser. Follow the current brand directions and stop use if irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "GB": "https://www.faithinnature.co.uk/products/fragrance-free-shampoo-400ml"
+    },
+    "countryNote": "United Kingdom brand source reviewed. Stock and delivery must be checked with the brand; availability or the same formulation in other countries has not been verified.",
+    "imageSourceUrl": "https://www.faithinnature.co.uk/products/fragrance-free-shampoo-400ml"
+  },
+  {
+    "id": "faith-in-nature-soap",
+    "title": "Faith in Nature Fragrance Free Soap Bar",
+    "brand": "Faith in Nature",
+    "category": "Skin & Body",
+    "tags": [
+      "Fragrance-free claim",
+      "Soap bar"
+    ],
+    "description": "A solid cleansing bar listed in the brand’s fragrance-free range. Compare this exact version rather than other scented bars in the range.",
+    "officialUrl": "https://www.faithinnature.co.uk/products/fragrance-free-soap",
+    "image": "https://www.faithinnature.co.uk/cdn/shop/products/Product_Listing_FF_SP_RGB_920x980px.png?crop=center&height=1500&v=1666694883&width=1500",
+    "imageAlt": "Faith in Nature Fragrance Free Soap Bar — official brand product photo",
+    "claim": "The official product page identifies this as the fragrance-free soap bar.",
+    "notes": "A fragrance-free claim is not a guarantee against irritation or allergy to other ingredients. Packaging and formulations can change.",
+    "use": "A rinse-off soap bar. Check the packaging for intended use and current directions.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "GB": "https://www.faithinnature.co.uk/products/fragrance-free-soap"
+    },
+    "countryNote": "United Kingdom brand source reviewed. Stock and delivery must be checked with the brand; availability or the same formulation in other countries has not been verified.",
+    "imageSourceUrl": "https://www.faithinnature.co.uk/products/fragrance-free-soap"
+  },
+  {
+    "id": "surcare-laundry-liquid",
+    "title": "Surcare Non Bio Laundry Liquid",
+    "brand": "Surcare",
+    "category": "Home & Laundry",
+    "tags": [
+      "No fragrance claim",
+      "Laundry detergent"
+    ],
+    "description": "A 750 ml laundry liquid. Surcare states that this version is made without fragrances, dyes, or enzymes.",
+    "officialUrl": "https://surcare.co.uk/products/non-bio-laundry-liquid",
+    "image": "https://surcare.co.uk/cdn/shop/files/232738_Surcare_SuperConcentrated_LaundryLiquid_750ml_A.jpg?v=1774131898&width=1445",
+    "imageAlt": "Surcare Non Bio Laundry Liquid 750 ml — official brand product photo",
+    "claim": "The manufacturer states that the liquid is made without fragrances, dyes, or enzymes.",
+    "notes": "“Non-bio” alone is not the fragrance check: use the specific manufacturer statement and the current label. We have not independently tested this detergent.",
+    "use": "For laundry. Follow dosing, fabric-care, appliance, and safety directions on the pack. Keep cleaning products away from children and never mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "GB": "https://surcare.co.uk/products/non-bio-laundry-liquid"
+    },
+    "countryNote": "United Kingdom brand source reviewed. Stock and delivery must be checked with the brand; availability or the same formulation in other countries has not been verified.",
+    "imageSourceUrl": "https://surcare.co.uk/products/non-bio-laundry-liquid"
+  },
+  {
+    "id": "e45-cream-uk",
+    "title": "E45 Cream — UK",
+    "brand": "E45",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "No added fragrance claim"
+    ],
+    "description": "An emollient cream listed on E45’s UK site. This is the UK product profile, not a substitute for the local leaflet.",
+    "officialUrl": "https://e45.com/uk/product/e45-cream/",
+    "image": "https://e45.com/cdn-cgi/image/width%3D600%2Cformat%3Dauto/app/uploads/sites/2/2022/09/E45-Moisturising-Cream-350g-GB.png",
+    "imageSourceUrl": "https://e45.com/uk/product/e45-cream/",
+    "imageAlt": "E45 Cream — UK — official brand image",
+    "claim": "E45 identifies this cream as free from fragrance.",
+    "notes": "Contains lanolin and paraffins; fragrance-free does not remove the need to check other ingredients. E45 Cream is a licensed medicine in the UK. Read the leaflet and ask a pharmacist about suitability.",
+    "use": "Follow the medicine leaflet, including precautions and emollient fire-safety advice. This listing does not recommend treatment for a particular condition.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "GB": "https://e45.com/uk/product/e45-cream/"
+    },
+    "countryNote": "United Kingdom product page checked. This entry does not establish availability elsewhere.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/products/moisturiser/"
+  },
+  {
+    "id": "e45-cream-au-nz",
+    "title": "E45 Cream — Australia & New Zealand",
+    "brand": "E45",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "No added fragrance claim"
+    ],
+    "description": "A separate profile for the E45 cream shown on the brand’s Australia/New Zealand site.",
+    "officialUrl": "https://e45.com/auz/product/e45-cream/",
+    "image": "https://e45.com/cdn-cgi/image/width%3D600%2Cformat%3Dauto/app/uploads/sites/3/2022/09/E45-Moisturising-Cream-for-Dry-Skin-Eczema-125g-1.1.png",
+    "imageSourceUrl": "https://e45.com/auz/product/e45-cream/",
+    "imageAlt": "E45 Cream — Australia & New Zealand — official brand image",
+    "claim": "The regional manufacturer page describes this cream as perfume-free.",
+    "notes": "The brand lists wool fat (lanolin), paraffins and preservatives. Check the local label and full safety information; the Australian page identifies it as an ARTG-registered product.",
+    "use": "Read the local label and follow its directions. The brand warns of fire risk from paraffin product residue on fabrics; keep affected clothing and bedding away from naked flames. Seek medical advice for persistent symptoms.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://e45.com/auz/product/e45-cream/",
+      "NZ": "https://e45.com/auz/product/e45-cream/"
+    },
+    "countryNote": "The official regional product page links to retailers in both Australia and New Zealand. Current stock has not been checked.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/products/moisturiser/"
+  },
+  {
+    "id": "surcare-fabric-softener",
+    "title": "Surcare Fabric Softener",
+    "brand": "Surcare",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No added fragrance claim"
+    ],
+    "description": "A 1 litre fabric conditioner, for readers who choose to use a softener rather than omit this optional step.",
+    "officialUrl": "https://surcare.co.uk/products/fabric-softener",
+    "image": "https://surcare.co.uk/cdn/shop/files/232738_Surcare_Concentrated_Fabric_Conditioner_1L_B.jpg?v=1774131610&width=416",
+    "imageSourceUrl": "https://surcare.co.uk/products/fabric-softener",
+    "imageAlt": "Surcare Fabric Softener — official brand image",
+    "claim": "Surcare states that this version has no added fragrance, dyes or enzymes.",
+    "notes": "The brand cautions that suitability for sensitive skin cannot be guaranteed. It contains a preservative. This is a conditioner, not a detergent.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "GB": "https://surcare.co.uk/products/fabric-softener"
+    },
+    "countryNote": "United Kingdom brand source checked. Do not infer delivery to other countries.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/all-products/fragrance-free-fabric-softener/"
+  },
+  {
+    "id": "aveeno-daily-lotion-singapore",
+    "title": "Aveeno Daily Moisturizing Lotion — Singapore",
+    "brand": "Aveeno",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "No added fragrance claim"
+    ],
+    "description": "An oat-based body lotion with a dedicated Singapore manufacturer page.",
+    "officialUrl": "https://www.aveeno.com.sg/products/daily-moisturizing-lotion",
+    "image": "https://images.ctfassets.net/j7jv1vcgqjb4/1LLB5H9noudLGqrOG6eR0H/a58cb4ba14613c79ccefe952b2190242/image-dm-lotion-01-01-en-sg?fm=jpg&q=80&w=1920",
+    "imageSourceUrl": "https://www.aveeno.com.sg/products/daily-moisturizing-lotion",
+    "imageAlt": "Aveeno Daily Moisturizing Lotion — Singapore — official brand image",
+    "claim": "The Singapore page explicitly describes this lotion as fragrance-free.",
+    "notes": "Check the exact bottle and current ingredient list. Other Aveeno lotions, including similarly named variants, may have different formulas or added fragrance.",
+    "use": "For external skin care. Follow the local pack directions and stop use if irritation occurs. Ask a pharmacist or clinician about persistent symptoms.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.aveeno.com.sg/products/daily-moisturizing-lotion"
+    },
+    "countryNote": "Singapore-specific official page reviewed. This is not confirmation of supply throughout Asia.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/products/moisturiser/"
+  },
+  {
+    "id": "aveeno-daily-lotion-us",
+    "title": "Aveeno Daily Moisturizing Body Lotion — US",
+    "brand": "Aveeno",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "No added fragrance claim"
+    ],
+    "description": "The US Soothing Oat body-lotion version, recorded separately from its international counterparts.",
+    "officialUrl": "https://www.aveeno.com/products/daily-moisturizing-lotion-with-soothing-oat",
+    "image": "https://images.ctfassets.net/j7jv1vcgqjb4/4hNgftCMF5rmPbGTBzHAq7/4103e0c3a2408d1ac91ab65f5d54ed9f/AVE_USA_US_381370038443_100384428_Daily_MOisturizing_Lotion_18oz_00000.webp?fm=jpg&q=80&w=1920",
+    "imageSourceUrl": "https://www.aveeno.com/products/daily-moisturizing-lotion-with-soothing-oat",
+    "imageAlt": "Aveeno Daily Moisturizing Body Lotion — US — official brand image",
+    "claim": "Aveeno’s US page states that this lotion contains no added fragrance.",
+    "notes": "An oat-containing moisturiser is not suitable for everyone. Check known ingredient allergies and the current US label; do not apply this listing to scented versions.",
+    "use": "For external skin care. Follow the local pack directions and stop use if irritation occurs. Ask a pharmacist or clinician about persistent symptoms.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.aveeno.com/products/daily-moisturizing-lotion-with-soothing-oat"
+    },
+    "countryNote": "United States official product page reviewed. Sizes and formulations may differ in other markets.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/products/moisturiser/"
+  },
+  {
+    "id": "aveeno-sheer-hydration-au-nz",
+    "title": "Aveeno Daily Moisturising Sheer Hydration Lotion — Australia & NZ",
+    "brand": "Aveeno",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "No added fragrance claim"
+    ],
+    "description": "Sheer Hydration is a distinct lotion variant—not the same formula as the standard Daily Moisturizing Lotion.",
+    "officialUrl": "https://www.aveeno.com.au/body-care/moisturising-lotions-creams/daily-moisturising-sheer-hydration-lotion",
+    "image": "https://images.ctfassets.net/j7jv1vcgqjb4/6QlUUDeoqyRwLroMQyht4N/3a11828a143d04c227ec950878789121/aveeno-daily-moisturising-lotion-sheer-hydration-350ml-en-au?fm=jpg&q=80&w=1920",
+    "imageSourceUrl": "https://www.aveeno.com.au/body-care/moisturising-lotions-creams/daily-moisturising-sheer-hydration-lotion",
+    "imageAlt": "Aveeno Daily Moisturising Sheer Hydration Lotion — Australia & NZ — official brand image",
+    "claim": "The Australia/New Zealand brand page labels Sheer Hydration fragrance-free.",
+    "notes": "The manufacturer lists oat and other ingredients. Check the local pack; a fragrance-free claim is not an allergy guarantee.",
+    "use": "For external skin care. Follow the local pack directions and stop use if irritation occurs. Ask a pharmacist or clinician about persistent symptoms.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://www.aveeno.com.au/body-care/moisturising-lotions-creams/daily-moisturising-sheer-hydration-lotion",
+      "NZ": "https://www.aveeno.com.au/body-care/moisturising-lotions-creams/daily-moisturising-sheer-hydration-lotion"
+    },
+    "countryNote": "The official site states it is intended for Australia and New Zealand. This confirms a regional brand source, not live stock in either country.",
+    "discoveryUrl": "https://www.foreverfragrancefree.com/products/moisturiser/"
+  },
+  {
+    "id": "arm-hammer-free-clear-us",
+    "title": "ARM & HAMMER Sensitive Skin Free & Clear",
+    "brand": "ARM & HAMMER",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No added fragrance claim"
+    ],
+    "description": "A US liquid detergent in the Free & Clear variant. This source shows the 71-load pack.",
+    "officialUrl": "https://www.armandhammer.com/en/laundry/liquid-laundry-detergent/liquid-laundry-detergent/sensitive-skin-free-and-clear-71-loads",
+    "image": "https://www.armandhammer.com/-/media/aah/feature/product/laundry-concentrated/sensitive-free-and-clear/033200003311_ldlbf-00331-01_71loads.png",
+    "imageSourceUrl": "https://www.armandhammer.com/en/laundry/liquid-laundry-detergent/liquid-laundry-detergent/sensitive-skin-free-and-clear-71-loads",
+    "imageAlt": "ARM & HAMMER Sensitive Skin Free & Clear — official brand image",
+    "claim": "The manufacturer states that this version is made without perfumes or dyes.",
+    "notes": "Do not confuse Free & Clear with the brand’s Sensitive Skin Plus Fresh Scent version. Pack sizes may differ from the discovery catalogue.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.armandhammer.com/en/laundry/liquid-laundry-detergent/liquid-laundry-detergent/sensitive-skin-free-and-clear-71-loads"
+    },
+    "countryNote": "US brand product source reviewed; no overseas supply or identical formula is assumed.",
+    "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  },
+  {
+    "id": "seventh-generation-free-clear-us",
+    "title": "Seventh Generation Free & Clear Liquid Laundry Detergent",
+    "brand": "Seventh Generation",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No added fragrance claim"
+    ],
+    "description": "A US Free & Clear laundry liquid. The current official page and packaging may differ from older catalogue sizes.",
+    "officialUrl": "https://www.seventhgeneration.com/liquid-laundry-detergent-free-clear",
+    "image": "https://www.seventhgeneration.com/sites/default/files/styles/325x325_no_focal_point/public/2025-01/732913450633_125_Liquid_Laundry_90oz_Free_Clear_PDP_Front.png?itok=G-opyf40",
+    "imageSourceUrl": "https://www.seventhgeneration.com/liquid-laundry-detergent-free-clear",
+    "imageAlt": "Seventh Generation Free & Clear Liquid Laundry Detergent — official brand image",
+    "claim": "Seventh Generation states that this liquid is formulated without fragrance, dyes or optical brighteners.",
+    "notes": "The current ingredient list includes enzymes and preservatives. Free & Clear is not a claim that every ingredient will suit every person. Check the local pack.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.seventhgeneration.com/liquid-laundry-detergent-free-clear"
+    },
+    "countryNote": "US manufacturer source reviewed. This profile does not cover EasyDose, scented variants or imported stock.",
+    "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  },
+  {
+    "id": "seventh-generation-sheets-us",
+    "title": "Seventh Generation Free & Clear Laundry Detergent Sheets",
+    "brand": "Seventh Generation",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No added fragrance claim"
+    ],
+    "description": "A separate detergent-sheet format, listed by the brand in a 32-sheet pack.",
+    "officialUrl": "https://www.seventhgeneration.com/laundry-detergent-sheets-free-clear-free-clear",
+    "image": "https://www.seventhgeneration.com/sites/default/files/styles/325x325_no_focal_point/public/2024-12/732913453016_PDP_front.png?itok=EssPNF9J",
+    "imageSourceUrl": "https://www.seventhgeneration.com/laundry-detergent-sheets-free-clear-free-clear",
+    "imageAlt": "Seventh Generation Free & Clear Laundry Detergent Sheets — official brand image",
+    "claim": "The manufacturer describes the Free & Clear sheets as free of fragrance and dyes.",
+    "notes": "These are washer detergent sheets, not dryer sheets. The ingredient list includes polyvinyl alcohol and an enzyme; this profile does not make a plastic-free claim.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.seventhgeneration.com/laundry-detergent-sheets-free-clear-free-clear"
+    },
+    "countryNote": "United States official product source checked; overseas distribution has not been verified.",
+    "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  },
+  {
+    "id": "tide-free-gentle-us",
+    "title": "Tide Free & Gentle Liquid Laundry Detergent",
+    "brand": "Tide",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No added fragrance claim"
+    ],
+    "description": "The US Free & Gentle liquid detergent, not Tide’s scented liquids, pods or tiles.",
+    "officialUrl": "https://tide.com/en-us/shop/type/liquid/tide-free-and-gentle-liquid",
+    "image": "https://images.ctfassets.net/ajjw8wywicb3/1VZKN0usn9DPbxIleTp3SJ/757c8216d49229e15ad3f3be21018f5b/Tide_A25_F_G_EN-US_HDL_hero_SP_748x748.jpg?fm=png",
+    "imageSourceUrl": "https://tide.com/en-us/shop/type/liquid/tide-free-and-gentle-liquid",
+    "imageAlt": "Tide Free & Gentle Liquid Laundry Detergent — official brand image",
+    "claim": "Tide states that this liquid is made without perfumes or dyes.",
+    "notes": "Use the linked manufacturer ingredient disclosure and check the pack for machine compatibility. We have not independently tested its performance or tolerance.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://tide.com/en-us/shop/type/liquid/tide-free-and-gentle-liquid"
+    },
+    "countryNote": "United States product page checked. Other Tide versions and markets need separate review.",
+    "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  },
+  {
+    "id": "meliora-laundry-powder",
+    "title": "Meliora Laundry Powder — Unscented",
+    "brand": "Meliora",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "Unscented variant only"
+    ],
+    "description": "The Unscented version of Meliora’s laundry powder. Select this exact option on the official page.",
+    "officialUrl": "https://meliorameansbetter.com/products/laundry-powder-detergent",
+    "image": "https://meliorameansbetter.com/cdn/shop/products/LP-64-UNS-Steel-1024x1024.jpg?v=1785956413&width=1214",
+    "imageSourceUrl": "https://meliorameansbetter.com/products/laundry-powder-detergent",
+    "imageAlt": "Meliora Laundry Powder — Unscented — official brand image",
+    "claim": "The brand lists an Unscented formula without the essential oils present in its scented variants.",
+    "notes": "Only the Unscented option is included here. The official page offers several scented variants too. We do not adopt broad “non-toxic” claims from catalogue titles.",
+    "use": "Laundry use only. Follow the current pack, appliance and fabric-care directions. Keep away from children and pets; do not mix cleaning chemicals.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://meliorameansbetter.com/products/laundry-powder-detergent"
+    },
+    "countryNote": "US manufacturer and shipping information reviewed. Check the selected variant and current stock before ordering.",
+    "discoveryUrl": "https://www.fragrancefreenation.com/products/fabrics-laundry/"
+  }
+]

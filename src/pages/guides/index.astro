@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { articles } from '../../data/articles.mjs';
+import { featuredPosts } from '../../data/featured-posts.mjs';
+---
+<Layout title="The Clean Care Journal | Articles & guides" description="Explore illustrated, source-led guides to fragrance, health, everyday routines, and shared spaces.">
+<section class="container section journal"><p class="eyebrow">The Clean Care Journal</p><h1>A little more knowledge.<br/><em>A little less fragrance.</em></h1><p class="intro">Explore the evidence, rethink an everyday routine, or find a way to start a conversation. Clear information, practical ideas, and sources you can follow.</p>
+<section id="featured" aria-labelledby="featured-title">
+  <p class="eyebrow">From our Facebook community</p>
+  <h2 id="featured-title">Five featured posts. Follow the source.</h2>
+  <p class="intro">Articles, videos, and conversations selected from the group’s Featured tab. Open a card for a short overview and the original source.</p>
+  <div class="journal-grid">{featuredPosts.map(article => <ArticleCard article={article}/>)}</div>
+  <p class="editorial-note">Source-linked summaries, not full reproductions. Illustrative stock photos from Pexels; photographer credits and licence links appear on each page. Photos are not from the original posts and do not imply endorsement. Featured order checked September 29, 2026.</p>
+</section>
+<h2>Clean Care articles &amp; guides</h2>
+<form id="journal-filters" class="filters" role="search" aria-label="Find Clean Care guides"><label class="search-label">Find a guide<input id="journal-search" type="search" placeholder="Try laundry, symptoms, or labels…"/></label><label>Browse a topic<select id="journal-topic"><option value="">All topics</option>{[...new Set(articles.map(a => a.topic))].map(topic => <option>{topic}</option>)}</select></label><button class="reset" type="reset">Reset</button></form>
+<noscript><p class="notice">All articles are available below. Enable JavaScript to search and filter.</p></noscript><p id="journal-count" class="editorial-note" role="status" aria-live="polite">{articles.length} articles to explore</p><h2 class="visually-hidden">Articles to explore</h2><div class="journal-grid">{articles.map(article => <ArticleCard article={article}/>)}</div><div id="journal-empty" class="empty" hidden><h2>No stories match just yet.</h2><p>Try another topic or a shorter search.</p><button type="button" id="journal-clear" class="button">Show all articles</button></div><p class="editorial-note">Original Clean Care writing and illustrations. Community experiences inspire questions; published sources support health claims. Product information is separate from medical evidence.</p></section></Layout>
+<script>
+import { articles, matchesArticle } from '../../data/articles.mjs';
+const form = document.querySelector<HTMLFormElement>('#journal-filters')!;
+const search = document.querySelector<HTMLInputElement>('#journal-search')!;
+const topic = document.querySelector<HTMLSelectElement>('#journal-topic')!;
+const cards = [...document.querySelectorAll<HTMLElement>('[data-article-slug]:not([data-featured])')];
+function render() {
+ let count = 0;
+ for (const card of cards) { card.hidden = !matchesArticle(articles.find(a => a.slug === card.dataset.articleSlug)!, search.value, topic.value); if (!card.hidden) count++; }
+ document.querySelector('#journal-count')!.textContent = count + (count === 1 ? ' article to explore' : ' articles to explore');
+ document.querySelector<HTMLElement>('#journal-empty')!.hidden = count !== 0;
+}
+form.addEventListener('submit', event => event.preventDefault());
+form.addEventListener('input', render);
+form.addEventListener('reset', () => { search.value = ''; topic.value = ''; render(); });
+document.querySelector('#journal-clear')!.addEventListener('click', () => form.reset());
+</script>
