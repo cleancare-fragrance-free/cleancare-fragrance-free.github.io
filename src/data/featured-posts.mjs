@@ -1,30 +1,56 @@
 // Featured-tab order observed on 2026-09-29. Facebook may change this order.
 // Summaries are original, not reproductions of third-party articles or comments.
 const group = 'https://www.facebook.com/groups/391954731491131/posts/';
-// Pexels photo pages and licence verified 2026-09-29. Illustrative use only.
-// The Miranda Kerr card uses the official episode artwork from the publisher.
+// Local editorial thumbnails preserve the official source images checked 2026-09-29.
+// Each source remains linked for attribution and context.
 const photos = [
-  { id: '7398431', photographer: 'Estela Crln', page: 'laundry-on-a-clothesline-7398431', alt: 'Clothes drying on a line against a blue sky', position: 'center' },
-  { id: '7814722', photographer: 'Mikhail Nilov', page: 'a-perfume-bottle-7814722', alt: 'A perfume bottle on a textured surface with water droplets', position: 'center' },
   {
-    provider: 'publisher',
-    src: 'https://drhyman.com/cdn/shop/articles/Frame_1000007099.png?v=1762959610',
+    provider: 'local',
+    src: 'images/featured/nippon-scent-article.jpg',
+    photographer: 'Nippon.com',
+    sourceUrl: 'https://www.nippon.com/en/in-depth/d00703/',
+    alt: 'Nippon.com illustration of scented laundry products releasing particles into the air',
+    position: 'center',
+    note: 'Official article illustration from the publisher.',
+  },
+  {
+    provider: 'local',
+    src: 'images/featured/dr-barrett-video.jpg',
+    photographer: 'Dr. Barrett / YouTube',
+    sourceUrl: 'https://youtu.be/Mgg5TRYq3d4',
+    alt: 'Dr. Barrett speaking in the official Why Fragrances Are Actually Bad for You video thumbnail',
+    position: 'center',
+    note: 'Official video thumbnail from the publisher.',
+  },
+  {
+    provider: 'local',
+    src: 'images/featured/miranda-kerr-dr-hyman.png',
     photographer: 'The Dr. Hyman Show',
     sourceUrl: 'https://drhyman.com/blogs/content/podcast-ep1089',
     alt: 'Miranda Kerr and Dr. Mark Hyman in the official artwork for their interview',
     position: 'center 46%',
     note: 'Official episode image from the publisher.',
   },
-  { id: '7546721', photographer: 'Max Vakhtbovych', page: 'living-room-with-natural-light-from-the-window-7546721', alt: 'A bright living room with a sofa and large windows', position: 'center' },
-  { id: '7262767', photographer: 'Sarah Chai', page: 'bottles-of-shower-supplies-in-bathroom-7262767', alt: 'Green dispenser bottles and a shower fixture against white tiles', position: 'center' },
-].map(photo => photo.src ? photo : ({
-  ...photo,
-  provider: 'pexels',
-  src: `https://images.pexels.com/photos/${photo.id}/pexels-photo-${photo.id}.jpeg`,
-  sourceUrl: `https://www.pexels.com/photo/${photo.page}/`,
-  licenseUrl: 'https://www.pexels.com/license/',
-  note: 'Illustrative stock photo—not from the original post.',
-}));
+  {
+    provider: 'local',
+    src: 'images/featured/fragrance-free-nation.png',
+    photographer: 'Fragrance Free Nation',
+    sourceUrl: 'https://www.fragrancefreenation.com/',
+    alt: 'Fragrance Free Nation canary logo on a light blue background',
+    position: 'center',
+    note: 'Official publisher artwork.',
+  },
+  {
+    provider: 'local',
+    src: 'images/featured/dr-trisha-pasricha-washington-post.jpg',
+    photographer: 'The Washington Post / Instagram',
+    sourceUrl: 'https://www.instagram.com/reel/DRS_qV4EcpO/',
+    alt: 'Dr. Trisha Pasricha in The Washington Post Ask a Doctor video about perfume and health',
+    position: 'center 35%',
+    note: 'Official reel thumbnail from the publisher.',
+    imageTag: 'The Washington Post',
+  },
+];
 export const featuredPosts = [
   {
     slug: 'scent-pollution-in-japan', title: 'The Sweet Danger of Scent Pollution',
@@ -74,8 +100,6 @@ export const featuredPosts = [
   },
 ].map((post, index) => {
   const photo = photos[index];
-  const imageCredit = photo.provider === 'pexels'
-    ? `Photo: ${photo.photographer} / Pexels. ${photo.note}`
-    : `Image: ${photo.photographer}. ${photo.note}`;
+  const imageCredit = `Image: ${photo.photographer}. ${photo.note}`;
   return { ...post, order: index + 1, checked: '2026-09-29', href: 'featured/' + post.slug + '/', photo, imageCredit };
 });

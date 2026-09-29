@@ -4,8 +4,8 @@ import { url } from '../lib/paths';
 const { article } = Astro.props;
 const titleId = 'article-title-' + article.slug;
 const skyBadge = ['air', 'laundry'].includes(article.art);
-const photoUrl = (photo, width) => photo.provider === 'pexels'
-  ? `${photo.src}?auto=compress&cs=tinysrgb&w=${width}`
+const photoUrl = (photo, width) => photo.provider === 'local'
+  ? `${url(photo.src)}?v=20260929`
   : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
 <a class="journal-card" href={url(article.href || 'guides/' + article.slug + '/')}
@@ -15,6 +15,7 @@ const photoUrl = (photo, width) => photo.provider === 'pexels'
       {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={`${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
     </div>
     <span class:list={['article-badge', { 'article-badge--sky': skyBadge }]}>{article.topic}</span>
+    {article.photo?.imageTag && <span class="article-source-tag">{article.photo.imageTag}</span>}
   </div>
   <div class="journal-card-copy">
     <p class="journal-card-meta">{article.sourceName ? `${article.format} · ${article.sourceName}` : `${article.minutes} min read • By ${article.author || 'Clean Care editorial'}`}</p>
@@ -77,6 +78,19 @@ const photoUrl = (photo, width) => photo.provider === 'pexels'
     font-weight: 600;
   }
   .article-badge--sky { background: var(--accent-sky); }
+  .article-source-tag {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--text);
+    padding: 7px 11px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(51, 51, 51, 0.12);
+  }
   .journal-card-copy {
     display: flex;
     flex: 1;
