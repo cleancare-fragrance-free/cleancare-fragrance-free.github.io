@@ -29,3 +29,18 @@ test('article card keeps the requested structure and motion safeguards', () => {
   assert.ok(card.includes('-webkit-line-clamp: 3'));
   assert.ok(read('src/styles/journal.css').includes('minmax(min(100%, 320px), 1fr)'));
 });
+
+test('why-fragrance-free content leads the homepage and keeps the essential-oil caveat', () => {
+  const home = read('src/pages/index.astro');
+  const layout = read('src/layouts/Layout.astro');
+  const why = read('src/pages/why-fragrance-free.astro');
+  assert.ok(home.indexOf('class="container reasons-hero"') < home.indexOf('class="container hero editorial-hero"'));
+  for (const reason of ['Less skin irritation and allergy', 'Fewer scent-triggered symptoms', 'Fewer unnecessary fragrance ingredients', 'Cleaner shared indoor air', 'More control and transparency']) {
+    assert.ok(home.includes(reason), reason);
+  }
+  assert.ok(home.includes('natural essential oils are still fragrance'));
+  assert.ok(layout.indexOf("url('why-fragrance-free/')") < layout.indexOf("url('guides/')"));
+  assert.ok(why.includes('class="container why-split"'));
+  assert.equal((why.match(/class="why-panel /g) || []).length, 2);
+  assert.ok(why.includes('Natural is not the opposite of allergenic'));
+});

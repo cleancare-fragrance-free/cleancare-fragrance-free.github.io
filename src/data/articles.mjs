@@ -5,6 +5,7 @@ export const articles = [
   { slug: 'unscented-vs-fragrance-free', topic: 'Labels & products', title: 'Unscented vs. fragrance-free: a clearer starting point', description: 'Look beyond the front of the bottle. Similar words do not always mean the same thing.', art: 'labels', minutes: 3 },
   { slug: 'fragrance-free-laundry', topic: 'Everyday changes', title: 'A fragrance-free laundry routine: start with the extras', description: 'Detergent, softener, scent beads, and dryer sheets: a practical checklist for your next wash.', art: 'laundry', minutes: 3 },
   { slug: 'shared-spaces', topic: 'Shared spaces', title: 'How to ask for a lower-fragrance shared space', description: 'Start with one specific request, at home, at work, or before a visit.', art: 'shared', minutes: 3 },
+  { slug: 'vocs-and-endocrine-disruptors', topic: 'Health & evidence', title: 'VOCs and endocrine disruptors: related terms, different questions', description: 'What the terms mean, where fragrance fits, and why “natural” or “organic” does not answer every safety question.', art: 'air', minutes: 6 },
 ];
 export function matchesArticle(article, query = '', topic = '') {
   const text = [article.title, article.description, article.topic].join(' ').toLowerCase();

@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../lib/paths';
+---
+<Layout title="Why fragrance free? | CleanCare" description="A balanced introduction to fragrance exposure, health concerns, cleaner indoor air, and practical fragrance-free choices.">
+  <header class="container why-hero">
+    <p class="eyebrow">Why fragrance free</p>
+    <h1>Less added scent.<br/><em>More room to breathe.</em></h1>
+    <p class="intro">Fragrance-free living is not about calling every scent dangerous. It is a practical way to remove an optional exposure, make shared spaces more inclusive, and choose products with clearer labels.</p>
+    <div class="why-actions"><a class="button" href={url('guides/reduce-fragrance-exposure/')}>Start with practical changes ↗</a><a class="text-link" href={url('evidence/')}>Check the evidence →</a></div>
+  </header>
+
+  <section class="container why-split" aria-label="Two perspectives on fragrance-free living">
+    <article class="why-panel why-concerns">
+      <p class="eyebrow">01 · The concern</p>
+      <h2>What synthetic fragrance can add to daily exposure</h2>
+      <p class="why-lead">“Fragrance” is not one chemical or one level of risk. It is a product function that may involve a mixture of natural and synthetic ingredients.</p>
+      <div class="why-point"><span>Skin</span><div><h3>Allergy and irritation are established concerns</h3><p>Some fragrance ingredients can cause allergic contact dermatitis or irritation in susceptible people. A fragrance-free product removes this group of added scent ingredients, but it is not automatically allergen-free.</p></div></div>
+      <div class="why-point"><span>Air</span><div><h3>Scented products can add volatile compounds indoors</h3><p>Consumer products—including air fresheners, cleaners and cosmetics—can emit VOCs. The effects depend on the individual compound, dose and duration; “VOC” does not mean “toxic” by itself.</p></div></div>
+      <div class="why-point"><span>Labels</span><div><h3>One word may represent a complex mixture</h3><p>In US cosmetics, individual fragrance ingredients can generally be listed simply as “fragrance.” Choosing fragrance-free can make comparison easier when you want to avoid added scent.</p></div></div>
+      <div class="why-point"><span>People</span><div><h3>Responses are not the same for everyone</h3><p>Some people report headaches, nausea, eye or airway irritation around scented products; others do not. Symptoms deserve individual assessment rather than a universal diagnosis.</p></div></div>
+      <p class="why-footnote"><strong>Natural is not the opposite of allergenic.</strong> Essential oils are fragrance mixtures too. Citrus, lavender and other botanical oils can contain fragrance allergens, so they are not substitutes for fragrance-free products when strict avoidance is the goal.</p>
+    </article>
+
+    <article class="why-panel why-benefits">
+      <p class="eyebrow">02 · The opportunity</p>
+      <h2>What cleaner shared air can support</h2>
+      <p class="why-lead">Cleaner air comes from reducing sources, ventilating appropriately and using products as directed—not from masking one smell with another.</p>
+      <div class="why-point"><span>Home</span><div><h3>Fewer avoidable emissions</h3><p>Removing air fresheners, scent boosters and other optional fragranced products can reduce the number of chemicals intentionally released into indoor air.</p></div></div>
+      <div class="why-point"><span>Health</span><div><h3>A more comfortable environment for sensitive people</h3><p>Lower-fragrance spaces can help people avoid known triggers and reduce involuntary exposure. They complement—not replace—medical care, asthma plans or investigation of persistent symptoms.</p></div></div>
+      <div class="why-point"><span>Habits</span><div><h3>Source control before perfume</h3><p>Address moisture, smoke, spoiled materials and poor ventilation at the source. A “clean” smell is not evidence that air is clean.</p></div></div>
+      <div class="why-point"><span>Planet</span><div><h3>Less unnecessary chemistry in air and water</h3><p>Some consumer-product VOCs contribute to ground-level ozone formation, and ingredients washed down drains enter wastewater systems. Avoiding added fragrance can reduce one optional input, though full environmental impact also depends on formula, packaging, transport and use.</p></div></div>
+      <p class="why-footnote"><strong>A practical standard:</strong> favour the exact product with an explicit fragrance-free claim; read the current ingredients; use only what you need; and choose refill, concentration or verified environmental labels where they genuinely reduce impact.</p>
+    </article>
+  </section>
+
+  <section class="container why-sources">
+    <div><p class="eyebrow">Read the sources</p><h2>Evidence before slogans.</h2></div>
+    <div class="why-source-links">
+      <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" rel="external"><strong>FDA · Fragrances in cosmetics</strong><span>Labelling, sensitivity and essential-oil context ↗</span></a>
+      <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics" rel="external"><strong>FDA · Allergens in cosmetics</strong><span>Contact dermatitis and fragrance allergens ↗</span></a>
+      <a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" rel="external"><strong>EPA · VOCs and indoor air</strong><span>Sources, health context and ventilation ↗</span></a>
+      <a href="https://www.epa.gov/stationary-sources-air-pollution/consumer-products-national-volatile-organic-compound-emission" rel="external"><strong>EPA · Consumer-product VOC emissions</strong><span>Ground-level ozone and environmental regulation ↗</span></a>
+    </div>
+    <p class="source-note">Topic inspiration: <a href="https://conscious-skincare.com/blogs/news/why-fragrance-free-skincare-is-the-kindest-choice-for-sensitive-skin" rel="external">Conscious Skincare</a>. It is a commercial skincare article, so CleanCare uses it only as inspiration and relies on the primary sources above for factual claims.</p>
+  </section>
+</Layout>
