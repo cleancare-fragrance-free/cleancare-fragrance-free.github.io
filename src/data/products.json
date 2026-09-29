@@ -602,5 +602,137 @@
     },
     "countryNote": "Australia-specific official brand page reviewed. This profile does not infer the same formulation or official availability in other markets.",
     "discoveryUrl": "https://honestyforyourskin.co.uk/best-fragrance-free-skincare-brands/"
+  },
+  {
+    "id": "ecover-zero-laundry-liquid-sg",
+    "title": "Ecover ZERO Non Bio Sensitive Laundry Detergent",
+    "brand": "Ecover",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "0% fragrance claim"
+    ],
+    "description": "The ZERO non-bio laundry liquid listed by Ecover Singapore’s Lazada storefront, with the formula checked against Ecover’s official product page.",
+    "officialUrl": "https://uk.ecover.com/products/zero-laundry-liquid/",
+    "image": "https://uk.ecover.com/wp-content/uploads/2018/02/2010802_2011710_Label_ECV_LALI_35ml_Zero_1.43L_EN_GA2_FOP.png",
+    "imageSourceUrl": "https://uk.ecover.com/products/zero-laundry-liquid/",
+    "imageAlt": "Ecover ZERO Non Bio Sensitive Laundry Detergent — official brand image",
+    "claim": "Ecover states that its ZERO non-bio laundry liquid is formulated with 0% fragrance, colouring and enzymes.",
+    "notes": "The Singapore seller may show a different pack size from the current UK page. Match the ZERO name and verify the local label; standard Ecover laundry liquids can be fragranced.",
+    "use": "Laundry use only. Follow the local bottle’s dosing, machine, temperature and safety directions. Keep away from children and avoid eye contact.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.lazada.sg/shop/ecover-singapore/"
+    },
+    "countryNote": "Singapore availability was observed in the Ecover Singapore Lazada storefront. The official Ecover page supports the fragrance claim; current Lazada stock and pack size may change.",
+    "discoveryUrl": "https://www.lazada.sg/shop/ecover-singapore/"
+  },
+  {
+    "id": "ecover-zero-wool-silk-sg",
+    "title": "Ecover ZERO Wool & Silk Sensitive Laundry Detergent",
+    "brand": "Ecover",
+    "category": "Home & Laundry",
+    "tags": [
+      "Delicate laundry",
+      "0% fragrance claim"
+    ],
+    "description": "A fragrance-free delicate laundry liquid for wool and silk, found in Ecover Singapore’s storefront and checked on the official brand site.",
+    "officialUrl": "https://uk.ecover.com/products/zero-delicate-laundry-liquid/",
+    "image": "https://uk.ecover.com/wp-content/uploads/2019/02/2008792_2011677_Label_ECV_DELI_Zero_1L_NLFRDE_GA2_FOP.png",
+    "imageSourceUrl": "https://uk.ecover.com/products/zero-delicate-laundry-liquid/",
+    "imageAlt": "Ecover ZERO Wool and Silk Sensitive Laundry Detergent — official brand image",
+    "claim": "Ecover states that this ZERO wool and silk detergent is formulated with 0% fragrance and 0% colouring.",
+    "notes": "Use the ZERO product only. Ecover also sells fragranced delicate-laundry formulas. Check the Singapore pack against the official product name and current directions.",
+    "use": "For suitable delicate textiles, including wool and silk. Follow garment labels and the local product’s hand- or machine-washing directions; keep away from children.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.lazada.sg/shop/ecover-singapore/"
+    },
+    "countryNote": "Singapore availability was observed in the Ecover Singapore Lazada storefront. The official Ecover page supports the fragrance claim; current Lazada stock may change.",
+    "discoveryUrl": "https://www.lazada.sg/shop/ecover-singapore/"
+  },
+  {
+    "id": "ecover-zero-washing-up-liquid-sg",
+    "title": "Ecover Sensitive ZERO Washing-Up Liquid",
+    "brand": "Ecover",
+    "category": "Home & Laundry",
+    "tags": [
+      "Dish care",
+      "0% fragrance claim"
+    ],
+    "description": "A hand-dishwashing liquid from Ecover’s ZERO range, listed by the Singapore storefront and documented by the brand as fragrance-free.",
+    "officialUrl": "https://uk.ecover.com/products/zero-washing-up-liquid/",
+    "image": "https://uk.ecover.com/wp-content/uploads/2018/02/2008405_2011665_Label_ECV_WALI_ZERO_0.45L_NLFRDE_FOP.png",
+    "imageSourceUrl": "https://uk.ecover.com/products/zero-washing-up-liquid/",
+    "imageAlt": "Ecover Sensitive ZERO Washing-Up Liquid — official brand image",
+    "claim": "Ecover states that its Sensitive ZERO washing-up liquid contains 0% fragrance and 0% colouring.",
+    "notes": "This is the ZERO version for washing dishes by hand. Ecover’s lemon, camomile and other washing-up liquids are not substitutes for this fragrance-free profile.",
+    "use": "For hand dishwashing only. Follow the local label, keep away from children and avoid eye contact. Do not use in an automatic dishwasher.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.lazada.sg/shop/ecover-singapore/"
+    },
+    "countryNote": "Singapore availability was observed in the Ecover Singapore Lazada storefront. The official Ecover page supports the fragrance claim; current Lazada stock may change.",
+    "discoveryUrl": "https://www.lazada.sg/shop/ecover-singapore/"
+  },
+  {
+    "id": "ecover-zero-dishwasher-tablets-sg",
+    "title": "Ecover ZERO All-in-One Dishwasher Tablets",
+    "brand": "Ecover",
+    "category": "Home & Laundry",
+    "tags": [
+      "Automatic dishwashing",
+      "0% fragrance claim"
+    ],
+    "description": "Automatic-dishwasher tablets from Ecover’s ZERO range, available through the Singapore storefront and verified on the official product page.",
+    "officialUrl": "https://uk.ecover.com/products/zero-all-in-one-dishwasher-tablets/",
+    "image": "https://uk.ecover.com/wp-content/uploads/2019/02/2011411_Box_ECV_DITA_AIO_Zero_0.5KG_8LA_v3_FOP.png",
+    "imageSourceUrl": "https://uk.ecover.com/products/zero-all-in-one-dishwasher-tablets/",
+    "imageAlt": "Ecover ZERO All-in-One Dishwasher Tablets — official brand image",
+    "claim": "Ecover states that these ZERO dishwasher tablets contain 0% fragrance.",
+    "notes": "The official formula includes enzymes and carries eye-irritation and allergy warnings. Fragrance-free does not mean free of every possible irritant or allergen.",
+    "use": "Automatic dishwashers only. Follow the local pack, remove any wrapper when directed, wash hands after handling and keep tablets away from children.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.lazada.sg/shop/ecover-singapore/"
+    },
+    "countryNote": "Singapore availability was observed in the Ecover Singapore Lazada storefront. The official Ecover page supports the fragrance claim; current Lazada stock and tablet count may change.",
+    "discoveryUrl": "https://www.lazada.sg/shop/ecover-singapore/"
+  },
+  {
+    "id": "green-kulture-laundry-liquid-bundle",
+    "title": "Green Kulture Laundry Liquid Bundle — contains essential oil",
+    "brand": "Green Kulture",
+    "category": "Home & Laundry",
+    "tags": [
+      "Laundry care",
+      "No synthetic fragrance claim",
+      "Contains lavender essential oil"
+    ],
+    "description": "A Singapore laundry-liquid bundle included as a clearly labelled comparison because it avoids synthetic fragrance but is not fragrance-free.",
+    "officialUrl": "https://greenkulture.sg/products/laundry-liquid-bundle-1",
+    "image": "https://greenkulture.sg/cdn/shop/files/LL5L_LL800ml.png?v=1744119143",
+    "imageSourceUrl": "https://greenkulture.sg/products/laundry-liquid-bundle-1",
+    "imageAlt": "Green Kulture Laundry Liquid Bundle — official brand image",
+    "claim": "Green Kulture’s FAQ says it does not add synthetic fragrance. The linked product’s ingredient list, however, includes lavender essential oil.",
+    "warning": "This product is scented with lavender essential oil and is not fragrance-free. Essential oils may still be unsuitable for people avoiding all fragrance or scent triggers.",
+    "notes": "A natural source does not make a fragrance exposure irrelevant. This profile is included for label transparency and should not be read as a fragrance-free recommendation.",
+    "use": "Laundry use only. Follow the current dosing and safety directions, do not mix with other laundry products, and keep away from children.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://greenkulture.sg/products/laundry-liquid-bundle-1"
+    },
+    "countryNote": "The product and ingredient list were checked on Green Kulture’s Singapore website. Stock and formulation may change.",
+    "discoveryUrl": "https://greenkulture.sg/products/laundry-liquid-bundle-1"
   }
 ]

@@ -791,6 +791,17 @@ h2 {
   color:var(--muted)
 }
 
+.product-warning,
+.product-card .product-warning {
+  padding:12px 14px;
+  border:1px solid #e9b37b;
+  border-radius:12px;
+  background:#fff5e9;
+  color:#6d4326;
+  font-size:12px;
+  line-height:1.6
+}
+
 .tags {
   display:flex;
   flex-wrap:wrap;

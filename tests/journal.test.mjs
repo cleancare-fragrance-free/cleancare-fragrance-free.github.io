@@ -25,7 +25,8 @@ test('public product profiles have official sources and no affiliate links', () 
   assert.equal(p.affiliateUrl, null);
   assert.ok(p.notes && p.claim && p.checked && p.imageAlt && p.countryNote);
   const official = new URL(p.officialUrl), image = new URL(p.image);
-  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg'];
+  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg'];
+  const countrySourceHosts = [...officialHosts, 'www.lazada.sg'];
   const imageHosts = [...officialHosts, 'images.ctfassets.net'];
   assert.ok(officialHosts.includes(official.hostname));
   assert.ok(imageHosts.includes(image.hostname));
@@ -33,12 +34,12 @@ test('public product profiles have official sources and no affiliate links', () 
   assert.equal(image.protocol, 'https:');
   assert.equal(official.search, '');
   assert.equal(official.protocol, 'https:');
-  assert.ok(Object.values(p.countries).every(link => { const source = new URL(link); return source.protocol === 'https:' && officialHosts.includes(source.hostname); }));
+  assert.ok(Object.values(p.countries).every(link => { const source = new URL(link); return source.protocol === 'https:' && countrySourceHosts.includes(source.hostname); }));
   assert.ok(Object.keys(p.countries).every(code => countries.some(country => country.code === code)));
  }
 });
 test('country filters do not imply broader regional availability', () => {
- assert.equal(products.length, 23);
+ assert.equal(products.length, 28);
  for (const country of ['US','GB','SG','AU','NZ']) assert.ok(products.some(p => matchesProduct(p, { country })), country);
  for (const country of ['FR', 'DE', 'JP', 'EU', 'Asia', 'ANZ']) {
   assert.equal(products.filter(p => matchesProduct(p, { country })).length, 0);
@@ -52,5 +53,7 @@ test('regional versions stay distinct and country memberships are explicit', () 
  assert.deepEqual(Object.keys(products.find(p => p.id === 'paulas-choice-2-bha-liquid').countries), ['SG','AU']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'cerave-hydrating-cleanser-au').countries), ['AU']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'clinique-dramatically-different-lotion-au').countries), ['AU']);
+ assert.deepEqual(Object.keys(products.find(p => p.id === 'ecover-zero-laundry-liquid-sg').countries), ['SG']);
+ assert.ok(products.find(p => p.id === 'green-kulture-laundry-liquid-bundle').warning.includes('lavender essential oil'));
  assert.ok(products.every(p => p.countries && Object.keys(p.countries).length));
 });
