@@ -25,12 +25,13 @@ test('public product profiles have official sources and no affiliate links', () 
   assert.equal(p.affiliateUrl, null);
   assert.ok(p.notes && p.claim && p.checked && p.imageAlt && p.countryNote);
   const official = new URL(p.officialUrl), image = new URL(p.image);
-  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg'];
-  const countrySourceHosts = [...officialHosts, 'www.lazada.sg'];
-  const imageHosts = [...officialHosts, 'images.ctfassets.net'];
+  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg','www.eau-thermale-avene.sg','www.qvskincare.com.au','www.cetaphil.com.sg','sukinnaturals.com'];
+  const countrySourceHosts = [...officialHosts, 'www.lazada.sg', 'www.watsons.com.sg'];
+  const imageHosts = [...officialHosts, 'images.ctfassets.net', 'media-pierre-fabre.wedia-group.com', 'cdn.productimages.coles.com.au'];
+  const imageSourceHosts = [...officialHosts, 'www.coles.com.au'];
   assert.ok(officialHosts.includes(official.hostname));
   assert.ok(imageHosts.includes(image.hostname));
-  assert.equal(p.imageSourceUrl, p.officialUrl);
+  assert.ok(imageSourceHosts.includes(new URL(p.imageSourceUrl).hostname));
   assert.equal(image.protocol, 'https:');
   assert.equal(official.search, '');
   assert.equal(official.protocol, 'https:');
@@ -39,7 +40,7 @@ test('public product profiles have official sources and no affiliate links', () 
  }
 });
 test('country filters do not imply broader regional availability', () => {
- assert.equal(products.length, 28);
+ assert.equal(products.length, 36);
  for (const country of ['US','GB','SG','AU','NZ']) assert.ok(products.some(p => matchesProduct(p, { country })), country);
  for (const country of ['FR', 'DE', 'JP', 'EU', 'Asia', 'ANZ']) {
   assert.equal(products.filter(p => matchesProduct(p, { country })).length, 0);
@@ -51,9 +52,12 @@ test('regional versions stay distinct and country memberships are explicit', () 
  assert.deepEqual(Object.keys(products.find(p => p.id === 'e45-cream-au-nz').countries), ['AU','NZ']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'ecostore-ultra-sensitive-dish-liquid').countries), ['SG','AU']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'paulas-choice-2-bha-liquid').countries), ['SG','AU']);
- assert.deepEqual(Object.keys(products.find(p => p.id === 'cerave-hydrating-cleanser-au').countries), ['AU']);
+ assert.deepEqual(Object.keys(products.find(p => p.id === 'cerave-hydrating-cleanser-au').countries), ['AU','SG']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'clinique-dramatically-different-lotion-au').countries), ['AU']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'ecover-zero-laundry-liquid-sg').countries), ['SG']);
  assert.ok(products.find(p => p.id === 'green-kulture-laundry-liquid-bundle').warning.includes('lavender essential oil'));
+ assert.ok(products.find(p => p.id === 'sukin-botanical-body-wash-sg').warning.includes('not fragrance-free'));
+ assert.ok(products.find(p => p.id === 'sukin-natural-balance-shampoo-sg').warning.includes('not fragrance-free'));
+ assert.equal(products.filter(p => p.countries.SG).length, 22);
  assert.ok(products.every(p => p.countries && Object.keys(p.countries).length));
 });

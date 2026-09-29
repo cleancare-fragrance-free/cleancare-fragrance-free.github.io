@@ -526,28 +526,29 @@
   },
   {
     "id": "cerave-hydrating-cleanser-au",
-    "title": "CeraVe Hydrating Cleanser — Australia",
+    "title": "CeraVe Hydrating Cleanser",
     "brand": "CeraVe",
     "category": "Skin & Body",
     "tags": [
       "Face & body cleanser",
       "Fragrance-free claim"
     ],
-    "description": "A non-foaming cleanser for normal-to-dry skin, documented from CeraVe’s Australian product page.",
+    "description": "A non-foaming face-and-body cleanser for normal-to-dry skin, with official Australian product information and a Singapore retailer listing.",
     "officialUrl": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser",
     "image": "https://www.cerave.com.au/-/media/project/loreal/brand-sites/cerave/americas/au/derm-badge/hydrating-cleanser-derm-logo-sm.jpg?rev=557834b4e9e74e8ea72d17f1b30f0f85",
     "imageSourceUrl": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser",
-    "imageAlt": "CeraVe Hydrating Cleanser — official Australian brand image",
+    "imageAlt": "CeraVe Hydrating Cleanser — official brand image",
     "claim": "CeraVe Australia describes this Hydrating Cleanser as fragrance-free.",
-    "notes": "This entry is for the Australian Hydrating Cleanser page. Check the exact regional bottle and current ingredients; similarly named CeraVe cleansers are separate formulas.",
+    "notes": "Check the exact regional bottle and current ingredients; similarly named CeraVe cleansers are separate formulas. This profile does not make a claim about every CeraVe product.",
     "use": "A rinse-off face and body cleanser. Follow the local pack directions, avoid contact with eyes, and stop use if irritation occurs.",
     "checked": "2026-09-29",
     "affiliateUrl": null,
     "sample": false,
     "countries": {
-      "AU": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser"
+      "AU": "https://www.cerave.com.au/ceramides-skin-care/cleansers/hydrating-cleanser",
+      "SG": "https://www.watsons.com.sg/cerave-hydrating-cleanser-473ml/p/BP_51168"
     },
-    "countryNote": "Australia-specific official brand page reviewed. This entry does not infer an identical formula or availability elsewhere in Asia-Pacific.",
+    "countryNote": "The official Australian formula page and a Singapore Watsons listing for CeraVe Hydrating Cleanser were checked. Compare the Singapore bottle with the current ingredient list before purchase.",
     "discoveryUrl": "https://honestyforyourskin.co.uk/best-fragrance-free-skincare-brands/"
   },
   {
@@ -734,5 +735,211 @@
     },
     "countryNote": "The product and ingredient list were checked on Green Kulture’s Singapore website. Stock and formulation may change.",
     "discoveryUrl": "https://greenkulture.sg/products/laundry-liquid-bundle-1"
+  },
+  {
+    "id": "avene-fragrance-free-cream-spf50-sg",
+    "title": "Avène Very High Protection Fragrance-Free Cream SPF50+",
+    "brand": "Eau Thermale Avène",
+    "category": "Skin & Body",
+    "tags": [
+      "Face sunscreen",
+      "Fragrance-free claim"
+    ],
+    "description": "A 50 ml facial sunscreen for dry, sensitive skin, documented on Avène’s Singapore product page and sold by Watsons Singapore.",
+    "officialUrl": "https://www.eau-thermale-avene.sg/p/creme-sans-parfum-spf-50-3282770149494-e5e79359",
+    "image": "https://media-pierre-fabre.wedia-group.com/api/wedia/dam/transform/u5wa3z31qn5se8zaxwqp7kemiycmkyegqo3bqiy/pf_square/u5wa3z31qn5se8zaxwqp7kemiycmkyegqo3bqiy?t=resize&width=800&height=800",
+    "imageSourceUrl": "https://www.eau-thermale-avene.sg/p/creme-sans-parfum-spf-50-3282770149494-e5e79359",
+    "imageAlt": "Avène Very High Protection Fragrance-Free Cream SPF50+ — official brand image",
+    "claim": "Avène’s Singapore product page labels this exact SPF50+ cream fragrance-free.",
+    "notes": "This profile is limited to the linked fragrance-free cream. Other Avène sunscreens can have different formulas. Sunscreen does not provide complete protection, and individual sensitivity to other ingredients is still possible.",
+    "use": "Apply generously before sun exposure and reapply frequently according to the current label. Combine sunscreen with shade and protective clothing, and avoid contact with eyes.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.watsons.com.sg/av%C3%A8ne-spf50-fragrance-free-cream-triasorb-pa-sunblock-suitable-for-sensitive-skin-ultra-protection-uva-uvb-0-fragrance-face-neck-50ml/p/BP_33771"
+    },
+    "countryNote": "The official Singapore brand page and the Watsons Singapore product listing were checked. Price and stock may change."
+  },
+  {
+    "id": "aveeno-skin-relief-body-wash-sg",
+    "title": "Aveeno Skin Relief Fragrance-Free Body Wash",
+    "brand": "Aveeno",
+    "category": "Skin & Body",
+    "tags": [
+      "Body wash",
+      "Fragrance-free claim"
+    ],
+    "description": "A soap-free body wash with colloidal oatmeal, listed on Aveeno’s Singapore site in 354 ml and 1 litre sizes.",
+    "officialUrl": "https://www.aveeno.com.sg/products/skin-relief-fragrance-free-body-wash",
+    "image": "https://images.ctfassets.net/j7jv1vcgqjb4/29xHJZa4w4VgUJKNd84Wfa/947c08e7a3c45eaf67e4cfc35c8a1311/image-sr-wash-01-01-en-sg-Aveeno",
+    "imageSourceUrl": "https://www.aveeno.com.sg/products/skin-relief-fragrance-free-body-wash",
+    "imageAlt": "Aveeno Skin Relief Fragrance-Free Body Wash — official Singapore brand image",
+    "claim": "Aveeno Singapore describes this body wash as soap-free, dye-free and fragrance-free.",
+    "notes": "This profile applies to Skin Relief Body Wash, not every Aveeno cleanser. Oat-containing products and other ingredients may still be unsuitable for some people; check the current bottle.",
+    "use": "For external rinse-off use. Follow the bottle directions, avoid contact with eyes and stop use if discomfort or irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.aveeno.com.sg/products/skin-relief-fragrance-free-body-wash"
+    },
+    "countryNote": "Singapore-specific official page reviewed. Aveeno links to Singapore retailers from the page; current size, price and stock may vary."
+  },
+  {
+    "id": "qv-renew-hydrate-day-moisturiser-spf30",
+    "title": "QV Face Renew + Hydrate Day Moisturiser SPF30",
+    "brand": "QV",
+    "category": "Skin & Body",
+    "tags": [
+      "Face moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A daytime facial moisturiser with SPF30, documented on QV’s official Australian site and listed by Watsons Singapore.",
+    "officialUrl": "https://www.qvskincare.com.au/products/qv-face-moisturising-day-cream-spf-30.html",
+    "image": "https://cdn.productimages.coles.com.au/productimages/1/1750593.jpg",
+    "imageSourceUrl": "https://www.coles.com.au/product/qv-face-renew-%2B-hydrate-day-moisturiser-spf-30-75g-1750593",
+    "imageAlt": "QV Face Renew and Hydrate Day Moisturiser SPF30 — retailer product image",
+    "claim": "QV labels this specific day moisturiser fragrance- and colour-free.",
+    "notes": "This is the SPF30 day product, not a blanket claim about QV. Check the local pack and current ingredients. Sunscreen is only one part of sun protection.",
+    "use": "Follow the current label for amount and timing. Reapply sun protection as directed and combine it with shade and protective clothing.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://www.qvskincare.com.au/products/qv-face-moisturising-day-cream-spf-30.html",
+      "SG": "https://www.watsons.com.sg/ego-qv-renew-hydrate-day-moisturiser-spf30-75g/p/BP_23467"
+    },
+    "countryNote": "The official Australian page and the Watsons Singapore listing were checked. Availability, packaging and regulatory directions may differ by market."
+  },
+  {
+    "id": "cerave-moisturising-lotion-au-sg",
+    "title": "CeraVe Moisturising Lotion",
+    "brand": "CeraVe",
+    "category": "Skin & Body",
+    "tags": [
+      "Face & body moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A lightweight moisturising lotion for normal-to-dry skin, with official Australian product information and a Singapore retailer listing.",
+    "officialUrl": "https://www.cerave.com.au/ceramides-skin-care/moisturisers/moisturising-lotion",
+    "image": "https://www.cerave.com.au/-/media/project/loreal/brand-sites/cerave/americas/au/latest-pdp-packshot/adf/moisturising-lotion/moisturising-lotion-1-sm.webp?rev=-1",
+    "imageSourceUrl": "https://www.cerave.com.au/ceramides-skin-care/moisturisers/moisturising-lotion",
+    "imageAlt": "CeraVe Moisturising Lotion — official brand image",
+    "claim": "CeraVe Australia describes this specific Moisturising Lotion as fragrance-free.",
+    "notes": "This product-level profile does not claim that every CeraVe product is fragrance-free. Check the exact Singapore bottle and current ingredients before purchase.",
+    "use": "For external skin care. Follow the local product directions and stop use if irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "AU": "https://www.cerave.com.au/ceramides-skin-care/moisturisers/moisturising-lotion",
+      "SG": "https://www.watsons.com.sg/cerave-daily-moisturising-lotion-473ml/p/BP_51148"
+    },
+    "countryNote": "The official Australian product page and the Watsons Singapore listing were checked. Match the exact product and local ingredient label."
+  },
+  {
+    "id": "cetaphil-gentle-skin-cleanser-sg",
+    "title": "Cetaphil Gentle Skin Cleanser",
+    "brand": "Cetaphil",
+    "category": "Skin & Body",
+    "tags": [
+      "Face & body cleanser",
+      "Fragrance-free claim"
+    ],
+    "description": "A face-and-body cleanser for dry-to-normal sensitive skin, documented on Cetaphil’s Singapore product page.",
+    "officialUrl": "https://www.cetaphil.com.sg/cleansers/cetaphil-gentle-skin-cleanser/3499320013054.html",
+    "image": "https://www.cetaphil.com.sg/dw/image/v2/bggn_prd/on/demandware.static/-/Sites-galderma-sg-m-catalog/default/dw43abde88/3499320013055-Gentle_skin_Cleanser/Cetaphil%20Singapore%20Gentle%20Skin%20Cleanser%20500ml%20-%20Tiles%20-%20PDP.png?sw=900&sh=900&sm=fit&q=85",
+    "imageSourceUrl": "https://www.cetaphil.com.sg/cleansers/cetaphil-gentle-skin-cleanser/3499320013054.html",
+    "imageAlt": "Cetaphil Gentle Skin Cleanser — official Singapore brand image",
+    "claim": "Cetaphil Singapore labels this specific Gentle Skin Cleanser fragrance-free.",
+    "notes": "This is a profile for the linked formula only. Other Cetaphil cleansers may differ; read the current local ingredient list.",
+    "use": "Use with or without water according to the current product directions. For external use; stop if irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.cetaphil.com.sg/cleansers/cetaphil-gentle-skin-cleanser/3499320013054.html"
+    },
+    "countryNote": "Singapore-specific official product page reviewed. Retail stock and pack size may change."
+  },
+  {
+    "id": "cetaphil-moisturising-lotion-sg",
+    "title": "Cetaphil Moisturising Lotion",
+    "brand": "Cetaphil",
+    "category": "Skin & Body",
+    "tags": [
+      "Face & body moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A lightweight face-and-body lotion for dry-to-normal sensitive skin, documented on Cetaphil’s Singapore product page.",
+    "officialUrl": "https://www.cetaphil.com.sg/moisturizers/cetaphil-moisturising-lotion/SG_3499320012478.html",
+    "image": "https://www.cetaphil.com.sg/dw/image/v2/bggn_prd/on/demandware.static/-/Sites-galderma-sg-m-catalog/en_SG/v1790662526299/Cetaphil-Moisturizing-Lotion-237ML-Tiles-PDP.png?$staticlink$?sw=900&sh=900&sm=fit&q=85",
+    "imageSourceUrl": "https://www.cetaphil.com.sg/moisturizers/cetaphil-moisturising-lotion/SG_3499320012478.html",
+    "imageAlt": "Cetaphil Moisturising Lotion — official Singapore brand image",
+    "claim": "Cetaphil Singapore labels this specific Moisturising Lotion fragrance-free.",
+    "notes": "This product-level profile does not make a blanket statement about Cetaphil. Check the current local bottle and ingredients.",
+    "use": "For external skin care. Follow the current product directions and stop use if irritation occurs.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.cetaphil.com.sg/moisturizers/cetaphil-moisturising-lotion/SG_3499320012478.html"
+    },
+    "countryNote": "Singapore-specific official product page reviewed. Retail stock and pack size may change."
+  },
+  {
+    "id": "sukin-botanical-body-wash-sg",
+    "title": "Sukin Botanical Body Wash — contains essential oils",
+    "brand": "Sukin",
+    "category": "Skin & Body",
+    "tags": [
+      "Body wash",
+      "Contains essential oils",
+      "Not fragrance-free"
+    ],
+    "description": "A botanical body wash available from Watsons Singapore, included as a clearly labelled comparison because its aromatic essential oils create a signature scent.",
+    "officialUrl": "https://sukinnaturals.com/products/botanical-body-wash-signature-500ml",
+    "image": "https://sukinnaturals.com/cdn/shop/products/SGbodywash_1.jpg?v=1599504634",
+    "imageSourceUrl": "https://sukinnaturals.com/products/botanical-body-wash-signature-500ml",
+    "imageAlt": "Sukin Botanical Body Wash Signature Scent — official brand image",
+    "claim": "Sukin’s ingredient list includes tangerine, mandarin and lavender oils as well as limonene and linalool; the product is sold as a signature scent.",
+    "warning": "This product contains fragrant essential oils and is not fragrance-free. It may be unsuitable for people avoiding all fragrance or scent triggers.",
+    "notes": "Natural or botanical fragrance is still fragrance. This profile is included for label transparency and should not be read as a fragrance-free recommendation.",
+    "use": "For external rinse-off use. Follow the bottle directions, avoid contact with eyes and stop use if irritation or scent-related symptoms occur.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.watsons.com.sg/sukin-botanical-body-wash-1l/p/BP_93517"
+    },
+    "countryNote": "The official ingredient list and a Watsons Singapore listing were checked. Formula, size and stock may change."
+  },
+  {
+    "id": "sukin-natural-balance-shampoo-sg",
+    "title": "Sukin Natural Balance Shampoo — contains essential oils",
+    "brand": "Sukin",
+    "category": "Haircare",
+    "tags": [
+      "Shampoo",
+      "Contains essential oils",
+      "Not fragrance-free"
+    ],
+    "description": "A shampoo available through Watsons Singapore, included as a comparison because the brand’s signature scent comes from fragrant essential oils.",
+    "officialUrl": "https://sukinnaturals.com/products/natural-balance-shampoo-500ml-hair-care",
+    "image": "https://sukinnaturals.com/cdn/shop/products/Signature_Natural_Balance_Shampoo_500ml_01_Product.jpg?v=1599504626",
+    "imageSourceUrl": "https://sukinnaturals.com/products/natural-balance-shampoo-500ml-hair-care",
+    "imageAlt": "Sukin Natural Balance Shampoo — official brand image",
+    "claim": "Sukin’s ingredient list includes tangerine, mandarin and lavender oils, vanillin, limonene and linalool; this is not an unscented formula.",
+    "warning": "This product contains fragrant essential oils and is not fragrance-free. It may be unsuitable for people avoiding all fragrance or scent triggers.",
+    "notes": "A product can be marketed as natural and still be scented. This profile is included for label transparency and should not be read as a fragrance-free recommendation.",
+    "use": "For rinse-off hair care. Follow the bottle directions, avoid contact with eyes and stop use if irritation or scent-related symptoms occur.",
+    "checked": "2026-09-29",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "SG": "https://www.watsons.com.sg/2024-brand-voucher-sukin/c/2024brandvouchersukin"
+    },
+    "countryNote": "The official ingredient list and a Watsons Singapore product collection showing Natural Balance Shampoo were checked. Current size and stock may change."
   }
 ]
