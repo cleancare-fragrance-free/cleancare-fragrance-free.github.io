@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import VideoCard from '../../components/VideoCard.astro';
 import { articles } from '../../data/articles.mjs';
 import { featuredPosts } from '../../data/featured-posts.mjs';
+import { learningVideos } from '../../data/learning-videos.mjs';
 ---
 <Layout title="The Clean Care Journal | Articles & guides" description="Explore illustrated, source-led guides to fragrance, health, everyday routines, and shared spaces.">
 <section class="container section journal"><p class="eyebrow">The Clean Care Journal</p><h1>A little more knowledge.<br/><em>A little less fragrance.</em></h1><p class="intro">Explore the evidence, rethink an everyday routine, or find a way to start a conversation. Clear information, practical ideas, and sources you can follow.</p>
@@ -12,6 +14,13 @@ import { featuredPosts } from '../../data/featured-posts.mjs';
   <p class="intro">Articles, videos, and conversations selected from the group’s Featured tab. Open a card for a short overview and the original source.</p>
   <div class="journal-grid">{featuredPosts.map(article => <ArticleCard article={article}/>)}</div>
   <p class="editorial-note">Source-linked summaries, not full reproductions. Cards use credited artwork or video thumbnails from the original publishers; full credits appear on each page. Images do not imply endorsement. Featured order checked September 29, 2026.</p>
+</section>
+<section id="watch" aria-labelledby="watch-title">
+  <p class="eyebrow">Watch with context</p>
+  <h2 id="watch-title">Videos, expert explanations &amp; documentary.</h2>
+  <p class="intro">Medical, research, reporting, and advocacy sources answer different questions. Each card explains what kind of source it is before you watch.</p>
+  <div class="journal-grid">{learningVideos.map(video => <VideoCard video={video}/>)}</div>
+  <p class="editorial-note">YouTube thumbnails remain with their publishers. A video is a starting point—not automatic proof of every statement it contains. Follow the evidence links in the related guides.</p>
 </section>
 <h2>Clean Care articles &amp; guides</h2>
 <form id="journal-filters" class="filters" role="search" aria-label="Find Clean Care guides"><label class="search-label">Find a guide<input id="journal-search" type="search" placeholder="Try laundry, symptoms, or labels…"/></label><label>Browse a topic<select id="journal-topic"><option value="">All topics</option>{[...new Set(articles.map(a => a.topic))].map(topic => <option>{topic}</option>)}</select></label><button class="reset" type="reset">Reset</button></form>

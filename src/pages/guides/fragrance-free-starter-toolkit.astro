@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { countries } from '../../data/countries.mjs';
+import { url } from '../../lib/paths';
+
+const steps = [
+  { number:'01', title:'Stop adding scent to the air', category:'Air care', body:'Pause plug-ins, room sprays, diffusers, incense, scented candles and wax melts. Remove the source of an odour and ventilate instead of masking it.', action:'Read the indoor-air guide', href:url('guides/fragrance-and-indoor-air-chemistry/'), query:'' },
+  { number:'02', title:'Reset the laundry routine', category:'Laundry', body:'Replace detergent first, then remove scent beads, fabric softener and fragranced dryer sheets. Residue in a washer may take several cycles to clear.', action:'Find laundry alternatives', href:url('directory/'), query:'category=Home+%26+Laundry&q=laundry' },
+  { number:'03', title:'Simplify household cleaning', category:'Cleaning', body:'Start with the products used on large surfaces: floor, bathroom, kitchen and dishwashing. Never mix cleaners, and always follow the current safety label.', action:'Find cleaning alternatives', href:url('directory/'), query:'category=Home+%26+Laundry&q=cleaner' },
+  { number:'04', title:'Replace leave-on skincare', category:'Skin & body', body:'Prioritise products that stay on the skin—moisturiser, sunscreen and deodorant—then move to rinse-off cleansers and body wash.', action:'Find skin and body options', href:url('directory/'), query:'category=Skin+%26+Body' },
+  { number:'05', title:'Change hair products', category:'Haircare', body:'Check shampoo, conditioner, styling sprays, oils and dry shampoo. Choose the exact fragrance-free version; do not rely on the brand name alone.', action:'Find haircare options', href:url('directory/'), query:'category=Haircare' },
+  { number:'06', title:'Check bags and shared spaces', category:'Maintenance', body:'Review perfume, hand cream, wipes and travel products. Tell household members what changed, and make one specific request in shared spaces.', action:'Plan a shared-space request', href:url('guides/shared-spaces/'), query:'' },
+];
+---
+<Layout title="Your fragrance-free starter toolkit | CleanCare" description="A practical country-aware toolkit for replacing fragranced products category by category.">
+  <header class="container story-header toolkit-hero">
+    <a class="text-link" href={url('guides/')}>← Articles &amp; guides</a>
+    <p class="eyebrow">A practical replacement plan</p>
+    <h1>Your fragrance-free<br/><em>starter toolkit.</em></h1>
+    <p class="intro">You do not have to replace everything in one day. Choose your country, work through one category at a time, and use the directory links to compare exact products.</p>
+    <div class="notice"><strong>Start with what affects your air most:</strong> products designed to spread scent, then laundry and cleaners used across large surfaces. If a product is medically necessary, ask an appropriate health professional before changing it.</div>
+  </header>
+
+  <section class="container section toolkit" data-toolkit>
+    <div class="toolkit-country">
+      <div><p class="eyebrow">Step zero</p><h2>Where are you shopping?</h2><p>Country availability and formulas differ. Your choice is added to each directory link.</p></div>
+      <label>Choose a country
+        <select id="toolkit-country">
+          <option value="">Show all checked countries</option>
+          {countries.filter(country => ['US','GB','SG','AU','NZ'].includes(country.code)).map(country => <option value={country.code}>{country.name}</option>)}
+        </select>
+      </label>
+    </div>
+
+    <div class="toolkit-progress" aria-live="polite"><div><span id="toolkit-count">0 of 6 stages complete</span><button id="toolkit-reset" class="text-link" type="button">Reset progress</button></div><progress id="toolkit-progress" max={steps.length} value="0">0%</progress></div>
+
+    <ol class="toolkit-steps">
+      {steps.map(step => <li class="toolkit-step">
+        <label class="toolkit-check"><input type="checkbox" data-toolkit-check={step.number}/><span class="visually-hidden">Mark {step.title} complete</span></label>
+        <div class="toolkit-number">{step.number}</div>
+        <div class="toolkit-copy"><p class="eyebrow">{step.category}</p><h2>{step.title}</h2><p>{step.body}</p><a class="button toolkit-link" href={step.href} data-base-href={step.href} data-query={step.query}>{step.action} →</a></div>
+      </li>)}
+    </ol>
+
+    <section class="toolkit-labels">
+      <div><p class="eyebrow">Keep beside your shopping list</p><h2>What to look for</h2></div>
+      <div class="toolkit-label-grid"><article><h3>Prefer</h3><p>An explicit <strong>fragrance-free</strong> claim for the exact product, plus a current ingredient list.</p></article><article><h3>Double-check</h3><p>“Unscented,” “natural,” “clean,” “hypoallergenic,” and “for sensitive skin” do not necessarily mean no fragrance.</p></article><article><h3>Remember</h3><p>Essential oils are fragrance ingredients. Fragrance-free does not mean free from every possible allergen or irritant.</p></article></div>
+    </section>
+    <p class="editorial-note">Your checklist and country choice are stored only in this browser. CleanCare does not receive them. Product formulations and availability can change, so recheck the current label and official source before buying.</p>
+  </section>
+</Layout>
+
+<script>
+  const storageKey = 'cleancare-toolkit-v1';
+  const countryKey = 'cleancare-toolkit-country';
+  const checks = [...document.querySelectorAll<HTMLInputElement>('[data-toolkit-check]')];
+  const country = document.querySelector<HTMLSelectElement>('#toolkit-country')!;
+  const progress = document.querySelector<HTMLProgressElement>('#toolkit-progress')!;
+  const count = document.querySelector<HTMLElement>('#toolkit-count')!;
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toolkit-link')];
+  function savedStages() { try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch { return []; } }
+  function updateLinks() { for (const link of links) { const params = new URLSearchParams(link.dataset.query || ''); if (country.value) params.set('country', country.value); link.href = link.dataset.baseHref + (params.size ? `?${params}` : ''); } }
+  function render() { const done = checks.filter(item => item.checked).length; progress.value = done; count.textContent = `${done} of ${checks.length} stages complete`; updateLinks(); }
+  const saved = new Set(savedStages());
+  checks.forEach(item => { item.checked = saved.has(item.dataset.toolkitCheck); item.addEventListener('change', () => { localStorage.setItem(storageKey, JSON.stringify(checks.filter(box => box.checked).map(box => box.dataset.toolkitCheck))); render(); }); });
+  country.value = localStorage.getItem(countryKey) || '';
+  country.addEventListener('change', () => { localStorage.setItem(countryKey, country.value); render(); });
+  document.querySelector('#toolkit-reset')!.addEventListener('click', () => { checks.forEach(item => item.checked = false); localStorage.removeItem(storageKey); render(); });
+  render();
+</script>
+
+<style>
+  .toolkit-hero { padding-bottom:30px; }
+  .toolkit-country { display:grid; grid-template-columns:1.4fr .8fr; gap:40px; align-items:end; padding:30px; border:1px solid var(--border); border-radius:var(--radius-card); background:var(--accent-sky); }
+  .toolkit-country h2,.toolkit-labels h2 { margin:4px 0 8px; }
+  .toolkit-country p { margin-bottom:0; color:var(--muted); }
+  .toolkit-country label { display:grid; gap:9px; font-size:12px; font-weight:700; }
+  .toolkit-country select { width:100%; min-height:48px; border:1px solid var(--border); border-radius:12px; background:#fff; padding:10px 14px; }
+  .toolkit-progress { margin:32px 0; }
+  .toolkit-progress div { display:flex; justify-content:space-between; gap:20px; align-items:center; margin-bottom:10px; font-size:13px; font-weight:700; }
+  .toolkit-progress progress { width:100%; height:12px; accent-color:var(--accent-sage); }
+  .toolkit-progress button { border:0; background:none; padding:8px; }
+  .toolkit-steps { display:grid; gap:20px; margin:0; padding:0; list-style:none; }
+  .toolkit-step { display:grid; grid-template-columns:auto 54px 1fr; gap:22px; align-items:start; padding:28px; border:1px solid var(--border); border-radius:var(--radius-card); background:var(--card); }
+  .toolkit-check input { width:24px; height:24px; accent-color:var(--accent-sage); }
+  .toolkit-number { color:var(--accent-sage); font-size:13px; font-weight:700; letter-spacing:.1em; }
+  .toolkit-copy h2 { margin:2px 0 10px; font-size:clamp(22px,3vw,31px); }
+  .toolkit-copy>p:not(.eyebrow) { max-width:760px; color:var(--muted); line-height:1.8; }
+  .toolkit-link { display:inline-flex; margin-top:8px; }
+  .toolkit-labels { margin-top:60px; padding:34px; border-radius:var(--radius-card); background:#eef3ed; }
+  .toolkit-label-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px; }
+  .toolkit-label-grid article { padding:22px; border-radius:16px; background:#fff; }
+  .toolkit-label-grid h3 { margin-top:0; }
+  .toolkit-label-grid p { color:var(--muted); line-height:1.75; }
+  @media(max-width:760px) { .toolkit-country,.toolkit-label-grid { grid-template-columns:1fr; } .toolkit-step { grid-template-columns:auto 1fr; } .toolkit-copy { grid-column:1/-1; } }
+</style>

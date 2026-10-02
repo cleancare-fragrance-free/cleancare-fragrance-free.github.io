@@ -2164,6 +2164,42 @@ footer {
   text-decoration:none
 }
 
+.source-figure {
+  margin:0 0 42px
+}
+
+.source-figure img {
+  display:block;
+  width:100%;
+  max-height:560px;
+  object-fit:cover;
+  border-radius:var(--radius-image)
+}
+
+.source-figure figcaption {
+  margin-top:10px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6
+}
+
+.video-embed {
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  margin:24px 0 30px;
+  border-radius:var(--radius-image);
+  background:#222
+}
+
+.video-embed iframe {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0
+}
+
 .why-hero {
   padding-block:86px 54px;
   text-align:center

@@ -1,0 +1,45 @@
+export const learningVideos = [
+  {
+    title: 'Stink! — official documentary trailer',
+    source: 'Official Stink! Documentary',
+    href: '/guides/stink-documentary/',
+    youtubeId: 'ICN52Uzoo0I',
+    note: 'A consumer-advocacy film about product ingredients, disclosure, and chemical regulation. Documentary claims should be checked against primary sources.',
+    local: true,
+  },
+  {
+    title: 'How bad is fragrance in skin care?',
+    source: 'Dr Dray · board-certified dermatologist',
+    href: 'https://www.youtube.com/watch?v=2-CHXXZkohc',
+    youtubeId: '2-CHXXZkohc',
+    note: 'A dermatologist explains fragrance allergy and irritation in skincare, with research references and individual context.',
+  },
+  {
+    title: 'Fragrance in skin care: do I fearmonger?',
+    source: 'Dr Dray · dermatologist perspective',
+    href: 'https://www.youtube.com/watch?v=0_i29f2h7h0',
+    youtubeId: '0_i29f2h7h0',
+    note: 'A nuanced discussion of who may benefit from avoidance and why “fragrance” is not one identical exposure for everyone.',
+  },
+  {
+    title: 'Chemical sensitivity: the illness crippling people, dismissed by doctors',
+    source: 'SBS Australia',
+    href: 'https://www.youtube.com/watch?v=8bVdjIt72F0',
+    youtubeId: '8bVdjIt72F0',
+    note: 'Reporting and personal accounts about chemical sensitivity, including fragrance exposure. Experiences are important but do not establish one mechanism for every person.',
+  },
+  {
+    title: 'Why Indoor Chemistry Matters',
+    source: 'US EPA Indoor Air Quality Science Webinar',
+    href: 'https://www.youtube.com/watch?v=iJJVFi3e0dE',
+    youtubeId: 'iJJVFi3e0dE',
+    note: 'Research background on indoor chemistry. It does not conclude that every fragranced product causes the same health effect.',
+  },
+  {
+    title: 'Investigating Indoor Chemistry',
+    source: 'US EPA Indoor Air Quality Science Webinar',
+    href: 'https://www.youtube.com/watch?v=2x-BLwpKFbE',
+    youtubeId: '2x-BLwpKFbE',
+    note: 'A broader expert presentation about chemical reactions indoors, useful for understanding fragrance-related studies in context.',
+  },
+];

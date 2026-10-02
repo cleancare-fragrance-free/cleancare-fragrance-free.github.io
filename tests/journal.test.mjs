@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { articles, matchesArticle } from '../src/data/articles.mjs';
 import { countries } from '../src/data/countries.mjs';
 import { matchesProduct } from '../src/lib/filter.mjs';
@@ -8,12 +8,14 @@ const products = JSON.parse(readFileSync(new URL('../src/data/products.json', im
 test('journal entries map to articles with matching titles', () => {
  assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
  for (const article of articles) {
-  const source = readFileSync(new URL('../src/pages/guides/' + article.slug + '.md', import.meta.url), 'utf8');
+  const markdown = new URL('../src/pages/guides/' + article.slug + '.md', import.meta.url);
+  const astro = new URL('../src/pages/guides/' + article.slug + '.astro', import.meta.url);
+  const source = readFileSync(existsSync(markdown) ? markdown : astro, 'utf8');
   assert.ok(source.includes(article.title), article.slug);
  }
 });
 test('journal search intersects topic, handles case and no matches', () => {
- assert.equal(articles.filter(a => matchesArticle(a)).length, 7);
+ assert.equal(articles.filter(a => matchesArticle(a)).length, 11);
  assert.deepEqual(articles.filter(a => matchesArticle(a, ' LAUNDRY ', 'Everyday changes')).map(a => a.slug), ['fragrance-free-laundry']);
  assert.equal(articles.filter(a => matchesArticle(a, '<script>')).length, 0);
  assert.equal(articles.filter(a => matchesArticle(a, 'laundry', 'Shared spaces')).length, 0);
