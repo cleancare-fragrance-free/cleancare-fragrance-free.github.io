@@ -1,20 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import VideoCard from '../components/VideoCard.astro';
 import { learningVideos } from '../data/learning-videos.mjs';
 import { url } from '../lib/paths';
-const publications = [
-  { type: 'Health education · American Lung Association', title: 'Fragrances and indoor air', href: 'https://www.lung.org/clean-air/indoor-air/indoor-air-pollutants/fragrances', supports: 'Explains indoor-air sources, symptoms reported by some people, groups that may be more sensitive, and practical exposure-reduction steps.' },
-  { type: 'Government guidance · FDA', title: 'Fragrances in Cosmetics', href: 'https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics', supports: 'Explains US cosmetic labeling, fragrance mixtures, and sensitivity. It does not say every fragrance is harmful.' },
-  { type: 'Government guidance · FDA', title: 'Allergens in Cosmetics', href: 'https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics', supports: 'Documents fragrance as a possible cosmetic allergen and explains label limitations.' },
-  { type: 'Government guidance · EPA', title: 'VOCs and Indoor Air Quality', href: 'https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality', supports: 'Describes VOC sources, possible effects, and source-control steps. VOCs are a broad group, not one risk level.' },
-  { type: 'Primary research · Population study', title: 'Fragrance contact allergy in five European countries', href: 'https://pubmed.ncbi.nlm.nih.gov/26332456/', supports: 'Reports patch-test results in a sampled European adult population. Its prevalence estimate is not universal.' },
-  { type: 'Primary research · Chamber experiment', title: 'Ozone and limonene in indoor air', href: 'https://pubmed.ncbi.nlm.nih.gov/11133393/', supports: 'Measured particle formation after ozone reacted with limonene under controlled conditions. It did not measure clinical effects.' },
-  { type: 'Primary research · Chamber experiment', title: 'Ozone-initiated emissions from a cleaner and air freshener', href: 'https://pubmed.ncbi.nlm.nih.gov/24769411/', supports: 'Measured emissions and reaction products from two products at tested ozone levels; results cannot represent every home.' },
-  { type: 'Government context · EPA', title: 'Can fragrances indoors cause health impacts?', href: 'https://www.epa.gov/asthma/can-use-fragrances-indoors-cause-health-impacts', supports: 'Acknowledges effects in some sensitive people and uncertainty about the causes of some reported reactions.' },
-  { type: 'Government publication · EPA', title: 'If it smells good and fresh, is it good for my indoor air and me?', href: 'https://www.epa.gov/sites/default/files/2015-09/documents/view_indoors_odors.pdf', supports: 'Explains why odor alone is not a safety test and offers practical steps for shared indoor spaces.' },
-  { type: 'Government criteria · EPA', title: 'Safer Choice Fragrance-Free criteria', href: 'https://www.epa.gov/saferchoice/safer-choice-criteria-fragrance-free-products', supports: 'Shows how a specific US certification checks products for fragrance materials. It is not a universal product claim.' },
-  { type: 'University research report · Purdue', title: 'Everyday scented products and indoor nanoparticles', href: 'https://www.purdue.edu/newsroom/2025/Q1/air-inside-your-home-may-be-more-polluted-than-outside-due-to-everyday-chemical-products/', supports: 'Summarises Purdue measurements and links to the primary papers. Particle formation was measured; long-term clinical effects still require toxicology research.' },
+
+const sourceGroups = [
+  {
+    id: 'health-labels', number: '01', title: 'Health, sensitivity & labels',
+    note: 'Start here for allergy, reported symptoms, and what cosmetic labels do—or do not—tell you.', tone: 'sage',
+    sources: [
+      { label: 'Health education · American Lung Association', title: 'Fragrances and indoor air', href: 'https://www.lung.org/clean-air/indoor-air/indoor-air-pollutants/fragrances', note: 'Indoor sources, symptoms reported by some people, and practical exposure-reduction steps.' },
+      { label: 'Government guidance · FDA', title: 'Fragrances in Cosmetics', href: 'https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics', note: 'How US cosmetic labeling handles fragrance mixtures and sensitivity.' },
+      { label: 'Government guidance · FDA', title: 'Allergens in Cosmetics', href: 'https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics', note: 'Fragrance as a possible cosmetic allergen and the limits of ingredient labels.' },
+      { label: 'Primary research · Population study', title: 'Fragrance contact allergy in five European countries', href: 'https://pubmed.ncbi.nlm.nih.gov/26332456/', note: 'Patch-test results from a sampled European adult population; the estimate is not universal.' },
+    ],
+  },
+  {
+    id: 'indoor-air', number: '02', title: 'Indoor air & chemistry',
+    note: 'Research on VOCs, ozone reactions, particles, and what was actually measured indoors.', tone: 'sky',
+    sources: [
+      { label: 'Government guidance · EPA', title: 'VOCs and Indoor Air Quality', href: 'https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality', note: 'VOCs, their indoor sources, possible effects, and source-control steps.' },
+      { label: 'Primary research · Chamber experiment', title: 'Ozone and limonene in indoor air', href: 'https://pubmed.ncbi.nlm.nih.gov/11133393/', note: 'Particle formation after ozone reacted with limonene; clinical effects were not measured.' },
+      { label: 'Primary research · Chamber experiment', title: 'Ozone-initiated emissions from a cleaner and air freshener', href: 'https://pubmed.ncbi.nlm.nih.gov/24769411/', note: 'Emissions and reaction products from two tested products at specific ozone levels.' },
+      { label: 'University research report · Purdue', title: 'Everyday scented products and indoor nanoparticles', href: 'https://www.purdue.edu/newsroom/2025/Q1/air-inside-your-home-may-be-more-polluted-than-outside-due-to-everyday-chemical-products/', note: 'Purdue measurements of particle formation, with links to the primary papers.' },
+    ],
+  },
+  {
+    id: 'practical-guidance', number: '03', title: 'Practical guidance & standards',
+    note: 'Public guidance for interpreting odors, choosing products, and reducing avoidable exposure.', tone: 'apricot',
+    sources: [
+      { label: 'Government context · EPA', title: 'Can fragrances indoors cause health impacts?', href: 'https://www.epa.gov/asthma/can-use-fragrances-indoors-cause-health-impacts', note: 'Effects in some sensitive people and uncertainty around some reported reactions.' },
+      { label: 'Government publication · EPA', title: 'If it smells good and fresh, is it good for my indoor air and me?', href: 'https://www.epa.gov/sites/default/files/2015-09/documents/view_indoors_odors.pdf', note: 'Why odor is not a safety test, plus steps for shared indoor spaces.' },
+      { label: 'Government criteria · EPA', title: 'Safer Choice Fragrance-Free criteria', href: 'https://www.epa.gov/saferchoice/safer-choice-criteria-fragrance-free-products', note: 'How one US certification checks products for fragrance materials.' },
+    ],
+  },
 ];
 ---
-<Layout title="Evidence library | Clean Care" description="Original research, government guidance, and expert video presentations with notes on what each source supports."><section class="container section evidence-library"><p class="eyebrow">Documents, studies & video</p><h1>Follow the sources.</h1><p class="intro">Each resource is linked directly and paired with a short note on its scope. The goal is to help you check claims, see where evidence is strong, and recognize uncertainty.</p><div class="notice"><strong>How to read this library:</strong> A source showing that one ingredient can cause allergy does not prove that every fragrance, at every exposure level, has the same effect. Personal experiences matter for choosing what to avoid; claims about population-wide risk need suitable research.</div><div class="section-heading"><div><p class="eyebrow">Written sources</p><h2>Guidance and original research</h2></div></div><div class="resource-list">{publications.map(item => <article class="resource-card"><p class="eyebrow">{item.type}</p><h3><a href={item.href} target="_blank" rel="noopener noreferrer">{item.title} ↗</a></h3><p>{item.supports}</p></article>)}</div><div class="section-heading evidence-videos"><div><p class="eyebrow">Watch and learn</p><h2>Expert, reporting &amp; documentary video</h2></div></div><p class="sample-note">The collection distinguishes research presentations, medical education, reporting, and advocacy. A video’s inclusion does not validate every claim it contains; use its scope note and follow the linked written evidence.</p><div class="journal-grid">{learningVideos.map(video => <VideoCard video={video}/>)}</div><p class="editorial-note">Source list reviewed October 2026. New articles identify their source dates and separate observed results from interpretation.</p><a class="button" href={url('guides/')}>Read the articles ↗</a></section></Layout>
+
+<Layout title="Evidence library | Clean Care" description="Original research, government guidance, and expert videos organized by topic, with a short note on what each source supports.">
+  <section class="container evidence-library">
+    <header class="evidence-intro">
+      <div><p class="eyebrow">Evidence Library</p><h1>Follow the sources.</h1></div>
+      <p>Government guidance, original research, and expert video—sorted by the question each source can help answer.</p>
+    </header>
+
+    <nav class="source-index" aria-label="Evidence categories">
+      {sourceGroups.map(group => <a href={`#${group.id}`}><span>{group.number}</span>{group.title}</a>)}
+      <a href="#watch"><span>04</span>Watch &amp; listen</a>
+    </nav>
+
+    <div class="evidence-caution"><strong>Read the scope, not only the headline.</strong><span>Evidence about one ingredient, product, or exposure level does not automatically apply to every fragrance. Each note below says what the source actually covers.</span></div>
+
+    <div class="source-groups">
+      {sourceGroups.map(group =>
+        <section id={group.id} class:list={['source-group', `source-group--${group.tone}`]}>
+          <header><span>{group.number}</span><div><h2>{group.title}</h2><p>{group.note}</p></div></header>
+          <ul class="source-list">
+            {group.sources.map(source => <li><span class="source-dot" aria-hidden="true"></span><div><p>{source.label}</p><a href={source.href} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a><small>{source.note}</small></div></li>)}
+          </ul>
+        </section>
+      )}
+    </div>
+
+    <section id="watch" class="source-group source-group--video">
+      <header><span>04</span><div><h2>Watch &amp; listen</h2><p>Medical education, reporting, documentaries, and research presentations answer different questions.</p></div></header>
+      <ul class="source-list video-source-list">
+        {learningVideos.map(video => <li><span class="source-dot" aria-hidden="true"></span><div><p>{video.source}</p><a href={video.local ? url(video.href) : video.href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>{video.title} <span aria-hidden="true">{video.local ? '→' : '↗'}</span></a><small>{video.note}</small></div></li>)}
+      </ul>
+    </section>
+
+    <footer class="evidence-footer"><p>Source list reviewed October 2026. Inclusion does not validate every claim a source contains; original research and current agency guidance take priority.</p><a class="button" href={url('guides/')}>Read the articles ↗</a></footer>
+  </section>
+</Layout>
+
+<style>
+  .evidence-library{padding-block:58px 76px}.evidence-intro{display:grid;grid-template-columns:1fr minmax(300px,520px);gap:64px;align-items:end}.evidence-intro h1{margin:7px 0 0;font-size:clamp(48px,6.5vw,82px);line-height:1;letter-spacing:-.055em}.evidence-intro>p{margin:0;color:var(--muted);font-size:16px;line-height:1.75}
+  .source-index{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:34px 0 22px}.source-index a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--text);font-size:12px;font-weight:700}.source-index a:hover,.source-index a:focus-visible{border-color:var(--accent-sage);background:#f1f6f1}.source-index span{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent-sky);color:#4f6d76;font-size:10px}
+  .evidence-caution{display:flex;gap:18px;margin-bottom:28px;padding:15px 18px;border-left:4px solid var(--accent-sage);border-radius:10px;background:#edf5f7;font-size:13px;line-height:1.6}.evidence-caution strong{flex:none}.evidence-caution span{color:var(--muted)}
+  .source-groups{display:grid;grid-template-columns:1fr 1fr;gap:20px}.source-group{scroll-margin-top:30px;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:#fff}.source-group>header{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;padding:22px 24px;border-bottom:1px solid var(--border);background:#eef3ed}.source-group--sky>header{background:#e8f3f8}.source-group--apricot>header{background:#faeadf}.source-group--video>header{background:#efe9f4}.source-group>header>span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.8);font-size:11px;font-weight:700}.source-group h2{margin:0 0 5px;font-size:23px;letter-spacing:-.025em}.source-group header p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}.source-group--apricot{grid-column:1/-1}.source-group--apricot .source-list{display:grid;grid-template-columns:repeat(3,1fr)}
+  .source-list{margin:0;padding:0;list-style:none}.source-list li{display:grid;grid-template-columns:8px 1fr;gap:12px;padding:18px 22px;border-bottom:1px solid var(--border)}.source-list li:last-child{border-bottom:0}.source-dot{width:7px;height:7px;margin-top:7px;border-radius:50%;background:var(--accent-sage)}.source-list p{margin:0 0 3px;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}.source-list a{display:inline;font-size:15px;font-weight:700;line-height:1.45}.source-list a:hover,.source-list a:focus-visible{color:var(--accent-active)}.source-list small{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.55}
+  .source-group--video{margin-top:20px}.video-source-list{display:grid;grid-template-columns:1fr 1fr}.video-source-list li:nth-last-child(-n+2){border-bottom:0}.video-source-list li:nth-child(odd){border-right:1px solid var(--border)}
+  .evidence-footer{display:flex;justify-content:space-between;align-items:center;gap:32px;margin-top:30px;padding-top:26px;border-top:1px solid var(--border)}.evidence-footer p{max-width:760px;margin:0;color:var(--muted);font-size:12px;line-height:1.65}.evidence-footer .button{flex:none}
+  @media(max-width:900px){.evidence-intro{grid-template-columns:1fr;gap:18px}.source-index{grid-template-columns:1fr 1fr}.source-groups{grid-template-columns:1fr}.source-group--apricot{grid-column:auto}.source-group--apricot .source-list{grid-template-columns:1fr}.video-source-list{grid-template-columns:1fr}.video-source-list li:nth-child(odd){border-right:0}.video-source-list li:nth-last-child(2){border-bottom:1px solid var(--border)}}
+  @media(max-width:620px){.evidence-library{padding-block:38px 56px}.source-index{grid-template-columns:1fr}.evidence-caution{flex-direction:column;gap:4px}.source-group>header{padding:19px}.source-list li{padding:16px 18px}.evidence-footer{align-items:flex-start;flex-direction:column}}
+</style>
