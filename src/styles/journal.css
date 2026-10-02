@@ -160,7 +160,8 @@ figcaption {
 }
 
 .story-sidebar nav a:hover {
-  text-decoration:underline
+  color:var(--accent-active);
+  text-decoration:none
 }
 
 .story-sidebar hr {
@@ -238,7 +239,8 @@ figcaption {
 }
 
 .verified-card h3 a:hover {
-  text-decoration:underline
+  color:var(--accent-active);
+  text-decoration:none
 }
 
 @media(max-width:1250px) {

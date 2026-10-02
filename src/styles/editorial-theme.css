@@ -14,11 +14,8 @@ h1 em, .check-intro h1 em {
   font-family: inherit;
   font-style: normal;
   font-weight: inherit;
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-sage);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 9px;
+  color: var(--accent-sage);
+  text-decoration: none;
 }
 .intro { font-size: 16px; line-height: 1.9; }
 .eyebrow { color: var(--muted); font-size: 11px; letter-spacing: 0.16em; }
@@ -28,7 +25,7 @@ h1 em, .check-intro h1 em {
 .brand-dot, .brand svg { color: var(--accent-sage); }
 .header-inner nav { font-size: 12px; line-height: 1.7; }
 .header-inner nav a { transition: color 0.2s ease; }
-.header-inner nav a:hover { color: var(--text); text-decoration-color: var(--accent-active); }
+.header-inner nav a:hover { color: var(--accent-active); text-decoration: none; }
 
 /* Dark text keeps the soft apricot CTA background readable. */
 .button, .header-cta {
@@ -48,9 +45,9 @@ h1 em, .check-intro h1 em {
 button, .check-secondary, .reset { border-radius: var(--radius-pill); }
 .check-secondary { border-color: var(--border); background: var(--card); }
 .text-link { color: var(--text); font-size: 13px; font-weight: 600; }
-.text-link:hover { color: var(--text); text-decoration-color: var(--accent-active); }
-.prose a { color: var(--text); text-decoration-color: var(--accent-sage); text-decoration-thickness: 2px; }
-.prose a:hover { text-decoration-color: var(--accent-active); }
+.text-link:hover { color: var(--accent-active); text-decoration: none; }
+.prose a { color: var(--accent-sage); font-weight: 600; text-decoration: none; }
+.prose a:hover { color: var(--accent-active); text-decoration: none; }
 a:focus-visible, button:focus-visible, input:focus-visible,
 select:focus-visible, summary:focus-visible { outline-color: var(--text); }
 

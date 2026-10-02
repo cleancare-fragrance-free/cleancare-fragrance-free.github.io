@@ -118,8 +118,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
 .header-inner nav a:hover,.text-link:hover {
   color:#6d7650;
-  text-decoration:underline;
-  text-underline-offset:5px
+  text-decoration:none
 }
 
 .header-cta {
@@ -937,10 +936,11 @@ footer {
 }
 
 .reset {
-  border:0;
-  background:transparent;
-  text-decoration:underline;
-  text-underline-offset:4px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--accent-sky);
+  padding-inline:18px;
+  text-decoration:none;
   min-height:47px;
   font-size:12px;
   color:var(--forest)
@@ -1004,9 +1004,9 @@ footer {
 }
 
 .prose a {
-  text-decoration:underline;
-  text-underline-offset:3px;
-  color:var(--forest)
+  text-decoration:none;
+  color:var(--accent-sage);
+  font-weight:600
 }
 
 .prose li {
@@ -1564,9 +1564,9 @@ footer {
 }
 
 .check-sources a,.self-check-page .notice a {
-  text-decoration:underline;
-  text-underline-offset:3px;
-  color:var(--forest)
+  text-decoration:none;
+  color:var(--accent-sage);
+  font-weight:600
 }
 
 .quiz-invitation {
@@ -1932,8 +1932,8 @@ footer {
 }
 
 .resource-card h3 a:hover {
-  text-decoration:underline;
-  text-underline-offset:4px
+  color:var(--accent-active);
+  text-decoration:none
 }
 
 .resource-card>p:last-child {
@@ -1953,9 +1953,9 @@ footer {
 }
 
 .evidence-library .sample-note a,.directory .notice a {
-  color:var(--forest);
-  text-decoration:underline;
-  text-underline-offset:3px
+  color:var(--accent-sage);
+  font-weight:600;
+  text-decoration:none
 }
 
 .prose h2[id] {
@@ -2159,9 +2159,9 @@ footer {
 }
 
 .source-note a {
-  color:var(--forest);
-  text-decoration:underline;
-  text-underline-offset:3px
+  color:var(--accent-sage);
+  font-weight:600;
+  text-decoration:none
 }
 
 .why-hero {
