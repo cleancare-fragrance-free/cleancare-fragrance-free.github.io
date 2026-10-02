@@ -8,6 +8,14 @@ export const learningVideos = [
     local: true,
   },
   {
+    title: 'Toxic Beauty — official documentary trailer',
+    source: 'Toxic Beauty · film by Phyllis Ellis',
+    href: '/guides/toxic-beauty-documentary/',
+    youtubeId: 'cV6UA-OeAHQ',
+    note: 'A documentary investigation of cosmetics, product disclosure, and chemical safety. Its stories and claims should be checked against primary sources.',
+    local: true,
+  },
+  {
     title: 'How bad is fragrance in skin care?',
     source: 'Dr Dray · board-certified dermatologist',
     href: 'https://www.youtube.com/watch?v=2-CHXXZkohc',

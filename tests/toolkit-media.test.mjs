@@ -12,7 +12,7 @@ test('starter toolkit covers the replacement sequence and keeps progress private
 });
 
 test('learning videos use unique YouTube sources and include scope notes', () => {
-  assert.equal(learningVideos.length, 6);
+  assert.equal(learningVideos.length, 7);
   assert.equal(new Set(learningVideos.map(video => video.youtubeId)).size, learningVideos.length);
   for (const video of learningVideos) {
     assert.match(video.youtubeId, /^[\w-]{11}$/);

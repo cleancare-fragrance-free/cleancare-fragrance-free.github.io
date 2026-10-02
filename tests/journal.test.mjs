@@ -15,7 +15,7 @@ test('journal entries map to articles with matching titles', () => {
  }
 });
 test('journal search intersects topic, handles case and no matches', () => {
- assert.equal(articles.filter(a => matchesArticle(a)).length, 11);
+ assert.equal(articles.filter(a => matchesArticle(a)).length, 12);
  assert.deepEqual(articles.filter(a => matchesArticle(a, ' LAUNDRY ', 'Everyday changes')).map(a => a.slug), ['fragrance-free-laundry']);
  assert.equal(articles.filter(a => matchesArticle(a, '<script>')).length, 0);
  assert.equal(articles.filter(a => matchesArticle(a, 'laundry', 'Shared spaces')).length, 0);
