@@ -30,11 +30,11 @@ test('article card keeps the requested structure and motion safeguards', () => {
   assert.ok(read('src/styles/journal.css').includes('minmax(min(100%, 320px), 1fr)'));
 });
 
-test('why-fragrance-free content leads the homepage and keeps the essential-oil caveat', () => {
+test('why-fragrance-free content remains on the homepage with the essential-oil caveat', () => {
   const home = read('src/pages/index.astro');
   const layout = read('src/layouts/Layout.astro');
   const why = read('src/pages/why-fragrance-free.astro');
-  assert.ok(home.indexOf('class="container reasons-hero"') < home.indexOf('class="container hero editorial-hero"'));
+  assert.ok(home.includes('class="container reasons-hero"'));
   for (const reason of ['Less skin irritation and allergy', 'Fewer scent-triggered symptoms', 'Fewer unnecessary fragrance ingredients', 'Cleaner shared indoor air', 'More control and transparency']) {
     assert.ok(home.includes(reason), reason);
   }

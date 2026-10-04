@@ -1,4 +1,5 @@
 ---
+import DoctorBadge from './DoctorBadge.astro';
 import { url } from '../lib/paths';
 const { video } = Astro.props;
 const href = video.local ? url(video.href) : video.href;
@@ -6,6 +7,7 @@ const href = video.local ? url(video.href) : video.href;
 <a class="video-card" href={href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>
   <div class="video-card-image">
     <img src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`} alt={`Video thumbnail for ${video.title}`} width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"/>
+    {video.doctor && <div class="video-doctor"><DoctorBadge/></div>}
     <span class="video-play" aria-hidden="true">▶</span>
   </div>
   <div class="video-card-copy">
@@ -17,6 +19,7 @@ const href = video.local ? url(video.href) : video.href;
 </a>
 
 <style>
+  .video-doctor { position:absolute;top:14px;left:14px; }
   .video-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--border); border-radius:var(--radius-card); background:var(--card); color:var(--text); transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease; }
   .video-card:hover,.video-card:focus-visible { transform:translateY(-6px); box-shadow:0 12px 30px rgba(122,154,139,.12); }
   .video-card-image { position:relative; height:210px; overflow:hidden; background:var(--accent-sky); }

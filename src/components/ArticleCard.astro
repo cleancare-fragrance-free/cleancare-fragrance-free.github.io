@@ -1,4 +1,5 @@
 ---
+import DoctorBadge from './DoctorBadge.astro';
 import ArticleVisual from './ArticleVisual.astro';
 import { url } from '../lib/paths';
 const { article } = Astro.props;
@@ -15,6 +16,7 @@ const photoUrl = (photo, width) => photo.provider === 'local'
       {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={`${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
     </div>
     <span class:list={['article-badge', { 'article-badge--sky': skyBadge }]}>{article.topic}</span>
+    {article.doctor && <div class="card-doctor"><DoctorBadge/></div>}
     {article.photo?.imageTag && <span class="article-source-tag">{article.photo.imageTag}</span>}
   </div>
   <div class="journal-card-copy">
@@ -26,6 +28,7 @@ const photoUrl = (photo, width) => photo.provider === 'local'
 </a>
 
 <style>
+  .card-doctor{position:absolute;bottom:14px;left:14px}
   .journal-card {
     display: flex;
     flex-direction: column;

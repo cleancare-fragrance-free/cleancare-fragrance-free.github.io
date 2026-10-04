@@ -101,5 +101,5 @@ export const featuredPosts = [
 ].map((post, index) => {
   const photo = photos[index];
   const imageCredit = `Image: ${photo.photographer}. ${photo.note}`;
-  return { ...post, order: index + 1, checked: '2026-09-29', href: 'featured/' + post.slug + '/', photo, imageCredit };
+  return { ...post, doctor: ['why-perfumes-stink','miranda-kerr-fragrance-conversation','phthalates-personal-care-video'].includes(post.slug), order: index + 1, checked: '2026-09-29', href: 'featured/' + post.slug + '/', photo, imageCredit };
 });

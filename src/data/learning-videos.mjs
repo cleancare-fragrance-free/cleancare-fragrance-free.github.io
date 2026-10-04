@@ -1,4 +1,9 @@
 export const learningVideos = [
+  { title: 'So you need to go fragrance free? Here’s what’s good', source: 'Jessica Braun · personal product recommendations', href: 'https://www.youtube.com/watch?v=g1qxWvIfbCk', youtubeId: 'g1qxWvIfbCk', note: 'A creator’s practical product-selection video, not medical advice. Our directory uses official brand links rather than the video’s affiliate links.' },
+  { title: 'Fragrance-free vs fragranced skincare: a toxicologist’s perspective', source: 'Mo skin lab · toxicology discussion', href: 'https://www.youtube.com/watch?v=VxbMHQZxaNg', youtubeId: 'VxbMHQZxaNg', note: 'A discussion of fragranced and fragrance-free skincare. Toxicology expertise is not automatically a medical qualification; no doctor badge is assigned.' },
+  { title: 'Is fragrance in skincare bad for you? Ask Doctor Anne', source: 'Doctor Anne · physician and skincare creator', href: 'https://www.youtube.com/watch?v=llktlBu1UwY', youtubeId: 'llktlBu1UwY', doctor: true, credentialUrl: 'https://www.doctoranne.de/about-me/', note: 'A physician’s skincare discussion. The doctor badge identifies the creator’s profession, not a clinical review or endorsement of every claim.' },
+  { title: 'Why you should avoid perfume — Dr. Barrett', source: 'Barrett Plastic Surgery · physician perspective', href: 'https://www.youtube.com/watch?v=Mgg5TRYq3d4', youtubeId: 'Mgg5TRYq3d4', doctor: true, credentialUrl: 'https://www.drdanielbarrett.com/dr-barrett', note: 'The video already featured in our community collection, now also in the video library. A medical opinion is not equivalent to a systematic evidence review.' },
+  { title: 'Exposure to strong perfume: should I worry?', source: 'Fox News · broadcast discussion', href: 'https://www.youtube.com/watch?v=RmDE8m53byk', youtubeId: 'RmDE8m53byk', note: 'A broadcast segment about strong perfume exposure. Watch the full source for its guest, context and supporting evidence; the clip alone does not establish causation.' },
   {
     title: 'Stink! — official documentary trailer',
     source: 'Official Stink! Documentary',
@@ -17,6 +22,8 @@ export const learningVideos = [
   },
   {
     title: 'How bad is fragrance in skin care?',
+    doctor: true,
+    credentialUrl: 'https://www.drdrayzday.com/about',
     source: 'Dr Dray · board-certified dermatologist',
     href: 'https://www.youtube.com/watch?v=2-CHXXZkohc',
     youtubeId: '2-CHXXZkohc',
@@ -24,6 +31,8 @@ export const learningVideos = [
   },
   {
     title: 'Fragrance in skin care: do I fearmonger?',
+    doctor: true,
+    credentialUrl: 'https://www.drdrayzday.com/about',
     source: 'Dr Dray · dermatologist perspective',
     href: 'https://www.youtube.com/watch?v=0_i29f2h7h0',
     youtubeId: '0_i29f2h7h0',

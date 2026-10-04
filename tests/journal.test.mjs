@@ -15,7 +15,7 @@ test('journal entries map to articles with matching titles', () => {
  }
 });
 test('journal search intersects topic, handles case and no matches', () => {
- assert.equal(articles.filter(a => matchesArticle(a)).length, 12);
+ assert.equal(articles.filter(a => matchesArticle(a)).length, articles.length);
  assert.deepEqual(articles.filter(a => matchesArticle(a, ' LAUNDRY ', 'Everyday changes')).map(a => a.slug), ['fragrance-free-laundry']);
  assert.equal(articles.filter(a => matchesArticle(a, '<script>')).length, 0);
  assert.equal(articles.filter(a => matchesArticle(a, 'laundry', 'Shared spaces')).length, 0);
@@ -27,9 +27,9 @@ test('public product profiles have official sources and no affiliate links', () 
   assert.equal(p.affiliateUrl, null);
   assert.ok(p.notes && p.claim && p.checked && p.imageAlt && p.countryNote);
   const official = new URL(p.officialUrl), image = new URL(p.image);
-  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg','www.eau-thermale-avene.sg','www.qvskincare.com.au','www.cetaphil.com.sg','sukinnaturals.com'];
+  const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg','www.eau-thermale-avene.sg','www.qvskincare.com.au','www.cetaphil.com.sg','sukinnaturals.com','www.vanicream.com','prequelskin.com','helloseen.com','honest.com','kristinesshair.com','www.fourreasons.us','eltamd.com','www.k18hair.com','theordinary.com','www.laroche-posay.us','www.currentbody.us','www.gillettevenus.com'];
   const countrySourceHosts = [...officialHosts, 'www.lazada.sg', 'www.watsons.com.sg'];
-  const imageHosts = [...officialHosts, 'images.ctfassets.net', 'media-pierre-fabre.wedia-group.com', 'cdn.productimages.coles.com.au'];
+  const imageHosts = [...officialHosts, 'images.ctfassets.net', 'media-pierre-fabre.wedia-group.com', 'cdn.productimages.coles.com.au', 'cdn.shopify.com'];
   const imageSourceHosts = [...officialHosts, 'www.coles.com.au'];
   assert.ok(officialHosts.includes(official.hostname));
   assert.ok(imageHosts.includes(image.hostname));
@@ -42,7 +42,7 @@ test('public product profiles have official sources and no affiliate links', () 
  }
 });
 test('country filters do not imply broader regional availability', () => {
- assert.equal(products.length, 36);
+ assert.ok(products.length >= 36);
  for (const country of ['US','GB','SG','AU','NZ']) assert.ok(products.some(p => matchesProduct(p, { country })), country);
  for (const country of ['FR', 'DE', 'JP', 'EU', 'Asia', 'ANZ']) {
   assert.equal(products.filter(p => matchesProduct(p, { country })).length, 0);

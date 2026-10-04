@@ -941,5 +941,607 @@
       "SG": "https://www.watsons.com.sg/2024-brand-voucher-sukin/c/2024brandvouchersukin"
     },
     "countryNote": "The official ingredient list and a Watsons Singapore product collection showing Natural Balance Shampoo were checked. Current size and stock may change."
+  },
+  {
+    "id": "k18-airwash-dry-shampoo-4oz-us",
+    "title": "K18 AirWash Dry Shampoo — fragranced exception",
+    "brand": "K18",
+    "category": "Haircare",
+    "tags": [
+      "Dry shampoo",
+      "Contains fragrance"
+    ],
+    "description": "A dry shampoo requested for comparison. It contains fragrance and is not a fragrance-free alternative.",
+    "officialUrl": "https://www.k18hair.com/products/airwash-dry-shampoo-4oz",
+    "image": "https://www.k18hair.com/cdn/shop/files/Airwash_altimages_1650x2259_MAIN.jpg?v=1710849567&width=300",
+    "imageAlt": "AirWash™ dry shampoo | K18Hair — official brand product image",
+    "claim": "The manufacturer describes a subtle fragrance; ingredients include parfum.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.k18hair.com/products/airwash-dry-shampoo-4oz"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.k18hair.com/products/airwash-dry-shampoo-4oz",
+    "warning": "Not fragrance-free. The official ingredient list includes Fragrance (Parfum) and fragrance allergens. Listed for comparison at the reader’s request, not as a fragrance-free alternative."
+  },
+  {
+    "id": "vanicream-moisturizing-cream-us",
+    "title": "Vanicream Moisturizing Cream",
+    "brand": "Vanicream",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free moisturising cream for dry skin. Compare the current ingredients and choose the size that fits your routine.",
+    "officialUrl": "https://www.vanicream.com/product/vanicream-moisturizing-cream",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/2026-vanicream-moisturizing-cream-pump-pdp-images-01.jpg?gravity=center&v=galleryMedia&k=hhKDYxxOYOWNxrhptzKaHw",
+    "imageAlt": "Vanicream™ Moisturizing Cream — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/vanicream-moisturizing-cream"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/vanicream-moisturizing-cream"
+  },
+  {
+    "id": "vanicream-facial-cleanser-us",
+    "title": "Vanicream Gentle Facial Cleanser",
+    "brand": "Vanicream",
+    "category": "Skin & Body",
+    "tags": [
+      "Cleanser",
+      "Fragrance-free claim"
+    ],
+    "description": "A gentle daily facial cleanser from Vanicream’s fragrance-free range, for removing makeup and everyday skin oils.",
+    "officialUrl": "https://www.vanicream.com/product/vanicream-facial-cleanser",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/gentle-facial-cleanser-8-oz-front.jpg?gravity=center&v=galleryMedia&k=wpsSDw6D4yetnnA15I28ig",
+    "imageAlt": "Vanicream™ Gentle Facial Cleanser — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/vanicream-facial-cleanser"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/vanicream-facial-cleanser"
+  },
+  {
+    "id": "vanicream-daily-facial-moisturizer-us",
+    "title": "Vanicream Daily Facial Moisturizer",
+    "brand": "Vanicream",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A daily facial lotion with hyaluronic acid and ceramides. The manufacturer identifies this version as fragrance-free.",
+    "officialUrl": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/dfm-gp24c-group-2661-ret-crop.jpg?gravity=center&v=galleryMedia&k=4OmHIlIodbwJrIiLYPDUGg",
+    "imageAlt": "Vanicream™ Daily Facial Moisturizer — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer"
+  },
+  {
+    "id": "vanicream-facial-moisturizer-with-spf-us",
+    "title": "Vanicream Facial Moisturizer Broad Spectrum SPF 30",
+    "brand": "Vanicream",
+    "category": "Skin & Body",
+    "tags": [
+      "Sunscreen",
+      "Fragrance-free claim"
+    ],
+    "description": "A mineral facial moisturiser with broad-spectrum SPF 30. Check the current sunscreen directions and reapply as instructed.",
+    "officialUrl": "https://www.vanicream.com/product/facial-moisturizer-with-spf",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/fm-30-gp24e-2595-ret-crop.jpg?gravity=center&v=galleryMedia&k=0yPx5PYqmxC5kFZyW6AGZg",
+    "imageAlt": "Vanicream™ Facial Moisturizer Broad Spectrum SPF 30 — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the sunscreen label, including reapplication and other sun-protection measures.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/facial-moisturizer-with-spf"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/facial-moisturizer-with-spf"
+  },
+  {
+    "id": "vanicream-free-and-clear-shampoo-us",
+    "title": "Vanicream Shampoo",
+    "brand": "Vanicream",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A non-medicated, fragrance-free shampoo for everyday cleansing. Formerly sold under the Free & Clear name.",
+    "officialUrl": "https://www.vanicream.com/product/free-and-clear-shampoo",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/1000x1000-0012-shampoo-12oz-front-1053-ret.jpg?gravity=center&v=galleryMedia&k=k%2FC9keZQD2mLLJGYei1S9w",
+    "imageAlt": "Vanicream™ Shampoo — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/free-and-clear-shampoo"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/free-and-clear-shampoo"
+  },
+  {
+    "id": "vanicream-free-and-clear-conditioner-us",
+    "title": "Vanicream Conditioner",
+    "brand": "Vanicream",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free rinse-out conditioner for detangling hair. Formerly sold under the Free & Clear name.",
+    "officialUrl": "https://www.vanicream.com/product/free-and-clear-conditioner",
+    "image": "https://www.vanicream.com/dynamic-media/product/images/conditioner-12oz-front-1309-ret.jpg?gravity=center&v=galleryMedia&k=Xad%2B3rGOYtZArtOpiZIVJw",
+    "imageAlt": "Vanicream™ Conditioner — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.vanicream.com/product/free-and-clear-conditioner"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.vanicream.com/product/free-and-clear-conditioner"
+  },
+  {
+    "id": "prequel-barrier-therapy-us",
+    "title": "Prequel Barrier Therapy Skin Protectant Cream",
+    "brand": "Prequel",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free skin-protectant cream for face and body, made with colloidal oatmeal. Read the current label before use.",
+    "officialUrl": "https://prequelskin.com/products/barrier-therapy",
+    "image": "https://prequelskin.com/cdn/shop/files/1-PRQL_PDP_Product_BarrierTherapyCream_SOA-NEA-NPF_1.jpg?v=1771458621",
+    "imageAlt": "Barrier Therapy Skin Protectant Cream For Face & Body — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://prequelskin.com/products/barrier-therapy"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://prequelskin.com/products/barrier-therapy"
+  },
+  {
+    "id": "prequel-pre-gleanse-first-cleanse-us",
+    "title": "Prequel Pre-Gleanse Cleansing Oil",
+    "brand": "Prequel",
+    "category": "Skin & Body",
+    "tags": [
+      "Cleanser",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free cleansing oil intended as a first cleanse to remove makeup and sunscreen.",
+    "officialUrl": "https://prequelskin.com/products/pre-gleanse-first-cleanse",
+    "image": "https://prequelskin.com/cdn/shop/files/1-PRQL_PDP_Pre-Gleanse_SOA-NEA.jpg?v=1773448794",
+    "imageAlt": "Pre-Gleanse Cleansing Oil Intended For The First Cleanse — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://prequelskin.com/products/pre-gleanse-first-cleanse"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://prequelskin.com/products/pre-gleanse-first-cleanse"
+  },
+  {
+    "id": "prequel-multi-quench-polyglutamic-acid-serum-us",
+    "title": "Prequel Multi-Quench Hydrating Serum",
+    "brand": "Prequel",
+    "category": "Skin & Body",
+    "tags": [
+      "Hydrating serum",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free hydrating serum with polyglutamic acid. An optional addition, not a requirement for a simpler routine.",
+    "officialUrl": "https://prequelskin.com/products/multi-quench-polyglutamic-acid-serum",
+    "image": "https://prequelskin.com/cdn/shop/files/1-PRQL_PDP_Multi-QuenchSerum-CapOff-NEA.jpg?v=1762268954",
+    "imageAlt": "Multi-Quench Polyglutamic Acid Serum — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://prequelskin.com/products/multi-quench-polyglutamic-acid-serum"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://prequelskin.com/products/multi-quench-polyglutamic-acid-serum"
+  },
+  {
+    "id": "seen-blow-out-creme-fragrance-free-us",
+    "title": "SEEN Blow-Out Creme, Fragrance Free",
+    "brand": "SEEN",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A blow-dry styling cream in SEEN’s fragrance-free version. Do not confuse it with the separately sold scented formula.",
+    "officialUrl": "https://helloseen.com/products/seen-blow-out-creme-fragrance-free",
+    "image": "https://helloseen.com/cdn/shop/files/0069_Blow-OutCreme_FragranceFree_Front-_REG_c779c7cb-ea08-4716-9414-a92851493ef8.webp?v=1746083255",
+    "imageAlt": "Fragrance Free Blow-Out Creme: Free Shipping On Orders Over $40 — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://helloseen.com/products/seen-blow-out-creme-fragrance-free"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://helloseen.com/products/seen-blow-out-creme-fragrance-free"
+  },
+  {
+    "id": "seen-frizz-repair-treatment-mask-fragrance-free-us",
+    "title": "SEEN Frizz + Repair Treatment Mask, Fragrance Free",
+    "brand": "SEEN",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A rinse-out hair treatment mask from SEEN’s fragrance-free range. Choose this exact version rather than its scented counterpart.",
+    "officialUrl": "https://helloseen.com/products/seen-frizz-repair-treatment-mask-fragrance-free",
+    "image": "https://helloseen.com/cdn/shop/files/Frizz_RepairTreatmentMask_FF_01.webp?v=1751037371",
+    "imageAlt": "SEEN Frizz + Repair Treatment Mask, Fragrance Free — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://helloseen.com/products/seen-frizz-repair-treatment-mask-fragrance-free"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://helloseen.com/products/seen-frizz-repair-treatment-mask-fragrance-free"
+  },
+  {
+    "id": "honest-conditioning-detangler-sensitive-us",
+    "title": "Honest Conditioning Detangler, Sensitive — Fragrance Free",
+    "brand": "Honest",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A conditioning detangler spray in the Sensitive, Fragrance Free version. Other Honest detangler scents are not interchangeable.",
+    "officialUrl": "https://honest.com/products/conditioning-detangler-sensitive",
+    "image": "https://honest.com/cdn/shop/files/DetanglerFF.jpg?v=1781718875",
+    "imageAlt": "Conditioning Hair Detangler Spray | Honest — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://honest.com/products/conditioning-detangler-sensitive"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://honest.com/products/conditioning-detangler-sensitive"
+  },
+  {
+    "id": "kristin-ess-dry-shampoo-powder-us",
+    "title": "Kristin Ess Fragrance Free Dry Shampoo Powder",
+    "brand": "Kristin Ess",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A non-aerosol dry shampoo powder from Kristin Ess’s fragrance-free range. Follow the scalp application directions.",
+    "officialUrl": "https://kristinesshair.com/products/dry-shampoo-powder",
+    "image": "https://kristinesshair.com/cdn/shop/files/DryShampooPowder-Front.png?v=1715713400&width=2048",
+    "imageAlt": "Dry Shampoo Powder — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://kristinesshair.com/products/dry-shampoo-powder"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://kristinesshair.com/products/dry-shampoo-powder"
+  },
+  {
+    "id": "four-reasons-no-nothing-strong-hairspray-us",
+    "title": "No nothing Strong Hairspray - Fragrance Free Hair Spray, 7.5 oz",
+    "brand": "Four Reasons / No Nothing",
+    "category": "Haircare",
+    "tags": [
+      "Haircare",
+      "Fragrance-free claim"
+    ],
+    "description": "A strong-hold styling spray from the fragrance-free No Nothing range. Even fragrance-free sprays should be used as directed with ventilation.",
+    "officialUrl": "https://www.fourreasons.us/products/no-nothing-very-sensitive-strong-hairspray",
+    "image": "https://www.fourreasons.us/cdn/shop/files/No_nothing_Very_Sentive_Strong_Hairspray_2_final_600x.png?v=1736780166",
+    "imageAlt": "No nothing Strong Hairspray - Fragrance Free Hair Spray, 7.5 oz — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.fourreasons.us/products/no-nothing-very-sensitive-strong-hairspray"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.fourreasons.us/products/no-nothing-very-sensitive-strong-hairspray"
+  },
+  {
+    "id": "eltamd-uv-physical-spf41-us",
+    "title": "EltaMD UV Physical Tinted Mineral Sunscreen SPF 41",
+    "brand": "EltaMD",
+    "category": "Skin & Body",
+    "tags": [
+      "Sunscreen",
+      "Fragrance-free claim"
+    ],
+    "description": "A tinted mineral face sunscreen with SPF 41, identified by the brand as fragrance-free.",
+    "officialUrl": "https://eltamd.com/products/eltamd-uv-physical-broad-spectrum-spf-41",
+    "image": "https://cdn.shopify.com/s/files/1/0467/8120/2585/files/02578_1_1_ca6558da-6020-4a69-80d0-0200bbd30c80.jpg?v=1789793798",
+    "imageAlt": "UV Physical Tinted Mineral Sunscreen SPF 41 | EltaMD® — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the sunscreen label, including reapplication and other sun-protection measures.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://eltamd.com/products/eltamd-uv-physical-broad-spectrum-spf-41"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://eltamd.com/products/eltamd-uv-physical-broad-spectrum-spf-41"
+  },
+  {
+    "id": "eltamd-uv-skin-recovery-spf50-us",
+    "title": "EltaMD UV Skin Recovery Mineral Face Sunscreen SPF 50",
+    "brand": "EltaMD",
+    "category": "Skin & Body",
+    "tags": [
+      "Sunscreen",
+      "Fragrance-free claim"
+    ],
+    "description": "The current EltaMD UV Skin Recovery mineral face sunscreen, SPF 50. Check the precise tint and current packaging.",
+    "officialUrl": "https://eltamd.com/products/eltamd-uv-skin-recovery-broad-spectrum-spf-50",
+    "image": "https://cdn.shopify.com/s/files/1/0467/8120/2585/files/UVSR_HERO.png?v=1789789881",
+    "imageAlt": "UV Skin Recovery Mineral Face Sunscreen SPF 50 | EltaMD® — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the sunscreen label, including reapplication and other sun-protection measures.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://eltamd.com/products/eltamd-uv-skin-recovery-broad-spectrum-spf-50"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://eltamd.com/products/eltamd-uv-skin-recovery-broad-spectrum-spf-50"
+  },
+  {
+    "id": "aveeno-skin-relief-unscented-body-wash-for-sensitive-skin-us",
+    "title": "Aveeno Skin Relief Fragrance-Free Body Wash",
+    "brand": "Aveeno",
+    "category": "Skin & Body",
+    "tags": [
+      "Cleanser",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free body wash with an oat-based formula, listed on Aveeno’s US site for dry, itchy and sensitive skin.",
+    "officialUrl": "https://www.aveeno.com/products/skin-relief-unscented-body-wash-for-sensitive-skin",
+    "image": "https://images.ctfassets.net/j7jv1vcgqjb4/4J0TOPNeq10q5gcQoHx9Lj/17ab08a733d3d124a5ea9978e2d5bd7e/AVE_USA_US_381371170302_11703092_SR_Body_Wash_Fragrance_Free_18oz_00000.webp",
+    "imageAlt": "Skin Relief Body Wash, Fragrance-Free for Sensitive, Itchy, Dry Skin — official brand product image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.aveeno.com/products/skin-relief-unscented-body-wash-for-sensitive-skin"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.aveeno.com/products/skin-relief-unscented-body-wash-for-sensitive-skin"
+  },
+  {
+    "id": "gillette-venus-cleanser-shave-gel-us",
+    "title": "Gillette Venus Pubic Hair & Skin Smoothing Cleanser + Shave Gel",
+    "brand": "Gillette Venus",
+    "category": "Skin & Body",
+    "tags": [
+      "Shaving",
+      "Check fragrance status"
+    ],
+    "description": "A dual-purpose cleanser and shave gel, identified from your supplied product link. Current fragrance status needs label confirmation.",
+    "officialUrl": "https://www.gillettevenus.com/en-us/products/pubic-hair-and-skin/2-in-1-cleanser-and-shave-gel/",
+    "image": "https://images.ctfassets.net/a1k1e8b6hae3/7HZlvufEbwA1Mjp2gLz9rd/f10f1e51cbda649856381c270e35e811/PLP.png",
+    "imageAlt": "Gillette Venus Smoothing Cleanser and Shave Gel — official brand image",
+    "claim": "The current official page describes a cleanser and shave gel but does not provide an explicit fragrance-free claim or a complete ingredient list.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.gillettevenus.com/en-us/products/pubic-hair-and-skin/2-in-1-cleanser-and-shave-gel/"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.gillettevenus.com/en-us/products/pubic-hair-and-skin/2-in-1-cleanser-and-shave-gel/",
+    "warning": "Fragrance status not confirmed for the current US version. Older descriptions may refer to a different formula. Check the bottle ingredients and ask the brand before choosing it for strict fragrance avoidance."
+  },
+  {
+    "id": "the-ordinary-natural-moisturizing-factors-ha-us",
+    "title": "The Ordinary Natural Moisturizing Factors + HA",
+    "brand": "The Ordinary",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A facial moisturiser with hyaluronic acid. The reviewed ingredient list does not include parfum or essential oils.",
+    "officialUrl": "https://theordinary.com/es-us/natural-moisturizing-factors-ha-moisturizer-100435.html",
+    "image": "https://theordinary.com/dw/image/v2/BFKJ_PRD/on/demandware.static/-/Sites-deciem-master/default/dw51f90af8/Images/products/The%20Ordinary/rdn-natural-moisturizing-factors-ha-30ml.png?sh=800&sm=fit&sw=800",
+    "imageAlt": "The Ordinary Natural Moisturizing Factors + HA — official brand image",
+    "claim": "The reviewed official ingredient list does not list parfum/fragrance or essential oils. Check current packaging.",
+    "notes": "The accessible US-market source is in Spanish and priced in USD. Formulas can differ by region and change over time.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://theordinary.com/es-us/natural-moisturizing-factors-ha-moisturizer-100435.html"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://theordinary.com/es-us/natural-moisturizing-factors-ha-moisturizer-100435.html"
+  },
+  {
+    "id": "la-roche-posay-milky-cleanser-us",
+    "title": "La Roche-Posay Toleriane Moisturizing Milky Cleanser",
+    "brand": "La Roche-Posay",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A milky facial cleanser from the US Toleriane range. The US product name differs from Dermo-Cleanser in other markets.",
+    "officialUrl": "https://www.laroche-posay.us/our-products/face/face-wash/toleriane-moisturizing-milky-facial-cleanser-3337872411830.html",
+    "image": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-acd-laroche-posay-master-catalog/default/dwce4f8d61/img/3337872411830/Toleriane-Milky_ATF_PackshotFront_1500x1500.webp?q=70&sfrm=jpg&sh=320&sm=cut&sw=320",
+    "imageAlt": "La Roche-Posay Toleriane Moisturizing Milky Cleanser — official brand image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "The US catalogue uses the name Toleriane Moisturizing Milky Cleanser rather than Dermo-Cleanser. This is the named US option, not a claim that regional formulas are identical.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.laroche-posay.us/our-products/face/face-wash/toleriane-moisturizing-milky-facial-cleanser-3337872411830.html"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.laroche-posay.us/our-products/face/face-wash/toleriane-moisturizing-milky-facial-cleanser-3337872411830.html"
+  },
+  {
+    "id": "la-roche-posay-cicaplast-balm-b5-us",
+    "title": "La Roche-Posay Cicaplast Balm B5+",
+    "brand": "La Roche-Posay",
+    "category": "Skin & Body",
+    "tags": [
+      "Moisturiser",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free multi-purpose cream for dry skin, linked to the US Cicaplast Balm B5+ source.",
+    "officialUrl": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-for-dry-skin-irritations-cicaplastbalmb5.html",
+    "image": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-acd-laroche-posay-master-catalog/default/dwe8fe5b39/img/cicaplastbalmb5/100ml/LaRochePosay_Cicaplast_ATF_PIM-packshot-front-with-shadow_1500x1500-Primary.webp?q=70&sfrm=jpg&sw=258",
+    "imageAlt": "La Roche-Posay Cicaplast Balm B5+ — official brand image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-for-dry-skin-irritations-cicaplastbalmb5.html"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-for-dry-skin-irritations-cicaplastbalmb5.html"
+  },
+  {
+    "id": "la-roche-posay-cicaplast-balm-b5-spf50-us",
+    "title": "La Roche-Posay Cicaplast Balm B5 UV SPF 50",
+    "brand": "La Roche-Posay",
+    "category": "Skin & Body",
+    "tags": [
+      "Sunscreen",
+      "Fragrance-free claim"
+    ],
+    "description": "A fragrance-free Cicaplast cream with broad-spectrum SPF 50. This is the UV version, not the ordinary B5+ balm.",
+    "officialUrl": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-uv-spf-50-3606000621992.html",
+    "image": "https://www.laroche-posay.us/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-acd-laroche-posay-master-catalog/default/dw897239af/img/3606000621992/01_LaRochePosay_Cicaplast-UV_front-shadow_1500x1500.webp?q=70&sfrm=jpg&sw=258",
+    "imageAlt": "La Roche-Posay Cicaplast Balm B5 UV SPF 50 — official brand image",
+    "claim": "The manufacturer identifies this specific version as fragrance-free. This is a brand claim, not an independent safety assessment.",
+    "notes": "Fragrance-free does not mean irritation-free. Ingredients and regional formulations can change; check the product packaging before use.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-uv-spf-50-3606000621992.html"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.laroche-posay.us/our-products/body/body-lotion/cicaplast-balm-b5-uv-spf-50-3606000621992.html"
+  },
+  {
+    "id": "currentbody-led-mask-series2-us",
+    "title": "CurrentBody Skin LED Red Light Therapy Face Mask: Series 2",
+    "brand": "CurrentBody",
+    "category": "Devices",
+    "tags": [
+      "Optional device",
+      "Not a fragrance replacement"
+    ],
+    "description": "An optional skincare device, identified from the supplied link. It is not needed to begin a fragrance-free routine.",
+    "officialUrl": "https://www.currentbody.us/products/currentbody-skin-led-light-therapy-mask-series-2",
+    "image": "https://www.currentbody.us/cdn/shop/files/1_3c4dd6ee-ff67-4a7b-90a7-dceac5d1fb44.png?v=1770390311",
+    "imageAlt": "CurrentBody Skin LED Red Light Therapy Face Mask: Series 2 — official brand image",
+    "claim": "A device rather than a fragranced cosmetic. No fragrance-safety or medical efficacy claim is made here.",
+    "notes": "Read the manufacturer’s contraindications and safety instructions and seek clinical advice when relevant. It does not treat fragrance sensitivity.",
+    "use": "Follow the current product label. Stop use if irritation develops.",
+    "checked": "2026-10-05",
+    "affiliateUrl": null,
+    "sample": false,
+    "countries": {
+      "US": "https://www.currentbody.us/products/currentbody-skin-led-light-therapy-mask-series-2"
+    },
+    "countryNote": "Official US-market source reviewed. Confirm current stock and delivery with the brand; no availability in other countries is inferred.",
+    "imageSourceUrl": "https://www.currentbody.us/products/currentbody-skin-led-light-therapy-mask-series-2"
   }
 ]
