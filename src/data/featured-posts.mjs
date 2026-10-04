@@ -24,12 +24,12 @@ const photos = [
   },
   {
     provider: 'local',
-    src: 'images/featured/miranda-kerr-fragrance-interview.webp',
+    src: 'images/featured/miranda-kerr-fragrance-quote.webp',
     photographer: 'CleanCare editorial · source: The Dr. Hyman Show',
     sourceUrl: 'https://drhyman.com/blogs/content/podcast-ep1089',
-    alt: 'Miranda Kerr in a text-free editorial portrait based on the interview artwork',
+    alt: 'Miranda Kerr and Dr. Mark Hyman with Miranda Kerr’s no-fragrance policy quotation',
     position: 'center 42%',
-    note: 'Text-free CleanCare editorial crop based on the official interview artwork; source linked for context.',
+    note: 'CleanCare-edited interview artwork pairing the original speakers with Miranda Kerr’s fragrance-policy quotation; source linked for context.',
   },
   {
     provider: 'local',
