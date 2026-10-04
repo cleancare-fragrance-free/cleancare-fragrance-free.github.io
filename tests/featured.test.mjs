@@ -13,7 +13,7 @@ test('five featured sources retain observed order and clean public URLs', () => 
   for (const post of featuredPosts) {
     assert.ok(post.summary && post.context && post.sourceName && post.imageCredit);
     assert.ok(post.photo.alt && post.photo.photographer);
-    assert.match(post.photo.src, /^images\/featured\/[a-z0-9-]+\.(jpg|png)$/);
+    assert.match(post.photo.src, /^images\/featured\/[a-z0-9-]+\.(jpg|png|webp)$/);
     assert.equal(existsSync(new URL(`../public/${post.photo.src}`, import.meta.url)), true);
     assert.equal(new URL(post.photo.sourceUrl).protocol, 'https:');
     assert.equal(post.photo.licenseUrl, undefined);

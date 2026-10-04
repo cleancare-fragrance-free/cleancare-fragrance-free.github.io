@@ -24,12 +24,12 @@ const photos = [
   },
   {
     provider: 'local',
-    src: 'images/featured/miranda-kerr-dr-hyman.png',
-    photographer: 'The Dr. Hyman Show',
+    src: 'images/featured/miranda-kerr-fragrance-interview.webp',
+    photographer: 'CleanCare editorial · source: The Dr. Hyman Show',
     sourceUrl: 'https://drhyman.com/blogs/content/podcast-ep1089',
-    alt: 'Miranda Kerr and Dr. Mark Hyman in the official artwork for their interview',
-    position: 'center 46%',
-    note: 'Official episode image from the publisher.',
+    alt: 'Miranda Kerr in a text-free editorial portrait based on the interview artwork',
+    position: 'center 42%',
+    note: 'Text-free CleanCare editorial crop based on the official interview artwork; source linked for context.',
   },
   {
     provider: 'local',
