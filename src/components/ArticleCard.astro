@@ -9,7 +9,7 @@ const photoUrl = (photo, width) => photo.provider === 'local'
   ? `${url(photo.src)}?v=20260929`
   : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
-<a class:list={['journal-card', {'journal-card--compact': compact}]} href={url(article.href || 'guides/' + article.slug + '/')}
+<a class:list={['journal-card', {'journal-card--compact': compact}]} lang={article.language} href={url(article.href || 'guides/' + article.slug + '/')}
   data-article-slug={article.slug} data-featured={article.order ? 'true' : undefined} aria-labelledby={titleId}>
   <div class="journal-card-image">
     <div class="journal-card-art" aria-hidden="true">

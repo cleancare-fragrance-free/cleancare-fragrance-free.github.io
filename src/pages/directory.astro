@@ -8,12 +8,19 @@ import { availableCountries as countries, availableRegions as regions, productCa
 import { url } from '../lib/paths';
 assertProductCatalog(products);
 const initialProducts = products.filter(p => matchesScentProfile(p, defaultScentFilter));
+const categoryOrder = ['Skin & Body', 'Home & Laundry', 'Haircare', 'Oral Care', 'Devices'];
+const categoryLabels = {'Skin & Body':'Skincare & body', 'Home & Laundry':'Cleaning & laundry', Haircare:'Haircare', 'Oral Care':'Oral care', Devices:'Devices'};
+const initialBrandGroups = categoryOrder.map(category => ({
+  category,
+  label: categoryLabels[category],
+  brands: [...new Set(products.filter(product => product.category === category).map(product => product.brand))].sort((a,b)=>a.localeCompare(b))
+})).filter(group => group.brands.length);
 ---
-<Layout title="Fragrance-free products by country & category | CleanCare" description="Compare checked fragrance-free product versions for the USA, UK, Singapore, Australia and New Zealand. Filter by country, category and essential-oil status." image={url('images/editorial/home-fragrance-free-swaps.webp')}>
+<Layout title="Go Fragrance Free. Here are the options | CleanCare" description="Browse fragrance-free brands by skincare, cleaning, haircare and more. Select a country and brand to see exact product versions with official sources." image={url('images/editorial/home-fragrance-free-swaps.webp')}>
 <section class="container section directory">
   <p class="eyebrow">Practical alternatives</p>
-  <h1>Fragrance-free options by country.</h1>
-  <p class="intro">Find an exact product for your country and routine. Choose a location, category and scent status. Official sources are checked—not personally tested—and links are not affiliate links.</p>
+  <h1>Go Fragrance Free. Here are the options</h1>
+  <p class="intro">Start with a category, choose a brand, then browse the exact product versions checked for your location and scent preferences. Official sources are checked—not personally tested—and links are not affiliate links.</p>
   <p class="editorial-note">US additions inspired by <a href="https://nymag.com/strategist/article/fragrance-free-products-we-use.html" rel="external">The Strategist’s product roundup</a>, checked against official brand information. Product links are not affiliate links.</p>
   <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
   <details class="directory-review"><summary>How we check products and country listings</summary>
@@ -24,19 +31,42 @@ const initialProducts = products.filter(p => matchesScentProfile(p, defaultScent
   </details>
   <div class="location-picker">
     <div role="group" aria-label="Choose a region" class="region-buttons"><button type="button" data-region-button="" aria-pressed="true">All regions</button>{regions.map(region => <button type="button" data-region-button={region.code} aria-pressed="false">{region.name}</button>)}</div>
-    <p class="eyebrow">Choose a country</p>
-    <div role="group" aria-label="Choose a country" class="country-buttons"><button type="button" data-country-button="" aria-pressed="true">All countries</button>{countries.map(country => <button type="button" data-country-button={country.code} data-parent-region={country.region} aria-pressed="false">{country.name}</button>)}</div>
   </div>
   <form id="filters" class="filters" role="search">
-    <label class="search-label">Search the directory<input name="q" id="search" type="search" placeholder="Try laundry, cleanser, sunscreen or dye-free…"/></label>
+    <label class="search-label">Search brands or products<input name="q" id="search" type="search" placeholder="Try CeraVe, laundry, cleanser, sunscreen…"/></label>
+    <label>Country<select name="country" id="country"><option value="">All countries</option>{countries.map(country => <option value={country.code}>{country.name}</option>)}</select></label>
     <label>Category<select name="category" id="category"><option value="">All categories</option><option value="Skin & Body">Skincare &amp; Body</option><option value="Home & Laundry">Cleaning &amp; Laundry</option><option>Haircare</option><option>Oral Care</option><option>Devices</option></select></label>
     <label>Essential oils &amp; scent<select name="scent" id="scent" aria-describedby="scent-help">{scentOptions.map(option => <option value={option.value} selected={option.value === defaultScentFilter}>{option.label}</option>)}</select></label>
     <button type="reset" class="reset">Reset filters</button>
   </form>
   <p id="scent-help" class="editorial-note">Fragrance-free claims do not automatically establish essential-oil absence. Use the stricter filter for separately checked formulas; ingredients can still have their own smell.</p>
-  <noscript><p class="notice">JavaScript is needed to use the filters. Fragrance-free profiles are displayed below. The separate <a href={url('products/real-purity-roll-on-essential-oils-us/')}>essential-oil deodorant profile</a> is available directly, but is not fragrance-free.</p></noscript>
-  <p id="result-count" role="status" aria-live="polite">{initialProducts.length} product profiles</p>
-  <div id="products" class="product-grid">{products.map(product => <ProductCard product={product} hidden={!matchesScentProfile(product, defaultScentFilter)}/>)}</div>
+  <noscript><p class="notice">JavaScript is needed to filter and open brand collections. The fragrance-free brand collections appear below.</p></noscript>
+  <nav class="category-shortcuts" aria-label="Browse product categories">
+    {initialBrandGroups.map(group => <button type="button" class="category-shortcut" data-category-shortcut={group.category} aria-label={'Show ' + group.label + ' brands'}>
+      <span class="category-shortcut-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        {group.category === 'Skin & Body' && <><path d="M16 3C12.7 8.4 7 14 7 20a9 9 0 0 0 18 0c0-6-5.7-11.6-9-17Z"/><path d="M12 21c.4 2 1.7 3.2 3.8 3.5"/></>}
+        {group.category === 'Home & Laundry' && <><path d="M6 13h20l-2 14H8L6 13Z"/><path d="M10 13l2-9h8l2 9M12 18h8M13 22h6"/><path d="M8 8h2"/></>}
+        {group.category === 'Haircare' && <><path d="M10 4v24M15 4v24M20 4v24M25 4v24M8 10h19M8 16h19M8 22h19"/><path d="M8 4h19v24H8z"/></>}
+        {group.category === 'Oral Care' && <><path d="M9 5c3-2 5 1 7 1s4-3 7-1c4 2 3 7 1 12l-3 9c-.5 1.6-2.5 1.6-3 0l-2-7h-1l-2 7c-.5 1.6-2.5 1.6-3 0l-3-9C5 12 5 7 9 5Z"/></>}
+        {group.category === 'Devices' && <><path d="M16 3v5M16 24v5M3 16h5M24 16h5M6.8 6.8l3.5 3.5m11.4 11.4 3.5 3.5m0-18.4-3.5 3.5M10.3 21.7l-3.5 3.5"/><circle cx="16" cy="16" r="6"/><path d="m14 18 4-4m-3-1h.01"/></>}
+      </svg></span><span>{group.label}</span>
+    </button>)}
+  </nav>
+  <p id="result-count" role="status" aria-live="polite">{initialProducts.length} fragrance-free product profiles from {new Set(initialProducts.map(p=>p.brand)).size} brands</p>
+
+  <div id="brand-index" class="brand-index">
+    {initialBrandGroups.map(group => <section class="brand-category" data-brand-category={group.category} aria-labelledby={'brand-category-' + group.category.replaceAll(' ','-')} hidden={!initialProducts.some(product=>product.category===group.category)}>
+      <div class="brand-category-heading"><h2 id={'brand-category-' + group.category.replaceAll(' ','-')}>{group.label}</h2><span>{group.brands.length} {group.brands.length === 1 ? 'brand' : 'brands'}</span></div>
+      <div class="brand-grid">{group.brands.map(brand => { const count=initialProducts.filter(product=>product.category===group.category&&product.brand===brand).length; return <button class="brand-choice" type="button" data-brand-choice={brand} hidden={!count}><span class="brand-mark" aria-hidden="true">{brand.split(/\s+/).slice(0,2).map(word=>word[0]).join('').toUpperCase()}</span><span class="brand-choice-name">{brand}</span><span class="brand-choice-count" data-brand-count={brand}>{count} {count===1?'product':'products'}</span><span class="brand-choice-arrow" aria-hidden="true">→</span></button>; })}</div>
+    </section>)}
+  </div>
+  <section id="brand-products" class="brand-products" hidden aria-labelledby="selected-brand-title">
+    <button id="back-to-brands" class="back-to-brands" type="button">← All brands</button>
+    <p class="eyebrow">Checked product versions</p>
+    <h2 id="selected-brand-title"></h2>
+    <p id="selected-brand-intro" class="editorial-note">Only the exact fragrance-free products matching your current filters are shown. A brand name is not an endorsement of every product it sells.</p>
+  </section>
+  <div id="products" class="product-grid" hidden>{products.map(product => <ProductCard product={product} hidden={!matchesScentProfile(product, defaultScentFilter)}/>)}</div>
   <div class="directory-more"><button id="show-more-products" class="button" type="button" hidden>Show more products</button><p id="visible-product-count" class="editorial-note" aria-live="polite"></p></div>
   <div id="empty" class="empty" hidden><h2>No matches just yet.</h2><p id="empty-message">Try a broader search or reset the filters. Some countries do not yet have listings.</p><button class="button" id="empty-reset">Reset filters</button></div>
   <section class="directory-hubs" aria-labelledby="country-guides-title"><h2 id="country-guides-title">Explore checked country guides</h2><div class="topic-links">{countries.map(country=><a href={url('directory/'+country.slug+'/')}>{country.name} →</a>)}</div><h3>Browse a product category</h3><div class="topic-links">{productCategories.map(category=><a href={url('directory/categories/'+category.slug+'/')}>{category.title} →</a>)}</div><p class="editorial-note">Only countries with product listings are shown. A checked listing is not a promise of stock, delivery or an unchanged formula.</p></section>
@@ -50,15 +80,22 @@ import { matchesProduct } from '../lib/filter.mjs';
 import { defaultScentFilter, normalizeScentFilter } from '../lib/scent-profile.mjs';
 const form = document.querySelector<HTMLFormElement>('#filters')!;
 const query = document.querySelector<HTMLInputElement>('#search')!;
+const countrySelect = document.querySelector<HTMLSelectElement>('#country')!;
 const category = document.querySelector<HTMLSelectElement>('#category')!;
 const scent = document.querySelector<HTMLSelectElement>('#scent')!;
+const brandIndex = document.querySelector<HTMLElement>('#brand-index')!;
+const brandProducts = document.querySelector<HTMLElement>('#brand-products')!;
+const productGrid = document.querySelector<HTMLElement>('#products')!;
 const productById = new Map(products.map(product => [product.id, product]));
+const brandButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-brand-choice]')];
 let selectedCountry = '';
 let selectedRegion = '';
+let selectedBrand = '';
 const regionButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-region-button]')];
-const countryButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-country-button]')];
+const categoryShortcuts = [...document.querySelectorAll<HTMLButtonElement>('[data-category-shortcut]')];
 const cards = [...document.querySelectorAll<HTMLElement>('[data-product-id]')];
 const more = document.querySelector<HTMLButtonElement>('#show-more-products')!;
+const empty = document.querySelector<HTMLElement>('#empty')!;
 let visibleLimit = 12;
 function readURL() {
   const params = new URLSearchParams(location.search);
@@ -67,30 +104,54 @@ function readURL() {
   scent.value = normalizeScentFilter(params.get('scent'));
   selectedCountry = countries.some(c => c.code === params.get('country')) ? params.get('country')! : '';
   selectedRegion = regions.some(r => r.code === params.get('region')) ? params.get('region')! : '';
+  selectedBrand = params.get('brand') || '';
   if (selectedCountry && !countryInRegion(selectedCountry, selectedRegion)) selectedRegion = countries.find(c => c.code === selectedCountry)!.region;
+  if (selectedBrand && !products.some(product => product.brand === selectedBrand)) selectedBrand = '';
 }
 function render(updateURL = true, resetLimit = true) {
   if (resetLimit) visibleLimit = 12;
   const state = { query: query.value, category: category.value, country: selectedCountry, scent: scent.value };
+  countrySelect.value = selectedCountry;
   regionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.regionButton === selectedRegion)));
-  countryButtons.forEach(button => { button.hidden = !!button.dataset.countryButton && !countryInRegion(button.dataset.countryButton, selectedRegion); button.setAttribute('aria-pressed', String(button.dataset.countryButton === selectedCountry)); });
-  const visibleProducts = new Set<string>();
-  let shown = 0;
-  cards.forEach(card => {
-    const product = productById.get(card.dataset.productId!)!;
-    const matches = Object.keys(product.countries).some(code=>countryInRegion(code,selectedRegion)) && matchesProduct(product,state);
-    if (matches) visibleProducts.add(product.id);
-    card.hidden = !matches || shown >= visibleLimit;
-    if (!card.hidden) shown++;
+  const matchingProducts = products.filter(product => Object.keys(product.countries).some(code=>countryInRegion(code,selectedRegion)) && matchesProduct(product,state));
+  const matchingBrands = [...new Set(matchingProducts.map(product=>product.brand))].sort((a,b)=>a.localeCompare(b));
+  document.querySelectorAll<HTMLElement>('[data-brand-category]').forEach(section => {
+    const groupCategory = section.dataset.brandCategory!;
+    const groupProducts = matchingProducts.filter(product=>product.category===groupCategory);
+    const brands = [...new Set(groupProducts.map(product=>product.brand))].sort((a,b)=>a.localeCompare(b));
+    section.hidden = brands.length===0;
+    section.querySelector('.brand-category-heading span')!.textContent = `${brands.length} ${brands.length===1?'brand':'brands'}`;
+    section.querySelectorAll<HTMLButtonElement>('[data-brand-choice]').forEach(button=>{
+      const brand=button.dataset.brandChoice!;
+      const brandProducts=groupProducts.filter(product=>product.brand===brand);
+      button.hidden=!brands.includes(brand);
+      button.querySelector<HTMLElement>('.brand-choice-count')!.textContent=`${brandProducts.length} ${brandProducts.length===1?'product':'products'}`;
+    });
+  });
+  const activeBrand = selectedBrand;
+  brandIndex.hidden=!!activeBrand;
+  brandProducts.hidden=!activeBrand;
+  productGrid.hidden=!activeBrand;
+  document.querySelector<HTMLElement>('#selected-brand-title')!.textContent=activeBrand;
+  const brandMatches=activeBrand?matchingProducts.filter(product=>product.brand===activeBrand):[];
+  let shown=0;
+  cards.forEach(card=>{
+    const product=productById.get(card.dataset.productId!)!;
+    const matches=!!activeBrand && product.brand===activeBrand && brandMatches.some(match=>match.id===product.id);
+    card.hidden=!matches || shown>=visibleLimit;
+    if(!card.hidden) shown++;
   });
   const noCountryListings = !products.some(product => Object.keys(product.countries).some(code => (!selectedCountry || code === selectedCountry) && countryInRegion(code, selectedRegion)));
-  document.querySelector('#empty-message')!.textContent = noCountryListings ? 'No product sources have been checked for this selection yet. This does not mean fragrance-free products are unavailable there.' : 'No products match these filters. Try a broader search or reset the filters.';
-  const count = visibleProducts.size;
-  more.hidden = shown >= count;
-  more.textContent = `Show ${Math.min(12,count-shown)} more products`;
-  document.querySelector('#visible-product-count')!.textContent = count ? `Showing ${shown} of ${count} matching profiles. Each product appears once.` : '';
-  document.querySelector('#result-count')!.textContent = `${count} product profile${count === 1 ? '' : 's'}`;
-  document.querySelector<HTMLElement>('#empty')!.hidden = count !== 0;
+  document.querySelector('#empty-message')!.textContent = noCountryListings ? 'No product sources have been checked for this selection yet. This does not mean fragrance-free products are unavailable there.' : activeBrand ? 'No products from this brand match these filters. Try another country, category or scent status, or go back to all brands.' : 'No brands match these filters. Try a broader search or reset the filters.';
+  const brandCount = activeBrand ? brandMatches.length : matchingBrands.length;
+  const profileCount = activeBrand ? brandMatches.length : matchingProducts.length;
+  more.hidden = !activeBrand || shown >= profileCount;
+  more.textContent = `Show ${Math.min(12,profileCount-shown)} more products`;
+  document.querySelector('#visible-product-count')!.textContent = activeBrand && profileCount ? `Showing ${shown} of ${profileCount} products from ${activeBrand}.` : '';
+  document.querySelector('#result-count')!.textContent = activeBrand
+    ? `${profileCount} matching product${profileCount===1?'':'s'} from ${activeBrand}`
+    : `${brandCount} matching brand${brandCount===1?'':'s'} across ${matchingProducts.length} product profiles`;
+  empty.hidden = activeBrand ? profileCount !== 0 : brandCount !== 0;
   document.querySelector('#scent-help')!.textContent = ['essential-oils', 'all'].includes(state.scent)
     ? 'This selection includes scented essential-oil alternatives. They are not fragrance-free or automatically safer and can still cause allergy or irritation.'
     : state.scent === 'no-essential-oils'
@@ -105,15 +166,24 @@ function render(updateURL = true, resetLimit = true) {
     if (state.country) params.set('country', state.country);
     if (selectedRegion) params.set('region', selectedRegion);
     if (state.scent !== defaultScentFilter) params.set('scent', state.scent);
+    if (activeBrand) params.set('brand', activeBrand);
     history.replaceState(null, '', location.pathname + (params.size ? `?${params}` : ''));
   }
 }
-regionButtons.forEach(button => button.addEventListener('click', () => { selectedRegion = button.dataset.regionButton!; selectedCountry = ''; render(); }));
-countryButtons.forEach(button => button.addEventListener('click', () => { selectedCountry = button.dataset.countryButton!; render(); }));
+regionButtons.forEach(button => button.addEventListener('click', () => { selectedRegion = button.dataset.regionButton!; selectedCountry = ''; selectedBrand = ''; render(); }));
+brandButtons.forEach(button=>button.addEventListener('click',()=>{selectedBrand=button.dataset.brandChoice!;render();document.querySelector('#brand-products')!.scrollIntoView({behavior:'smooth',block:'start'});}));
+categoryShortcuts.forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.categoryShortcut!;selectedBrand='';render();document.querySelector(`[data-brand-category="${CSS.escape(category.value)}"]`)?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}));
+document.querySelector('#back-to-brands')!.addEventListener('click',()=>{selectedBrand='';render();document.querySelector('#brand-index')!.scrollIntoView({behavior:'smooth',block:'start'});});
 form.addEventListener('submit', event => event.preventDefault());
 form.addEventListener('input', () => render());
-form.addEventListener('change', () => render());
-form.addEventListener('reset', () => { query.value = ''; category.value = ''; scent.value = defaultScentFilter; selectedCountry = ''; selectedRegion = ''; render(); });
+form.addEventListener('change', event => {
+  if (event.target === countrySelect) {
+    selectedCountry = countrySelect.value;
+    if (selectedCountry) selectedRegion = countries.find(country => country.code === selectedCountry)!.region;
+  }
+  render();
+});
+form.addEventListener('reset', () => { query.value = ''; category.value = ''; scent.value = defaultScentFilter; selectedCountry = ''; selectedRegion = ''; selectedBrand=''; render(); });
 document.querySelector('#empty-reset')!.addEventListener('click', () => form.reset());
 window.addEventListener('popstate', () => { readURL(); render(false); });
 more.addEventListener('click', () => {visibleLimit += 12;render(false,false);});
@@ -126,8 +196,13 @@ readURL(); render(false);
 .scent-notice { background: var(--accent-sky, #E8F3F8); border-radius: 20px; padding: 14px 18px; font-size: 13px; margin: 18px 0; }
 .directory-review { border-bottom: 1px solid #EFEBE4; padding: 8px 0 14px; font-size: 12px; color: #6B7280; }
 .directory-review summary { color: #333; font-weight: 600; cursor: pointer; }
-.directory .filters { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,.8fr) minmax(0,1.25fr) auto; gap: 16px; }
+.directory .location-picker { margin: 22px 0 14px; }
+.directory .region-buttons { margin-bottom: 0; }
+.directory .filters { display: grid; grid-template-columns: minmax(0,1.35fr) repeat(3,minmax(0,1fr)) auto; gap: 12px; align-items: end; }
 .directory .filters label { min-width: 0; }
+.category-shortcuts{display:flex;gap:14px;overflow-x:auto;padding:12px 2px 15px;margin:14px 0 18px;scrollbar-width:thin}.category-shortcut{flex:0 0 88px;display:grid;justify-items:center;align-content:start;gap:7px;border:0;background:transparent;color:var(--text);font:inherit;font-size:11px;line-height:1.25;text-align:center;cursor:pointer}.category-shortcut-icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#f1f1ef;color:#45564e;transition:background .2s ease,transform .2s ease}.category-shortcut-icon svg{width:29px;height:29px}.category-shortcut:hover .category-shortcut-icon{background:var(--accent-sky,#E8F3F8);transform:translateY(-2px)}.category-shortcut:focus-visible{outline:3px solid var(--accent-active,#F4A261);outline-offset:2px;border-radius:12px}
+.brand-index{display:grid;gap:28px;margin-top:24px}.brand-category{border-top:1px solid var(--border);padding-top:18px;scroll-margin-top:24px}.brand-category[hidden],.brand-choice[hidden]{display:none}.brand-category-heading{display:flex;align-items:center;gap:10px;margin-bottom:13px}.brand-category-heading h2{font-size:clamp(20px,2vw,27px);margin:0}.brand-category-heading span:last-child{margin-left:auto;font-size:12px;color:var(--muted)}.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}.brand-choice{position:relative;display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:auto auto;column-gap:11px;align-items:center;text-align:left;min-height:78px;padding:12px 38px 12px 13px;border:1px solid var(--border);border-radius:16px;background:var(--card);color:var(--text);cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.brand-choice:hover{transform:translateY(-2px);border-color:var(--accent-sage,#7A9A8B);box-shadow:0 8px 22px rgba(51,51,51,.07)}.brand-choice:focus-visible,.back-to-brands:focus-visible{outline:3px solid var(--accent-active,#F4A261);outline-offset:3px}.brand-mark{grid-row:1/3;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#f4f0e9;color:#53695e;font-size:12px;font-weight:700;letter-spacing:.04em}.brand-choice-name{font-size:15px;font-weight:650}.brand-choice-count{font-size:11px;color:var(--muted)}.brand-choice-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--accent-sage,#7A9A8B)}.brand-products{margin:14px 0 8px;scroll-margin-top:24px}.brand-products[hidden],#products[hidden]{display:none}.brand-products h2{font-size:clamp(25px,3vw,36px);margin:4px 0 8px}.back-to-brands{border:0;background:transparent;color:var(--accent-sage,#7A9A8B);font:inherit;font-size:14px;font-weight:600;padding:8px 0;margin-bottom:14px;cursor:pointer}.back-to-brands:hover{color:var(--accent-active,#F4A261)}
 @media (max-width: 900px) { .directory .filters { grid-template-columns: repeat(2,minmax(0,1fr)); } .search-label { grid-column: 1 / -1; } .reset { grid-column: 1 / -1; justify-self: start; } }
-@media (max-width: 560px) { .directory .filters { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 560px) { .directory .filters { grid-template-columns: minmax(0,1fr); } .brand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.brand-choice{min-height:78px;padding:10px 27px 10px 10px;border-radius:13px;grid-template-columns:32px minmax(0,1fr);column-gap:8px}.brand-mark{width:32px;height:32px;font-size:10px}.brand-choice-name{font-size:13px}.brand-choice-count{font-size:10px}.brand-choice-arrow{right:9px;font-size:17px}.category-shortcuts{gap:8px}.category-shortcut{flex-basis:75px;font-size:10px}.category-shortcut-icon{width:48px;height:48px}.category-shortcut-icon svg{width:26px;height:26px} }
+@media(prefers-reduced-motion:reduce){.brand-choice{transition:none}.brand-choice:hover{transform:none}}
 </style>

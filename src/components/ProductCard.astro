@@ -1,22 +1,13 @@
 ---
-import { countryName } from '../data/countries.mjs';
 import { url } from '../lib/paths';
-import { getScentLabel } from '../lib/scent-profile.mjs';
 const { product, hidden = false } = Astro.props;
-const displayCategory = {
-  'Skin & Body': 'Skincare & Body',
-  'Home & Laundry': 'Cleaning & Laundry'
-}[product.category] || product.category;
 ---
 <article class="product-card verified-card" data-product-id={product.id} hidden={hidden}>
 <a class="brand-product-image" href={url('products/' + product.id + '/')} aria-label={'Read profile: ' + product.title}>{product.image ? <img src={product.image} alt={product.imageAlt} loading="lazy" decoding="async" width="600" height="600" referrerpolicy="no-referrer"/> : <span class="product-image-placeholder"><strong>{product.brand}</strong><small>Product photo unavailable<br/>View the official brand page</small></span>}</a>
-<p class:list={['scent-badge', {'essential-oil-badge': product.fragranceStatus === 'essential-oils-only'}]}>{getScentLabel(product)}</p>
-<div class="card-body"><div class="card-kicker">{displayCategory}<span>Brand source</span></div><h3><a href={url('products/' + product.id + '/')}>{product.title}</a></h3><p>{product.description}</p>{product.warning && <p class="product-warning"><strong>Ingredient note:</strong> {product.warning}</p>}<div class="tags">{product.tags.map(tag => <span>{tag}</span>)}</div><p class="availability">{Object.keys(product.countries).map(countryName).join(", ")} · source checked {product.checked}</p><a class="text-link" href={url('products/' + product.id + '/')}>Read the product profile →</a></div>
+<div class="card-body"><p class="product-brand">{product.brand}</p><h3><a href={url('products/' + product.id + '/')}>{product.title}</a></h3><p class="product-summary">{product.description}</p><a class="product-detail-link" href={url('products/' + product.id + '/')}>View product details <span aria-hidden="true">→</span></a></div>
 </article>
 <style>
 .product-card[hidden] { display: none; }
-.product-image-placeholder { background: #edf3ee; min-height: 220px; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 24px; text-align: center; font-size: 26px; color: #40584d; }
-.product-image-placeholder small { font-size: 12px; margin-top: 12px; }
-.scent-badge { background: #edf3ee; color: #40584d; font-size: 11px !important; margin: 12px 20px 0; padding: 7px 10px; border-radius: 12px; }
-.essential-oil-badge { background: #fff0df; color: #874b21; }
+.product-image-placeholder { background: #f0ece5; min-height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 14px; text-align: center; font-size: 18px; color: #40584d; }
+.product-image-placeholder small { font-size: 10px; margin-top: 8px; }
 </style>

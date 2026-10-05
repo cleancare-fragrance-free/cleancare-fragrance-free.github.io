@@ -33,7 +33,7 @@ test('essential-oil alternatives require warnings and dated ingredient evidence'
 test('default results omit essential oils, including before JavaScript filtering', () => {
   assert.equal(defaultScentFilter,'fragrance-free');
   assert.equal(matchesScentProfile(alternative,defaultScentFilter),false);
-  assert.equal(products.filter(p => matchesScentProfile(p,defaultScentFilter)).length,70);
+  assert.equal(products.filter(p => matchesScentProfile(p,defaultScentFilter)).length,93);
   const directory = readFileSync(new URL('../src/pages/directory.astro',import.meta.url),'utf8');
   assert.ok(directory.includes('hidden={!matchesScentProfile(product, defaultScentFilter)}'));
   assert.ok(directory.includes('normalizeScentFilter(params.get(\'scent\'))'));

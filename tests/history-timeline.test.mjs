@@ -13,3 +13,19 @@ test('history guide adds an original accessible visual timeline and labels compa
   assert.match(guide, /fychemgroup\.com/);
   assert.match(guide, /not as independent historical or health evidence/);
 });
+test('glossary is nested under products and history article has a compact styled layout', () => {
+  const navigation = source('../src/layouts/Layout.astro');
+  const articleLayout = source('../src/layouts/Article.astro');
+  const styles = source('../src/styles/redesign.css');
+  const productMenu = navigation.slice(navigation.indexOf('<details><summary>Fragrance Free Products'), navigation.indexOf('<details><summary>About Us'));
+  assert.match(productMenu, /Ingredient glossary/);
+  assert.match(productMenu, /Browse products by country/);
+  const aboutMenu = navigation.slice(navigation.indexOf('<details><summary>About Us'), navigation.indexOf('</details>', navigation.indexOf('<details><summary>About Us')));
+  assert.doesNotMatch(aboutMenu, /Glossary/);
+  assert.match(articleLayout, /story-cover--history/);
+  assert.match(articleLayout, /history-story/);
+  assert.match(styles, /\.story-cover--video\{[^}]*max-width:320px/s);
+  assert.match(styles, /\.story-cover--video img\{[^}]*aspect-ratio:16\/9/s);
+  assert.match(styles, /\.history-story>h2::before/);
+  assert.match(styles, /\.history-story>blockquote/);
+});
