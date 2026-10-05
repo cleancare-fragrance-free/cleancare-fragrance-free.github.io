@@ -1,0 +1,132 @@
+---
+import { questions } from '../lib/self-check.mjs';
+import { url } from '../lib/paths';
+const { standalone = false } = Astro.props;
+const Heading = standalone ? 'h1' : 'h2';
+---
+
+<section class:list={['container','section','self-check-page',{'private-health-check--embedded':!standalone}]} id="private-health-check">
+  <div class="check-intro">
+    <p class="eyebrow">Private health check</p>
+    <Heading>How do fragrances affect your everyday life?</Heading>
+    <p class="intro">Could scented products be part of a pattern you are noticing? Review the products in your routine, common symptoms, and when they occur. Seven questions. About four minutes.</p>
+    <p class="check-scope">This quiz checks product use and reported patterns—not whether an ingredient is synthetic, natural, or a mixture.</p>
+    <div class="notice"><strong>A self-check, not a diagnosis.</strong> This is not a validated screening test and does not measure a level of fragrance sensitivity. It cannot diagnose allergy, asthma, or another condition, establish a cause, or rule out a health problem.</div>
+    <p class="check-urgent"><strong>Need help now?</strong> If you are struggling to breathe, have sudden swelling of your mouth, tongue, or throat, or someone faints and cannot be woken, call your local emergency number. Do not wait for quiz results.</p>
+  </div>
+
+  <noscript><div class="notice">This quiz needs JavaScript to show your summary. You can still read our <a href={url('guides/fragrance-health-evidence/')}>fragrance and health guide</a>.</div></noscript>
+  <div id="self-check" class="check-card" hidden>
+    <div id="check-welcome">
+      <p class="eyebrow">A moment for your own experience</p>
+      <h3>Start with what you have noticed.</h3>
+      <p>Reflect on the past four weeks. If you are unsure, say so. Do not intentionally expose yourself to fragrance to answer a question.</p>
+      <p class="check-privacy">Private by design: answers stay in this page’s memory. They are not saved or sent to us. Reloading the page or selecting “Clear & start over” clears them.</p>
+      <button class="button" id="check-start" type="button">Start the self-check <span aria-hidden="true">→</span></button>
+    </div>
+    <form id="check-form" hidden novalidate autocomplete="off">
+      <div class="check-progress"><p id="check-step" aria-live="polite"></p><progress id="check-progress" max={questions.length} value="1" aria-label="Question progress"></progress></div>
+      {questions.map((question, index) => <fieldset data-step={index} hidden>
+        <legend tabindex="-1">{question.title}</legend>
+        <p id={`${question.id}-hint`} class="check-hint">{question.hint}</p>
+        <div class="check-options">{question.options.map(([value, label]) => <label class="check-option"><input type={question.multiple ? 'checkbox' : 'radio'} name={question.id} value={value} aria-describedby={`${question.id}-hint`}/><span>{label}</span></label>)}</div>
+      </fieldset>)}
+      <p id="check-error" class="check-error" role="alert" hidden>Please choose an answer before continuing.</p>
+      <div class="check-actions"><button id="check-back" type="button" class="check-secondary">Back</button><button id="check-next" type="submit" class="button">Next question →</button></div>
+    </form>
+    <section id="check-result" hidden aria-labelledby="check-result-title">
+      <p class="eyebrow">Your reflection · not a medical assessment</p>
+      <h3 id="check-result-title" tabindex="-1"></h3>
+      <p id="check-result-description"></p>
+      <div id="check-breathing" class="notice" hidden><strong>You reported breathing symptoms.</strong> Discuss cough, wheeze, chest tightness, or breathlessness with a healthcare professional. If symptoms are happening now or worsening, seek prompt medical advice; severe breathing difficulty needs emergency help. Follow any existing asthma action plan.</div>
+      <div id="check-impact" class="notice" hidden><strong>Your daily life is being affected.</strong> Consider making a healthcare appointment to discuss the symptoms, their impact, and possible causes.</div>
+      <div class="check-product-result"><p class="eyebrow">Your scented-product inventory</p><h4>Products in your everyday routine</h4><p id="check-product-summary"></p><ul id="check-product-alternatives" class="check-next-steps"></ul><p class="check-limit">These are optional ways to reduce added scent—not treatments or guarantees of safety. Having symptoms and using scented products at the same time does not establish cause and effect.</p></div>
+      <h4>Useful next steps</h4>
+      <ul class="check-next-steps">
+        <li>If symptoms occur naturally, note the product or situation, timing, duration, symptoms, and any other possible factors. Do not deliberately repeat an exposure or perform a home allergy test.</li>
+        <li>Discuss persistent, recurring, or concerning symptoms with a healthcare professional. They can assess other causes and whether testing is appropriate.</li>
+        <li>Explore practical ways to reduce unwanted exposure. “Natural” scents and fragrance-free claims do not guarantee that a product will suit everyone.</li>
+      </ul>
+      <details class="check-answer-details"><summary>Review your seven answers</summary><dl id="check-answer-list"></dl></details>
+      <p class="check-limit">These results describe your answers, not a clinical finding. No sensitivity score has been calculated. The sources below inform the health context; they have not validated or endorsed this quiz.</p>
+      <div class="check-links"><a class="button" href={url('guides/reduce-fragrance-exposure/')}>Ways to reduce exposure ↗</a><a class="text-link" href={url('evidence/')}>Explore the evidence →</a><button id="check-edit" class="check-secondary" type="button">Change my answers</button></div>
+    </section>
+    <button id="check-reset" class="reset" type="button" hidden>Clear & start over</button>
+  </div>
+
+  <details class="check-sources">
+    <summary><strong>The context behind this self-check</strong></summary>
+    <p>Some people experience contact allergy or other symptoms around fragranced products. Symptoms alone cannot identify an ingredient or establish why they occurred. This quiz is an editorial reflection tool, not a clinical questionnaire. Headaches, migraine episodes, dizziness, and difficulty concentrating are recorded as experiences, not automatically classified as allergic reactions. Cancer, infertility, and hormone disruption cannot be assessed through this symptom quiz.</p>
+    <ul>
+      <li><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics">FDA: Allergens in Cosmetics</a> — reactions, symptoms, and discussing possible allergy with a clinician.</li>
+      <li><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics">FDA: Fragrances in Cosmetics</a> — product categories, ingredient labels, and natural and synthetic fragrance mixtures.</li>
+      <li><a href="https://www.epa.gov/asthma/can-use-fragrances-indoors-cause-health-impacts">EPA: Fragrances indoors and health impacts</a> — sensitive individuals and uncertainty about mechanisms.</li>
+      <li><a href="https://www.epa.gov/indoor-air-quality-iaq/sources-indoor-particulate-matter-pm">EPA: Sources of Indoor Particulate Matter</a> — smoke and particles, including from burning candles and incense; these are not solely fragrance exposures.</li>
+      <li><a href="https://www.nhs.uk/conditions/anaphylaxis/">NHS: Anaphylaxis</a> — signs that require emergency help.</li>
+    </ul>
+    <p>Topic inspiration: <a href="https://suntribesunscreen.com/en-us/blogs/guide/the-dangers-of-synthetic-fragrances">Suntribe’s article on synthetic fragrances</a> (20 August 2024). This commercial brand’s article is not a validated assessment. Its symptom topics informed this checklist, not a diagnostic score or an endorsement of all its claims.</p>
+  </details>
+</section>
+
+<script>
+  import { questions, validAnswer, summarizeAnswers } from '../lib/self-check.mjs';
+  const root = document.querySelector<HTMLElement>('#self-check');
+  if (root) {
+    const welcome = root.querySelector<HTMLElement>('#check-welcome')!;
+    const form = root.querySelector<HTMLFormElement>('#check-form')!;
+    const result = root.querySelector<HTMLElement>('#check-result')!;
+    const steps = Array.from(form.querySelectorAll<HTMLFieldSetElement>('fieldset'));
+    const reset = root.querySelector<HTMLButtonElement>('#check-reset')!;
+    const back = root.querySelector<HTMLButtonElement>('#check-back')!;
+    const next = root.querySelector<HTMLButtonElement>('#check-next')!;
+    const error = root.querySelector<HTMLElement>('#check-error')!;
+    let current = 0;
+    const values = (id: string) => Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${id}"]:checked`)).map(input => input.value);
+    function showStep() {
+      steps.forEach((step, index) => { step.hidden = index !== current; });
+      error.hidden = true;
+      back.disabled = current === 0;
+      root.querySelector('#check-step')!.textContent = `Question ${current + 1} of ${questions.length}`;
+      root.querySelector<HTMLProgressElement>('#check-progress')!.value = current + 1;
+      next.textContent = current === questions.length - 1 ? 'See my reflection →' : 'Next question →';
+      steps[current].querySelector('legend')!.focus();
+    }
+    root.querySelector('#check-start')!.addEventListener('click', () => { welcome.hidden = true; form.hidden = false; reset.hidden = false; showStep(); });
+    form.addEventListener('change', event => {
+      const target = event.target as HTMLInputElement;
+      if (target.type === 'checkbox' && target.checked) {
+        const exclusive = ['none', 'unsure'].includes(target.value);
+        form.querySelectorAll<HTMLInputElement>(`input[name="${target.name}"]`).forEach(input => { if (input !== target && (exclusive || ['none', 'unsure'].includes(input.value))) input.checked = false; });
+      }
+      error.hidden = true;
+    });
+    back.addEventListener('click', () => { if (current > 0) { current--; showStep(); } });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!validAnswer(questions[current], values(questions[current].id))) { error.hidden = false; steps[current].querySelector('input')!.focus(); return; }
+      if (current < questions.length - 1) { current++; showStep(); return; }
+      const summary = summarizeAnswers(Object.fromEntries(questions.map(question => [question.id, values(question.id)])));
+      root.querySelector('#check-result-title')!.textContent = summary.title;
+      root.querySelector('#check-result-description')!.textContent = summary.description;
+      root.querySelector('#check-product-summary')!.textContent = summary.productSummary;
+      const alternatives = root.querySelector<HTMLElement>('#check-product-alternatives')!;
+      alternatives.replaceChildren(); alternatives.hidden = summary.alternatives.length === 0;
+      for (const suggestion of summary.alternatives) { const item = document.createElement('li'); item.textContent = suggestion; alternatives.append(item); }
+      root.querySelector<HTMLElement>('#check-breathing')!.hidden = !summary.breathing;
+      root.querySelector<HTMLElement>('#check-impact')!.hidden = !summary.impact;
+      const list = root.querySelector('#check-answer-list')!; list.replaceChildren();
+      for (const answer of summary.answers) { const term = document.createElement('dt'); const description = document.createElement('dd'); term.textContent = answer.title; description.textContent = answer.response; list.append(term, description); }
+      form.hidden = true; result.hidden = false; root.querySelector<HTMLElement>('#check-result-title')!.focus();
+    });
+    root.querySelector('#check-edit')!.addEventListener('click', () => { result.hidden = true; form.hidden = false; current = 0; showStep(); });
+    reset.addEventListener('click', () => {
+      form.reset(); current = 0; form.hidden = true; result.hidden = true; reset.hidden = true; error.hidden = true;
+      root.querySelector('#check-answer-list')!.replaceChildren(); root.querySelector('#check-result-title')!.textContent = '';
+      root.querySelector('#check-result-description')!.textContent = ''; root.querySelector('#check-product-summary')!.textContent = '';
+      root.querySelector('#check-product-alternatives')!.replaceChildren(); root.querySelector<HTMLDetailsElement>('.check-answer-details')!.open = false;
+      root.querySelector<HTMLElement>('#check-breathing')!.hidden = true; root.querySelector<HTMLElement>('#check-impact')!.hidden = true;
+      welcome.hidden = false; root.querySelector<HTMLButtonElement>('#check-start')!.focus();
+    });
+    form.reset(); root.hidden = false;
+  }
+</script>
