@@ -30,6 +30,6 @@ Our [Surcare laundry-liquid profile](../../products/surcare-laundry-liquid/) is 
 
 Ask which products are supplied before starting a wash. Discuss a shared approach to detergent and optional additives. Avoid deliberately repeating an exposure to see whether symptoms return.
 
-For continuing symptoms, note what happened and speak with a healthcare professional rather than assuming detergent is the only possible cause. The [self-check](../../self-check/) can help organise observations; it does not diagnose sensitivity.
+For continuing symptoms, note what happened and speak with a healthcare professional rather than assuming detergent is the only possible cause. The [private health check](../fragrance-free-starter-toolkit/#private-health-check) can help organise observations; it does not diagnose sensitivity.
 
 *Source reviewed: FDA, Fragrances in Cosmetics, accessed 29 September 2026. Routine-planning suggestions are editorial guidance, not a tested treatment protocol.*
