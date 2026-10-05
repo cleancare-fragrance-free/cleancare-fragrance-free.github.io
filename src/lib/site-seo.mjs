@@ -1,8 +1,8 @@
 export const publisherName = 'CleanCare editorial';
 export const primaryLabels = {
-  'why-fragrance-free': 'Why fragrance free', 'non-toxic-home': 'Non-toxic home',
+  'why-fragrance-free': 'Why fragrance free', 'non-toxic-home': 'House Detox',
   guides: 'Articles & guides', directory: 'Fragrance-free products', evidence: 'Evidence library',
-  'self-check': 'Private self-check', 'about-us': 'Our story', about: 'Editorial approach',
+  'self-check': 'Private health check', 'about-us': 'Our story', about: 'Editorial approach',
   experts: 'Expert explanations', 'celebrity-stories': 'Celebrity stories', privacy: 'Privacy',
   'starter-checklist': 'Printable starter checklist', glossary: 'Glossary', products: 'Product notes', featured: 'Community stories',
   topics: 'Topics', categories: 'Categories',
