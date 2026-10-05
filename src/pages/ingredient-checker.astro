@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../lib/paths';
+---
+
+<Layout title="Ingredient Checker | CleanCare" description="Paste a cosmetic ingredient list to screen for declared fragrance terms, selected essential oils and potential Malassezia lipid matches. Private, in-browser screening—not diagnosis." breadcrumbs={[{name:'Home',path:url()},{name:'Get started',path:url('guides/fragrance-free-starter-toolkit/')},{name:'Ingredient checker',path:url('ingredient-checker/')}] }>
+  <section class="container section ingredient-checker">
+    <p class="eyebrow">Get started · private, in-browser tool</p>
+    <h1>Ingredient checker</h1>
+    <p class="intro">Paste a cosmetic ingredient list to spot declared fragrance terms, selected essential oils, and ingredients commonly included in <em>Malassezia</em> folliculitis screening lists.</p>
+    <div class="notice"><strong>What this can and can’t tell you.</strong> A label match is not proof an ingredient will cause a reaction or flare. Formulas and ingredient names vary, this small reference list is not exhaustive, and it does not diagnose fragrance allergy, “fungal acne,” or any other skin condition. For a persistent or itchy rash, ask a qualified clinician; <em>Malassezia</em> folliculitis can resemble other conditions and may need examination or testing.</div>
+
+    <form id="ingredient-form" class="ingredient-form">
+      <label for="ingredient-input"><strong>Paste the full ingredient list</strong></label>
+      <p id="ingredient-help">Separate ingredients with commas, semicolons, or line breaks. The text is analyzed in this page and is not saved or sent anywhere.</p>
+      <textarea id="ingredient-input" name="ingredients" rows="8" placeholder="Example: Water, Glycerin, Parfum, Lavandula Angustifolia Oil…" aria-describedby="ingredient-help" required></textarea>
+      <div class="ingredient-actions"><button class="button" type="submit">Check ingredients <span aria-hidden="true">→</span></button><button class="check-secondary" id="ingredient-clear" type="reset">Clear</button></div>
+    </form>
+
+    <section id="ingredient-results" class="ingredient-results" aria-live="polite" aria-atomic="true" hidden>
+      <h2 id="ingredient-result-title" tabindex="-1">Screening results</h2>
+      <p id="ingredient-count"></p>
+      <div id="ingredient-match-list"></div>
+      <p id="ingredient-no-match" hidden>No match was found in this checker’s limited reference list. That does not establish that the product is fragrance-free, suitable for you, or free of other relevant ingredients.</p>
+    </section>
+
+    <div class="ingredient-method">
+      <h2>How to read the flags</h2>
+      <ul>
+        <li><strong>Fragrance or parfum label:</strong> a declared umbrella term. Some ingredient-label rules allow fragrance mixtures to be grouped; labels and disclosure rules differ by market.</li>
+        <li><strong>Common fragrance ingredients:</strong> selected aroma compounds that may appear individually on ingredient labels. A match does not reveal every component of a fragrance mixture.</li>
+        <li><strong>Essential oils:</strong> selected botanical oils that can provide scent and may also irritate or cause allergy for some people. Their presence does not mean a synthetic perfume was added.</li>
+        <li><strong>Potential Malassezia lipid match:</strong> a limited screen for selected oils, fatty acids and esters. Research describes how some lipids may support yeast growth in laboratory settings, but it does not predict an individual’s skin response or diagnose a condition.</li>
+      </ul>
+      <p>We match ingredient names exactly after basic case and spacing normalization; this is not a complete INCI synonym database or image-reading tool. A missing match means “not recognized here,” not “safe” or “absent.” Verify the current package and ask the manufacturer if the label is unclear.</p>
+      <p>For broader ingredient and fungal-acne screening, see <a href="https://skinsort.com/ingredient-analyzer" target="_blank" rel="noopener noreferrer">SkinSort’s Ingredient Analyzer</a> and <a href="https://skinsort.com/fungal-acne-checker" target="_blank" rel="noopener noreferrer">Fungal Acne Checker</a>.</p>
+      <h3>Further reading</h3>
+      <ul>
+        <li><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener noreferrer">U.S. FDA: Fragrances in Cosmetics</a></li>
+        <li><a href="https://dermnetnz.org/topics/malassezia-folliculitis" target="_blank" rel="noopener noreferrer">DermNet: Malassezia (pityrosporum) folliculitis</a> — appearance, diagnosis and care.</li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/34304284/" target="_blank" rel="noopener noreferrer">Schmidt, 2021: Malassezia spp. and topically applied lipids</a> — review of a developing evidence area.</li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ingredient-checker{max-width:920px}.ingredient-checker h1{font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.04;letter-spacing:-.045em}.ingredient-checker .intro{max-width:760px;font-size:1.15rem}.ingredient-form{margin:2rem 0;padding:clamp(1rem,3vw,2rem);background:#fff;border:1px solid var(--line,#EFEBE4);border-radius:20px;box-shadow:0 10px 30px rgba(51,51,51,.05)}.ingredient-form>label{display:block;margin-bottom:.35rem}.ingredient-form p{margin:.2rem 0 .8rem;color:var(--muted,#6B7280);font-size:.92rem}.ingredient-form textarea{display:block;width:100%;min-height:180px;padding:1rem;border:1px solid var(--line,#EFEBE4);border-radius:12px;background:#fff;color:#333;font:inherit;line-height:1.55}.ingredient-form textarea:focus{outline:3px solid rgba(122,154,139,.3);border-color:#7A9A8B}.ingredient-actions{display:flex;align-items:center;gap:.75rem;margin-top:1rem}.ingredient-results{margin:2rem 0;padding:1.25rem;background:#fff;border:1px solid var(--line,#EFEBE4);border-radius:20px}.ingredient-results h2{margin-top:0}.ingredient-results ul,.ingredient-method ul{padding-left:1.2rem}.ingredient-results li{margin:.45rem 0}.ingredient-flag{margin:.8rem 0;padding:1rem 1.1rem;background:#FBF9F6;border-left:4px solid #7A9A8B;border-radius:8px}.ingredient-flag--fragrance{border-color:#F4A261}.ingredient-flag--fungal{border-color:#8a88b8}.ingredient-method{max-width:780px;color:#4c5561}.ingredient-method h2,.ingredient-method h3{color:#333}.ingredient-method li{margin:.55rem 0}.ingredient-checker .notice{margin:1.5rem 0}@media(max-width:620px){.ingredient-actions{align-items:stretch;flex-wrap:wrap}.ingredient-actions .button{width:100%;justify-content:center}.ingredient-form textarea{min-height:150px}}
+</style>
+
+<script>
+  import { analyzeIngredients } from '../lib/ingredient-checker.mjs';
+  const form = document.querySelector<HTMLFormElement>('#ingredient-form');
+  if (form) {
+    const input = form.querySelector<HTMLTextAreaElement>('#ingredient-input')!;
+    const results = document.querySelector<HTMLElement>('#ingredient-results')!;
+    const title = document.querySelector<HTMLElement>('#ingredient-result-title')!;
+    const count = document.querySelector<HTMLElement>('#ingredient-count')!;
+    const list = document.querySelector<HTMLElement>('#ingredient-match-list')!;
+    const empty = document.querySelector<HTMLElement>('#ingredient-no-match')!;
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const report = analyzeIngredients(input.value);
+      if (!report.count) { input.focus(); return; }
+      list.replaceChildren();
+      count.textContent = `Read ${report.count} ingredient name${report.count === 1 ? '' : 's'}.`;
+      empty.hidden = report.matches.length > 0;
+      for (const item of report.matches) {
+        const section = document.createElement('section');
+        section.className = `ingredient-flag ${item.type === 'fragrance' ? 'ingredient-flag--fragrance' : item.type === 'fungal' ? 'ingredient-flag--fungal' : ''}`;
+        const heading = document.createElement('h3'); heading.textContent = item.label; section.append(heading);
+        const description = document.createElement('p');
+        description.textContent = item.type === 'fragrance' ? 'This name matched a selected fragrance-related screening term. Check its role and source on the product label or with the manufacturer.' : item.type === 'essential-oil' ? 'This name matched a selected aromatic botanical oil. Essential oils can be fragrant and may cause irritation or allergy in some people.' : 'This name matched a selected lipid or fatty-acid screening term sometimes flagged in Malassezia-focused ingredient lists. This is not a prediction of a flare.';
+        section.append(description);
+        const matches = document.createElement('p'); matches.innerHTML = '<strong>Matched name(s):</strong> ' + item.matches.map(name => name.replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]))).join(', '); section.append(matches);
+        list.append(section);
+      }
+      results.hidden = false;
+      title.focus();
+    });
+    form.addEventListener('reset', () => { results.hidden = true; list.replaceChildren(); });
+  }
+</script>
