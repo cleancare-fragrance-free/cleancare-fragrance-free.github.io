@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorialIcon from '../components/EditorialIcon.astro';
+
+const groups = [
+  {
+    id: 'core', title: 'Core definitions', intro: 'Terms that help decode labels and claims.', icon: 'label', entries: [
+      ['Fragrance / parfum', 'A label term for a scent mixture. In the United States, cosmetic ingredient lists may generally declare a fragrance mixture as “fragrance” or “parfum” rather than name each component. The term itself does not tell you the mixture’s formula or establish that it is harmful.'],
+      ['Unscented vs. fragrance-free', 'These phrases are not federally standardized claims for U.S. cosmetics. “Unscented” may mean little or no noticeable smell and can include odor-masking ingredients; check the ingredient list if avoiding all added scent matters to you. “Fragrance-free” is a useful claim, but review the full label and the rules where you live.'],
+      ['IFRA', 'The International Fragrance Association is a fragrance-industry trade association. Its Standards are an industry self-regulatory system, not government regulations; legal requirements still depend on the country and product.'],
+      ['Ingredient disclosure / “fragrance loophole”', 'A common advocacy phrase for rules that allow a fragrance mixture to be listed as one term on some cosmetic labels. Disclosure rules differ by product type and jurisdiction, and the phrase “fragrance” does not mean every product contains the same hidden chemicals.'],
+    ]
+  },
+  {
+    id: 'ten-offenders', title: '10 major offenders in the reference glossary', intro: 'These are the ten ingredient names highlighted by the linked reference guide. The list is a starting point for label literacy—not a risk ranking; ingredient purpose, formulation, exposure and local rules matter.', icon: 'label', entries: [
+      ['Sodium lauryl sulfate (SLS) and sodium laureth sulfate (SLES)', 'Surfactants used for cleansing and foaming. SLS can irritate skin in some circumstances. SLES is ethoxylated; manufacturing quality controls help limit process-related impurities such as 1,4-dioxane. Neither name alone establishes the risk of a finished product.'],
+      ['Petroleum, paraffin and mineral oil', 'Broad names for materials derived from petroleum refining and used in cosmetics, ointments, candles and other products. Highly refined cosmetic-grade mineral oils are different from crude petroleum; source, refining quality and intended use are important.'],
+      ['Formaldehyde', 'A naturally occurring, reactive chemical also used industrially and in some preservative systems. Formaldehyde is a known human carcinogen at relevant exposures; risk depends on route, level and duration. Cosmetics may instead use preservatives that can release small amounts over time.'],
+      ['Hydroquinone', 'A skin-lightening ingredient used to reduce pigment. Product status and permitted uses vary by country; in the U.S., hydroquinone products are not approved as over-the-counter skin-lightening drugs. Seek qualified clinical advice before using skin-lightening treatments.'],
+      ['Mercury compounds (including thimerosal / “Merthiolate”)', 'Mercury compounds have specific permitted and prohibited uses that vary by product and jurisdiction. Thimerosal is not a generic name for cosmetic mercury; check exact ingredient names and current local rules.'],
+      ['Parabens (including butyl-, propyl-, methyl- and isobutylparaben)', 'A family of preservatives that help prevent microbial growth. Parabens differ in structure and regulatory status. Research on some members includes endocrine activity, but that does not mean every paraben-containing product has a demonstrated health effect at its actual exposure.'],
+      ['Phthalates (including DEP, DBP and DEHP)', 'A family of chemicals with different uses and hazard profiles. DEP has been used as a solvent or fragrance fixative; FDA says available information does not indicate a safety concern for DEP as currently used in cosmetics and fragrances. DBP and DEHP have distinct uses and restrictions. Do not treat the family as one substance.'],
+      ['Synthetic fragrance / parfum', 'A scent mixture may contain synthetic ingredients, natural ingredients, or both. Labeling a mixture as “fragrance” does not reveal which composition is present. Some fragrance ingredients are recognized contact allergens; reactions vary by person and exposure.'],
+      ['Propylene glycol', 'A solvent and humectant used in cosmetics, medicines, food and other products. It can irritate or cause allergic contact dermatitis in some people; presence alone does not indicate that a product is unsafe for everyone.'],
+      ['Triclosan', 'An antimicrobial ingredient historically used in some consumer products. In the U.S., FDA’s rule found triclosan and certain other ingredients not generally recognized as safe and effective for use in over-the-counter consumer antiseptic washes; that decision is not a blanket ban on every use in every product.'],
+    ]
+  },
+  {
+    id: 'more-ingredients', title: 'Other terms in the reference glossary', intro: 'Names from the linked page’s wider ingredient list. Some are ingredients, some are broad families, and some are contaminants or manufacturing-related terms.', icon: 'book', entries: [
+      ['Toluene', 'A volatile solvent used in some industrial applications and historically in certain nail products. Cosmetic uses and limits differ by jurisdiction; avoid inhaling product vapors and follow the label.'],
+      ['Benzalkonium chloride', 'A group of antimicrobial preservatives and disinfectants. It can irritate skin, eyes or airways depending on concentration and exposure; use the product as directed.'],
+      ['Benzophenone', 'A family name for related chemicals. Do not confuse it with oxybenzone (benzophenone-3), a specific UV filter; identity and use determine the applicable safety assessment.'],
+      ['Bisphenol A (BPA)', 'An industrial chemical associated mainly with some plastics and resins, not a standard intentional cosmetic ingredient. Possible relevance is usually packaging or incidental contamination, which should not be assumed without evidence.'],
+      ['Butoxyethanol (2-butoxyethanol)', 'A solvent used mainly in cleaning and other formulations. It is not a synonym for fragrance and is not a typical perfume ingredient; product concentration and inhalation or skin exposure matter.'],
+      ['BHA and BHT', 'Antioxidants used to slow oxidation in some products. BHA and BHT are different chemicals; evaluations and permitted uses vary by regulator and application.'],
+      ['Bismuth oxychloride', 'A pearlescent mineral-based pigment used in some cosmetics. Some people report irritation or itching, while many tolerate it; it is not a fragrance ingredient.'],
+      ['Carmine', 'A red color additive made from cochineal insects. It is used as a pigment, not a fragrance; rare allergic reactions have been reported.'],
+      ['Coal-tar dyes and aromatic amines (aminophenol, diaminobenzene, phenylenediamine)', 'A broad set of dye-related terms. These names refer to distinct substances or substance groups with different identities, safety data and legal restrictions; “coal tar” is not one single cosmetic ingredient.'],
+      ['Cyclomethicone', 'A name used for mixtures of cyclic silicones. Particular cyclic siloxanes, such as D4 or D5, have distinct environmental assessments and restrictions in some places. Check the exact ingredient rather than treating all silicones alike.'],
+      ['Dimethicone', 'A non-cyclic silicone polymer commonly used as an emollient or skin protectant. It is chemically distinct from cyclic siloxanes such as D4, D5 and D6.'],
+      ['Diazolidinyl urea', 'A preservative that can release small amounts of formaldehyde in a formulation. It may be relevant to people with formaldehyde allergy; product rules differ by jurisdiction.'],
+      ['Imidazolidinyl urea', 'A preservative that can release small amounts of formaldehyde in a formulation. It is a separate ingredient from diazolidinyl urea; sensitivity depends on the individual and exposure.'],
+      ['DEA (diethanolamine)', 'A chemical used in some manufacturing and formulation contexts. It is distinct from MEA and TEA; restrictions can apply, including where nitrosating conditions could form nitrosamines.'],
+      ['MEA (monoethanolamine)', 'A pH adjuster or processing ingredient in some products. It is distinct from DEA and TEA; formulation and applicable cosmetic rules matter.'],
+      ['TEA (triethanolamine)', 'A pH adjuster and emulsifier used in some products. It is distinct from DEA and MEA; ingredient combinations and regulatory limits matter.'],
+      ['EDTA (including disodium EDTA)', 'A chelating agent that binds metal ions to help stabilize formulations. Environmental persistence and wastewater treatment are among the topics discussed for some chelating agents.'],
+      ['Methyl cellosolve (2-methoxyethanol)', 'A solvent with significant health hazards and restricted industrial uses. It is not interchangeable with methoxyethanol derivatives or a generic name for cosmetic glycols; check the precise chemical identity.'],
+      ['Methylisothiazolinone (MI)', 'A preservative and recognized contact allergen. Cosmetic permissions and concentration limits vary; leave-on and rinse-off uses may be treated differently.'],
+      ['Methylchloroisothiazolinone (MCI / CMIT)', 'A preservative often used in combination with MI and a recognized contact allergen. Check the exact label and current restrictions for the country and product type.'],
+      ['Oxybenzone (benzophenone-3)', 'A specific UV-filter ingredient used in some sunscreens. It is regulated as a sunscreen active ingredient in some countries; “benzophenone” alone is a broader chemical-family term.'],
+      ['Phenoxyethanol', 'A preservative used in many personal-care products. It is permitted within set limits in several jurisdictions; sensitivity can occur, but the ingredient is not automatically unsafe at permitted use levels.'],
+      ['Polyethylene glycol (PEG) compounds', 'A large family of ingredients with many roles, including solvents and emollients. Depending on manufacturing, process impurities may be relevant; they are not intrinsic to every PEG ingredient or finished product.'],
+      ['PVP/VA copolymer', 'A film-forming polymer used in products such as hair styling sprays. Its presence identifies a functional polymer, not by itself a health hazard; avoid inhaling sprays and follow directions.'],
+      ['Resorcinol', 'An ingredient used in some oxidative hair dyes and other specialized products. It can irritate or cause sensitization; permitted uses and warnings vary by jurisdiction.'],
+      ['Retinyl palmitate', 'A vitamin A ester used in some skincare and cosmetic products. It is not a fragrance ingredient; product concentration, use and pregnancy-related guidance should be discussed with a clinician when relevant.'],
+      ['Retinol', 'A vitamin A derivative used in skincare. It may irritate skin and increase sun sensitivity; follow the product instructions and seek professional advice for pregnancy, breastfeeding or persistent reactions.'],
+      ['Synthetic color / color additives', 'A broad label category, not one chemical. Color additives are approved or restricted by specific identity and use; check the exact color name and local rules.'],
+      ['Talc', 'A mineral used in some powders and cosmetics. Safety assessment considers product grade, possible asbestos contamination and inhalation exposure; talc and asbestos are not the same material.'],
+    ]
+  },
+  {
+    id: 'fragrance-chemistry', title: 'Fragrance-related chemical classes', intro: 'Additional fragrance and scent terms supplied for this CleanCare glossary.', icon: 'label', entries: [
+      ['Diethyl phthalate (DEP)', 'A phthalate historically used as a solvent or fixative in some fragrances. FDA reports no safety concern for DEP as currently used in cosmetics and fragrances; this conclusion should not be generalized to other phthalates.'],
+      ['Synthetic musks (Galaxolide / HHCB, Tonalide / AHTN)', 'Long-lasting aroma chemicals used in some fragrances and consumer products. Some have been measured in wastewater, sediments and wildlife; detection or persistence does not by itself quantify risk to a person.'],
+      ['Formaldehyde-releasing preservatives', 'A group of preservatives that may release low amounts of formaldehyde under formulation conditions. Examples include diazolidinyl urea and imidazolidinyl urea. They are preservatives, not a synonym for fragrance.'],
+      ['Styrene and pyridine', 'Specific chemicals cited in some fragrance-disclosure advocacy resources as potential chemicals of concern or possible constituents/impurities. They are not present in every fragrance; claims need a source, a measured level and exposure context.'],
+      ['BMHCA (Lilial)', 'Butylphenyl methylpropional, also called Lilial, is a synthetic fragrance ingredient. It is prohibited in EU cosmetics; legal status can differ by jurisdiction and date.'],
+      ['Essential oils', 'Concentrated volatile extracts from plants. They provide scent and can contain recognized fragrance allergens; “natural” does not mean non-sensitizing or fragrance-free.'],
+    ]
+  },
+  {
+    id: 'health-terms', title: 'Health and exposure terms', intro: 'Words used to describe a possible response or exposure—not diagnoses.', icon: 'heart', entries: [
+      ['Sensitization', 'An immune process in which someone becomes allergic to a substance. After sensitization, later contact can cause allergic contact dermatitis; not every irritation is an allergy.'],
+      ['Allergic contact dermatitis', 'An immune-mediated skin reaction after contact with an allergen. Fragrance substances are among the recognized causes; diagnosis may require clinical assessment and patch testing.'],
+      ['Irritation', 'A non-allergic reaction that can follow direct contact or exposure, often influenced by concentration, duration and a person’s skin or airway condition. Irritation and allergy are different mechanisms.'],
+      ['Endocrine disruption', 'Interference with hormone systems by particular chemicals under particular exposure conditions. “Endocrine disruptor” should refer to evidence about a specific substance and exposure—not be inferred from a broad ingredient family or the word fragrance.'],
+      ['Volatile organic compounds (VOCs)', 'A broad group of carbon-containing compounds that can evaporate into air. Sources and health effects vary widely; a VOC label alone does not indicate toxicity, and indoor impact depends on which compounds, their levels and exposure duration.'],
+      ['Bioaccumulation', 'The gradual buildup of a substance in an organism when uptake outpaces elimination. It is an environmental-fate concept; whether a particular chemical bioaccumulates and what that means for health requires substance-specific evidence.'],
+      ['Dose and exposure', 'Risk depends on what substance is present, how much reaches someone, by which route, how often and for how long. A hazard classification alone does not tell you the risk from a specific product use.'],
+    ]
+  }
+];
+---
+<Layout title="Fragrance & ingredient glossary | CleanCare" description="Plain-language definitions for fragrance-label terms, cosmetic ingredients, chemical classes and health concepts, with context and source links.">
+  <section class="glossary-hero container">
+    <p class="eyebrow">About CleanCare · Reference</p>
+    <h1>Glossary</h1>
+    <p class="glossary-intro">Understand common fragrance-label terms and ingredient names—without turning a long list into a scare list.</p>
+    <p class="glossary-scope"><strong>A note on evidence:</strong> This glossary combines names from a concern-focused reference guide with fragrance terms. Inclusion does not mean an ingredient is present in every scented product, harmful at every dose, or prohibited everywhere. Ingredient identity, concentration, product type, route, exposure and local regulation all matter. This is educational information, not personal medical advice.</p>
+    <label class="glossary-search-label" for="glossary-search">Search the glossary</label>
+    <div class="glossary-search"><input id="glossary-search" type="search" placeholder="Try “parfum”, “VOC” or “preservative”…" autocomplete="off"/><span id="glossary-count" aria-live="polite">All terms</span></div>
+  </section>
+
+  <nav class="glossary-jump container" aria-label="Glossary sections">{groups.map(group => <a href={`#${group.id}`}>{group.title}</a>)}</nav>
+
+  <div class="container glossary-groups">
+    {groups.map(group => <section class="glossary-group" id={group.id} aria-labelledby={`${group.id}-title`}>
+      <header><span class="glossary-group-icon"><EditorialIcon name={group.icon}/></span><div><p class="eyebrow">Reference terms</p><h2 id={`${group.id}-title`}>{group.title}</h2><p>{group.intro}</p></div></header>
+      <dl class="glossary-grid">{group.entries.map(([term, definition]) => <div class="glossary-entry" data-glossary-entry data-search={`${term} ${definition}`}><dt>{term}</dt><dd>{definition}</dd></div>)}</dl>
+    </section>)}
+    <p id="glossary-empty" class="glossary-empty" hidden>No terms match that search. Try a broader word or clear the search.</p>
+  </div>
+
+  <section class="container glossary-sources"><div><p class="eyebrow">Check the original sources</p><h2>Read more, with context.</h2></div><ul>
+    <li><a href="https://kristenarnett.com/toxic-ingredients-in-cosmetics-glossary/" target="_blank" rel="noopener noreferrer">Kristen Arnett · Toxic ingredients in cosmetics glossary ↗</a><span>Concern-focused ingredient reference; CleanCare has paraphrased names and added context rather than reproducing its descriptions.</span></li>
+    <li><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/fragrances-cosmetics" target="_blank" rel="noopener noreferrer">U.S. FDA · Fragrances in cosmetics ↗</a><span>Fragrance labeling, sensitivity and ingredient responsibility.</span></li>
+    <li><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/phthalates-cosmetics" target="_blank" rel="noopener noreferrer">U.S. FDA · Phthalates in cosmetics ↗</a><span>FDA information on DEP and other phthalates in cosmetics.</span></li>
+    <li><a href="https://ifrafragrance.org/initiatives-positions/safe-use-fragrance-science/ifra-standards" target="_blank" rel="noopener noreferrer">IFRA · Standards and safe use ↗</a><span>Industry standards and their scope.</span></li>
+    <li><a href="https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality" target="_blank" rel="noopener noreferrer">U.S. EPA · VOCs and indoor air quality ↗</a><span>VOCs are a broad class; effects vary among compounds and exposures.</span></li>
+    <li><a href="https://www.niehs.nih.gov/health/topics/agents/endocrine" target="_blank" rel="noopener noreferrer">U.S. NIEHS · Endocrine disruptors ↗</a><span>Overview of endocrine-active substances and health research.</span></li>
+    <li><a href="https://health.ec.europa.eu/publications/safety-butylphenyl-methylpropional-p-bmhca-cosmetic-products-submission-ii_en" target="_blank" rel="noopener noreferrer">European Commission · BMHCA (Lilial) safety opinion ↗</a><span>Scientific opinion on this specific fragrance ingredient.</span></li>
+  </ul><p class="glossary-updated">Ingredient rules and scientific assessments can change. Check the current label and regulator in your country.</p></section>
+</Layout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('#glossary-search');
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-glossary-entry]')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.glossary-group')];
+  const count = document.querySelector<HTMLElement>('#glossary-count');
+  const empty = document.querySelector<HTMLElement>('#glossary-empty');
+  search?.addEventListener('input', () => {
+    const query = search.value.trim().toLocaleLowerCase();
+    let matches = 0;
+    for (const entry of entries) {
+      const visible = !query || entry.dataset.search?.toLocaleLowerCase().includes(query);
+      entry.hidden = !visible;
+      if (visible) matches++;
+    }
+    for (const group of groups) group.hidden = !group.querySelector('[data-glossary-entry]:not([hidden])');
+    if (count) count.textContent = query ? `${matches} ${matches === 1 ? 'term' : 'terms'}` : 'All terms';
+    if (empty) empty.hidden = matches > 0;
+  });
+</script>
+
+<style>
+  .glossary-hero{padding-block:44px 26px}.glossary-hero h1{font-size:clamp(42px,6vw,68px);letter-spacing:-.055em;margin:8px 0 10px}.glossary-intro{max-width:760px;font-size:19px;line-height:1.65;color:var(--muted)}.glossary-scope{max-width:980px;margin:22px 0;padding:18px 20px;border:1px solid var(--border);border-radius:14px;background:#fffaf3;color:#5d5d57;font-size:13px;line-height:1.75}.glossary-search-label{display:block;margin:22px 0 8px;font-size:13px;font-weight:700}.glossary-search{display:flex;align-items:center;gap:12px;max-width:700px}.glossary-search input{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:999px;background:white;color:var(--text);font:inherit;outline-offset:3px}.glossary-search>span{white-space:nowrap;font-size:12px;color:var(--muted)}.glossary-jump{display:flex;flex-wrap:wrap;gap:8px;padding-block:22px;border-bottom:1px solid var(--border)}.glossary-jump a{padding:8px 13px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--text);font-size:11px;text-decoration:none}.glossary-jump a:hover{border-color:var(--accent-sage);color:#557a68}.glossary-groups{padding-block:10px 38px}.glossary-group{padding-block:28px;border-bottom:1px solid var(--border);scroll-margin-top:90px}.glossary-group>header{display:grid;grid-template-columns:42px 1fr;gap:15px;align-items:start;margin-bottom:19px}.glossary-group-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--accent-sky);color:#557a68}.glossary-group h2{margin:2px 0 7px;font-size:clamp(23px,3vw,31px);letter-spacing:-.03em}.glossary-group header p:last-child{margin:0;color:var(--muted);font-size:13px;line-height:1.65}.glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:0}.glossary-entry{padding:16px 18px;border:1px solid var(--border);border-radius:15px;background:#fff}.glossary-entry dt{margin-bottom:7px;font-size:14px;font-weight:700;line-height:1.4}.glossary-entry dd{margin:0;color:#626d6a;font-size:12px;line-height:1.7}.glossary-empty{padding:20px;border:1px dashed var(--border);border-radius:14px;color:var(--muted)}.glossary-sources{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px 42px;padding-block:34px 54px}.glossary-sources h2{margin:5px 0;font-size:28px}.glossary-sources ul{display:grid;gap:12px;margin:0;padding:0;list-style:none}.glossary-sources li{display:grid;gap:4px;padding-bottom:12px;border-bottom:1px solid var(--border)}.glossary-sources li a{font-size:13px;font-weight:700;color:#557a68}.glossary-sources li span,.glossary-updated{color:var(--muted);font-size:11px;line-height:1.6}.glossary-updated{grid-column:2;margin:0}.glossary-entry[hidden],.glossary-group[hidden],#glossary-empty[hidden]{display:none!important}
+  @media(max-width:700px){.glossary-hero{padding-block:30px 18px}.glossary-intro{font-size:16px}.glossary-grid{grid-template-columns:1fr}.glossary-sources{grid-template-columns:1fr;gap:10px}.glossary-updated{grid-column:auto}.glossary-jump{gap:6px}.glossary-jump a{font-size:10px;padding:7px 10px}.glossary-search{align-items:stretch;flex-direction:column}.glossary-search>span{align-self:flex-end}}
+</style>

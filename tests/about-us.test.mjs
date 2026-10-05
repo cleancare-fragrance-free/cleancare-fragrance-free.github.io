@@ -15,3 +15,12 @@ test('about page connects the story to evidence, solutions and advocacy', () => 
     assert.ok(source.includes(phrase), phrase);
   }
 });
+
+test('about page invites readers into the Facebook community without treating posts as evidence', () => {
+  const page = source;
+  assert.match(page, /facebook\.com\/groups\/391954731491131/);
+  assert.match(page, /Join the Facebook group/);
+  assert.match(page, /Visit our Facebook page/);
+  assert.match(page, /not automatically evidence/);
+  assert.match(page, /Facebook may require sign-in/);
+});

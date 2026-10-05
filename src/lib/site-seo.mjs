@@ -4,7 +4,7 @@ export const primaryLabels = {
   guides: 'Articles & guides', directory: 'Fragrance-free products', evidence: 'Evidence library',
   'self-check': 'Private self-check', 'about-us': 'Our story', about: 'Editorial approach',
   experts: 'Expert explanations', 'celebrity-stories': 'Celebrity stories', privacy: 'Privacy',
-  'starter-checklist': 'Printable starter checklist', products: 'Product notes', featured: 'Community stories',
+  'starter-checklist': 'Printable starter checklist', glossary: 'Glossary', products: 'Product notes', featured: 'Community stories',
   topics: 'Topics', categories: 'Categories',
 };
 export function makeBreadcrumbs(pathname, title, base = '/') {
