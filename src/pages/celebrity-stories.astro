@@ -1,15 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DoctorBadge from '../components/DoctorBadge.astro';
 import { celebrityStories } from '../data/celebrity-stories.mjs';
+import { doctorStories } from '../data/doctor-stories.mjs';
 import { url } from '../lib/paths';
 ---
-<Layout title="Celebrity stories: fragrance-free choices & ingredient transparency | CleanCare" description="Source-linked celebrity stories about fragrance-free options, ingredient disclosure and cosmetics reform—with important distinctions.">
+<Layout title="Celebrity stories, doctors & skin science | CleanCare" description="Source-linked celebrity stories and five dermatology and skin-science voices discussing fragrance-free choices, sensitivity and ingredient transparency.">
   <section class="container section celebrity-page">
     <p class="eyebrow">Celebrity stories · people behind the conversation</p>
     <h1>Celebrity stories: fragrance-free choices &amp; transparency.</h1>
     <p class="intro">Meet the founders and voices opening up the conversation about scent, sensitive skin and ingredient disclosure.</p>
     <p class="notice">Different stories, different choices. Offering a fragrance-free product—or disclosing perfume ingredients—does not mean someone avoids all fragrance. These stories are not medical advice or brand endorsements.</p>
-    <div class="celebrity-mosaic">
+    <nav class="profile-jumps" aria-label="People on this page"><a href="#celebrities">Celebrity stories</a><a href="#doctors">Doctors &amp; skin science <span aria-hidden="true">↓</span></a></nav>
+    <div class="celebrity-mosaic" id="celebrities">
       {celebrityStories.map((person, index) => <article class="celebrity-tile">
         <a class="celebrity-story-link" href={person.source} target="_blank" rel="noopener noreferrer" aria-labelledby={`celebrity-${index}`}>
           <div class="celebrity-image"><img src={person.local ? url(person.image) : person.image} alt={person.name} loading="lazy" decoding="async" width="600" height="440" referrerpolicy="no-referrer"/></div>
@@ -24,6 +27,36 @@ import { url } from '../lib/paths';
         <small class="image-credit">Image: {person.imageSource ? <a href={person.imageSource} target="_blank" rel="noopener noreferrer">{person.credit}</a> : person.credit}{person.licenseUrl && <> · <a href={person.licenseUrl} target="_blank" rel="noopener noreferrer">{person.license}</a> · cropped</>}</small>
       </article>)}
     </div>
+    <section class="doctors-section" id="doctors" aria-labelledby="doctors-heading">
+      <p class="eyebrow">Expert voices · learn from the source</p>
+      <h2 id="doctors-heading">Doctors &amp; skin science</h2>
+      <p class="doctors-intro">Four dermatologists and a chemistry PhD exploring sensitive skin, ingredients and fragrance-free choices. Their perspectives differ: fragrance can cause contact allergy in susceptible people, but not everyone reacts. <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics" target="_blank" rel="noopener noreferrer">Read the FDA’s cosmetic-allergen guidance ↗</a></p>
+      <div class="celebrity-mosaic doctor-mosaic">
+        {doctorStories.map((person, index) => <article class="celebrity-tile doctor-tile">
+          <a class="celebrity-story-link" href={person.source} target="_blank" rel="noopener noreferrer" aria-labelledby={`doctor-${index}`}>
+            <div class="celebrity-image doctor-image">
+              {person.image ? <img src={person.image} alt={person.imageAlt ?? person.name} loading="lazy" decoding="async" width="600" height="440" referrerpolicy="no-referrer"/> : <div class="science-profile" aria-hidden="true"><span>{person.initials}</span><small>Lab Muffin<br/>Beauty Science</small></div>}
+              <div class="profile-badge">{person.doctor ? <DoctorBadge label="Dermatologist"/> : <span class="science-badge">Chemistry PhD</span>}</div>
+            </div>
+            <div class="celebrity-copy">
+              <span class="celebrity-category">{person.focus}</span>
+              <h3 id={`doctor-${index}`}>{person.name}</h3>
+              <p class="profile-credentials">{person.credentials}</p>
+              <p>{person.text}</p>
+              <span class="text-link">{person.sourceLabel} ↗</span>
+              <small>{person.publisher}</small>
+            </div>
+          </a>
+          <div class="profile-details">
+            <a href={person.credentialUrl} target="_blank" rel="noopener noreferrer">Official biography ↗</a>
+            <small>{person.disclosure}</small>
+            {person.related.length > 0 && <details><summary>More from this expert</summary><ul>{person.related.map(link => <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></li>)}</ul><small>Shared social links may require sign-in; they are not independently verified clinical evidence.</small></details>}
+          </div>
+          {person.image && <small class="image-credit">Image: <a href={person.imageSource} target="_blank" rel="noopener noreferrer">{person.credit}</a></small>}
+        </article>)}
+      </div>
+      <p class="expert-note">The doctor badge identifies a medical qualification—not a review or endorsement of CleanCare. Brand founders have commercial interests; brand statements do not establish that a formula is suitable for everyone. For persistent reactions, consult a qualified clinician.</p>
+    </section>
     <div class="story-context">
       <details open>
         <summary>Why ingredient transparency matters</summary>
@@ -58,7 +91,7 @@ import { url } from '../lib/paths';
   .celebrity-story-link:hover img{transform:scale(1.03)}
   .celebrity-copy{padding:14px 16px 8px;display:flex;flex-direction:column;flex:1}
   .celebrity-category{align-self:flex-start;background:var(--accent-sky);border-radius:999px;padding:4px 8px;font-size:10px;line-height:1.4;font-weight:600}
-  .celebrity-copy h2{font-size:19px;line-height:1.25;margin:10px 0 8px;letter-spacing:-.4px}
+  .celebrity-copy :is(h2,h3){font-size:19px;line-height:1.25;margin:10px 0 8px;letter-spacing:-.4px}
   .celebrity-copy p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 12px}
   .celebrity-copy .text-link{font-size:12px;margin-top:auto;color:var(--accent-sage);font-weight:700}
   .celebrity-story-link:hover .text-link{color:var(--accent-active)}
@@ -67,6 +100,31 @@ import { url } from '../lib/paths';
   .image-credit{padding:0 16px 14px;margin:0}
   .image-credit a{color:inherit;text-decoration:none}
   .image-credit a:hover{text-decoration:underline}
+  .profile-jumps{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .profile-jumps a{border:1px solid var(--border);border-radius:999px;padding:9px 14px;background:var(--card);font-size:12px;font-weight:700;text-decoration:none;color:var(--text)}
+  .profile-jumps a:hover{background:var(--accent-sky)}
+  #celebrities,.doctors-section{scroll-margin-top:120px}
+  .doctors-section{border-top:1px solid var(--border);padding-top:28px;margin-top:30px}
+  .doctors-section h2{font-size:clamp(25px,3vw,32px);margin:0 0 10px;line-height:1.2}
+  .doctors-intro,.expert-note{font-size:13px;line-height:1.7;color:var(--muted);max-width:950px}
+  .doctors-intro a{color:var(--accent-sage);font-weight:600;text-decoration:none}
+  .doctor-mosaic{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-block:20px 14px}
+  .doctor-image{position:relative}
+  .profile-badge{position:absolute;left:10px;bottom:10px}
+  .science-badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--accent-sky);color:#40584d;font-size:11px;font-weight:700;line-height:1.4}
+  .science-profile{height:100%;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#e8f3f8,#f1eadd);color:#40584d}
+  .science-profile>span{font-size:40px;font-weight:700;letter-spacing:-2px}
+  .science-profile small{font-size:11px;line-height:1.5;font-weight:600}
+  .celebrity-copy .profile-credentials{font-size:10px;font-weight:600;line-height:1.5;color:#40584d;margin-bottom:9px}
+  .profile-details{padding:0 16px 12px;font-size:10px;line-height:1.6}
+  .profile-details a{color:#40584d;font-weight:600;text-decoration:none}
+  .profile-details a:hover{color:var(--accent-active)}
+  .profile-details>small{display:block;color:var(--muted);margin-top:4px;font-size:10px}
+  .profile-details details{margin-top:8px;border-top:1px solid var(--border);padding-top:8px}
+  .profile-details summary{cursor:pointer;font-weight:600}
+  .profile-details ul{padding-left:14px;margin:6px 0}
+  .profile-details details small{font-size:10px;color:var(--muted)}
+  .expert-note{margin:0 0 24px;font-size:11px}
   .story-context{border:1px solid var(--border);border-radius:20px;background:var(--accent-sky);padding:6px 20px}
   .story-context details{padding:14px 0}
   .story-context details+details{border-top:1px solid #d5e1e4}
@@ -75,7 +133,7 @@ import { url } from '../lib/paths';
   .story-context p{margin:12px 0 0}
   .story-context a{font-weight:600}
   @media(max-width:1050px){.celebrity-mosaic{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media(max-width:760px){.celebrity-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.celebrity-image{height:140px}.celebrity-copy{padding:12px 12px 8px}.celebrity-copy h2{font-size:17px}.image-credit{padding:0 12px 12px}.celebrity-page h1{font-size:30px}}
+  @media(max-width:760px){.celebrity-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.celebrity-image{height:140px}.celebrity-copy{padding:12px 12px 8px}.celebrity-copy :is(h2,h3){font-size:17px}.image-credit{padding:0 12px 12px}.profile-details{padding-inline:12px}.celebrity-page h1{font-size:30px}.science-profile{gap:6px}.science-profile>span{font-size:30px}.science-profile small{font-size:9px}}
   @media(max-width:360px){.celebrity-mosaic{grid-template-columns:1fr}.celebrity-image{height:170px}}
   @media(prefers-reduced-motion:reduce){.celebrity-tile,.celebrity-image img{transition:none}.celebrity-tile:has(a:is(:hover,:focus-visible)),.celebrity-story-link:hover img{transform:none}}
 </style>
