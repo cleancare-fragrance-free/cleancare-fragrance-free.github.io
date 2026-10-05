@@ -24,6 +24,12 @@ const roomPlan = [
   { room: 'Bedroom', swap: 'Wash bedding with fragrance-free detergent, store scented personal-care products outside the sleeping area, and keep indoor humidity controlled.' },
   { room: 'Shared spaces', swap: 'Explain the specific product or activity that is difficult for you and request one practical change, such as skipping a diffuser or using an unscented cleaner.' },
 ];
+
+const illustratedGuides = [
+  { image: 'home-fragrance-free-swaps.webp', title: 'Fragrance-free swaps', alt: 'Illustrated fragrance-free laundry detergent, dishwashing liquid, personal care and surface cleaner; room scents crossed out; a reminder to read ingredients.', text: 'Start with laundry, dishes, hand and body care, then surfaces. Remove added room scent and check the exact product’s ingredients.', link: 'directory/', linkText: 'Find fragrance-free products' },
+  { image: 'home-cleaner-air-habits.webp', title: 'Cleaner air at home', alt: 'Four illustrated habits: remove scent sources, ventilate thoughtfully, damp-dust and vacuum, and control moisture.', text: 'Remove scent sources, ventilate when outdoor air is suitable, damp-dust and vacuum, and keep moisture under control.', link: '#room-plan', linkText: 'Explore the room-by-room plan' },
+  { image: 'home-simple-cleaning-safety.webp', title: 'Simple cleaning, safely', alt: 'Illustrated cloth and water, fragrance-free detergent, separate vinegar and baking soda containers, a never-mix warning, and securely stored cleaning products.', text: 'Begin with water, a cloth and fragrance-free detergent. Check surfaces, keep cleaners separate, follow labels and store securely.', link: '#ingredient-guide', linkText: 'Read the ingredient cautions' },
+];
 ---
 
 <Layout title="A naturally clean, lower-toxicity home | CleanCare" description="A practical, fragrance-free home guide: source reduction, safer cleaning methods, DIY ingredient cautions, room-by-room swaps, and further reading.">
@@ -45,6 +51,15 @@ const roomPlan = [
     <p>“Non-toxic” is not a promise that an ingredient is harmless in every amount or situation. Everything—including plant-derived substances—has a dose, route, and context. CleanCare uses the phrase as familiar shorthand for a home with fewer unnecessary fragrance sources and thoughtfully chosen, lower-hazard methods. <strong>Fragrance-free, well ventilated, label-led, and safely stored</strong> are more precise goals.</p>
   </section>
 
+  <section id="illustrated-home-guides" class="container illustrated-home-guides" aria-labelledby="illustrated-guides-title">
+    <div class="section-heading"><div><p class="eyebrow">Your illustrated home reset</p><h2 id="illustrated-guides-title">Small swaps. Clearer habits.</h2></div><p>Three visual guides to keep the essentials in view. Open an illustration to see it in full.</p></div>
+    <div class="home-guide-grid">{illustratedGuides.map(guide => <article class="home-guide-card">
+      <a class="home-guide-picture" href={url('images/editorial/' + guide.image)} target="_blank" rel="noopener noreferrer" aria-label={`Open the full ${guide.title} illustration`}><img src={url('images/editorial/' + guide.image)} alt={guide.alt} width="1024" height="1024" loading="lazy" decoding="async"/><span>View full illustration ↗</span></a>
+      <div class="home-guide-copy"><h3>{guide.title}</h3><p>{guide.text}</p><a class="text-link" href={guide.link.startsWith('#') ? guide.link : url(guide.link)}>{guide.linkText} →</a></div>
+    </article>)}</div>
+    <p class="home-art-note">Original AI-generated illustrations for CleanCare. These are practical reminders, not a guarantee of a risk-free home. Guidance: <a href="https://www.epa.gov/indoor-air-quality-iaq/improving-indoor-air-quality" rel="external">EPA · improving indoor air quality ↗</a>.</p>
+  </section>
+
   <section class="container section">
     <div class="section-heading"><div><p class="eyebrow">Begin with the basics</p><h2>Methods before mixtures.</h2></div><p>The simplest change is often removing a source, not adding another product.</p></div>
     <div class="foundation-grid">{foundations.map(item => <article><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
@@ -57,7 +72,7 @@ const roomPlan = [
     </div>
   </section>
 
-  <section class="container section ingredients-section">
+  <section id="ingredient-guide" class="container section ingredients-section">
     <div class="section-heading"><div><p class="eyebrow">DIY ingredient guide</p><h2>Useful does not mean risk-free.</h2></div><p>Keep every ingredient in its original labeled container and out of reach of children and pets.</p></div>
     <div class="ingredient-grid">{ingredients.map(item => <article><p class="ingredient-role">{item.role}</p><h3>{item.name}</h3><p>{item.text}</p><div class="caution"><strong>Use with care</strong><span>{item.caution}</span></div></article>)}</div>
     <p class="source-note">Safety context: <a href="https://www.epa.gov/saferchoice/frequently-asked-questions-safer-choice">US EPA Safer Choice FAQ</a> and <a href="https://www.epa.gov/indoor-air-quality-iaq/biological-contaminants-and-indoor-air-quality">EPA indoor-air cleaning guidance</a>.</p>
@@ -84,6 +99,23 @@ const roomPlan = [
 </Layout>
 
 <style>
+  .illustrated-home-guides{padding-block:44px 8px}
+  .home-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .home-guide-card{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:var(--card);transition:transform .3s,box-shadow .3s}
+  .home-guide-card:has(a:is(:hover,:focus-visible)){transform:translateY(-4px);box-shadow:0 12px 30px #7a9a8b20}
+  .home-guide-picture{position:relative;display:block;background:var(--canvas);color:var(--text)}
+  .home-guide-picture img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+  .home-guide-picture>span{position:absolute;right:12px;bottom:12px;padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#fffffff2;font-size:10px;font-weight:600}
+  .home-guide-copy{padding:20px 22px 24px}
+  .home-guide-copy h3{font-size:20px;line-height:1.3;margin:0 0 10px}
+  .home-guide-copy p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 16px}
+  .home-guide-copy .text-link{font-size:12px}
+  .home-art-note{font-size:11px;line-height:1.7;color:var(--muted);margin:18px 0 0}
+  .home-art-note a{font-weight:600;color:#435E52}
+  #ingredient-guide,#room-plan{scroll-margin-top:24px}
+  @media(max-width:850px){.home-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-guide-card:last-child{grid-column:1/-1;max-width:calc(50% - 12px);width:100%;justify-self:center}}
+  @media(max-width:580px){.home-guide-grid{grid-template-columns:1fr;gap:20px}.home-guide-card:last-child{grid-column:auto;max-width:none}.illustrated-home-guides{padding-top:32px}}
+  @media(prefers-reduced-motion:reduce){.home-guide-card{transition:none}.home-guide-card:has(a:is(:hover,:focus-visible)){transform:none}}
   .home-hero{padding:76px 0 64px;background:linear-gradient(135deg,#edf4ec 0%,#fbf9f6 54%,#f8e9dc 100%);border-bottom:1px solid var(--border)}
   .home-hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);align-items:center;gap:68px}.home-hero h1{max-width:830px;margin:12px 0 24px;font-size:clamp(46px,6vw,82px);line-height:1.02;letter-spacing:-3.8px}.home-hero h1 em{font-family:Georgia,serif;font-weight:400;color:var(--accent-sage)}.home-hero .intro{max-width:700px}.home-illustration{position:relative;min-height:420px;overflow:hidden;border-radius:160px 160px 28px 28px;background:#dfeadd;box-shadow:0 18px 50px rgba(82,110,88,.14)}.home-illustration .sun{position:absolute;top:50px;right:54px;width:88px;height:88px;border-radius:50%;background:#f7c685}.home-illustration .house{position:absolute;left:68px;bottom:58px;width:240px;height:178px;border-radius:6px;background:#fffaf3;box-shadow:0 18px 30px rgba(51,51,51,.08)}.home-illustration .house:before{content:"";position:absolute;left:-26px;top:-95px;border-left:146px solid transparent;border-right:146px solid transparent;border-bottom:110px solid #7a9a8b}.home-illustration .house:after{content:"";position:absolute;left:87px;bottom:0;width:65px;height:103px;background:#f4a261}.home-illustration .house i{position:absolute;left:28px;top:48px;width:47px;height:49px;background:#e8f3f8;border:5px solid #fff;box-shadow:0 0 0 2px #d7e4e8}.home-illustration p{position:absolute;right:28px;bottom:28px;margin:0;color:#526e58;font-size:12px;line-height:1.55;letter-spacing:2px;writing-mode:vertical-rl;transform:rotate(180deg)}.home-illustration p strong{color:#333;font-size:15px}.leaf{position:absolute;width:32px;height:72px;border-radius:100% 0 100% 0;background:#89a67d;transform:rotate(-28deg)}.leaf-one{left:35px;bottom:42px}.leaf-two{right:96px;bottom:12px;transform:rotate(28deg) scale(.8)}
   .definition-note{margin-top:48px;padding:34px 38px;border:1px solid #dfe8dc;border-left:6px solid var(--accent-sage);border-radius:20px;background:#fff}.definition-note h2{margin:4px 0 14px;font-size:32px}.definition-note p:last-child{max-width:1000px;margin-bottom:0;color:var(--muted);line-height:1.8}.definition-note strong{color:var(--text)}
@@ -96,4 +128,3 @@ const roomPlan = [
   @media(max-width:1050px){.home-hero-grid{grid-template-columns:1fr}.home-illustration{min-height:330px}.foundation-grid{grid-template-columns:repeat(2,1fr)}.book-grid{grid-template-columns:1fr 1fr}.book-card:last-child{grid-column:1/-1}.safety-grid{gap:42px}}
   @media(max-width:700px){.home-hero{padding:50px 0}.home-hero h1{letter-spacing:-2px}.home-illustration{min-height:300px}.home-illustration .house{left:38px;transform:scale(.8);transform-origin:bottom left}.definition-note{padding:28px 24px}.foundation-grid,.ingredient-grid,.book-grid,.safety-grid{grid-template-columns:1fr}.book-card:last-child{grid-column:auto}.room-list article{grid-template-columns:45px 1fr}.room-list p{grid-column:2}.next-step{align-items:flex-start;flex-direction:column;padding:30px}.caution{flex-direction:column;gap:6px}}
 </style>
-
