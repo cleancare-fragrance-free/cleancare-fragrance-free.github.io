@@ -39,6 +39,7 @@ test('why-fragrance-free content remains on the homepage with the essential-oil 
     assert.ok(home.includes(reason), reason);
   }
   assert.ok(home.includes('natural essential oils are still fragrance'));
+  assert.ok(!home.includes('and only use natural essential oils'));
   assert.ok(layout.indexOf("url('why-fragrance-free/')") < layout.indexOf("url('guides/')"));
   assert.ok(why.includes('class="container why-split"'));
   assert.equal((why.match(/class="why-panel /g) || []).length, 2);

@@ -2,9 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import products from '../../data/products.json';
+import { assertFragranceFreeCatalog } from '../../lib/product-policy.mjs';
 import { countryName } from '../../data/countries.mjs';
 import { url } from '../../lib/paths';
-export function getStaticPaths() { return products.map(product => ({ params: { slug: product.id }, props: { product } })); }
+export function getStaticPaths() { assertFragranceFreeCatalog(products); return products.map(product => ({ params: { slug: product.id }, props: { product } })); }
 const { product } = Astro.props;
 const displayCategory = {
   'Skin & Body': 'Skincare & Body',

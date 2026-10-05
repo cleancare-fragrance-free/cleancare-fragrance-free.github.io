@@ -57,9 +57,6 @@ test('regional versions stay distinct and country memberships are explicit', () 
  assert.deepEqual(Object.keys(products.find(p => p.id === 'cerave-hydrating-cleanser-au').countries), ['AU','SG']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'clinique-dramatically-different-lotion-au').countries), ['AU']);
  assert.deepEqual(Object.keys(products.find(p => p.id === 'ecover-zero-laundry-liquid-sg').countries), ['SG']);
- assert.ok(products.find(p => p.id === 'green-kulture-laundry-liquid-bundle').warning.includes('lavender essential oil'));
- assert.ok(products.find(p => p.id === 'sukin-botanical-body-wash-sg').warning.includes('not fragrance-free'));
- assert.ok(products.find(p => p.id === 'sukin-natural-balance-shampoo-sg').warning.includes('not fragrance-free'));
- assert.equal(products.filter(p => p.countries.SG).length, 22);
+ assert.equal(products.filter(p => p.countries.SG).length, 19);
  assert.ok(products.every(p => p.countries && Object.keys(p.countries).length));
 });

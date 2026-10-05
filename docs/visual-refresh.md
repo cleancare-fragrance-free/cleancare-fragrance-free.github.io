@@ -18,8 +18,8 @@ The image is visibly identified as AI-created, not a real founder’s home or a 
 - Instagram reels and TikTok discovery are linked without fabricated thumbnails, celebrity identities or credentials because full access was unavailable.
 - Celebrity mosaic uses dated, source-linked interviews, not current claims or endorsements. Tina Turner and Emily Ratajkowski also described scented products; Pixie Geldof used scented oils. These limitations are prominent on the page.
 - 24 requested US product entries use non-affiliate official links and brand images. La Roche-Posay’s US milky cleanser is labelled with its actual local name, not asserted identical to Dermo-Cleanser abroad. EltaMD’s current UV Skin Recovery name and Vanicream SPF 30 are used.
-- The supplied Venus link resolves to the Pubic Hair & Skin Smoothing Cleanser + Shave Gel, not Ultra Sensitive. The current official page does not confirm fragrance status; profile explicitly says to check the current formulation.
-- K18 AirWash: parfum and allergens on brand ingredient list; clearly marked as a fragranced exception.
+- The supplied Venus link resolves to the Pubic Hair & Skin Smoothing Cleanser + Shave Gel, not Ultra Sensitive. The current official page does not confirm fragrance status; this unconfirmed profile was removed on October 5 under the fragrance-free-only policy.
+- K18 AirWash, the two scented Sukin products and Green Kulture lavender laundry liquid were removed on October 5. No fragranced exceptions remain in the public catalogue. Scented-product celebrity showcases and the homepage suggestion to use essential oils were also removed; educational discussion of ingredient transparency remains.
 - CurrentBody: optional device, not a replacement required for fragrance avoidance or a treatment for sensitivity.
 
 Product sources checked 2026-10-05. Images belong to source publishers/brands; linked attribution does not confer a reuse licence. Review publisher permissions before any broader reuse.

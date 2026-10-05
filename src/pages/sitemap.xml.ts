@@ -2,7 +2,9 @@ import type { APIRoute } from 'astro';
 import { articles } from '../data/articles.mjs';
 import { featuredPosts } from '../data/featured-posts.mjs';
 import products from '../data/products.json';
+import { assertFragranceFreeCatalog } from '../lib/product-policy.mjs';
 export const GET: APIRoute = ({ site }) => {
+  assertFragranceFreeCatalog(products);
   const base = import.meta.env.BASE_URL;
   const pages = ['', 'why-fragrance-free/', 'non-toxic-home/', 'guides/', 'evidence/', 'directory/', 'self-check/', 'about-us/', 'about/', 'celebrity-stories/', ...articles.map(a => 'guides/' + a.slug + '/'), ...featuredPosts.map(a => a.href), ...products.map(p => 'products/' + p.id + '/')];
   const locations = pages.map(path => new URL(base + path, site!).href);

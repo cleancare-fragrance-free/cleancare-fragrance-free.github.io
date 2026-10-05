@@ -25,7 +25,7 @@ npm run dev
 
 Health claims should name the ingredient or exposure, the studied outcome, and the limits of the source. Do not present a social post, a video, or a study on one chemical as proof that every synthetic fragrance is harmful. Facebook group discussions can inspire topics, but posts should not be reproduced without permission or substituted for independent evidence. New source items should identify a review date.
 
-Before adding a real product, verify the exact formulation, manufacturer evidence, country availability, and date checked. Disclose any paid relationship beside the recommendation. Search, category, and country filters currently work together and update the page URL.
+Before adding a real product, verify the exact formulation, manufacturer evidence, country availability, and date checked. Only fragrance-free formulas are eligible: exclude perfume, parfum and scented essential oils, including products advertised as natural or free of synthetic fragrance. Unconfirmed formulas must not be published. Record `fragranceStatus: "fragrance-free"` only after checking the exact formula's official claim or ingredient list. `"not-applicable"` is reserved for optional devices without a fragranced formula. The product policy blocks publication when this review status or source evidence is missing. Fragrance-free is not an independent safety certification. Disclose any paid relationship beside the recommendation. Search, category, and country filters currently work together and update the page URL.
 
 ## GitHub Pages
 
