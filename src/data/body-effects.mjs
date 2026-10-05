@@ -12,4 +12,6 @@ export const bodyEffects = [
     text: 'Inhaled fragrance may trigger coughing, wheezing or chest tightness in susceptible people, including people with asthma.', source: allergySource },
   { id: 'skin', label: 'Skin', title: 'Rashes & contact dermatitis', evidence: 'Established fragrance-allergy concern', x: 26, y: 58,
     text: 'Some fragrance ingredients can cause itchy rashes or allergic contact dermatitis. A clinician can help identify the trigger.', source: allergySource },
+  { id: 'endocrine', label: 'Hormone system', title: 'Endocrine disruptors: an ingredient-specific concern', evidence: 'Research topic—not a symptom or diagnosis', x: 50, y: 54,
+    text: 'Some chemicals, including certain phthalates, can interfere with hormone signaling. Hormones act throughout the body; the belly marker is a navigation symbol, not a site of proven damage. It does not mean every fragrance contains an endocrine disruptor or causes hormonal or reproductive harm. The exact ingredient, exposure and evidence matter.', source: 'https://www.niehs.nih.gov/health/topics/agents/endocrine' },
 ];

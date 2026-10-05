@@ -12,8 +12,8 @@ import { url } from '../lib/paths';
     <figure class="body-figure">
       <div class="body-canvas">
         <svg viewBox="0 0 420 560" role="img" aria-labelledby="body-illustration-title body-illustration-description">
-          <title id="body-illustration-title">Human body: head, eyes, nose, airways and skin</title>
-          <desc id="body-illustration-description">A simplified front-facing human silhouette with lungs. Numbered buttons connect each area to its explanation. This is a symptom map, not an anatomical diagnosis.</desc>
+          <title id="body-illustration-title">Human body: head, eyes, nose, airways, skin and hormone system</title>
+          <desc id="body-illustration-description">A simplified front-facing human silhouette with lungs. Six numbered buttons connect to explanations. The sixth marker on the belly represents whole-body hormone research, not a local injury or diagnosis.</desc>
           <defs><linearGradient id="body-skin-tone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#EBD7C4"/><stop offset="1" stop-color="#D8BBA5"/></linearGradient></defs>
           <ellipse cx="210" cy="292" rx="154" ry="230" fill="#E8F3F8" opacity=".55"/>
           <circle cx="295" cy="92" r="36" fill="#F4A261" opacity=".12"/>
@@ -25,26 +25,25 @@ import { url } from '../lib/paths';
           <g fill="none" stroke="#8C7566" stroke-width="2" stroke-linecap="round"><path d="M188 99 Q194 95 200 99 M220 99 Q226 95 232 99"/><path d="M210 104 L206 116 L212 117 M201 128 Q210 132 219 128"/></g>
           <g fill="#C6887E" opacity=".8"><path d="M201 188 Q176 185 168 216 Q160 242 170 266 Q183 273 200 257 Z"/><path d="M219 188 Q244 185 252 216 Q260 242 250 266 Q237 273 220 257 Z"/></g>
           <g fill="none" stroke="#FAF5EF" stroke-width="5" stroke-linecap="round"><path d="M210 154 L210 215 M210 210 L185 235 M210 210 L235 235"/></g>
-          <g fill="none" stroke="#7A9A8B" stroke-width="1.5" opacity=".75"><path d="M159 73 H87 M230 99 L255 118 H331 M210 116 L180 163 H82 M252 241 H337 M109 325 H63"/></g>
-          <g fill="#526A60" font-family="system-ui, sans-serif" font-size="13" font-weight="600"><text x="51" y="69">Head</text><text x="337" y="114">Eyes</text><text x="45" y="159">Nose</text><text x="339" y="237">Airways</text><text x="27" y="321">Skin</text></g>
+          <g fill="none" stroke="#7A9A8B" stroke-width="1.5" opacity=".75"><path d="M159 73 H87 M230 99 L255 118 H331 M210 116 L180 163 H82 M252 241 H337 M109 325 H63 M233 302 L260 325 H329"/></g>
+          <g fill="#526A60" font-family="system-ui, sans-serif" font-size="13" font-weight="600"><text x="51" y="69">Head</text><text x="337" y="114">Eyes</text><text x="45" y="159">Nose</text><text x="339" y="237">Airways</text><text x="27" y="321">Skin</text><text x="332" y="321">Hormones</text></g>
         </svg>
         {bodyEffects.map((effect, index) => <button class="body-hotspot" type="button" style={`--x:${effect.x}%;--y:${effect.y}%`} data-body-target={effect.id} aria-controls={`body-detail-${effect.id}`} aria-label={`Explore ${effect.label}: ${effect.title}`} aria-pressed={index === 0 ? 'true' : 'false'}><span aria-hidden="true">{index + 1}</span></button>)}
       </div>
-      <figcaption>Tap a numbered area or open an explanation.<br/>Simplified illustration · not a diagnostic tool</figcaption>
+      <figcaption>Tap a numbered area or open an explanation.<br/>Simplified illustration · not a diagnostic tool
+        <p class="body-source"><a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics" rel="external">Source: FDA · cosmetic allergens ↗</a><br/>Shared source for areas 1–5.</p>
+        <p class="body-source">Area 6: <a href="https://www.niehs.nih.gov/health/topics/agents/endocrine" rel="external">NIEHS · endocrine disruptors ↗</a> · <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/phthalates-cosmetics" rel="external">FDA · phthalates ↗</a></p>
+      </figcaption>
     </figure>
     <div class="body-explanations">
       <p class="body-instruction">Different people. Different responses.</p>
       {bodyEffects.map((effect, index) => <details id={`body-detail-${effect.id}`} data-body-detail={effect.id} open={index === 0}>
         <summary><span class="body-number" aria-hidden="true">{index + 1}</span><span><small>{effect.label}</small>{effect.title}</span><span class="body-plus" aria-hidden="true">+</span></summary>
-        <div class="body-detail-copy"><span class="body-evidence">{effect.evidence}</span><p>{effect.text}</p><a class="text-link" href={effect.source} rel="external">Source: FDA · cosmetic allergens ↗</a></div>
+        <div class="body-detail-copy"><span class="body-evidence">{effect.evidence}</span><p>{effect.text}</p>{effect.id === 'endocrine' && <><p>The FDA reports no safety concerns for DEP as currently used in cosmetics and fragrances. Different phthalates must not be treated as interchangeable.</p><a class="text-link" href={url('guides/vocs-and-endocrine-disruptors/')}>Explore the VOCs &amp; endocrine disruptors guide →</a></>}</div>
       </details>)}
       <p class="body-care">Severe breathing difficulty or throat swelling needs urgent medical help. Persistent symptoms deserve individual assessment.</p>
     </div>
   </div>
-  <details class="body-research">
-    <summary><span class="research-badge">Ingredient-specific evidence</span>What about hormones &amp; reproductive health?</summary>
-    <div><p>Hormones act throughout the body—not at one “damage spot.” Some chemicals, including certain phthalates, can interfere with hormone signaling. That does not establish that every fragrance causes reproductive harm: the ingredient, exposure and evidence matter.</p><p><a href="https://www.niehs.nih.gov/health/topics/agents/endocrine" rel="external">NIEHS · endocrine disruptors ↗</a> · The <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/phthalates-cosmetics" rel="external">FDA reports no safety concerns for DEP as currently used in cosmetics and fragrances</a>.</p><a class="text-link" href={url('guides/vocs-and-endocrine-disruptors/')}>Explore the VOCs &amp; endocrine disruptors guide →</a></div>
-  </details>
   <p class="body-limit">This illustration does not establish that fragrance causes cancer, autism or ADHD. Natural essential oils can also contain allergens. Sources reviewed October 2026.</p>
   <noscript><p class="body-limit">Open the explanations directly to explore each area; body-marker interactions need JavaScript.</p></noscript>
 </section>
@@ -79,6 +78,7 @@ import { url } from '../lib/paths';
   .body-hotspot:is(:hover,[aria-pressed='true']){background:var(--accent-active);box-shadow:0 0 0 5px #f4a26126}
   .body-hotspot:focus-visible{outline:3px solid #526A60;outline-offset:5px}
   .body-figure figcaption{text-align:center;font-size:11px;line-height:1.7;color:var(--muted)}
+  .body-source{margin:10px 0 0;font-size:10px;line-height:1.6}.body-source a{color:#435E52;text-decoration:none;font-weight:600}
   .body-instruction{font-size:12px;color:#526A60;font-weight:600;margin:0 0 12px}
   .body-explanations details{border-bottom:1px solid var(--border)}
   .body-explanations summary{display:flex;align-items:center;gap:12px;list-style:none;padding:15px 0;font-size:15px;font-weight:600;line-height:1.4}
@@ -92,14 +92,7 @@ import { url } from '../lib/paths';
   .body-detail-copy .text-link{font-size:11px}
   .body-evidence{font-size:10px;padding:5px 9px;border-radius:999px;background:var(--accent-sky);color:#435E52;display:inline-block}
   .body-care{font-size:11px;line-height:1.7;color:var(--muted);padding:12px 0;margin:8px 0 0}
-  .body-research{border:1px solid var(--border);border-radius:16px;background:var(--canvas);padding:16px 20px;margin-top:22px}
-  .body-research summary{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:14px;font-weight:600;list-style:none;line-height:1.5}
-  .body-research summary::after{content:'+';margin-left:auto;font-size:20px;font-weight:400}
-  .body-research[open] summary::after{content:'−'}
-  .research-badge{background:#F8DBC3;color:#624936;padding:5px 10px;border-radius:999px;font-size:10px;white-space:nowrap}
-  .body-research>div{font-size:13px;line-height:1.8;max-width:920px}
-  .body-research a{color:#435E52;font-weight:600}
   .body-limit{font-size:11px;line-height:1.7;color:var(--muted);margin:16px 0 0}
-  @media(max-width:760px){.body-explorer{padding:22px 18px}.body-layout{grid-template-columns:1fr;gap:20px}.body-canvas{width:min(100%,320px)}.body-heading h2{font-size:28px}.body-detail-copy{padding-left:0}.body-explanations summary{font-size:14px}.body-research{padding:14px}.body-research summary{font-size:13px}}
+  @media(max-width:760px){.body-explorer{padding:22px 18px}.body-layout{grid-template-columns:1fr;gap:20px}.body-canvas{width:min(100%,320px)}.body-heading h2{font-size:28px}.body-detail-copy{padding-left:0}.body-explanations summary{font-size:14px}}
   @media(prefers-reduced-motion:reduce){.body-hotspot{transition:none}}
 </style>

@@ -1,0 +1,31 @@
+---
+const { id, person } = Astro.props;
+---
+<div class="profile-source-notes" data-source-notes>
+  <button type="button" aria-label={'Source and image notes: ' + person.name} aria-controls={id} aria-expanded="false" data-notes-toggle><span aria-hidden="true">i</span></button>
+  <div id={id} class="notes-panel" role="note">
+    <p><a href={person.source} target="_blank" rel="noopener noreferrer">{person.publisher} ↗</a></p>
+    {person.credit && <p>Image: {person.imageSource ? <a href={person.imageSource} target="_blank" rel="noopener noreferrer">{person.credit}</a> : person.credit}{person.licenseUrl && <> · <a href={person.licenseUrl} target="_blank" rel="noopener noreferrer">{person.license}</a> · cropped</>}</p>}
+  </div>
+</div>
+<script>
+document.querySelectorAll<HTMLElement>('[data-source-notes]').forEach(notes => {
+  const button = notes.querySelector<HTMLButtonElement>('[data-notes-toggle]')!;
+  const tile = notes.closest<HTMLElement>('.celebrity-tile')!;
+  function setOpen(open: boolean) { tile.toggleAttribute('data-notes-open', open); tile.toggleAttribute('data-notes-dismissed', !open); button.setAttribute('aria-expanded', String(open)); }
+  button.addEventListener('click', () => setOpen(!tile.hasAttribute('data-notes-open')));
+  tile.addEventListener('keydown', event => { if (event.key === 'Escape') { setOpen(false); button.focus({preventScroll:true}); } });
+  tile.addEventListener('pointerleave', () => { tile.removeAttribute('data-notes-dismissed'); });
+  tile.addEventListener('focusout', event => { if (!tile.contains(event.relatedTarget as Node | null)) tile.removeAttribute('data-notes-dismissed'); });
+});
+</script>
+<style>
+.profile-source-notes { position:absolute;top:10px;right:10px;width:calc(100% - 20px);z-index:2;pointer-events:none; }
+button { display:grid;place-items:center;margin-left:auto;width:28px;height:28px;padding:0;border:1px solid #dce6df;border-radius:50%;background:#fffffff0;color:#40584d;font-size:14px;font-weight:700;pointer-events:auto; }
+button:focus-visible { outline:3px solid #f4a261;outline-offset:3px; }
+.notes-panel { position:absolute;right:0;top:36px;width:100%;max-width:250px;padding:12px;border-radius:12px;background:#334b42f5;color:#fff;font-size:10px;line-height:1.6;box-shadow:0 5px 20px #0002;opacity:0;visibility:hidden;transition:opacity .18s;pointer-events:none; }
+.notes-panel p { margin:0; }.notes-panel p+p { margin-top:6px; }.notes-panel a { color:#fff;text-decoration:none; }.notes-panel a:hover { text-decoration:underline; }
+:global(.celebrity-tile:hover) .notes-panel, :global(.celebrity-tile:focus-within) .notes-panel, :global(.celebrity-tile[data-notes-open]) .notes-panel { opacity:1;visibility:visible;pointer-events:auto; }
+:global(.celebrity-tile[data-notes-dismissed]) .notes-panel { opacity:0;visibility:hidden;pointer-events:none; }
+@media(prefers-reduced-motion:reduce) { .notes-panel { transition:none; } }
+</style>
