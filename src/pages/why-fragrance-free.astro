@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FragranceBodyMap from '../components/FragranceBodyMap.astro';
 import { url } from '../lib/paths';
 ---
 <Layout title="Why fragrance free? | CleanCare" description="A balanced introduction to fragrance exposure, health concerns, cleaner indoor air, and practical fragrance-free choices.">
@@ -9,6 +10,8 @@ import { url } from '../lib/paths';
     <p class="intro">Fragrance-free living is not about calling every scent dangerous. It is a practical way to remove an optional exposure, make shared spaces more inclusive, and choose products with clearer labels.</p>
     <div class="why-actions"><a class="button" href={url('guides/reduce-fragrance-exposure/')}>Start with practical changes ↗</a><a class="text-link" href={url('evidence/')}>Check the evidence →</a></div>
   </header>
+
+  <FragranceBodyMap />
 
   <section class="container why-split" aria-label="Two perspectives on fragrance-free living">
     <article class="why-panel why-concerns">
