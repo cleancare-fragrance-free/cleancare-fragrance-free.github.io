@@ -8,6 +8,8 @@ pubDate: 2026-10-05
 
 Fragrance did not suddenly change from harmless flowers to harmful chemicals. Its history is a gradual expansion of ingredients, extraction techniques and industrial manufacturing. Natural materials remain in use, while many modern formulas combine them with synthesized molecules. The useful distinction is between **where an ingredient comes from, how it is made, and what evidence says about exposure**.
 
+> **Watch and compare terms:** [Open the shared historical-context video on YouTube](https://www.youtube.com/watch?v=KGbhGFLH8Kg) ↗. It is included as a viewing companion, not as independent historical or health evidence. For a commercial-industry explanation of the difference between the broad label term “fragrance” and fine perfume, see [FY Chem Group’s overview](https://fychemgroup.com/fragrance-and-perfume-difference-explained/) ↗. Its terminology is useful context, but the article’s health and label claims continue to rely on the primary sources linked below.
+
 ## The Middle Ages: plants, resins and scented waters
 
 Medieval scent served religious, medicinal, culinary and cosmetic purposes. Herbs, flowers and resins were prepared through processes such as maceration and filtration. Knowledge of distillation circulated through Arabic scholarship and European medical traditions; the still helped develop scented waters. These practices were not one uniform worldwide tradition. [The International Perfume Museum in Grasse outlines this history](https://www.museesdegrasse.com/en/history-perfumery).

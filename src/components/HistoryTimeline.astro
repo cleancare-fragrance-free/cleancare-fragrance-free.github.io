@@ -1,0 +1,31 @@
+---
+const milestones = [
+  { era: 'Middle Ages', title: 'Botanicals & scented waters', text: 'Plants, resins, maceration and distillation shaped local scent traditions.', icon: 'leaf', href: '#the-middle-ages-plants-resins-and-scented-waters' },
+  { era: '1500s–1700s', title: 'Alcohol & specialist craft', text: 'Alcohol bases, trade and perfumery workshops expanded the materials and methods in use.', icon: 'drop', href: '#the-1500s1700s-alcohol-trade-and-specialist-crafts' },
+  { era: '1800s', title: 'Aroma molecules', text: 'Synthetic odorants joined natural extracts; coumarin and vanillin mark well-documented milestones.', icon: 'flask', href: '#the-1800s-chemists-begin-making-aroma-molecules' },
+  { era: '1900s', title: 'Scale & everyday products', text: 'Industrial manufacturing made scent more available in consumer goods, beyond fine perfume.', icon: 'bottle', href: '#the-1900s-scalable-production-and-everyday-scent' },
+  { era: 'Today', title: 'Mixed supply chains', text: 'Natural extracts, synthesized molecules and renewable routes can coexist in a single industry.', icon: 'layers', href: '#today-why-petrochemicals-are-part-of-the-story' },
+];
+---
+<aside class="history-timeline" aria-labelledby="history-timeline-heading">
+  <div class="history-timeline-heading"><p class="eyebrow">An original visual guide</p><h2 id="history-timeline-heading">How perfume-making changed over time</h2><p>Follow the shift in techniques and supply—not a simplistic “natural then toxic” story.</p></div>
+  <ol>
+    {milestones.map((milestone, index) => <li>
+      <a href={milestone.href}>
+        <span class="timeline-marker" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span>
+          {milestone.icon === 'leaf' && <svg viewBox="0 0 24 24"><path d="M12 21V10M12 14C5 14 4 8 4 4c5 0 8 3 8 10Zm0 0c7 0 8-6 8-10-5 0-8 3-8 10Z"/></svg>}
+          {milestone.icon === 'drop' && <svg viewBox="0 0 24 24"><path d="M12 3S6 10 6 14a6 6 0 0 0 12 0c0-4-6-11-6-11Z"/></svg>}
+          {milestone.icon === 'flask' && <svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a3 3 0 0 0 3 4h8a3 3 0 0 0 3-4l-5-8V3M7 16h10"/></svg>}
+          {milestone.icon === 'bottle' && <svg viewBox="0 0 24 24"><path d="M9 3h6v4l2 2v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9l2-2V3ZM8 12h8"/></svg>}
+          {milestone.icon === 'layers' && <svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg>}
+        </span>
+        <div><p>{milestone.era}</p><h3>{milestone.title}</h3><span>{milestone.text}</span><b>Read this chapter →</b></div>
+      </a>
+    </li>)}
+  </ol>
+  <p class="timeline-note">This visual timeline is an original CleanCare interpretation based on the linked historical sources in the article. It does not rate any era, ingredient or technique as inherently safe or unsafe.</p>
+</aside>
+
+<style>
+  .history-timeline{margin:28px 0 42px;padding:26px;border:1px solid var(--border);border-radius:24px;background:linear-gradient(135deg,#fffdf9,#eef4ed)}.history-timeline-heading{max-width:680px}.history-timeline h2{margin:6px 0 10px;font-size:clamp(25px,3.2vw,38px);line-height:1.15}.history-timeline-heading>p:last-child{margin:0;color:var(--muted);font-size:14px;line-height:1.65}.history-timeline ol{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;list-style:none;margin:28px 0 18px;padding:0}.history-timeline li{position:relative;min-width:0}.history-timeline li:not(:last-child)::after{content:'';position:absolute;top:31px;left:67px;right:-7px;height:2px;background:#b7cbbd}.history-timeline a{position:relative;z-index:1;display:block;height:100%;color:var(--text);text-decoration:none}.history-timeline a:hover h3,.history-timeline a:focus-visible h3{color:var(--link-hover)}.timeline-marker{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border:1px solid #b7cbbd;border-radius:50%;background:#fff;color:#456759}.timeline-marker>span{position:absolute;top:-7px;left:-4px;border-radius:999px;padding:3px 6px;background:#f4a261;color:#533817;font-size:10px;font-weight:700}.timeline-marker svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.history-timeline li> a>div{padding:16px 14px 0 0}.history-timeline li p{margin:0 0 5px;color:var(--link-color);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.history-timeline h3{margin:0 0 7px;font-size:15px;line-height:1.3}.history-timeline li span:not(.timeline-marker){display:block;color:var(--muted);font-size:12px;line-height:1.6}.history-timeline b{display:inline-block;margin-top:10px;color:var(--link-color);font-size:11px}.timeline-note{margin:0;border-top:1px solid #dbe6dc;padding-top:14px;color:var(--muted);font-size:11px;line-height:1.6}@media(max-width:850px){.history-timeline ol{grid-template-columns:1fr;gap:16px}.history-timeline li{display:grid;grid-template-columns:64px 1fr;gap:14px}.history-timeline li:not(:last-child)::after{top:67px;bottom:-17px;left:31px;right:auto;width:2px;height:auto}.history-timeline li>a{display:contents}.history-timeline li> a>div{padding:3px 0 0}.timeline-marker{grid-row:1}.history-timeline li span:not(.timeline-marker){max-width:620px}}@media(max-width:560px){.history-timeline{margin-inline:-4px;padding:20px}.history-timeline h2{font-size:28px}}
+</style>
