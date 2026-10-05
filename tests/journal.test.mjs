@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { articles, matchesArticle } from '../src/data/articles.mjs';
 import { countries } from '../src/data/countries.mjs';
 import { matchesProduct } from '../src/lib/filter.mjs';
-const products = JSON.parse(readFileSync(new URL('../src/data/products.json', import.meta.url), 'utf8'));
+import products from '../src/data/product-catalog.mjs';
 test('journal entries map to articles with matching titles', () => {
  assert.equal(new Set(articles.map(a => a.slug)).size, articles.length);
  for (const article of articles) {
@@ -26,15 +26,16 @@ test('public product profiles have official sources and no affiliate links', () 
   assert.equal(p.sample, false);
   assert.equal(p.affiliateUrl, null);
   assert.ok(p.notes && p.claim && p.checked && p.imageAlt && p.countryNote);
-  const official = new URL(p.officialUrl), image = new URL(p.image);
+  const official = new URL(p.officialUrl), image = p.image ? new URL(p.image) : null;
   const officialHosts = ['www.faithinnature.co.uk','surcare.co.uk','e45.com','www.aveeno.com','www.aveeno.com.sg','www.aveeno.com.au','www.armandhammer.com','www.seventhgeneration.com','tide.com','meliorameansbetter.com','ecostore.com','www.cerave.com.au','paulaschoice.sg','www.paulaschoice.com.au','www.clinique.com.au','www.ecostore.sg','uk.ecover.com','greenkulture.sg','www.eau-thermale-avene.sg','www.qvskincare.com.au','www.cetaphil.com.sg','sukinnaturals.com','www.vanicream.com','prequelskin.com','helloseen.com','honest.com','kristinesshair.com','www.fourreasons.us','eltamd.com','www.k18hair.com','theordinary.com','www.laroche-posay.us','www.currentbody.us','www.gillettevenus.com'];
-  const countrySourceHosts = [...officialHosts, 'www.lazada.sg', 'www.watsons.com.sg'];
-  const imageHosts = [...officialHosts, 'images.ctfassets.net', 'media-pierre-fabre.wedia-group.com', 'cdn.productimages.coles.com.au', 'cdn.shopify.com'];
+  officialHosts.push('www.cerave.com', 'int.aestura.com', 'www.cosrx.com', 'www.sofiepavittface.com', 'www.farmacybeauty.com', 'www.vaseline.com', 'www.aquaphorus.com', 'kissmyface.com', 'tubbytodd.com', 'necessaire.com', 'www.cleure.com', 'www.realpurity.com');
+  const countrySourceHosts = [...officialHosts, 'www.lazada.sg', 'www.watsons.com.sg', 'www.sephora.com'];
+  const imageHosts = [...officialHosts, 'images.ctfassets.net', 'media-pierre-fabre.wedia-group.com', 'cdn.productimages.coles.com.au', 'cdn.shopify.com', 'images-1.eucerin.com'];
   const imageSourceHosts = [...officialHosts, 'www.coles.com.au'];
   assert.ok(officialHosts.includes(official.hostname));
-  assert.ok(imageHosts.includes(image.hostname));
+  if (image) assert.ok(imageHosts.includes(image.hostname), p.id + ': ' + image.hostname);
   assert.ok(imageSourceHosts.includes(new URL(p.imageSourceUrl).hostname));
-  assert.equal(image.protocol, 'https:');
+  if (image) assert.equal(image.protocol, 'https:');
   assert.equal(official.search, '');
   assert.equal(official.protocol, 'https:');
   assert.ok(Object.values(p.countries).every(link => { const source = new URL(link); return source.protocol === 'https:' && countrySourceHosts.includes(source.hostname); }));

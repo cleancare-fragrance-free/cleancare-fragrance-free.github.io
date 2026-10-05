@@ -1,0 +1,22 @@
+{
+  "reviewed": "2026-10-05",
+  "readingSource": "https://nymag.com/strategist/article/fragrance-free-products-we-use.html",
+  "newFragranceFreeProducts": 15,
+  "separateEssentialOilAlternative": "Real Purity Roll-On Deodorant: official ingredient list contains essential oils; excluded from default results.",
+  "alreadyListed": ["Vanicream Gentle Facial Cleanser", "Aveeno Daily Moisturizing Body Lotion", "Tide Free & Gentle", "Seventh Generation Free & Clear"],
+  "heldForFurtherVerification": [
+    {"product":"Garden of Wisdom Decadent Oat Emulsion (No Essential Oils)","reason":"No-essential-oils variant identified, but complete ingredients and added-perfume absence not established."},
+    {"product":"Al-Jamal Soap","reason":"Exact label and current US procurement source not established."},
+    {"product":"Skin Aqua UV Super Moisture Gel","reason":"Japanese fragrance-free statement does not confirm the specific US import version."},
+    {"product":"Elizabeth Arden Eight Hour Nourishing Lip Balm SPF20","reason":"Complete current US inactive ingredients not established; other similarly named variants contain parfum."},
+    {"product":"Megababe Unscented Thigh Rescue","reason":"Official fragrance-free claim and listed aromatic allergens require clarification of exact formula."},
+    {"product":"Clinique Deep Comfort Body Butter","reason":"Current official US page/formula unavailable."},
+    {"product":"Neutrogena Clear Body SPF50 Spray","reason":"Current exact official US formula and product page not verified."},
+    {"product":"Eucerin Baby Wash & Shampoo","reason":"Complete formula or explicit official fragrance-free claim not retrieved."},
+    {"product":"La Roche-Posay Lipikar AP+M","reason":"Current US page now names AP+MAX; article version not added under the old name."},
+    {"product":"Black Girl Sunscreen SPF30","reason":"Complete current formula or explicit official fragrance-free statement not retrieved."}
+  ],
+  "policy": "Default results exclude essential-oil alternatives. Strict no-essential-oils results require separate dated evidence. Fragrance-free claims alone do not establish essential-oil absence. Carrier oils are not essential oils. No odorless, allergy-free or universally-safe claims.",
+  "images": "Official brand product assets where retrieved; honest text placeholder for Vaseline when a specific image could not be verified.",
+  "oralCareSource": "https://www.ada.org/resources/ada-library/oral-health-topics/toothpastes"
+}
