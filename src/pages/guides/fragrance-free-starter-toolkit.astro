@@ -104,5 +104,25 @@ const steps = [
   .toolkit-label-grid h3 { margin:0 0 6px; font-size:15px; }
   .toolkit-label-grid p { margin-bottom:0; color:var(--muted); font-size:12px; line-height:1.6; }
   @media(max-width:850px) { .toolkit-steps { grid-template-columns:1fr; } }
-  @media(max-width:760px) { .toolkit-country,.toolkit-label-grid { grid-template-columns:1fr; } .toolkit-country { gap:14px; } .toolkit-step { padding:14px; } }
+  @media(max-width:760px) {
+    .toolkit-country,.toolkit-label-grid { grid-template-columns:1fr; }
+    .toolkit-country { gap:14px; }
+    .toolkit-step { padding:14px; }
+    /* Keep the action compact without shrinking its comfortable tap target. */
+    .toolkit-link,.toolkit .context-next .button {
+      min-height:40px;
+      gap:8px;
+      padding:9px 13px;
+      border-color:#edb98f;
+      background:#f8d1b0;
+      color:#4b382c;
+      font-size:12px;
+      line-height:1.25;
+      box-shadow:none;
+    }
+    .toolkit-link:hover,.toolkit-link:focus-visible,.toolkit .context-next .button:hover,.toolkit .context-next .button:focus-visible {
+      background:#f4c294;
+      box-shadow:none;
+    }
+  }
 </style>
