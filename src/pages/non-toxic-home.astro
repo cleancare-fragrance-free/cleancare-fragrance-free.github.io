@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HomeSwapPlan from '../components/HomeSwapPlan.astro';
 import { url } from '../lib/paths';
 
 const foundations = [
@@ -39,11 +40,13 @@ const illustratedGuides = [
         <p class="eyebrow">Non-Toxic Home</p>
         <h1>A naturally clean home,<br/><em>without the cloud of scent.</em></h1>
         <p class="intro">A practical guide to reducing fragranced products, simplifying cleaning, and choosing lower-exposure methods that fit real homes and real budgets.</p>
-        <div class="hero-actions"><a class="button" href="#room-plan">Start room by room <span>↓</span></a><a class="text-link" href={url('directory/?category=Cleaning')}>Browse cleaning products <span>→</span></a></div>
+        <div class="hero-actions"><a class="button" href="#house-plan">Explore the house plan <span>↓</span></a><a class="text-link" href={url('directory/?category=Home+%26+Laundry')}>Browse cleaning products <span>→</span></a></div>
       </div>
       <div class="home-illustration" aria-hidden="true"><span class="sun"></span><span class="house"><i></i></span><span class="leaf leaf-one"></span><span class="leaf leaf-two"></span><p>LESS SCENT<br/><strong>MORE AIR</strong></p></div>
     </div>
   </section>
+
+  <HomeSwapPlan />
 
   <section class="container definition-note" aria-labelledby="meaning-title">
     <p class="eyebrow">A useful goal, not a guarantee</p>
@@ -127,4 +130,6 @@ const illustratedGuides = [
   .next-step{display:flex;justify-content:space-between;align-items:center;gap:32px;margin-top:72px;margin-bottom:72px;padding:42px;border-radius:24px;background:#e8f3f8}.next-step h2{margin:6px 0 10px;font-size:36px}.next-step p:last-child{margin:0;color:var(--muted)}
   @media(max-width:1050px){.home-hero-grid{grid-template-columns:1fr}.home-illustration{min-height:330px}.foundation-grid{grid-template-columns:repeat(2,1fr)}.book-grid{grid-template-columns:1fr 1fr}.book-card:last-child{grid-column:1/-1}.safety-grid{gap:42px}}
   @media(max-width:700px){.home-hero{padding:50px 0}.home-hero h1{letter-spacing:-2px}.home-illustration{min-height:300px}.home-illustration .house{left:38px;transform:scale(.8);transform-origin:bottom left}.definition-note{padding:28px 24px}.foundation-grid,.ingredient-grid,.book-grid,.safety-grid{grid-template-columns:1fr}.book-card:last-child{grid-column:auto}.room-list article{grid-template-columns:45px 1fr}.room-list p{grid-column:2}.next-step{align-items:flex-start;flex-direction:column;padding:30px}.caution{flex-direction:column;gap:6px}}
+  /* Compact introduction: keep the interactive plan close to the page title. */
+  .home-hero{padding:24px 0}.home-hero-grid{grid-template-columns:1fr;gap:0}.home-hero h1{font-size:clamp(32px,3.5vw,46px);letter-spacing:-1.3px;margin:8px 0 12px;line-height:1.12}.home-hero .intro{font-size:13px;line-height:1.6;margin-bottom:14px;max-width:850px}.home-illustration{display:none}.home-hero .hero-actions{margin-top:12px;gap:20px}.home-hero .button,.home-hero .text-link{font-size:12px}.definition-note{margin-top:12px;padding:20px 24px}.definition-note h2{font-size:24px}.definition-note p:last-child{font-size:13px;line-height:1.65}
 </style>

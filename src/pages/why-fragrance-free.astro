@@ -6,10 +6,14 @@ import { url } from '../lib/paths';
 ---
 <Layout title="Why fragrance free? | CleanCare" description="A balanced introduction to fragrance exposure, health concerns, cleaner indoor air, and practical fragrance-free choices.">
   <header class="container why-hero">
+    <div class="why-introduction">
     <p class="eyebrow">Why fragrance free</p>
     <h1>Less added scent.<br/><em>More room to breathe.</em></h1>
     <p class="intro">Fragrance-free living is not about calling every scent dangerous. It is a practical way to remove an optional exposure, make shared spaces more inclusive, and choose products with clearer labels.</p>
     <div class="why-actions"><a class="button" href={url('guides/reduce-fragrance-exposure/')}>Start with practical changes ↗</a><a class="text-link" href={url('evidence/')}>Check the evidence →</a></div>
+    <div class="exposure-paths"><a href={url('directory/?category=Skin+%26+Body')}><EditorialIcon name="skin"/><span><strong>ON your body</strong><small>Skin, hair and clothes: cosmetics, body care and laundry products.</small></span></a><a href={url('non-toxic-home/#house-plan')}><EditorialIcon name="home"/><span><strong>IN your environment</strong><small>Cleaning products, dishwashing and added room scent.</small></span></a></div>
+    </div>
+    <figure class="why-swaps"><a href={url('images/editorial/home-fragrance-free-swaps.webp')} target="_blank" rel="noopener noreferrer" aria-label="Open the full fragrance-free swaps illustration"><img src={url('images/editorial/home-fragrance-free-swaps.webp')} width="1024" height="1024" alt="Fragrance-free swaps for laundry, dishwashing, hand and body care, surface cleaning and room scent. Read ingredients and choose the exact fragrance-free version." decoding="async" fetchpriority="high"/></a><figcaption>Fragrance-free choices for your body and your surroundings. Original CleanCare AI-generated illustration.</figcaption></figure>
   </header>
 
   <FragranceBodyMap />
@@ -52,6 +56,8 @@ import { url } from '../lib/paths';
   </section>
 </Layout>
 <style>
+.why-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;align-items:center;padding-block:28px}.why-hero h1{font-size:clamp(36px,4vw,54px);letter-spacing:-1.8px;margin:10px 0 16px}.why-introduction>.intro{font-size:14px;line-height:1.7}.why-actions{gap:16px;flex-wrap:wrap}.why-actions a{font-size:12px}.why-swaps{margin:0}.why-swaps img{display:block;width:100%;height:auto;border-radius:20px}.why-swaps figcaption{font-size:10px;line-height:1.5;color:var(--muted);margin-top:8px}.exposure-paths{display:grid;gap:10px;margin-top:22px}.exposure-paths>a{display:flex;gap:12px;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--card);color:var(--text)}.exposure-paths strong{display:block;font-size:14px;margin-bottom:4px}.exposure-paths small{display:block;font-size:12px;line-height:1.6;color:var(--muted)}.exposure-paths>a:hover{border-color:var(--accent-sage)}
+@media(max-width:760px){.why-hero{grid-template-columns:1fr;gap:20px;padding-block:24px}.why-hero h1{font-size:36px}.why-swaps{max-width:500px;justify-self:center}.exposure-paths{margin-top:16px}}
 .why-point>span { display:flex;flex-direction:column;align-items:flex-start;gap:8px; }
 .fragrance-history { display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px;margin-block:34px;border:1px solid var(--border);border-radius:20px;background:var(--card); }
 .history-icon { display:grid;place-items:center;width:44px;height:44px;background:var(--accent-sky);border-radius:50%; }

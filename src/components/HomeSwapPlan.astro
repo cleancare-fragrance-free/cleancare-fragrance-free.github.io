@@ -1,0 +1,81 @@
+---
+import EditorialIcon from './EditorialIcon.astro';
+import { url } from '../lib/paths';
+
+const rooms = [
+  { id:'laundry', name:'Laundry', icon:'laundry', hint:'Washer · clothes', items:[['Washing machine','Use fragrance-free detergent; check the exact formula.'],['Laundry extras','Stop scent beads, fabric softener and fragranced dryer sheets.'],['Clothes & towels','Rewash heavily scented textiles; air them outdoors when practical.']], category:'Home & Laundry', query:'laundry' },
+  { id:'kitchen', name:'Kitchen', icon:'cleaning', hint:'Dishwasher · dishes', items:[['Dishwasher','Check tablets or powder for added fragrance; follow machine and product instructions.'],['Sink & dishes','Choose fragrance-free dishwashing liquid.'],['Counters & floors','Use fragrance-free surface products, water and a cloth where suitable.']], category:'Home & Laundry', query:'' },
+  { id:'bathroom', name:'Bathroom', icon:'skin', hint:'Body · hair care', items:[['Skin & body','Check hand wash, body wash, moisturiser and deodorant for added fragrance.'],['Hair products','Choose the exact fragrance-free shampoo, conditioner and styling formula.'],['Toilet & shower','Remove fragranced toilet blocks and sprays; run the exhaust fan and dry wet surfaces.']], category:'Skin & Body', query:'' },
+  { id:'bedroom', name:'Bedroom', icon:'bag', hint:'Bedding · wardrobe', items:[['Bed linen','Wash bedding with fragrance-free detergent.'],['Clothes & wardrobe','Skip scented drawer liners and wardrobe sprays.'],['Bedside products','Review hand creams and personal-care products; remove diffusers and scented candles.']], category:'Home & Laundry', query:'laundry' },
+  { id:'living', name:'Living room', icon:'home', hint:'Candles · room sprays', items:[['Added room scent','Remove plug-ins, scented candles, incense and diffusers instead of masking odours.'],['Furniture & surfaces','Damp-dust and vacuum with appropriate filtration.'],['Cleaning cupboard','Choose fragrance-free cleaners, follow labels and store them securely.']], category:'Home & Laundry', query:'' },
+  { id:'entry', name:'Entry & shared spaces', icon:'people', hint:'Bags · everyday products', items:[['Travel bag','Check wipes, hand cream, perfume and travel products.'],['Shared air','Ask for one practical change, such as switching off a diffuser.'],['Household routine','Explain your swaps so others know which products to use.']], category:'', query:'' },
+];
+---
+<section class="container home-swap-plan" id="house-plan" aria-labelledby="house-plan-title" data-house-plan>
+  <div class="plan-heading"><div><p class="eyebrow">Explore your home from above</p><h2 id="house-plan-title">Click a room. Find your next swap.</h2></div><p>Choose a room to see the everyday objects and products to check. Swap the product—not the appliance.</p></div>
+  <div class="plan-layout">
+    <div class="plan-drawing">
+      <svg viewBox="0 0 600 510" aria-hidden="true" class="floor-plan">
+        <rect x="8" y="8" width="584" height="494" rx="12" fill="#fffaf3" stroke="#526e58" stroke-width="8"/>
+        <path d="M200 8v162M400 8v162M8 170h584M300 170v170M8 340h584" stroke="#526e58" stroke-width="5"/>
+        <g stroke="#93a89a" stroke-width="2" fill="#e8f3f8">
+          <rect x="30" y="25" width="58" height="66" rx="5"/><circle cx="59" cy="65" r="19"/><path d="M32 40h54"/>
+          <path d="M222 25h152v38H260v25h-38z"/><rect x="308" y="30" width="49" height="28" rx="4"/><path d="M316 35v18m9-18v18m9-18v18m9-18v18"/>
+          <rect x="420" y="25" width="66" height="35" rx="15"/><ellipse cx="548" cy="43" rx="17" ry="22"/>
+          <rect x="28" y="190" width="108" height="74" rx="5" fill="#f1dfc7"/><path d="M28 211h108M82 211v53"/><rect x="35" y="195" width="40" height="12" rx="3"/><rect x="89" y="195" width="40" height="12" rx="3"/>
+          <rect x="322" y="190" width="125" height="43" rx="10" fill="#dfeadd"/><path d="M360 191v40m45-40v40"/><rect x="467" y="190" width="38" height="78" rx="9" fill="#dfeadd"/><ellipse cx="403" cy="253" rx="37" ry="16" fill="#f1dfc7"/>
+          <rect x="28" y="362" width="72" height="32" rx="4" fill="#f1dfc7"/><path d="M36 370h16v14H36m25-14h16v14H61"/>
+          <rect x="324" y="362" width="85" height="35" rx="4" fill="#dfeadd"/><path d="M338 366v27m23-27v27m23-27v27"/>
+        </g>
+        <path d="M82 8h72M447 8h70M592 215v65M8 215v65M420 502h80" stroke="#8bb3c5" stroke-width="8"/>
+        <path d="M253 502v-36a36 36 0 0 1 36 36" stroke="#526e58" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="room-buttons" aria-label="Choose a room">
+        {rooms.map(room => <button type="button" class={`room-button room-${room.id}`} data-room={room.id} aria-controls={`swaps-${room.id}`} aria-pressed="false"><span><EditorialIcon name={room.icon}/><strong>{room.name}</strong><small>{room.hint}</small></span></button>)}
+      </div>
+      <p class="plan-caption">Illustrative floor plan · use Tab and Enter, or tap any room.</p>
+    </div>
+    <div class="room-details" aria-live="polite" aria-atomic="true">
+      {rooms.map(room => <article id={`swaps-${room.id}`} data-room-panel={room.id} aria-labelledby={`room-title-${room.id}`}>
+        <p class="eyebrow">Your room-by-room checklist</p><h3 id={`room-title-${room.id}`}><EditorialIcon name={room.icon}/>{room.name}</h3>
+        <ul>{room.items.map(([object, swap]) => <li><strong>{object}</strong><p>{swap}</p></li>)}</ul>
+        <a class="button" href={room.category ? url('directory/') + '?' + new URLSearchParams({category:room.category, ...(room.query ? {q:room.query} : {})}) : url('guides/shared-spaces/')}>{room.category ? 'Find fragrance-free alternatives' : 'Plan a shared-space request'} →</a>
+        {room.id === 'bathroom' && <a class="hair-link text-link" href={url('directory/?category=Haircare')}>Browse haircare separately →</a>}
+      </article>)}
+      <p class="plan-caution">Read current ingredients: essential oils are fragrance too. Never mix cleaners; follow labels and appliance instructions.</p>
+    </div>
+  </div>
+</section>
+<script>
+  for (const plan of document.querySelectorAll<HTMLElement>('[data-house-plan]')) {
+    const buttons = [...plan.querySelectorAll<HTMLButtonElement>('[data-room]')];
+    const panels = [...plan.querySelectorAll<HTMLElement>('[data-room-panel]')];
+    const selectRoom = (id: string) => {
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.room === id)));
+      panels.forEach(panel => panel.hidden = panel.dataset.roomPanel !== id);
+    };
+    buttons.forEach(button => button.addEventListener('click', () => selectRoom(button.dataset.room!)));
+    selectRoom('laundry');
+  }
+</script>
+<style>
+  .home-swap-plan{padding-block:24px;scroll-margin-top:20px}
+  .plan-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:16px}
+  .plan-heading h2{font-size:28px;margin:5px 0 0;line-height:1.2}.plan-heading>p{max-width:370px;margin:0;font-size:12px;line-height:1.6;color:var(--muted)}
+  .plan-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:start}
+  .plan-drawing{position:relative;min-width:0}.floor-plan{display:block;width:100%;height:auto}
+  .room-buttons{position:absolute;inset:0 0 auto;aspect-ratio:600/510;width:100%}
+  .room-button{position:absolute;border:0;border-radius:10px;background:transparent;color:var(--text);cursor:pointer;padding:0;transition:background .2s}
+  .room-button:hover,.room-button[aria-pressed="true"]{background:#7a9a8b24}.room-button:focus-visible{outline:3px solid #b86e32;outline-offset:-5px}
+  .room-button>span{position:absolute;left:6px;right:6px;bottom:12px;display:flex;flex-direction:column;align-items:center;gap:3px;background:#fffaf3ee;border-radius:8px;padding:5px}
+  .room-button strong{font-size:13px;line-height:1.3}.room-button small{font-size:10px;line-height:1.35;color:var(--muted)}.room-button :global(svg){width:18px;height:18px}
+  .room-laundry{left:1.5%;top:1.6%;width:31.5%;height:31%}.room-kitchen{left:33.7%;top:1.6%;width:32.6%;height:31%}.room-bathroom{left:67%;top:1.6%;width:31.5%;height:31%}
+  .room-bedroom{left:1.5%;top:34%;width:47.5%;height:32%}.room-living{left:51%;top:34%;width:47.5%;height:32%}.room-entry{left:1.5%;top:67.5%;width:97%;height:30%}
+  .room-entry>span{left:25%;right:25%}.plan-caption{margin:8px 0 0;font-size:10px;color:var(--muted)}
+  .room-details{padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--card)}.room-details article[hidden]{display:none}
+  .room-details h3{display:flex;align-items:center;gap:10px;margin:6px 0 14px;font-size:25px}.room-details ul{list-style:none;padding:0;margin:0}.room-details li{padding:12px 0;border-top:1px solid var(--border)}.room-details li strong{font-size:14px}.room-details li p{margin:5px 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
+  .room-details .button{margin-top:12px;font-size:11px;min-height:44px;padding:12px 16px}.hair-link{display:block;padding-block:12px;font-size:11px}.plan-caution{margin:16px 0 0;font-size:11px;line-height:1.6;color:var(--muted)}
+  @media(max-width:760px){.plan-heading{display:block}.plan-heading>p{margin-top:10px;max-width:none}.plan-layout{grid-template-columns:1fr;gap:16px}.room-details{padding:18px}}
+  @media(max-width:420px){.room-button small{display:none}.room-button strong{font-size:11px}.room-button>span{bottom:8px}.plan-heading h2{font-size:25px}}
+  @media(prefers-reduced-motion:reduce){.room-button{transition:none}}
+</style>
