@@ -13,6 +13,16 @@ test('non-toxic home guide includes core methods and safety boundaries', () => {
   assert.ok(source.includes('epa.gov/indoor-air-quality'));
 });
 
+test('the home section is labeled House Detox in navigation, page heading and breadcrumbs', async () => {
+  const navigation = readFileSync(new URL('../src/layouts/Layout.astro', import.meta.url), 'utf8');
+  const page = source;
+  const seo = readFileSync(new URL('../src/lib/site-seo.mjs', import.meta.url), 'utf8');
+  assert.match(navigation, /url\('non-toxic-home\/'\)[^>]*>House Detox/);
+  assert.match(page, /class="eyebrow">House Detox/);
+  assert.match(seo, /'non-toxic-home': 'House Detox'/);
+  assert.doesNotMatch(navigation, />Non-Toxic Home</);
+});
+
 test('non-toxic home guide includes requested reading and practical pathways', () => {
   for (const phrase of ['Clean &amp; Green', 'The Borax Home &amp; Garden Handbook', 'homesandgardens.com/solved/cleaning-books', 'fragrance-free-starter-toolkit', 'directory/']) {
     assert.ok(source.includes(phrase), phrase);

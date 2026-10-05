@@ -1,12 +1,36 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { celebrityStories } from '../src/data/celebrity-stories.mjs';
+import { readFileSync } from 'node:fs';
 
 test('celebrity collection keeps Miranda and replaces the three removed stories', () => {
   assert.deepEqual(celebrityStories.map(person => person.name), [
-    'Miranda Kerr', 'Pharrell Williams', 'Jessica Alba', 'Rihanna',
-    'Selena Gomez', 'Michelle Pfeiffer', 'Kourtney Kardashian',
+    'Eva Longoria', 'Miranda Kerr', 'Pharrell Williams', 'Jessica Alba', 'Rihanna',
+    'Hailey Bieber', 'Alicia Keys', 'Selena Gomez', 'Michelle Pfeiffer', 'Kourtney Kardashian', 'Michelle Obama',
   ]);
+});
+
+test('celebrity stories live under Why fragrance free without breaking the existing address', () => {
+  const source = path => readFileSync(new URL(path, import.meta.url), 'utf8');
+  const navigation = source('../src/layouts/Layout.astro');
+  const why = navigation.match(/<details><summary>Why fragrance free<\/summary>(.*?)<\/details>/s)[1];
+  const read = navigation.match(/<details><summary>Read & watch<\/summary>(.*?)<\/details>/s)[1];
+  assert.ok(why.includes("url('celebrity-stories/')"));
+  assert.ok(!read.includes("url('celebrity-stories/')"));
+  const page = source('../src/pages/celebrity-stories.astro');
+  assert.ok(page.includes('<h1>You are not alone.'));
+  assert.ok(page.includes('breadcrumbs={breadcrumbs}'));
+  assert.ok(source('../src/pages/why-fragrance-free.astro').includes("url('celebrity-stories/')"));
+});
+
+test('new stories distinguish sensitivity, product options and broader indoor-air context', () => {
+  const text = name => celebrityStories.find(person => person.name === name).text;
+  assert.match(text('Eva Longoria'), /sneezing/);
+  assert.doesNotMatch(text('Eva Longoria'), /severe headaches|hypoallergenic/);
+  assert.match(text('Hailey Bieber'), /mostly fragrance-free/);
+  assert.match(text('Alicia Keys'), /not entirely fragrance-free/);
+  assert.match(text('Michelle Obama'), /not evidence of a fragrance-specific campaign/);
+  assert.ok(!celebrityStories.some(person => ['Beyoncé', 'Cindy Crawford'].includes(person.name)));
 });
 
 test('each celebrity has a source, photo credit and a short contextual summary', () => {

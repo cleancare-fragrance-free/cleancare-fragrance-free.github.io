@@ -28,6 +28,8 @@ test('celebrity sources are checked interviews or quoted articles, not product l
     'Jessica Alba':'www.glamourmagazine.co.uk', 'Rihanna':'www.vogue.com',
     'Selena Gomez':'time.com', 'Michelle Pfeiffer':'www.earwolf.com',
     'Kourtney Kardashian':'people.com',
+    'Eva Longoria':'www.allure.com', 'Hailey Bieber':'www.harpersbazaar.com',
+    'Alicia Keys':'www.newbeauty.com', 'Michelle Obama':'healthyschoolscampaign.org',
   };
   for (const person of celebrityStories) {
     assert.equal(new URL(person.source).hostname, expected[person.name]);
