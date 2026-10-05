@@ -16,7 +16,7 @@ test('editorial palette and font are defined centrally', () => {
 
 test('article card keeps the requested structure and motion safeguards', () => {
   const card = read('src/components/ArticleCard.astro');
-  assert.ok(card.includes('<a class="journal-card"'));
+  assert.ok(card.includes("<a class:list={['journal-card',"));
   assert.ok(card.includes('<h3 id={titleId}>'));
   assert.ok(card.includes('article-badge'));
   assert.ok(card.includes('By ${article.author'));

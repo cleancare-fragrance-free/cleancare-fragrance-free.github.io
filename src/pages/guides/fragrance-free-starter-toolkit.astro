@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import EditorialIcon from '../../components/EditorialIcon.astro';
 import { countries } from '../../data/countries.mjs';
 import { url } from '../../lib/paths';
 
@@ -37,7 +38,7 @@ const steps = [
     <ol class="toolkit-steps">
       {steps.map(step => <li class="toolkit-step">
         <label class="toolkit-check"><input type="checkbox" data-toolkit-check={step.number}/><span class="visually-hidden">Mark {step.title} complete</span></label>
-        <div class="toolkit-number">{step.number}</div>
+        <div class="toolkit-number"><span class="toolkit-icon"><EditorialIcon name={['air', 'laundry', 'cleaning', 'skin', 'haircare', 'bag'][Number(step.number) - 1]}/></span><span>{step.number}</span></div>
         <div class="toolkit-copy"><p class="eyebrow">{step.category}</p><h2>{step.title}</h2><p>{step.body}</p><a class="button toolkit-link" href={step.href} data-base-href={step.href} data-query={step.query}>{step.action} →</a></div>
       </li>)}
     </ol>
@@ -70,32 +71,36 @@ const steps = [
 </script>
 
 <style>
-  .toolkit-hero { padding-top:38px; padding-bottom:0; }
+  .toolkit-hero { padding-top:24px; padding-bottom:0; }
   .toolkit-hero>.eyebrow { margin-top:22px; }
-  .toolkit-hero h1 { max-width:820px; margin:10px 0 16px; font-size:clamp(38px,4.8vw,62px); line-height:1.03; }
-  .toolkit-hero>.intro { max-width:760px; margin-bottom:18px; line-height:1.7; }
-  .toolkit-hero>.notice { max-width:960px; margin:16px 0 8px; padding:18px 20px; line-height:1.65; }
+  .toolkit-hero h1 { max-width:820px; margin:8px 0 12px; font-size:clamp(32px,3.6vw,44px); line-height:1.12; }
+  .toolkit-hero>.intro { max-width:900px; margin-bottom:12px; font-size:13px; line-height:1.6; }
+  .toolkit-hero>.notice { max-width:960px; margin:12px 0 8px; padding:12px 16px; font-size:12px; line-height:1.6; }
   .toolkit.section { padding-block:18px 48px; }
-  .toolkit-country { display:grid; grid-template-columns:1.4fr .8fr; gap:28px; align-items:end; padding:24px; border:1px solid var(--border); border-radius:var(--radius-card); background:var(--accent-sky); }
-  .toolkit-country h2,.toolkit-labels h2 { margin:4px 0 8px; }
-  .toolkit-country p { margin-bottom:0; color:var(--muted); }
+  .toolkit-country { display:grid; grid-template-columns:1.4fr .8fr; gap:16px; align-items:end; padding:16px; border:1px solid var(--border); border-radius:var(--radius-card); background:var(--accent-sky); }
+  .toolkit-country h2,.toolkit-labels h2 { margin:4px 0 8px; font-size:22px; }
+  .toolkit-country p { margin-bottom:0; color:var(--muted); font-size:12px; line-height:1.6; }
   .toolkit-country label { display:grid; gap:9px; font-size:12px; font-weight:700; }
   .toolkit-country select { width:100%; min-height:48px; border:1px solid var(--border); border-radius:12px; background:#fff; padding:10px 14px; }
-  .toolkit-progress { margin:22px 0; }
+  .toolkit-progress { margin:14px 0; }
   .toolkit-progress div { display:flex; justify-content:space-between; gap:20px; align-items:center; margin-bottom:10px; font-size:13px; font-weight:700; }
-  .toolkit-progress progress { width:100%; height:12px; accent-color:var(--accent-sage); }
-  .toolkit-progress button { border:0; background:none; padding:8px; }
-  .toolkit-steps { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
-  .toolkit-step { display:grid; grid-template-columns:auto 42px 1fr; gap:16px; align-items:start; padding:20px 22px; border:1px solid var(--border); border-radius:18px; background:var(--card); }
+  .toolkit-progress progress { width:100%; height:8px; accent-color:var(--accent-sage); }
+  .toolkit-progress button { border:0; background:none; padding:8px; min-height:44px; }
+  .toolkit-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0; padding:0; list-style:none; }
+  .toolkit-step { position:relative; display:grid; grid-template-columns:38px minmax(0,1fr); gap:12px; align-items:start; padding:16px; border:1px solid var(--border); border-radius:20px; background:var(--card); }
+  .toolkit-check { position:absolute; top:6px; right:6px; display:grid; place-items:center; width:44px; height:44px; cursor:pointer; }
   .toolkit-check input { width:22px; height:22px; accent-color:var(--accent-sage); }
-  .toolkit-number { color:var(--accent-sage); font-size:13px; font-weight:700; letter-spacing:.1em; }
-  .toolkit-copy h2 { margin:1px 0 7px; font-size:clamp(20px,2.4vw,27px); }
-  .toolkit-copy>p:not(.eyebrow) { max-width:820px; margin:0; color:var(--muted); line-height:1.65; }
-  .toolkit-link { display:inline-flex; margin-top:12px; padding:11px 17px; }
-  .toolkit-labels { margin-top:38px; padding:28px; border-radius:var(--radius-card); background:#eef3ed; }
-  .toolkit-label-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
-  .toolkit-label-grid article { padding:18px; border-radius:16px; background:#fff; }
-  .toolkit-label-grid h3 { margin-top:0; }
-  .toolkit-label-grid p { margin-bottom:0; color:var(--muted); line-height:1.65; }
-  @media(max-width:760px) { .toolkit-hero { padding-top:28px; } .toolkit-country,.toolkit-label-grid { grid-template-columns:1fr; } .toolkit-country { gap:20px; padding:20px; } .toolkit-step { grid-template-columns:auto 1fr; padding:18px; } .toolkit-copy { grid-column:1/-1; } .toolkit-labels { padding:22px; } }
+  .toolkit-number { display:grid; justify-items:center; gap:5px; color:var(--accent-sage); font-size:10px; font-weight:700; letter-spacing:.1em; }
+  .toolkit-icon { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:var(--accent-sky); }
+  .toolkit-copy>.eyebrow { margin:0 32px 4px 0; font-size:9px; }
+  .toolkit-copy h2 { margin:1px 28px 7px 0; font-size:18px; line-height:1.35; }
+  .toolkit-copy>p:not(.eyebrow) { margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
+  .toolkit-link { display:inline-flex; margin-top:10px; padding:8px 12px; min-height:44px; font-size:11px; }
+  .toolkit-labels { margin-top:24px; padding:18px; border-radius:var(--radius-card); background:#eef3ed; }
+  .toolkit-label-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
+  .toolkit-label-grid article { padding:12px; border-radius:16px; background:#fff; }
+  .toolkit-label-grid h3 { margin:0 0 6px; font-size:15px; }
+  .toolkit-label-grid p { margin-bottom:0; color:var(--muted); font-size:12px; line-height:1.6; }
+  @media(max-width:850px) { .toolkit-steps { grid-template-columns:1fr; } }
+  @media(max-width:760px) { .toolkit-country,.toolkit-label-grid { grid-template-columns:1fr; } .toolkit-country { gap:14px; } .toolkit-step { padding:14px; } }
 </style>

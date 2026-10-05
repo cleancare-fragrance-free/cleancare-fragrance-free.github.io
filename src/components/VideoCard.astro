@@ -1,13 +1,13 @@
 ---
 import DoctorBadge from './DoctorBadge.astro';
 import { url } from '../lib/paths';
-const { video } = Astro.props;
+const { video, compact = false } = Astro.props;
 const href = video.local ? url(video.href) : video.href;
 ---
-<a class="video-card" href={href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>
+<a class:list={['video-card', {'video-card--compact': compact}]} href={href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>
   <div class="video-card-image">
     <img src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`} alt={`Video thumbnail for ${video.title}`} width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"/>
-    {video.doctor && <div class="video-doctor"><DoctorBadge/></div>}
+    {video.doctor && <div class="video-doctor"><DoctorBadge compact={compact}/></div>}
     <span class="video-play" aria-hidden="true">▶</span>
   </div>
   <div class="video-card-copy">
@@ -32,4 +32,14 @@ const href = video.local ? url(video.href) : video.href;
   .journal-card-link { margin-top:auto; color:var(--accent-sage); font-size:14px; font-weight:700; }
   .video-card:hover .journal-card-link { color:var(--accent-active); }
   @media (prefers-reduced-motion:reduce) { .video-card,.video-card-image img { transition:none; } .video-card:hover,.video-card:focus-visible,.video-card:hover img,.video-card:focus-visible img { transform:none; } }
+</style>
+<style>
+.video-card--compact .video-card-image { height:128px; }
+.video-card--compact .video-card-copy { padding:14px; }
+.video-card--compact .video-card-copy h3 { font-size:17px;line-height:1.35;margin-bottom:8px; }
+.video-card--compact .video-card-copy p:not(.eyebrow) { font-size:12px;line-height:1.6;margin:0 0 12px; }
+.video-card--compact .video-card-copy .eyebrow { font-size:9px;line-height:1.5;margin-bottom:7px; }
+.video-card--compact .video-play { width:36px;height:36px;font-size:12px; }
+.video-card--compact .video-doctor { top:8px;left:8px; }
+.video-card--compact .journal-card-link { font-size:11px; }
 </style>

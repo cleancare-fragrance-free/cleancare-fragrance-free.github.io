@@ -2,21 +2,21 @@
 import DoctorBadge from './DoctorBadge.astro';
 import ArticleVisual from './ArticleVisual.astro';
 import { url } from '../lib/paths';
-const { article } = Astro.props;
+const { article, compact = false } = Astro.props;
 const titleId = 'article-title-' + article.slug;
 const skyBadge = ['air', 'laundry'].includes(article.art);
 const photoUrl = (photo, width) => photo.provider === 'local'
   ? `${url(photo.src)}?v=20260929`
   : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
-<a class="journal-card" href={url(article.href || 'guides/' + article.slug + '/')}
+<a class:list={['journal-card', {'journal-card--compact': compact}]} href={url(article.href || 'guides/' + article.slug + '/')}
   data-article-slug={article.slug} data-featured={article.order ? 'true' : undefined} aria-labelledby={titleId}>
   <div class="journal-card-image">
     <div class="journal-card-art" aria-hidden="true">
       {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={`${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
     </div>
     <span class:list={['article-badge', { 'article-badge--sky': skyBadge }]}>{article.topic}</span>
-    {article.doctor && <div class="card-doctor"><DoctorBadge/></div>}
+    {article.doctor && <div class="card-doctor"><DoctorBadge compact={compact}/></div>}
     {article.photo?.imageTag && <span class="article-source-tag">{article.photo.imageTag}</span>}
   </div>
   <div class="journal-card-copy">
@@ -147,4 +147,17 @@ const photoUrl = (photo, width) => photo.provider === 'local'
     .journal-card:is(:hover, :focus-visible) .journal-card-art :global(.article-visual),
     .journal-card:is(:hover, :focus-visible) .journal-card-image :global(img) { transform: none; }
   }
+</style>
+<style>
+.journal-card[hidden] { display:none; }
+.journal-card--compact .journal-card-image { height:128px; }
+.journal-card--compact .journal-card-copy { padding:14px; }
+.journal-card--compact .journal-card-meta { font-size:10px;line-height:1.5;margin-bottom:7px; }
+.journal-card--compact .journal-card-copy h3 { font-size:17px;line-height:1.35;margin-bottom:8px;letter-spacing:-.25px; }
+.journal-card--compact .journal-card-excerpt { font-size:12px;line-height:1.6;margin-bottom:12px;-webkit-line-clamp:2; }
+.journal-card--compact .journal-card-link { font-size:11px; }
+.journal-card--compact .article-badge { top:8px;left:8px;max-width:calc(100% - 16px);padding:4px 8px;font-size:9px; }
+.journal-card--compact .card-doctor { bottom:8px;left:8px; }
+.journal-card--compact .article-source-tag { right:8px;bottom:8px;padding:4px 7px;font-size:9px; }
+.journal-card--compact .journal-card-image:has(.card-doctor) .article-source-tag { bottom:39px; }
 </style>
