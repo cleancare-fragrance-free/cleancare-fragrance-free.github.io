@@ -1,0 +1,9 @@
+---
+import ProductCard from './ProductCard.astro';
+const { products, id='product-collection' } = Astro.props;
+---
+<div data-product-collection><p class="editorial-note" data-collection-count role="status" aria-live="polite">{products.length} fragrance-free product profiles</p><div class="product-grid" id={id}>{products.map(product=><ProductCard product={product}/>)}</div><button class="button collection-more" type="button" aria-controls={id} data-collection-more hidden>Show more products</button></div>
+<script>
+for(const collection of document.querySelectorAll<HTMLElement>('[data-product-collection]')){const cards=[...collection.querySelectorAll<HTMLElement>('[data-product-id]')];const button=collection.querySelector<HTMLButtonElement>('[data-collection-more]')!;let limit=8;function render(){cards.forEach((card,index)=>card.hidden=index>=limit);const shown=Math.min(limit,cards.length);button.hidden=shown===cards.length;button.textContent=`Show ${Math.min(8,cards.length-shown)} more products`;collection.querySelector('[data-collection-count]')!.textContent=`Showing ${shown} of ${cards.length} fragrance-free profiles`;}button.addEventListener('click',()=>{limit+=8;render();});render();}
+</script>
+<style>.collection-more{display:block;margin:22px auto}.collection-more[hidden]{display:none}</style>

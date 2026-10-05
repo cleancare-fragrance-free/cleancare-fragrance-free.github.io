@@ -28,6 +28,10 @@ jobs:
         env:
           SITE_URL: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+      - name: Check internal links and search metadata
+        run: |
+          node scripts/check-built-links.mjs
+          node scripts/check-built-seo.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

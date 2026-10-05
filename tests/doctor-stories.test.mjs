@@ -39,8 +39,10 @@ test('expert profiles have primary sources, concise summaries and commercial con
 test('doctors are a separate accessible section and only physicians receive the medical badge', () => {
   const page = readFileSync(new URL('../src/pages/celebrity-stories.astro', import.meta.url), 'utf8');
   assert.match(page, /id="doctors" aria-labelledby="doctors-heading"/);
-  assert.match(page, /person\.doctor \? <DoctorBadge/);
-  assert.match(page, /<h3 id=\{`doctor-/);
+  const experts = readFileSync(new URL('../src/pages/experts.astro', import.meta.url), 'utf8');
+  assert.match(experts, /person\.doctor \? <DoctorBadge/);
+  assert.match(experts, /<h2 id=\{`expert-/);
+  assert.match(page, /url\('experts\/'\)/);
   assert.match(page, /href="#doctors"/);
   assert.match(page, /Brand founders have commercial interests/);
 });

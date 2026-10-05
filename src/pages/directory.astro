@@ -4,19 +4,20 @@ import ProductCard from '../components/ProductCard.astro';
 import products from '../data/product-catalog.mjs';
 import { assertProductCatalog } from '../lib/product-policy.mjs';
 import { defaultScentFilter, matchesScentProfile, scentOptions } from '../lib/scent-profile.mjs';
-import { countries, regions } from '../data/countries.mjs';
+import { availableCountries as countries, availableRegions as regions, productCategories } from '../data/directory-markets.mjs';
 import { url } from '../lib/paths';
 assertProductCatalog(products);
 const initialProducts = products.filter(p => matchesScentProfile(p, defaultScentFilter));
 ---
-<Layout title="Fragrance-free products by country | CleanCare">
+<Layout title="Fragrance-free products by country & category | CleanCare" description="Compare checked fragrance-free product versions for the USA, UK, Singapore, Australia and New Zealand. Filter by country, category and essential-oil status." image={url('images/editorial/home-fragrance-free-swaps.webp')}>
 <section class="container section directory">
   <p class="eyebrow">Practical alternatives</p>
   <h1>Fragrance-free options by country.</h1>
-  <p class="intro">Fragrance may irritate sensitive skin or overwhelm a sensitive nose—and essential oils can trigger reactions too. Replace products one category at a time, from face care to laundry. Use the filters to distinguish products without added fragrance or essential oils from scented alternatives. Fragrance-free does not always mean odorless.</p>
+  <p class="intro">Find an exact product for your country and routine. Choose a location, category and scent status. Official sources are checked—not personally tested—and links are not affiliate links.</p>
   <p class="editorial-note">US additions inspired by <a href="https://nymag.com/strategist/article/fragrance-free-products-we-use.html" rel="external">The Strategist’s product roundup</a>, checked against official brand information. Product links are not affiliate links.</p>
   <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
   <details class="directory-review"><summary>How we check products and country listings</summary>
+    <p>Fragrance may irritate sensitive skin or overwhelm a sensitive nose—and essential oils can trigger reactions too. Replace products one category at a time, from face care to laundry. Fragrance-free does not always mean odorless.</p>
     <p>We check exact versions, not whole brands. Products with added perfume/parfum or unconfirmed fragrance-free formulas are excluded. Essential-oil alternatives are separately reviewed and clearly labelled; they never appear in the default fragrance-free results.</p>
     <p>“No added fragrance or essential oils” means none are listed in the reviewed formula or an explicit brand statement confirms their absence—not laboratory-certified zero scent. Carrier oils are not essential oils. An unchecked essential-oil status is not evidence of absence; those products do not appear in the stricter filter. Devices have no product formula and are excluded from ingredient-based filters.</p>
     <p>Country sources do not guarantee stock, delivery or an unchanged local formula. Manufacturer claims are not independent safety assessments. Check your current packaging. Ecostore’s catalogue includes scented products; only the six checked Ultra Sensitive home products are included here.</p>
@@ -35,16 +36,16 @@ const initialProducts = products.filter(p => matchesScentProfile(p, defaultScent
   <p id="scent-help" class="editorial-note">Fragrance-free claims do not automatically establish essential-oil absence. Use the stricter filter for separately checked formulas; ingredients can still have their own smell.</p>
   <noscript><p class="notice">JavaScript is needed to use the filters. Fragrance-free profiles are displayed below. The separate <a href={url('products/real-purity-roll-on-essential-oils-us/')}>essential-oil deodorant profile</a> is available directly, but is not fragrance-free.</p></noscript>
   <p id="result-count" role="status" aria-live="polite">{initialProducts.length} product profiles</p>
-  <div id="products">{countries.filter(country => products.some(product => Object.hasOwn(product.countries, country.code))).map(country => <section class="country-group" data-country={country.code} aria-labelledby={'country-' + country.code}>
-    <h2 id={'country-' + country.code}>{country.name}</h2><p class="editorial-note">Sources for this country. Check current stock, delivery, and local packaging with the brand.</p>
-    <div class="product-grid">{products.filter(product => Object.hasOwn(product.countries, country.code)).map(product => <ProductCard product={product} hidden={!matchesScentProfile(product, defaultScentFilter)}/>)}</div>
-  </section>)}</div>
+  <div id="products" class="product-grid">{products.map(product => <ProductCard product={product} hidden={!matchesScentProfile(product, defaultScentFilter)}/>)}</div>
+  <div class="directory-more"><button id="show-more-products" class="button" type="button" hidden>Show more products</button><p id="visible-product-count" class="editorial-note" aria-live="polite"></p></div>
   <div id="empty" class="empty" hidden><h2>No matches just yet.</h2><p id="empty-message">Try a broader search or reset the filters. Some countries do not yet have listings.</p><button class="button" id="empty-reset">Reset filters</button></div>
+  <section class="directory-hubs" aria-labelledby="country-guides-title"><h2 id="country-guides-title">Explore checked country guides</h2><div class="topic-links">{countries.map(country=><a href={url('directory/'+country.slug+'/')}>{country.name} →</a>)}</div><h3>Browse a product category</h3><div class="topic-links">{productCategories.map(category=><a href={url('directory/categories/'+category.slug+'/')}>{category.title} →</a>)}</div><p class="editorial-note">Only countries with product listings are shown. A checked listing is not a promise of stock, delivery or an unchanged formula.</p></section>
 </section>
 </Layout>
 <script>
 import products from '../data/product-catalog.mjs';
-import { countries, regions, countryInRegion } from '../data/countries.mjs';
+import { availableCountries as countries, availableRegions as regions } from '../data/directory-markets.mjs';
+import { countryInRegion } from '../data/countries.mjs';
 import { matchesProduct } from '../lib/filter.mjs';
 import { defaultScentFilter, normalizeScentFilter } from '../lib/scent-profile.mjs';
 const form = document.querySelector<HTMLFormElement>('#filters')!;
@@ -56,8 +57,9 @@ let selectedCountry = '';
 let selectedRegion = '';
 const regionButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-region-button]')];
 const countryButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-country-button]')];
-const groups = [...document.querySelectorAll<HTMLElement>('[data-country]')];
 const cards = [...document.querySelectorAll<HTMLElement>('[data-product-id]')];
+const more = document.querySelector<HTMLButtonElement>('#show-more-products')!;
+let visibleLimit = 12;
 function readURL() {
   const params = new URLSearchParams(location.search);
   query.value = params.get('q') || '';
@@ -67,21 +69,26 @@ function readURL() {
   selectedRegion = regions.some(r => r.code === params.get('region')) ? params.get('region')! : '';
   if (selectedCountry && !countryInRegion(selectedCountry, selectedRegion)) selectedRegion = countries.find(c => c.code === selectedCountry)!.region;
 }
-function render(updateURL = true) {
+function render(updateURL = true, resetLimit = true) {
+  if (resetLimit) visibleLimit = 12;
   const state = { query: query.value, category: category.value, country: selectedCountry, scent: scent.value };
   regionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.regionButton === selectedRegion)));
   countryButtons.forEach(button => { button.hidden = !!button.dataset.countryButton && !countryInRegion(button.dataset.countryButton, selectedRegion); button.setAttribute('aria-pressed', String(button.dataset.countryButton === selectedCountry)); });
   const visibleProducts = new Set<string>();
+  let shown = 0;
   cards.forEach(card => {
     const product = productById.get(card.dataset.productId!)!;
-    const country = card.closest<HTMLElement>('[data-country]')!.dataset.country;
-    card.hidden = !countryInRegion(country, selectedRegion) || !matchesProduct(product, state) || (!!state.country && country !== state.country);
-    if (!card.hidden) visibleProducts.add(product.id);
+    const matches = Object.keys(product.countries).some(code=>countryInRegion(code,selectedRegion)) && matchesProduct(product,state);
+    if (matches) visibleProducts.add(product.id);
+    card.hidden = !matches || shown >= visibleLimit;
+    if (!card.hidden) shown++;
   });
-  groups.forEach(group => { group.hidden = ![...group.querySelectorAll<HTMLElement>('[data-product-id]')].some(card => !card.hidden); });
   const noCountryListings = !products.some(product => Object.keys(product.countries).some(code => (!selectedCountry || code === selectedCountry) && countryInRegion(code, selectedRegion)));
   document.querySelector('#empty-message')!.textContent = noCountryListings ? 'No product sources have been checked for this selection yet. This does not mean fragrance-free products are unavailable there.' : 'No products match these filters. Try a broader search or reset the filters.';
   const count = visibleProducts.size;
+  more.hidden = shown >= count;
+  more.textContent = `Show ${Math.min(12,count-shown)} more products`;
+  document.querySelector('#visible-product-count')!.textContent = count ? `Showing ${shown} of ${count} matching profiles. Each product appears once.` : '';
   document.querySelector('#result-count')!.textContent = `${count} product profile${count === 1 ? '' : 's'}`;
   document.querySelector<HTMLElement>('#empty')!.hidden = count !== 0;
   document.querySelector('#scent-help')!.textContent = ['essential-oils', 'all'].includes(state.scent)
@@ -109,10 +116,12 @@ form.addEventListener('change', () => render());
 form.addEventListener('reset', () => { query.value = ''; category.value = ''; scent.value = defaultScentFilter; selectedCountry = ''; selectedRegion = ''; render(); });
 document.querySelector('#empty-reset')!.addEventListener('click', () => form.reset());
 window.addEventListener('popstate', () => { readURL(); render(false); });
+more.addEventListener('click', () => {visibleLimit += 12;render(false,false);});
 readURL(); render(false);
 </script>
 <style>
 .directory .intro { max-width: 970px; font-size: 15px; line-height: 1.75; }
+.directory-more{display:grid;justify-items:center;margin-block:20px}.directory-more button[hidden]{display:none}.directory-hubs{margin-top:28px;padding:20px;border:1px solid var(--border);border-radius:20px;background:var(--card)}.directory-hubs h2{font-size:24px;margin:0 0 12px}.directory-hubs h3{font-size:18px}.topic-links{display:flex;flex-wrap:wrap;gap:10px}.topic-links a{font-size:13px;padding:10px;border:1px solid var(--border);border-radius:999px;min-height:44px}
 .directory a:not(.button) { text-decoration: none; }
 .scent-notice { background: var(--accent-sky, #E8F3F8); border-radius: 20px; padding: 14px 18px; font-size: 13px; margin: 18px 0; }
 .directory-review { border-bottom: 1px solid #EFEBE4; padding: 8px 0 14px; font-size: 12px; color: #6B7280; }

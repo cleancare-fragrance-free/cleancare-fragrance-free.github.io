@@ -41,6 +41,7 @@ const rooms = [
         <ul>{room.items.map(([object, swap]) => <li><strong>{object}</strong><p>{swap}</p></li>)}</ul>
         <a class="button" href={room.category ? url('directory/') + '?' + new URLSearchParams({category:room.category, ...(room.query ? {q:room.query} : {})}) : url('guides/shared-spaces/')}>{room.category ? 'Find fragrance-free alternatives' : 'Plan a shared-space request'} →</a>
         {room.id === 'bathroom' && <a class="hair-link text-link" href={url('directory/?category=Haircare')}>Browse haircare separately →</a>}
+        <a class="hair-link text-link" href={url('guides/fragrance-free-starter-toolkit/#toolkit-step-'+({laundry:'02',kitchen:'03',bathroom:'04',bedroom:'02',living:'01',entry:'06'}[room.id]))}>Start this room’s checklist →</a>
       </article>)}
       <p class="plan-caution">Read current ingredients: essential oils are fragrance too. Never mix cleaners; follow labels and appliance instructions.</p>
     </div>
@@ -54,7 +55,7 @@ const rooms = [
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.room === id)));
       panels.forEach(panel => panel.hidden = panel.dataset.roomPanel !== id);
     };
-    buttons.forEach(button => button.addEventListener('click', () => selectRoom(button.dataset.room!)));
+    buttons.forEach(button => button.addEventListener('click', () => {selectRoom(button.dataset.room!);if(matchMedia('(max-width:760px)').matches)plan.querySelector('.room-details')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});}));
     selectRoom('laundry');
   }
 </script>

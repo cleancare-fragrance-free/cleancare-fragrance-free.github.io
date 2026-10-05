@@ -11,7 +11,7 @@ const photoUrl = (photo, width) => photo.provider === 'local'
   ? `${url(photo.src)}?v=20260929`
   : `${photo.src}${photo.src.includes('?') ? '&' : '?'}width=${width}`;
 ---
-<Layout title={`${post.title} | Clean Care`} description={post.description}>
+<Layout title={`${post.title} | CleanCare`} description={post.description} image={url(post.photo.src)}>
   <header class="container story-header">
     <a class="text-link" href={url('guides/#featured')}>← Featured from the group</a>
     <p class="eyebrow">Featured {post.format.toLowerCase()} · {post.order} of 5</p>

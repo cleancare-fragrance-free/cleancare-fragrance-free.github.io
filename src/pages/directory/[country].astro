@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCollection from '../../components/ProductCollection.astro';
+import products from '../../data/product-catalog.mjs';
+import { availableCountries, categoryLabels } from '../../data/directory-markets.mjs';
+import { url } from '../../lib/paths';
+export function getStaticPaths(){return availableCountries.map(country=>({params:{country:country.slug},props:{country}}));}
+const {country}=Astro.props;
+const localProducts=products.filter(product=>Object.hasOwn(product.countries,country.code)&&product.fragranceStatus==='fragrance-free');
+const categories=[...new Set(localProducts.map(product=>product.category))];
+---
+<Layout title={`Fragrance-free products in ${country.name} | CleanCare`} description={`Explore checked skincare, haircare and household product sources for ${country.name}. Compare exact fragrance-free versions and source dates, without affiliate links.`} image={url('images/editorial/home-fragrance-free-swaps.webp')}>
+<section class="container page-intro"><p class="eyebrow">Checked country guide</p><h1>Fragrance-free products in {country.name}.</h1><p class="intro">Start with a category you use regularly. These {localProducts.length} profiles record an exact product and a source for {country.name}; they are not whole-brand endorsements or personal trials.</p><p class="notice">Check the local ingredient list, packaging and seller before buying. A country source does not guarantee stock or delivery, and a familiar product name may have a different formula elsewhere. Fragrance-free is not the same as allergen-free.</p><nav class="country-categories" aria-label={`Product categories for ${country.name}`}>{categories.map(category=><a href={url('directory/')+'?'+new URLSearchParams({country:country.code,category})}>{categoryLabels[category]} <span>{localProducts.filter(product=>product.category===category).length}</span> →</a>)}</nav><p class="editorial-note"><a href={url('about/#product-method')}>How product sources are checked</a> · <a href={url('directory/')+'?country='+country.code}>Open all filters for {country.name} →</a></p><ProductCollection products={localProducts} id={'products-'+country.slug}/><section class="context-next"><h2>Make your first swap manageable.</h2><p>The toolkit adds your chosen country to product searches and saves progress only in your browser.</p><a class="button" href={url('guides/fragrance-free-starter-toolkit/')}>Open the starter toolkit →</a></section><h2>Other checked countries</h2><nav class="country-categories" aria-label="Other country guides">{availableCountries.filter(item=>item.code!==country.code).map(item=><a href={url('directory/'+item.slug+'/')}>{item.name} →</a>)}</nav></section>
+</Layout>
+<style>.country-categories{display:flex;flex-wrap:wrap;gap:10px;margin-block:18px}.country-categories a{padding:11px 15px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--link-color);font-size:13px;min-height:44px}.country-categories span{margin-left:8px}.page-intro>.notice{font-size:13px;line-height:1.65}.page-intro>h2{font-size:24px}</style>

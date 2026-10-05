@@ -3,15 +3,60 @@ import '../styles/global.css';
 import '../styles/journal.css';
 import '../styles/editorial-theme.css';
 import '../styles/redesign.css';
+import '../styles/ux-foundations.css';
 import { url } from '../lib/paths';
-const { title = 'CleanCare — Understand fragrance exposure', description = 'Evidence-led guides to fragrance exposure, health effects, source documents, and practical fragrance-free alternatives.' } = Astro.props;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+import { makeBreadcrumbs, makeStructuredData } from '../lib/site-seo.mjs';
+const { title = 'CleanCare — Understand fragrance exposure', description = 'Understand fragrance exposure with source-led health guides, a practical starter toolkit and fragrance-free product notes by country.', image = url('images/editorial/open-window.webp'), article, noindex = false, breadcrumbs: suppliedBreadcrumbs } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const sharingImage = Astro.site ? new URL(image, Astro.site).href : image;
+const breadcrumbs = suppliedBreadcrumbs || makeBreadcrumbs(Astro.url.pathname, title, import.meta.env.BASE_URL);
+const schema = canonical && !noindex ? makeStructuredData({site:Astro.site!.href, canonical, title, description, image:sharingImage, breadcrumbs, article}) : undefined;
+const current = path => Astro.url.pathname === url(path) ? 'page' : undefined;
 ---
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#FBF9F6"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/><title>{title}</title>{canonical && <link rel="canonical" href={canonical}/>}<meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/>{canonical && <meta property="og:url" content={canonical}/>}<meta name="twitter:card" content="summary_large_image"/>{Astro.site && <meta property="og:image" content={new URL(url('images/editorial/open-window.webp'), Astro.site)}/>}<link rel="icon" href={url('favicon.svg')} type="image/svg+xml"/></head>
-<body><a class="skip-link" href="#main">Skip to content</a>
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title><meta name="description" content={description}/><meta name="theme-color" content="#FBF9F6"/>
+  {noindex && <meta name="robots" content="noindex, follow"/>}{canonical && <link rel="canonical" href={canonical}/>}
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta property="og:site_name" content="CleanCare"/><meta property="og:type" content={article ? 'article' : 'website'}/>
+  <meta property="og:title" content={title}/><meta property="og:description" content={description}/>
+  {canonical && <meta property="og:url" content={canonical}/>}<meta property="og:image" content={sharingImage}/>
+  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={sharingImage}/>
+  {article?.published && <meta property="article:published_time" content={article.published}/>}{article?.modified && <meta property="article:modified_time" content={article.modified}/>}
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}/>}
+  <link rel="icon" href={url('favicon.svg')} type="image/svg+xml"/><link rel="alternate" type="application/rss+xml" title="CleanCare Journal" href={url('feed.xml')}/>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="announcement">How to live a healthier life and breathe clean air, fragrance free <span>Evidence-led information and practical alternatives.</span></div>
-<header class="site-header"><div class="container header-inner"><a class="brand" href={url()} aria-label="CleanCare home"><svg viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="M20 39V17M20 28C6 27 5 15 5 9c11 1 17 6 15 19Zm0-7C32 19 35 9 33 3 23 5 18 11 20 21ZM25 32h12M28 37h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>CleanCare</a>
-<nav aria-label="Main navigation"><a href={url('why-fragrance-free/')}>Why fragrance free</a><details><summary>Get started</summary><div class="nav-dropdown"><a href={url('guides/fragrance-free-starter-toolkit/')}>Starter Toolkit</a><a href={url('non-toxic-home/')}>Non-Toxic Home</a><a href={url('self-check/')}>Sensitivity self-check</a></div></details><details><summary>Read & watch</summary><div class="nav-dropdown"><a href={url('guides/')}>Articles & Guides</a><a href={url('evidence/')}>Evidence Library</a><a href={url('celebrity-stories/')}>Celebrities & fragrance</a></div></details><a href={url('directory/')}>Fragrance Free Products</a><a href={url('about-us/')}>About Us</a></nav><a class="header-cta" href={url('self-check/')}>Sensitivity self-check <span>↗</span></a></div></header>
-<main id="main"><slot/></main>
-<footer><div class="container footer-top"><div><a class="brand" href={url()}>CleanCare</a><p>How to live a healthier life and breathe clean air, fragrance free.</p></div><div><a href={url('why-fragrance-free/')}>Why Fragrance Free</a><a href={url('guides/fragrance-free-starter-toolkit/')}>Starter Toolkit</a><a href={url('non-toxic-home/')}>Non-Toxic Home</a><a href={url('guides/')}>Articles & Guides</a><a href={url('evidence/')}>Evidence Library</a><a href={url('directory/')}>Fragrance Free Products</a><a href={url('about-us/')}>About Us</a><a href={url('about/')}>Editorial approach</a></div></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} CleanCare</span><span>Health information is contextual; individual responses vary.</span><span>Sources linked throughout.</span></div></footer>
+<header class="site-header"><div class="container header-inner">
+  <a class="brand" href={url()} aria-label="CleanCare home"><svg viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="M20 39V17M20 28C6 27 5 15 5 9c11 1 17 6 15 19Zm0-7C32 19 35 9 33 3 23 5 18 11 20 21ZM25 32h12M28 37h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>CleanCare</a>
+  <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">☰</span></button>
+  <nav id="primary-navigation" aria-label="Main navigation">
+    <a href={url('why-fragrance-free/')} aria-current={current('why-fragrance-free/')}>Why fragrance free</a>
+    <details><summary>Get started</summary><div class="nav-dropdown"><a href={url('guides/fragrance-free-starter-toolkit/')} aria-current={current('guides/fragrance-free-starter-toolkit/')}>Starter Toolkit</a><a href={url('non-toxic-home/')} aria-current={current('non-toxic-home/')}>Non-Toxic Home</a><a href={url('starter-checklist/')} aria-current={current('starter-checklist/')}>Printable checklist</a><a href={url('self-check/')} aria-current={current('self-check/')}>Private self-check</a></div></details>
+    <details><summary>Read & watch</summary><div class="nav-dropdown"><a href={url('guides/')} aria-current={current('guides/')}>Articles & Guides</a><a href={url('evidence/')} aria-current={current('evidence/')}>Evidence Library</a><a href={url('experts/')} aria-current={current('experts/')}>Expert explanations</a><a href={url('celebrity-stories/')} aria-current={current('celebrity-stories/')}>Celebrity stories</a></div></details>
+    <a href={url('directory/')} aria-current={current('directory/')}>Fragrance Free Products</a><a href={url('about-us/')} aria-current={current('about-us/')}>About Us</a>
+  </nav>
+  <a class="header-cta" href={url('guides/fragrance-free-starter-toolkit/')}>Start your toolkit <span>↗</span></a>
+</div></header>
+<main id="main">
+  {breadcrumbs.length > 0 && <nav class="container breadcrumbs" aria-label="Breadcrumb"><ol>{breadcrumbs.map((crumb,index)=><li>{index === breadcrumbs.length - 1 ? <span aria-current="page">{crumb.name}</span> : <a href={crumb.path}>{crumb.name}</a>}</li>)}</ol></nav>}
+  <slot/>
+</main>
+<footer><div class="container footer-top"><div><a class="brand" href={url()}>CleanCare</a><p>How to live a healthier life and breathe clean air, fragrance free.</p></div><div><a href={url('why-fragrance-free/')}>Why Fragrance Free</a><a href={url('guides/fragrance-free-starter-toolkit/')}>Starter Toolkit</a><a href={url('non-toxic-home/')}>Non-Toxic Home</a><a href={url('guides/')}>Articles & Guides</a><a href={url('evidence/')}>Evidence Library</a><a href={url('directory/')}>Fragrance Free Products</a><a href={url('about-us/')}>About Us</a><a href={url('about/')}>Editorial approach & corrections</a><a href={url('privacy/')}>Privacy</a><a href={url('starter-checklist/')}>Printable checklist</a></div></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} CleanCare</span><span>Educational information, not medical advice.</span><span>No affiliate links. Sources and limitations in view.</span></div></footer>
 </body></html>
+<script>
+  const navigation = document.querySelector<HTMLElement>('#primary-navigation')!;
+  const toggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle')!;
+  toggle.hidden = false; navigation.dataset.menuReady = 'true';
+  const closeMenu = () => { navigation.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); };
+  toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded',String(open)); navigation.classList.toggle('is-open',open); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') { const wasOpen = navigation.classList.contains('is-open'); closeMenu(); navigation.querySelectorAll('details').forEach(item => item.open = false); if (wasOpen && matchMedia('(max-width:720px)').matches) toggle.focus(); } });
+  document.addEventListener('click', event => { if (!navigation.contains(event.target as Node) && !toggle.contains(event.target as Node)) { closeMenu(); navigation.querySelectorAll('details').forEach(item => item.open = false); } });
+  for (const image of document.querySelectorAll<HTMLImageElement>('main img')) {
+    const fallback = () => { if (image.dataset.failed) return; image.dataset.failed='true'; image.hidden=true; const message=document.createElement('span');message.className='image-fallback';message.textContent=image.alt ? `Image unavailable: ${image.alt}` : 'Source image unavailable. Open the linked source for context.';image.after(message); };
+    image.addEventListener('error',fallback,{once:true}); if(image.complete && !image.naturalWidth) fallback();
+  }
+</script>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import EditorialIcon from '../../components/EditorialIcon.astro';
-import { countries } from '../../data/countries.mjs';
+import { availableCountries as countries } from '../../data/directory-markets.mjs';
 import { url } from '../../lib/paths';
 
 const steps = [
@@ -28,7 +28,7 @@ const steps = [
       <label>Choose a country
         <select id="toolkit-country">
           <option value="">Show all checked countries</option>
-          {countries.filter(country => ['US','GB','SG','AU','NZ'].includes(country.code)).map(country => <option value={country.code}>{country.name}</option>)}
+          {countries.map(country => <option value={country.code}>{country.name}</option>)}
         </select>
       </label>
     </div>
@@ -36,12 +36,13 @@ const steps = [
     <div class="toolkit-progress" aria-live="polite"><div><span id="toolkit-count">0 of 6 stages complete</span><button id="toolkit-reset" class="text-link" type="button">Reset progress</button></div><progress id="toolkit-progress" max={steps.length} value="0">0%</progress></div>
 
     <ol class="toolkit-steps">
-      {steps.map(step => <li class="toolkit-step">
+      {steps.map(step => <li class="toolkit-step" id={'toolkit-step-'+step.number}>
         <label class="toolkit-check"><input type="checkbox" data-toolkit-check={step.number}/><span class="visually-hidden">Mark {step.title} complete</span></label>
         <div class="toolkit-number"><span class="toolkit-icon"><EditorialIcon name={['air', 'laundry', 'cleaning', 'skin', 'haircare', 'bag'][Number(step.number) - 1]}/></span><span>{step.number}</span></div>
         <div class="toolkit-copy"><p class="eyebrow">{step.category}</p><h2>{step.title}</h2><p>{step.body}</p><a class="button toolkit-link" href={step.href} data-base-href={step.href} data-query={step.query}>{step.action} →</a></div>
       </li>)}
     </ol>
+    <div class="context-next"><h2>Keep a copy beside your shopping list.</h2><p>No signup or email required. Print the six-stage checklist or save it as a PDF using your browser.</p><a class="button" href={url('starter-checklist/')}>Open the printable checklist →</a></div>
 
     <section class="toolkit-labels">
       <div><p class="eyebrow">Keep beside your shopping list</p><h2>What to look for</h2></div>
@@ -88,6 +89,7 @@ const steps = [
   .toolkit-progress button { border:0; background:none; padding:8px; min-height:44px; }
   .toolkit-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0; padding:0; list-style:none; }
   .toolkit-step { position:relative; display:grid; grid-template-columns:38px minmax(0,1fr); gap:12px; align-items:start; padding:16px; border:1px solid var(--border); border-radius:20px; background:var(--card); }
+  .toolkit-step {scroll-margin-top:24px}
   .toolkit-check { position:absolute; top:6px; right:6px; display:grid; place-items:center; width:44px; height:44px; cursor:pointer; }
   .toolkit-check input { width:22px; height:22px; accent-color:var(--accent-sage); }
   .toolkit-number { display:grid; justify-items:center; gap:5px; color:var(--accent-sage); font-size:10px; font-weight:700; letter-spacing:.1em; }

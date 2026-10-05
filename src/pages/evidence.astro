@@ -49,6 +49,7 @@ const sourceGroups = [
     </nav>
 
     <div class="evidence-caution"><strong>Read the scope, not only the headline.</strong><span>Evidence about one ingredient, product, or exposure level does not automatically apply to every fragrance. Each note below says what the source actually covers.</span></div>
+    <details class="source-key"><summary>How to weigh different sources</summary><ul><li><strong>Agency guidance:</strong> practical public-health and labeling context; jurisdiction matters.</li><li><strong>Original research:</strong> measured outcomes in a specific population or experiment; read the methods and limitations.</li><li><strong>Expert commentary:</strong> interpretation and education, not a substitute for the underlying research.</li><li><strong>Documentaries, advocacy and personal stories:</strong> useful questions and experiences, not independent proof of every claim.</li></ul><p>Social videos may require sign-in; publications may have paywalls or regional restrictions. If a link cannot open, contact us with the page and source title rather than assuming its claims are verified.</p><a href={url('about/#editorial-method')}>Editorial method &amp; corrections →</a></details>
 
     <div class="source-groups">
       {sourceGroups.map(group =>
@@ -78,6 +79,7 @@ const sourceGroups = [
 </Layout>
 
 <style>
+  .source-key{border:1px solid var(--border);border-radius:20px;padding:18px 22px;margin-bottom:24px;font-size:13px;line-height:1.65}.source-key summary{font-weight:700;cursor:pointer}.source-key ul{padding-left:20px}.source-list p{font-size:11px!important}.source-list a:hover,.source-list a:focus-visible{color:#8b4c20!important}
   .evidence-library{padding-block:58px 76px}.evidence-intro{display:grid;grid-template-columns:1fr minmax(300px,520px);gap:64px;align-items:end}.evidence-intro h1{margin:7px 0 0;font-size:clamp(48px,6.5vw,82px);line-height:1;letter-spacing:-.055em}.evidence-intro>p{margin:0;color:var(--muted);font-size:16px;line-height:1.75}
   .source-index{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:34px 0 22px}.source-index a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--text);font-size:12px;font-weight:700}.source-index a:hover,.source-index a:focus-visible{border-color:var(--accent-sage);background:#f1f6f1}.source-index span{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent-sky);color:#4f6d76;font-size:10px}
   .evidence-caution{display:flex;gap:18px;margin-bottom:28px;padding:15px 18px;border-left:4px solid var(--accent-sage);border-radius:10px;background:#edf5f7;font-size:13px;line-height:1.6}.evidence-caution strong{flex:none}.evidence-caution span{color:var(--muted)}

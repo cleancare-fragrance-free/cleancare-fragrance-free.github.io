@@ -43,6 +43,7 @@ test('publisher and image notes move into accessible hover/focus and tap overlay
   const component = source('../src/components/ProfileSourceNotes.astro');
   assert.ok(!page.includes('<small>{person.publisher}</small>'));
   assert.ok(!page.includes('<small class="image-credit">'));
-  assert.equal((page.match(/<ProfileSourceNotes/g)||[]).length,2);
+  assert.equal((page.match(/<ProfileSourceNotes/g)||[]).length,1);
+  assert.equal((source('../src/pages/experts.astro').match(/<ProfileSourceNotes/g)||[]).length,1);
   for (const term of ['person.publisher','person.credit','person.licenseUrl','aria-controls','aria-expanded',':focus-within',':hover','data-notes-toggle','Escape','prefers-reduced-motion']) assert.ok(component.includes(term),term);
 });

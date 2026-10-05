@@ -13,14 +13,14 @@ const photoUrl = (photo, width) => photo.provider === 'local'
   data-article-slug={article.slug} data-featured={article.order ? 'true' : undefined} aria-labelledby={titleId}>
   <div class="journal-card-image">
     <div class="journal-card-art" aria-hidden="true">
-      {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={`${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw" alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
+      {article.photo ? <img src={photoUrl(article.photo, 800)} srcset={article.photo.provider === 'local' ? undefined : `${photoUrl(article.photo, 400)} 400w, ${photoUrl(article.photo, 800)} 800w`} sizes={compact ? "(max-width: 700px) 100vw, (max-width: 1050px) 33vw, 25vw" : "(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw"} alt="" width="800" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" style={{objectPosition: article.photo.position}}/> : <ArticleVisual kind={article.art} label={article.title}/>}
     </div>
     <span class:list={['article-badge', { 'article-badge--sky': skyBadge }]}>{article.topic}</span>
     {article.doctor && <div class="card-doctor"><DoctorBadge compact={compact}/></div>}
     {article.photo?.imageTag && <span class="article-source-tag">{article.photo.imageTag}</span>}
   </div>
   <div class="journal-card-copy">
-    <p class="journal-card-meta">{article.sourceName ? `${article.format} · ${article.sourceName}` : `${article.minutes} min read • By ${article.author || 'Clean Care editorial'}`}</p>
+    <p class="journal-card-meta">{article.sourceName ? `${article.format} · ${article.sourceName}` : `${article.minutes} min read • By ${article.author || 'CleanCare editorial'}`}</p>
     <h3 id={titleId}>{article.title}</h3>
     <p class="journal-card-excerpt">{article.description}</p>
     <span class="journal-card-link">{article.sourceName ? 'Explore the post & source' : 'Read Story'} <span aria-hidden="true">→</span></span>
@@ -126,13 +126,13 @@ const photoUrl = (photo, width) => photo.provider === 'local'
   }
   .journal-card-link {
     margin-top: auto;
-    color: var(--accent-sage);
+    color: var(--link-color, #435e52);
     font-size: 14px;
     font-weight: 700;
     transition: color 0.3s ease;
   }
   .journal-card:is(:hover, :focus-visible) .journal-card-link {
-    color: var(--accent-active);
+    color: var(--link-hover, #8b4c20);
     text-decoration: none;
   }
   .journal-card:focus-visible {
@@ -152,12 +152,12 @@ const photoUrl = (photo, width) => photo.provider === 'local'
 .journal-card[hidden] { display:none; }
 .journal-card--compact .journal-card-image { height:128px; }
 .journal-card--compact .journal-card-copy { padding:14px; }
-.journal-card--compact .journal-card-meta { font-size:10px;line-height:1.5;margin-bottom:7px; }
+.journal-card--compact .journal-card-meta { font-size:12px;line-height:1.5;margin-bottom:7px; }
 .journal-card--compact .journal-card-copy h3 { font-size:17px;line-height:1.35;margin-bottom:8px;letter-spacing:-.25px; }
-.journal-card--compact .journal-card-excerpt { font-size:12px;line-height:1.6;margin-bottom:12px;-webkit-line-clamp:2; }
-.journal-card--compact .journal-card-link { font-size:11px; }
-.journal-card--compact .article-badge { top:8px;left:8px;max-width:calc(100% - 16px);padding:4px 8px;font-size:9px; }
+.journal-card--compact .journal-card-excerpt { font-size:13px;line-height:1.6;margin-bottom:12px;-webkit-line-clamp:2; }
+.journal-card--compact .journal-card-link { font-size:13px; }
+.journal-card--compact .article-badge { top:8px;left:8px;max-width:calc(100% - 16px);padding:4px 8px;font-size:11px; }
 .journal-card--compact .card-doctor { bottom:8px;left:8px; }
-.journal-card--compact .article-source-tag { right:8px;bottom:8px;padding:4px 7px;font-size:9px; }
+.journal-card--compact .article-source-tag { right:8px;bottom:8px;padding:4px 7px;font-size:11px; }
 .journal-card--compact .journal-card-image:has(.card-doctor) .article-source-tag { bottom:39px; }
 </style>

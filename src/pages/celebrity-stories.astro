@@ -1,12 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import DoctorBadge from '../components/DoctorBadge.astro';
 import ProfileSourceNotes from '../components/ProfileSourceNotes.astro';
 import { celebrityStories } from '../data/celebrity-stories.mjs';
-import { doctorStories } from '../data/doctor-stories.mjs';
 import { url } from '../lib/paths';
 ---
-<Layout title="Celebrity stories, doctors & skin science | CleanCare" description="Source-linked celebrity stories and five dermatology and skin-science voices discussing fragrance-free choices, sensitivity and ingredient transparency.">
+<Layout title="Celebrity interviews & fragrance stories | CleanCare" description="Source-linked celebrity interviews and personal stories about fragrance-free choices, sensitive skin and ingredient transparency—not medical evidence.">
   <section class="container section celebrity-page">
     <p class="eyebrow">Celebrity stories · people behind the conversation</p>
     <h1>Celebrity stories: fragrance-free choices &amp; transparency.</h1>
@@ -31,29 +29,7 @@ import { url } from '../lib/paths';
       <p class="eyebrow">Expert voices · learn from the source</p>
       <h2 id="doctors-heading">Doctors &amp; skin science</h2>
       <p class="doctors-intro">Four dermatologists and a chemistry PhD exploring sensitive skin, ingredients and fragrance-free choices. Their perspectives differ: fragrance can cause contact allergy in susceptible people, but not everyone reacts. <a href="https://www.fda.gov/cosmetics/cosmetic-ingredients/allergens-cosmetics" target="_blank" rel="noopener noreferrer">Read the FDA’s cosmetic-allergen guidance ↗</a></p>
-      <div class="celebrity-mosaic doctor-mosaic">
-        {doctorStories.map((person, index) => <article class="celebrity-tile doctor-tile">
-          <ProfileSourceNotes id={`doctor-notes-${index}`} person={person}/>
-          <a class="celebrity-story-link" href={person.source} target="_blank" rel="noopener noreferrer" aria-labelledby={`doctor-${index}`}>
-            <div class="celebrity-image doctor-image">
-              {person.image ? <img src={person.image} alt={person.imageAlt ?? person.name} loading="lazy" decoding="async" width="600" height="440" referrerpolicy="no-referrer"/> : <div class="science-profile" aria-hidden="true"><span>{person.initials}</span><small>Lab Muffin<br/>Beauty Science</small></div>}
-              <div class="profile-badge">{person.doctor ? <DoctorBadge label="Dermatologist"/> : <span class="science-badge">Chemistry PhD</span>}</div>
-            </div>
-            <div class="celebrity-copy">
-              <span class="celebrity-category">{person.focus}</span>
-              <h3 id={`doctor-${index}`}>{person.name}</h3>
-              <p class="profile-credentials">{person.credentials}</p>
-              <p>{person.text}</p>
-              <span class="text-link">{person.sourceLabel} ↗</span>
-            </div>
-          </a>
-          <div class="profile-details">
-            <a href={person.credentialUrl} target="_blank" rel="noopener noreferrer">Official biography ↗</a>
-            <small>{person.disclosure}</small>
-            {person.related.length > 0 && <details><summary>More from this expert</summary><ul>{person.related.map(link => <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></li>)}</ul><small>Shared social links may require sign-in; they are not independently verified clinical evidence.</small></details>}
-          </div>
-        </article>)}
-      </div>
+      <a class="button" href={url('experts/')}>Explore the separate expert collection →</a>
       <p class="expert-note">The doctor badge identifies a medical qualification—not a review or endorsement of CleanCare. Brand founders have commercial interests; brand statements do not establish that a formula is suitable for everyone. For persistent reactions, consult a qualified clinician.</p>
     </section>
     <div class="story-context">

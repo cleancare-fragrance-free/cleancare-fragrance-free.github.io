@@ -5,55 +5,42 @@ import VideoCard from '../../components/VideoCard.astro';
 import { articles } from '../../data/articles.mjs';
 import { featuredPosts } from '../../data/featured-posts.mjs';
 import { learningVideos } from '../../data/learning-videos.mjs';
+import { guideTopics } from '../../data/guide-topics.mjs';
 import { url } from '../../lib/paths';
 ---
-<Layout title="The Clean Care Journal | Articles & guides" description="Explore illustrated, source-led guides to fragrance, health, everyday routines, and shared spaces.">
-<section class="container section journal"><p class="eyebrow">The Clean Care Journal</p><h1>A little more knowledge.<br/><em>A little less fragrance.</em></h1><p class="intro">Explore the evidence, rethink an everyday routine, or find a way to start a conversation. Clear information, practical ideas, and sources you can follow.</p>
-<section id="featured" aria-labelledby="featured-title">
-  <p class="eyebrow">From our Facebook community</p>
-  <h2 id="featured-title">Five featured posts. Follow the source.</h2>
-  <p class="intro">Articles, videos, and conversations selected from the group’s Featured tab. Open a card for a short overview and the original source.</p>
-  <div class="journal-grid">{featuredPosts.map(article => <ArticleCard article={article} compact/>)}</div>
-  <p class="editorial-note">Source-linked summaries, not full reproductions. Cards use credited artwork or video thumbnails from the original publishers; full credits appear on each page. Images do not imply endorsement. Featured order checked September 29, 2026.</p>
-</section>
-<section id="watch" aria-labelledby="watch-title">
-  <p class="eyebrow">Watch with context</p>
-  <h2 id="watch-title">Videos, expert explanations &amp; documentary.</h2>
-  <p class="intro">Medical, research, reporting, and advocacy sources answer different questions. Each card explains what kind of source it is before you watch.</p>
-  <div class="journal-grid">{learningVideos.map(video => <VideoCard video={video} compact/>)}</div>
-  <p class="editorial-note">The stethoscope stamp means “Doctor perspective”: a verified physician creator or interview host, not medical review of this website or proof of each claim. YouTube thumbnails remain with their publishers.</p>
-  <p class="editorial-note">Shared reels: <a href="https://www.instagram.com/reel/DSGwsz9juVP/">Instagram reel 1 ↗</a> · <a href="https://www.instagram.com/reel/DWXCJPwDdp_/">Instagram reel 2 ↗</a>. Source access is limited; speakers, titles and credentials are not yet verified.</p>
-</section>
-<section class="celebrity-invitation"><p class="eyebrow">Stories that start conversations</p><h2>Celebrities &amp; fragrance: behind the headline.</h2><p>Miranda Kerr, Pharrell Williams, Jessica Alba and more—explore fragrance-free options, ingredient transparency and cosmetics advocacy with the original sources.</p><a class="button" href={url('celebrity-stories/')}>Explore the compact story mosaic →</a></section>
-<h2 id="all-guides">Clean Care articles &amp; guides</h2>
-<form id="journal-filters" class="filters" role="search" aria-label="Find Clean Care guides"><label class="search-label">Find a guide<input id="journal-search" type="search" placeholder="Try laundry, symptoms, or labels…"/></label><label>Browse a topic<select id="journal-topic"><option value="">All topics</option>{[...new Set(articles.map(a => a.topic))].map(topic => <option>{topic}</option>)}</select></label><button class="reset" type="reset">Reset</button></form>
-<noscript><p class="notice">All articles are available below. Enable JavaScript to search and filter.</p></noscript><p id="journal-count" class="editorial-note" role="status" aria-live="polite">{articles.length} articles to explore</p><h2 class="visually-hidden">Articles to explore</h2><div class="journal-grid">{articles.map(article => <ArticleCard article={article} compact/>)}</div><div id="journal-empty" class="empty" hidden><h2>No stories match just yet.</h2><p>Try another topic or a shorter search.</p><button type="button" id="journal-clear" class="button">Show all articles</button></div><p class="editorial-note">Original Clean Care writing and illustrations. Community experiences inspire questions; published sources support health claims. Product information is separate from medical evidence.</p></section></Layout>
+<Layout title="Fragrance-free articles, guides & videos | CleanCare" description="Find source-led fragrance-free guides by topic, explore expert videos, and follow community stories with their original sources." image={url('images/editorial/home-fragrance-free-swaps.webp')}>
+<section class="container section journal">
+  <p class="eyebrow">The CleanCare Journal</p><h1>A little more knowledge.<br/><em>A little less fragrance.</em></h1><p class="intro">Explore the evidence, rethink an everyday routine, or find a way to start a conversation. Clear information, practical ideas, and sources you can follow.</p>
+  <nav class="journal-views" aria-label="Browse the journal"><a href="#all-guides" data-journal-view="all-guides">Guides <span>{articles.length}</span></a><a href="#watch" data-journal-view="watch">Videos <span>{learningVideos.length}</span></a><a href="#featured" data-journal-view="featured">Community stories <span>{featuredPosts.length}</span></a><a href={url('experts/')}>Expert explanations →</a></nav>
+  <section id="all-guides" data-journal-panel aria-labelledby="guide-library-title">
+    <h2 id="guide-library-title">Find your next guide</h2>
+    <form id="journal-filters" class="filters" role="search" aria-label="Find CleanCare guides"><label class="search-label">Find a guide<input id="journal-search" type="search" placeholder="Try laundry, symptoms, or labels…"/></label><label>Browse a topic<select id="journal-topic"><option value="">All topics</option>{[...new Set(articles.map(a => a.topic))].map(topic => <option>{topic}</option>)}</select></label><button class="reset" type="reset">Reset</button></form>
+    <nav class="topic-links" aria-label="Explore topic guides">{guideTopics.map(topic=><a href={url('guides/topics/'+topic.slug+'/')}>{topic.title} →</a>)}</nav>
+    <noscript><p class="notice">All articles and collections are available below. Enable JavaScript to search and filter.</p></noscript>
+    <p id="journal-count" class="editorial-note" role="status" aria-live="polite">{articles.length} articles to explore</p>
+    <div class="journal-grid">{articles.map(article=><ArticleCard article={article} compact/>)}</div>
+    <div id="journal-empty" class="empty" hidden><h2>No stories match just yet.</h2><p>Try another topic or a shorter search.</p><button type="button" id="journal-clear" class="button">Show all articles</button></div>
+    <p class="editorial-note">Original CleanCare writing and illustrations. Community experiences inspire questions; published sources support health claims. Product information is separate from medical evidence.</p>
+  </section>
+  <section id="watch" data-journal-panel aria-labelledby="watch-title"><p class="eyebrow">Watch with context</p><h2 id="watch-title">Videos, expert explanations &amp; documentary.</h2><p class="intro">Medical, research, reporting, and advocacy sources answer different questions. Each card explains what kind of source it is before you watch.</p><div class="journal-grid">{learningVideos.map(video=><VideoCard video={video} compact/>)}</div><p class="editorial-note">The stethoscope stamp means “Doctor perspective”: a verified physician creator or interview host, not medical review of this website or proof of each claim. YouTube thumbnails remain with their publishers.</p><p class="editorial-note">Shared reels: <a href="https://www.instagram.com/reel/DSGwsz9juVP/">Instagram reel 1 ↗</a> · <a href="https://www.instagram.com/reel/DWXCJPwDdp_/">Instagram reel 2 ↗</a>. Source access is limited; speakers, titles and credentials are not yet verified. Social sources may require sign-in.</p></section>
+  <section id="featured" data-journal-panel aria-labelledby="featured-title"><p class="eyebrow">From our Facebook community</p><h2 id="featured-title">Five featured posts. Follow the source.</h2><p class="intro">Articles, videos, and conversations selected from the group’s Featured tab. Open a card for a short overview and the original source.</p><div class="journal-grid">{featuredPosts.map(article=><ArticleCard article={article} compact/>)}</div><p class="editorial-note">Source-linked summaries, not full reproductions. Cards use credited artwork or video thumbnails from the original publishers; full credits appear on each page. Images do not imply endorsement. Featured order checked September 29, 2026. Facebook and Instagram may require sign-in.</p></section>
+  <section class="celebrity-invitation"><p class="eyebrow">Stories that start conversations</p><h2>Celebrities &amp; fragrance: behind the headline.</h2><p>Miranda Kerr, Pharrell Williams, Jessica Alba and more—explore fragrance-free options, ingredient transparency and cosmetics advocacy with the original sources. These stories are separate from medical evidence.</p><a class="button" href={url('celebrity-stories/')}>Explore the compact story mosaic →</a></section>
+</section></Layout>
 <script>
 import { articles, matchesArticle } from '../../data/articles.mjs';
 const form = document.querySelector<HTMLFormElement>('#journal-filters')!;
 const search = document.querySelector<HTMLInputElement>('#journal-search')!;
 const topic = document.querySelector<HTMLSelectElement>('#journal-topic')!;
 const cards = [...document.querySelectorAll<HTMLElement>('[data-article-slug]:not([data-featured])')];
-function render() {
- let count = 0;
- for (const card of cards) { card.hidden = !matchesArticle(articles.find(a => a.slug === card.dataset.articleSlug)!, search.value, topic.value); if (!card.hidden) count++; }
- document.querySelector('#journal-count')!.textContent = count + (count === 1 ? ' article to explore' : ' articles to explore');
- document.querySelector<HTMLElement>('#journal-empty')!.hidden = count !== 0;
-}
-form.addEventListener('submit', event => event.preventDefault());
-form.addEventListener('input', render);
-form.addEventListener('change', render);
-form.addEventListener('reset', () => { search.value = ''; topic.value = ''; render(); });
-document.querySelector('#journal-clear')!.addEventListener('click', () => form.reset());
+function render() { let count=0; for(const card of cards){card.hidden=!matchesArticle(articles.find(a=>a.slug===card.dataset.articleSlug)!,search.value,topic.value);if(!card.hidden)count++;}document.querySelector('#journal-count')!.textContent=count+(count===1?' article to explore':' articles to explore');document.querySelector<HTMLElement>('#journal-empty')!.hidden=count!==0; }
+form.addEventListener('submit',event=>event.preventDefault());form.addEventListener('input',render);form.addEventListener('change',render);form.addEventListener('reset',()=>{search.value='';topic.value='';render();});document.querySelector('#journal-clear')!.addEventListener('click',()=>form.reset());
+const views=[...document.querySelectorAll<HTMLAnchorElement>('[data-journal-view]')];const panels=[...document.querySelectorAll<HTMLElement>('[data-journal-panel]')];
+function showView(id:string){const selected=panels.some(panel=>panel.id===id)?id:'all-guides';panels.forEach(panel=>panel.hidden=panel.id!==selected);views.forEach(view=>{if(view.dataset.journalView===selected)view.setAttribute('aria-current','true');else view.removeAttribute('aria-current');});}
+views.forEach(view=>view.addEventListener('click',event=>{event.preventDefault();showView(view.dataset.journalView!);history.replaceState(null,'','#'+view.dataset.journalView);}));window.addEventListener('hashchange',()=>showView(location.hash.slice(1)));showView(location.hash.slice(1));
 </script>
 <style>
-.journal { padding-block:28px; }.journal h1 { font-size:clamp(32px,3.4vw,46px);margin:8px 0 12px; }.journal h2 { font-size:25px;margin:12px 0; }.journal .intro { font-size:13px;line-height:1.65;max-width:900px;margin-bottom:16px; }
-.journal #featured,.journal #watch { margin-top:24px;scroll-margin-top:24px; }
-.journal .journal-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px; }
-.journal .editorial-note { margin-block:10px;font-size:10px;line-height:1.6; }
-.journal .celebrity-invitation { margin-block:24px;padding:18px 22px; }.journal .celebrity-invitation p { font-size:12px;line-height:1.6; }.journal .celebrity-invitation .button { font-size:11px;padding:12px 16px;min-height:44px; }
-.journal .filters { margin-top:16px; }
-@media(max-width:1050px) { .journal .journal-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-@media(max-width:800px) { .journal .journal-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(max-width:540px) { .journal .journal-grid { grid-template-columns:minmax(0,1fr);gap:12px; }.journal h1 { font-size:32px; }.journal h2 { font-size:23px; } }
+.journal{padding-block:24px}.journal h1{font-size:clamp(32px,3.4vw,46px);margin:8px 0 12px}.journal h2{font-size:25px;margin:12px 0}.journal .intro{font-size:14px;line-height:1.65;max-width:900px;margin-bottom:16px}
+.journal #featured,.journal #watch{margin-top:24px;scroll-margin-top:24px}.journal .journal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.journal [data-journal-panel][hidden]{display:none}.journal .editorial-note{margin-block:12px;font-size:12px;line-height:1.6}
+.journal-views,.topic-links{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.journal-views a{padding:10px 14px;min-height:44px;border:1px solid var(--border);border-radius:999px;color:var(--link-color);font-size:13px;background:var(--card)}.journal-views a[aria-current]{background:#e8eee7;border-color:#435e52;font-weight:700}.journal-views span{margin-left:5px;color:var(--muted)}.topic-links a{font-size:12px;color:var(--link-color);padding:6px 8px}.journal .filters{margin-top:16px}.journal .celebrity-invitation{margin-block:24px;padding:18px 22px}.journal .celebrity-invitation p{font-size:13px;line-height:1.6}.journal .celebrity-invitation .button{font-size:12px;padding:12px 16px;min-height:44px}
+@media(max-width:1050px){.journal .journal-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:800px){.journal .journal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){.journal .journal-grid{grid-template-columns:minmax(0,1fr);gap:12px}.journal h1{font-size:32px}.journal h2{font-size:23px}}
 </style>
