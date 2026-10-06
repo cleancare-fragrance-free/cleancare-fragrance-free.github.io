@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import ProfileSourceNotes from '../components/ProfileSourceNotes.astro';
 import { celebrityStories } from '../data/celebrity-stories.mjs';
 import { url } from '../lib/paths';
-const breadcrumbs = [{name:'Home',path:url()}, {name:'Why fragrance free',path:url('why-fragrance-free/')}, {name:'You are not alone · Celebrity stories',path:url('celebrity-stories/')}];
+const breadcrumbs = [{name:'Home',path:url()}, {name:'Why fragrance free',path:url('why-fragrance-free/')}, {name:'Celebrity stories',path:url('celebrity-stories/')}];
 ---
-<Layout title="You are not alone · Celebrity stories | CleanCare" description="Source-linked celebrity interviews and personal stories about fragrance-free choices, sensitive skin and ingredient transparency—not medical evidence." breadcrumbs={breadcrumbs}>
+<Layout title="Celebrity stories | CleanCare" description="Source-linked celebrity interviews and personal stories about fragrance-free choices, sensitive skin and ingredient transparency—not medical evidence." breadcrumbs={breadcrumbs}>
   <section class="container section celebrity-page">
     <p class="eyebrow">Celebrity stories · people behind the conversation</p>
-    <h1>You are not alone.<br/>Celebrity stories &amp; fragrance-free choices.</h1>
+    <h1>Celebrity stories &amp; fragrance-free choices.</h1>
     <p class="intro">Interviews and quoted conversations about scent, sensitive skin, ingredient disclosure and wellbeing. These people have different views—not a shared pledge to avoid fragrance.</p>
     <p class="notice">Different stories, different choices. Offering a fragrance-free product—or disclosing perfume ingredients—does not mean someone avoids all fragrance. These stories are not medical advice or brand endorsements.</p>
     <nav class="profile-jumps" aria-label="People on this page"><a href="#celebrities">Celebrity stories</a><a href="#doctors">Doctors &amp; skin science <span aria-hidden="true">↓</span></a></nav>
