@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 const source = readFileSync(new URL('../src/pages/about-us.astro', import.meta.url), 'utf8');
 
@@ -23,4 +23,22 @@ test('about page invites readers into the Facebook community without treating po
   assert.match(page, /Visit our Facebook page/);
   assert.match(page, /not automatically evidence/);
   assert.match(page, /Facebook may require sign-in/);
+});
+
+test('Facebook community sits beside the personal story, before the mission section', () => {
+  const storyStart = source.indexOf('<section class="container story-section">');
+  const communityStart = source.indexOf('<section class="community-section"');
+  const missionStart = source.indexOf('<section class="mission-band">');
+  assert.ok(storyStart < communityStart && communityStart < missionStart);
+  assert.equal(source.match(/class="community-section"/g)?.length, 1);
+  assert.ok(source.includes('aria-labelledby="facebook-community-title"'));
+  assert.match(source, /grid-template-columns:minmax\(0,1\.4fr\) minmax\(300px,1fr\)/);
+  assert.match(source, /@media\(max-width:760px\)\{\.story-section\{grid-template-columns:1fr/);
+});
+
+test('community uses a locally stored Facebook logo rather than a styled letter', () => {
+  assert.ok(source.includes("url('images/social/facebook.png')"));
+  assert.ok(existsSync(new URL('../public/images/social/facebook.png', import.meta.url)));
+  assert.ok(!source.includes('<span>f</span>'));
+  assert.match(source, /community-mark" aria-hidden="true"><img[^>]+alt=""/);
 });

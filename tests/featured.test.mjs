@@ -33,3 +33,13 @@ test('featured cards have static detail routes and do not break guide filters', 
   const journal = readFileSync(new URL('../src/pages/guides/index.astro', import.meta.url), 'utf8');
   assert.ok(journal.includes('[data-article-slug]:not([data-featured])'));
 });
+
+test('featured posts are the first journal section and default view without hiding search results', () => {
+  const journal = readFileSync(new URL('../src/pages/guides/index.astro', import.meta.url), 'utf8');
+  assert.ok(journal.indexOf('<section id="featured"') < journal.indexOf('<section id="all-guides"'));
+  assert.ok(journal.indexOf('data-journal-view="featured"') < journal.indexOf('data-journal-view="all-guides"'));
+  assert.ok(journal.includes("const defaultView = initialQuery ? 'all-guides' : 'featured'"));
+  assert.ok(journal.includes('panel.id===id)?id:defaultView'));
+  assert.ok(journal.includes('showView(location.hash.slice(1))'));
+  assert.ok(journal.includes('Five featured posts. Follow the source.'));
+});

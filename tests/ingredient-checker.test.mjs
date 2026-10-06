@@ -2,6 +2,23 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { analyzeIngredients, parseIngredientList, screeningRules } from '../src/lib/ingredient-checker.mjs';
+import { makeBreadcrumbs } from '../src/lib/site-seo.mjs';
+
+test('ingredient checker belongs to fragrance-free products in navigation and page hierarchy', () => {
+  const read = file => readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+  const layout = read('src/layouts/Layout.astro');
+  const started = layout.slice(layout.indexOf('<summary>Get started</summary>'), layout.indexOf('<summary>Read & watch</summary>'));
+  const products = layout.slice(layout.indexOf('<summary>Fragrance Free Products</summary>'), layout.indexOf('<summary>About Us</summary>'));
+  assert.ok(!started.includes("url('ingredient-checker/')"));
+  assert.ok(products.includes("url('ingredient-checker/')"));
+  const page = read('src/pages/ingredient-checker.astro');
+  assert.ok(page.includes('Fragrance-free products · private, in-browser tool'));
+  assert.ok(!page.includes('breadcrumbs={'));
+  assert.ok(read('src/pages/directory.astro').includes("url('ingredient-checker/')"));
+  const crumbs = makeBreadcrumbs('/ingredient-checker/', 'Ingredient Checker | CleanCare');
+  assert.equal(crumbs[1].name, 'Fragrance-free products');
+  assert.equal(crumbs[1].path, '/directory/');
+});
 
 test('ingredient checker recognizes exact fragrance and selected essential-oil labels', () => {
   const result = analyzeIngredients('Water, Glycerin, Parfum, Lavandula angustifolia oil, Sodium Hyaluronate');

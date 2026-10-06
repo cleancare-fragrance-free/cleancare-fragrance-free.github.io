@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorialIcon from '../components/EditorialIcon.astro';
+import { articles } from '../data/articles.mjs';
+import { learningVideos } from '../data/learning-videos.mjs';
+import { url } from '../lib/paths';
+
+const destinations = [
+  { icon: 'book', eyebrow: `${articles.length} source-led reads`, title: 'Articles & Guides', text: 'Explore featured community posts, practical guides, and longer explainers at your own pace.', href: 'guides/', action: 'Browse the journal' },
+  { icon: 'headphones', eyebrow: `${learningVideos.length} videos & documentaries`, title: 'Evidence Library', text: 'Compare government guidance, original research, reporting, and videos with their scope made clear.', href: 'evidence/', action: 'Follow the sources' },
+  { icon: 'stethoscope', eyebrow: 'Credentials & context', title: 'Expert explanations', text: 'Meet dermatologists and science communicators through their original resources and disclosures.', href: 'experts/', action: 'Meet the experts' },
+];
+---
+<Layout title="Read & Watch | CleanCare" description="Choose articles, evidence or expert explanations about fragrance, indoor air and fragrance-free living.">
+  <section class="container read-watch">
+    <p class="eyebrow">Read &amp; watch</p>
+    <h1>Choose your next <em>source.</em></h1>
+    <p class="intro">A simple place to return to when you want to explore a different kind of information—reading, evidence, or expert context.</p>
+    <div class="read-watch-grid">
+      {destinations.map(destination => <a class="read-watch-card" href={url(destination.href)}>
+        <span class="read-watch-icon"><EditorialIcon name={destination.icon}/></span>
+        <p>{destination.eyebrow}</p>
+        <h2>{destination.title}</h2>
+        <span>{destination.text}</span>
+        <strong>{destination.action} <span aria-hidden="true">→</span></strong>
+      </a>)}
+    </div>
+  </section>
+</Layout>
+<style>
+  .read-watch{padding-block:58px 76px}.read-watch h1{max-width:700px;margin:8px 0 14px;font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-.05em}.read-watch h1 em{font-family:Georgia,serif;font-weight:400;color:#587d6c}.read-watch .intro{max-width:670px;margin:0;color:var(--muted);font-size:16px;line-height:1.75}.read-watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}.read-watch-card{display:flex;flex-direction:column;align-items:flex-start;min-height:290px;padding:26px;border:1px solid var(--border);border-radius:20px;background:#fff;color:var(--text);box-shadow:0 8px 24px rgba(65,88,77,.05);transition:transform .25s ease,box-shadow .25s ease}.read-watch-card:hover,.read-watch-card:focus-visible{transform:translateY(-4px);box-shadow:0 16px 30px rgba(65,88,77,.12);text-decoration:none}.read-watch-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--accent-sky);color:#587d6c}.read-watch-icon :global(.editorial-icon){color:inherit}.read-watch-card p{margin:22px 0 5px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}.read-watch-card h2{margin:0 0 10px;font-size:24px;line-height:1.25}.read-watch-card>span:not(.read-watch-icon){color:var(--muted);font-size:13px;line-height:1.65}.read-watch-card strong{margin-top:auto;padding-top:20px;color:var(--link-color);font-size:13px}@media(max-width:800px){.read-watch-grid{grid-template-columns:1fr}.read-watch-card{min-height:0}}@media(max-width:560px){.read-watch{padding-block:36px 54px}.read-watch-grid{margin-top:24px;gap:12px}.read-watch-card{padding:20px}.read-watch-card p{margin-top:16px}}
+</style>

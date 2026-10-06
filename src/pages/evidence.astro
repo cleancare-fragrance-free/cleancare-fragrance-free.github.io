@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import EditorialIcon from '../components/EditorialIcon.astro';
 import { learningVideos } from '../data/learning-videos.mjs';
 import { url } from '../lib/paths';
 
 const sourceGroups = [
   {
-    id: 'health-labels', number: '01', title: 'Health, sensitivity & labels',
+    id: 'health-labels', number: '01', icon: 'heart', title: 'Health, sensitivity & labels',
     note: 'Start here for allergy, reported symptoms, and what cosmetic labels do—or do not—tell you.', tone: 'sage',
     sources: [
       { label: 'Health education · American Lung Association', title: 'Fragrances and indoor air', href: 'https://www.lung.org/clean-air/indoor-air/indoor-air-pollutants/fragrances', note: 'Indoor sources, symptoms reported by some people, and practical exposure-reduction steps.' },
@@ -15,7 +16,7 @@ const sourceGroups = [
     ],
   },
   {
-    id: 'indoor-air', number: '02', title: 'Indoor air & chemistry',
+    id: 'indoor-air', number: '02', icon: 'air', title: 'Indoor air & chemistry',
     note: 'Research on VOCs, ozone reactions, particles, and what was actually measured indoors.', tone: 'sky',
     sources: [
       { label: 'Government guidance · EPA', title: 'VOCs and Indoor Air Quality', href: 'https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality', note: 'VOCs, their indoor sources, possible effects, and source-control steps.' },
@@ -25,7 +26,7 @@ const sourceGroups = [
     ],
   },
   {
-    id: 'practical-guidance', number: '03', title: 'Practical guidance & standards',
+    id: 'practical-guidance', number: '03', icon: 'label', title: 'Practical guidance & standards',
     note: 'Public guidance for interpreting odors, choosing products, and reducing avoidable exposure.', tone: 'apricot',
     sources: [
       { label: 'Government context · EPA', title: 'Can fragrances indoors cause health impacts?', href: 'https://www.epa.gov/asthma/can-use-fragrances-indoors-cause-health-impacts', note: 'Effects in some sensitive people and uncertainty around some reported reactions.' },
@@ -44,8 +45,8 @@ const sourceGroups = [
     </header>
 
     <nav class="source-index" aria-label="Evidence categories">
-      {sourceGroups.map(group => <a href={`#${group.id}`}><span>{group.number}</span>{group.title}</a>)}
-      <a href="#watch"><span>04</span>Watch &amp; listen</a>
+      {sourceGroups.map(group => <a href={`#${group.id}`}><span class="source-index-icon"><EditorialIcon name={group.icon}/></span>{group.title}</a>)}
+      <a href="#watch"><span class="source-index-icon"><EditorialIcon name="headphones"/></span>Watch &amp; listen</a>
     </nav>
 
     <div class="evidence-caution"><strong>Read the scope, not only the headline.</strong><span>Evidence about one ingredient, product, or exposure level does not automatically apply to every fragrance. Each note below says what the source actually covers.</span></div>
@@ -54,7 +55,7 @@ const sourceGroups = [
     <div class="source-groups">
       {sourceGroups.map(group =>
         <section id={group.id} class:list={['source-group', `source-group--${group.tone}`]}>
-          <header><span>{group.number}</span><div><h2>{group.title}</h2><p>{group.note}</p></div></header>
+          <header><span class="source-heading-icon"><EditorialIcon name={group.icon}/></span><div><h2>{group.title}</h2><p>{group.note}</p></div></header>
           <ul class="source-list">
             {group.sources.map(source => <li><span class="source-dot" aria-hidden="true"></span><div><p>{source.label}</p><a href={source.href} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a><small>{source.note}</small></div></li>)}
           </ul>
@@ -63,14 +64,26 @@ const sourceGroups = [
     </div>
 
     <section id="watch" class="source-group source-group--video">
-      <header><span>04</span><div><h2>Watch &amp; listen</h2><p>Medical education, reporting, documentaries, and research presentations answer different questions.</p></div></header>
+      <header><span class="source-heading-icon"><EditorialIcon name="headphones"/></span><div><h2>Watch &amp; listen <span class="watch-heading-play"><EditorialIcon name="play"/></span></h2><p>Medical education, reporting, documentaries, and research presentations answer different questions.</p></div></header>
       <ul class="source-list video-source-list">
-        {learningVideos.map(video => <li><span class="source-dot" aria-hidden="true"></span><div><p>{video.source}</p><a href={video.local ? url(video.href) : video.href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>{video.title} <span aria-hidden="true">{video.local ? '→' : '↗'}</span></a><small>{video.note}</small></div></li>)}
+        {learningVideos.map(video => {
+          const presentation = video.source.includes('Webinar');
+          const mediaIcon = video.doctor ? 'stethoscope' : video.local ? 'film' : presentation ? 'microphone' : 'video';
+          const mediaLabel = video.doctor ? 'Physician video' : video.local ? 'Documentary' : presentation ? 'Research presentation' : 'Video';
+          return <li>
+            <div class="media-meta"><p>{video.source}</p><span class="media-type"><EditorialIcon name={mediaIcon}/>{mediaLabel}</span></div>
+            <a class="media-link" href={video.local ? url(video.href) : video.href} target={video.local ? undefined : '_blank'} rel={video.local ? undefined : 'noopener noreferrer'}>
+              <span class="media-play"><EditorialIcon name="play"/></span>
+              <span>{video.title} <span aria-hidden="true">{video.local ? '→' : '↗'}</span></span>
+            </a>
+            <small>{video.note}</small>
+          </li>;
+        })}
       </ul>
     </section>
 
     <aside class="advocacy-note">
-      <span aria-hidden="true">✳</span>
+      <span aria-hidden="true"><EditorialIcon name="people"/></span>
       <div><p class="eyebrow">From evidence to action</p><h2>Share the message. Advocate for healthier air.</h2><p>Reliable sources are most useful when they help communities make better choices. Share what you learn and support fragrance-aware, lower-toxicity homes, workplaces, schools, healthcare spaces, and public environments—so cleaner air becomes more accessible to everyone.</p></div>
     </aside>
 
@@ -79,6 +92,25 @@ const sourceGroups = [
 </Layout>
 
 <style>
+  .source-index-icon :global(.editorial-icon){width:18px;height:18px;color:inherit}
+  .source-heading-icon{color:#587467}
+  .source-heading-icon :global(.editorial-icon){color:inherit}
+  .source-group--video .source-heading-icon{color:#736180}
+  .watch-heading-play{display:inline-grid;place-items:center;width:24px;height:24px;margin-left:5px;border-radius:50%;background:#fff8;color:#736180;vertical-align:middle}
+  .watch-heading-play :global(.editorial-icon){width:13px;height:13px;color:inherit}
+  .source-list.video-source-list li{display:flex;flex-direction:column;gap:7px;min-width:0;padding:16px 20px}
+  .media-meta{display:flex;flex-wrap:wrap;align-items:center;gap:5px 10px;margin-left:42px}
+  .video-source-list .media-meta p{margin:0;letter-spacing:.04em;line-height:1.5}
+  .media-type{display:inline-flex;align-items:center;gap:5px;color:#685774;font-size:10px;font-weight:600;line-height:1.5}
+  .media-type :global(.editorial-icon){width:14px;height:14px;color:inherit}
+  .video-source-list .media-link{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;gap:10px;border-radius:8px}
+  .media-play{display:grid;place-items:center;width:32px;height:32px;border:1px solid #dfd5e6;border-radius:50%;background:#f6f1f9;color:#736180;transition:background .2s ease,color .2s ease}
+  .media-play :global(.editorial-icon){width:14px;height:14px;color:inherit}
+  .media-link:hover .media-play,.media-link:focus-visible .media-play{background:#faeadf;border-color:#e2c2a8;color:#8b4c20}
+  .media-link:focus-visible{outline:2px solid #736180;outline-offset:4px}
+  .source-list.video-source-list small{margin:0 0 0 42px}
+  .advocacy-note>span :global(.editorial-icon){color:inherit}
+  @media(prefers-reduced-motion:reduce){.media-play{transition:none}}
   .source-key{border:1px solid var(--border);border-radius:20px;padding:18px 22px;margin-bottom:24px;font-size:13px;line-height:1.65}.source-key summary{font-weight:700;cursor:pointer}.source-key ul{padding-left:20px}.source-list p{font-size:11px!important}.source-list a:hover,.source-list a:focus-visible{color:#8b4c20!important}
   .evidence-library{padding-block:58px 76px}.evidence-intro{display:grid;grid-template-columns:1fr minmax(300px,520px);gap:64px;align-items:end}.evidence-intro h1{margin:7px 0 0;font-size:clamp(48px,6.5vw,82px);line-height:1;letter-spacing:-.055em}.evidence-intro>p{margin:0;color:var(--muted);font-size:16px;line-height:1.75}
   .source-index{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:34px 0 22px}.source-index a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--text);font-size:12px;font-weight:700}.source-index a:hover,.source-index a:focus-visible{border-color:var(--accent-sage);background:#f1f6f1}.source-index span{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent-sky);color:#4f6d76;font-size:10px}

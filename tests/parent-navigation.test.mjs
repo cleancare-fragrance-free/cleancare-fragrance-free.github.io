@@ -11,8 +11,8 @@ test('detail pages return to their real section parents, including deployment ba
       ['guides/fragrance-and-pets','why-fragrance-free/'],
       ['guides/history-of-fragrance','why-fragrance-free/'],
       ['celebrity-stories','why-fragrance-free/'],
-      ['evidence','guides/'], ['experts','guides/'], ['glossary','directory/'],
-      ['ingredient-checker','guides/fragrance-free-starter-toolkit/'],
+      ['guides','read-watch/'], ['evidence','read-watch/'], ['experts','read-watch/'], ['glossary','directory/'],
+      ['ingredient-checker','directory/'],
       ['non-toxic-home','guides/fragrance-free-starter-toolkit/'],
       ['take-action','about-us/'], ['we-share-the-air','about-us/'],
     ]) {
@@ -34,6 +34,21 @@ test('ordinary article, product and country hierarchies remain valid', () => {
     ['directory/singapore/','/directory/'],
   ]) assert.equal(makeBreadcrumbs('/'+page,'Page | CleanCare').at(-2).path, parent);
   assert.deepEqual(makeBreadcrumbs('/','Home'),[]);
+});
+
+test('Read & watch is a real overview level, rather than an invented history link', () => {
+  const layout = source('src/layouts/Layout.astro');
+  const overview = source('src/pages/read-watch.astro');
+  assert.match(layout, /url\('read-watch\/'\).*Read &amp; watch overview/);
+  assert.ok(layout.includes("url('read-watch/')}>Read & Watch</a>"));
+  assert.ok(overview.includes("href: 'guides/'"));
+  assert.ok(overview.includes("href: 'evidence/'"));
+  assert.ok(overview.includes("href: 'experts/'"));
+  for (const base of ['/', '/cleancare/']) {
+    const crumbs = makeBreadcrumbs(base + 'guides/', 'Articles & Guides | CleanCare', base);
+    assert.equal(crumbs.at(-2).name, 'Read & watch');
+    assert.equal(crumbs.at(-2).path, base + 'read-watch/');
+  }
 });
 
 test('parent return links are accessible, server-rendered and share the SEO hierarchy', () => {

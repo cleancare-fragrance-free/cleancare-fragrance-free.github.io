@@ -1,7 +1,7 @@
 export const publisherName = 'CleanCare editorial';
 export const primaryLabels = {
   'why-fragrance-free': 'Why fragrance free', 'non-toxic-home': 'House Detox',
-  guides: 'Articles & guides', directory: 'Fragrance-free products', evidence: 'Evidence library',
+  guides: 'Articles & guides', 'read-watch': 'Read & watch', directory: 'Fragrance-free products', evidence: 'Evidence library',
   'self-check': 'Private health check', 'about-us': 'Our story', about: 'Editorial approach',
   experts: 'Expert explanations', 'celebrity-stories': 'Celebrity stories', privacy: 'Privacy',
   'starter-checklist': 'Printable starter checklist', glossary: 'Glossary', products: 'Product notes', featured: 'Community stories',
@@ -14,10 +14,11 @@ const sectionParents = {
   'guides/fragrance-and-environment': ['Why fragrance free', 'why-fragrance-free/'],
   'guides/fragrance-and-pets': ['Why fragrance free', 'why-fragrance-free/'],
   'celebrity-stories': ['Why fragrance free', 'why-fragrance-free/'],
-  evidence: ['Articles & guides', 'guides/'],
-  experts: ['Articles & guides', 'guides/'],
+  guides: ['Read & watch', 'read-watch/'],
+  evidence: ['Read & watch', 'read-watch/'],
+  experts: ['Read & watch', 'read-watch/'],
   glossary: ['Fragrance-free products', 'directory/'],
-  'ingredient-checker': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'ingredient-checker': ['Fragrance-free products', 'directory/'],
   'guides/identify-and-prevent-vocs': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
   'non-toxic-home': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
   'self-check': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
