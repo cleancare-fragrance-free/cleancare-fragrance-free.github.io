@@ -45,7 +45,7 @@ test('directory progressively reveals deduplicated profiles and experts have a s
 test('product directory opens from category icons to brand collections',()=>{
   const directory=readFileSync(new URL('../src/pages/directory.astro',import.meta.url),'utf8');
   const card=readFileSync(new URL('../src/components/ProductCard.astro',import.meta.url),'utf8');
-  assert.match(directory,/<h1>Go Fragrance Free\. Here are the options<\/h1>/);
+  assert.match(directory,/<h1>Go Fragrance Free\.<\/h1>/);
   assert.ok(directory.includes('class="category-shortcuts"'));
   assert.ok(directory.includes('data-category-shortcut={group.category}'));
   assert.ok(directory.includes('data-brand-choice={brand}'));
