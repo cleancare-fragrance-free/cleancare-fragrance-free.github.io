@@ -1,0 +1,15 @@
+---
+import { url } from '../lib/paths';
+const { scope, imageNote } = Astro.props;
+---
+<footer class="article-disclosure" data-article-disclosure aria-label="Editorial notes">
+  <p>AI-assisted educational writing with linked sources; not medically reviewed. <a href={url('about/#editorial-method')}>How this content is prepared →</a></p>
+  {scope && <p>{scope}</p>}
+  {imageNote && <p>{imageNote}</p>}
+  <slot/>
+</footer>
+<style>
+  .article-disclosure{margin:20px 0 32px;padding-top:16px;border-top:1px solid var(--border,#EFEBE4);background:transparent;color:var(--muted,#6B7280);font-size:12px;line-height:1.7}
+  .article-disclosure p{margin:0 0 8px}.article-disclosure p:last-child{margin-bottom:0}
+  .article-disclosure a{color:var(--link-color,#435e52)}
+</style>
