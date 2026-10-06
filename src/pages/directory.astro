@@ -26,11 +26,11 @@ const initialBrandGroups = categoryOrder.map(category => ({
   <h1>Go Fragrance Free.</h1>
   <p class="intro">Start with a category, choose a brand, then browse the exact product versions checked for your location and scent preferences. Official sources are checked—not personally tested—and links are not affiliate links. See <a href={url('about/#product-method')}>how products qualify and what each scent label means</a>.</p>
   <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
-  <section id="product-preview" class="product-preview" aria-labelledby="product-preview-title" hidden={!initialPreview.length}>
+  <section id="product-preview" class="product-preview" aria-labelledby="product-preview-title">
     <h2 id="product-preview-title">Product photo preview</h2>
-    <p>Tap a photo to see the exact product and its source.</p>
+    <p id="product-preview-help">Photos matching your current filters. Tap a photo to see the product and its source.</p>
     <div id="product-preview-strip" class="product-preview-strip" data-signature={initialPreview.map(product => product.id).join('|')}>
-      {initialPreview.map(product => <a class="product-preview-item" href={url('products/' + product.id + '/')} aria-label={'View ' + product.title}>
+      {initialPreview.map(product => <a class="product-preview-item" href={url('products/' + product.id + '/')} aria-label={'View ' + product.title} title={product.title}>
         <span class="product-preview-photo"><img src={product.image} alt="" loading="lazy" decoding="async" width="96" height="96" referrerpolicy="no-referrer"/></span>
         <span class="product-preview-brand">{product.brand}</span>
       </a>)}
@@ -112,8 +112,8 @@ let selectedBrand = '';
 const regionButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-region-button]')];
 const categoryShortcuts = [...document.querySelectorAll<HTMLButtonElement>('[data-category-shortcut]')];
 const cards = [...document.querySelectorAll<HTMLElement>('[data-product-id]')];
-const preview = document.querySelector<HTMLElement>('#product-preview')!;
 const previewStrip = document.querySelector<HTMLElement>('#product-preview-strip')!;
+const previewHelp = document.querySelector<HTMLElement>('#product-preview-help')!;
 const more = document.querySelector<HTMLButtonElement>('#show-more-products')!;
 const empty = document.querySelector<HTMLElement>('#empty')!;
 let visibleLimit = 12;
@@ -134,16 +134,23 @@ function render(updateURL = true, resetLimit = true) {
   countrySelect.value = selectedCountry;
   regionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.regionButton === selectedRegion)));
   const matchingProducts = products.filter(product => Object.keys(product.countries).some(code=>countryInRegion(code,selectedRegion)) && matchesProduct(product,state));
-  const imageProducts = matchingProducts.filter(product => product.image);
+  const previewProducts = selectedBrand ? matchingProducts.filter(product => product.brand === selectedBrand) : matchingProducts;
+  const imageProducts = previewProducts.filter(product => product.image);
   const brandPreview = [...new Map(imageProducts.map(product => [product.brand, product])).values()];
   const previewChoices = [...brandPreview, ...imageProducts.filter(product => !brandPreview.includes(product))].slice(0, 10);
-  preview.hidden = previewChoices.length === 0;
+  previewStrip.hidden = previewChoices.length === 0;
+  previewHelp.textContent = previewChoices.length
+    ? `${previewChoices.length} product photo${previewChoices.length === 1 ? '' : 's'} matching your current filters${selectedBrand ? ' · ' + selectedBrand : ''}. Tap a photo to see the product and its source.`
+    : previewProducts.length
+      ? 'No product photos are available for this selection yet. Browse the matching brands and product profiles below.'
+      : 'No products match your current filters. Try another selection or reset the filters.';
   const previewSignature = previewChoices.map(product => product.id).join('|');
   if (previewStrip.dataset.signature !== previewSignature) previewStrip.replaceChildren(...previewChoices.map(product => {
     const link = document.createElement('a');
     link.className = 'product-preview-item';
     link.href = url('products/' + product.id + '/');
     link.setAttribute('aria-label', 'View ' + product.title);
+    link.title = product.title;
     const photo = document.createElement('span');
     photo.className = 'product-preview-photo';
     const image = document.createElement('img');
@@ -245,6 +252,7 @@ readURL(); render(false);
 .product-preview h2{margin:0 0 4px;font-size:20px;line-height:1.3}
 .product-preview>p{margin:0 0 12px;color:var(--muted);font-size:12px}
 .product-preview-strip{display:flex;gap:11px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.product-preview-strip[hidden]{display:none}
 .product-preview :global(.product-preview-item){flex:0 0 100px;display:grid;align-content:start;gap:6px;scroll-snap-align:start;color:var(--text);text-align:center}
 .product-preview :global(.product-preview-photo){display:grid;place-items:center;width:100px;height:100px;overflow:hidden;border-radius:12px;background:#f5f2ed;border:1px solid var(--border)}
 .product-preview :global(.product-preview-photo img){display:block;width:100%;height:100%;object-fit:contain;padding:6px;transition:transform .2s ease}
