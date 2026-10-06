@@ -26,6 +26,16 @@ const initialBrandGroups = categoryOrder.map(category => ({
   <h1>Go Fragrance Free.</h1>
   <p class="intro">Start with a category, choose a brand, then browse the exact product versions checked for your location and scent preferences. Official sources are checked—not personally tested—and links are not affiliate links. See <a href={url('about/#product-method')}>how products qualify and what each scent label means</a>.</p>
   <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
+  <section id="product-preview" class="product-preview" aria-labelledby="product-preview-title" hidden={!initialPreview.length}>
+    <h2 id="product-preview-title">Product photo preview</h2>
+    <p>Tap a photo to see the exact product and its source.</p>
+    <div id="product-preview-strip" class="product-preview-strip" data-signature={initialPreview.map(product => product.id).join('|')}>
+      {initialPreview.map(product => <a class="product-preview-item" href={url('products/' + product.id + '/')} aria-label={'View ' + product.title}>
+        <span class="product-preview-photo"><img src={product.image} alt="" loading="lazy" decoding="async" width="96" height="96" referrerpolicy="no-referrer"/></span>
+        <span class="product-preview-brand">{product.brand}</span>
+      </a>)}
+    </div>
+  </section>
   <div class="location-picker">
     <div role="group" aria-label="Choose a region" class="region-buttons"><button type="button" data-region-button="" aria-pressed="true">All regions</button>{regions.map(region => <button type="button" data-region-button={region.code} aria-pressed="false">{region.name}</button>)}</div>
   </div>
@@ -50,16 +60,6 @@ const initialBrandGroups = categoryOrder.map(category => ({
     </button>)}
   </nav>
   <p id="result-count" role="status" aria-live="polite">{initialProducts.length} fragrance-free product profiles from {new Set(initialProducts.map(p=>p.brand)).size} brands</p>
-
-  <section id="product-preview" class="product-preview" aria-labelledby="product-preview-title" hidden={!initialPreview.length}>
-    <h2 id="product-preview-title">A few products to explore</h2>
-    <div id="product-preview-strip" class="product-preview-strip" data-signature={initialPreview.map(product => product.id).join('|')}>
-      {initialPreview.map(product => <a class="product-preview-item" href={url('products/' + product.id + '/')} aria-label={'View ' + product.title}>
-        <span class="product-preview-photo"><img src={product.image} alt="" loading="lazy" decoding="async" width="96" height="96" referrerpolicy="no-referrer"/></span>
-        <span class="product-preview-brand">{product.brand}</span>
-      </a>)}
-    </div>
-  </section>
 
   <div id="brand-index" class="brand-index">
     {initialBrandGroups.map(group => <section class="brand-category" data-brand-category={group.category} aria-labelledby={'brand-category-' + group.category.replaceAll(' ','-')} hidden={!initialProducts.some(product=>product.category===group.category)}>
@@ -240,9 +240,10 @@ readURL(); render(false);
 </script>
 <style>
 .directory .intro { max-width: 970px; font-size: 15px; line-height: 1.75; }
-.product-preview{margin:18px 0 8px;padding:15px 18px;border:1px solid var(--border);border-radius:20px;background:var(--card)}
+.product-preview{margin:20px 0 24px;padding:18px 20px;border:1px solid var(--border);border-radius:20px;background:var(--card)}
 .product-preview[hidden]{display:none}
-.product-preview h2{margin:0 0 10px;font-size:15px;line-height:1.3}
+.product-preview h2{margin:0 0 4px;font-size:20px;line-height:1.3}
+.product-preview>p{margin:0 0 12px;color:var(--muted);font-size:12px}
 .product-preview-strip{display:flex;gap:11px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x proximity;scrollbar-width:thin}
 .product-preview :global(.product-preview-item){flex:0 0 100px;display:grid;align-content:start;gap:6px;scroll-snap-align:start;color:var(--text);text-align:center}
 .product-preview :global(.product-preview-photo){display:grid;place-items:center;width:100px;height:100px;overflow:hidden;border-radius:12px;background:#f5f2ed;border:1px solid var(--border)}
