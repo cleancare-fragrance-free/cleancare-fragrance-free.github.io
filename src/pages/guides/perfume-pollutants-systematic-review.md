@@ -43,4 +43,4 @@ When comparing reviews, check the search dates, what evidence they included, whe
 - Choose a fragrance-free product when avoiding added scent is useful for you, and remember that fragrance-free is not a promise of zero risk or suitability for every person.
 - Share the original paper with context: it is an open-access review with broad claims that require study-by-study checking.
 
-*Source reviewed October 5, 2026. CleanCare’s original editorial summary does not reproduce the paper’s disease graphic or turn its associations into a universal consumer-health claim.*
+*CleanCare’s original editorial summary does not reproduce the paper’s disease graphic or turn its associations into a universal consumer-health claim.*

@@ -26,7 +26,7 @@ In a shared home, workplace, or vehicle, ask about strong-smelling products befo
 
 ## 5. Compare alternatives carefully
 
-An alternative should fit the task and the person using it. “Natural,” “organic,” and “essential oil” do not automatically mean fragrance-free or suitable for a sensitive person. The [products-by-country directory](../../directory/) records official brand sources, country-specific details, and check dates. Profiles cover checked sources in several countries; manufacturer claims are not independent safety tests or a guarantee of individual tolerance.
+An alternative should fit the task and the person using it. “Natural,” “organic,” and “essential oil” do not automatically mean fragrance-free or suitable for a sensitive person. The [products-by-country directory](../../directory/) records official brand sources, country-specific availability details. Profiles cover checked sources in several countries; manufacturer claims are not independent safety tests or a guarantee of individual tolerance.
 
 If you are experiencing persistent symptoms, discuss them with a qualified clinician; a label or website cannot identify a personal trigger.
 

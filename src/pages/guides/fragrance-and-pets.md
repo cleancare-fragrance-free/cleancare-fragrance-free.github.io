@@ -55,4 +55,4 @@ Fragrance-free is one helpful way to remove an optional scent source. It does no
 - [PetMD: Are air fresheners safe for pets?](https://www.petmd.com/dog/care/air-fresheners-and-pets)
 - [ASPCA: household products and cleaning agents](https://www.aspca.org/news/pet-poisons-be-mindful-these-household-products-and-cleaning-agents)
 
-*Sources reviewed October 5, 2026. CleanCare’s original educational summary and animal illustrations; not veterinary diagnosis or treatment advice.*
+*CleanCare’s original educational summary and animal illustrations; not veterinary diagnosis or treatment advice.*
