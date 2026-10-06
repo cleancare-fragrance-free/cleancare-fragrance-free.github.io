@@ -53,7 +53,9 @@ test('checker page discloses limitations and offers a broader fungal-acne resour
 
 test('checker explains why Malassezia screening is separate from fragrance screening', () => {
   const page = readFileSync(new URL('../src/pages/ingredient-checker.astro', import.meta.url), 'utf8');
-  const context = page.slice(page.indexOf('<section class="ingredient-context"'), page.indexOf('<form id="ingredient-form"'));
+  const contextStart = page.indexOf('<section class="ingredient-context"');
+  const context = page.slice(contextStart, page.indexOf('</section>', contextStart));
+  assert.ok(contextStart > page.indexOf('</form>'), 'explanation follows the ingredient input form');
   assert.ok(context.includes('Why also check for Malassezia folliculitis?'));
   assert.ok(context.includes('not ordinary acne'));
   assert.ok(context.includes('separate concern from fragrance allergy'));

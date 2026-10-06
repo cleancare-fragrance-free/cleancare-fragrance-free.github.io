@@ -88,4 +88,58 @@ const summaryOptions = symptomQuestion.options.filter(([id]) => ['none', 'all', 
 
 <style>
   .symptom-product-guide{margin-top:26px}.symptom-product-form,.symptom-product-result{padding:24px;border:1px solid var(--border);border-radius:var(--radius-card);background:var(--card)}.symptom-product-form legend{font-size:clamp(24px,3vw,32px);font-weight:700;line-height:1.25}.symptom-product-form fieldset{border:0;padding:0;margin:0}.symptom-product-form fieldset>p,.symptom-product-result>p:not(.eyebrow){max-width:820px;color:var(--muted);font-size:14px;line-height:1.7}.symptom-question-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:20px 0}.symptom-question-list label{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff;font-size:13px;line-height:1.45;cursor:pointer}.symptom-question-list label:has(input:checked){border-color:var(--accent-sage);background:var(--accent-sky)}.symptom-question-list input{width:18px;height:18px;margin:0;accent-color:var(--accent-sage);flex:none}.symptom-question-list--quiet{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:-10px}.symptom-product-result{margin-top:16px;background:#f7fbf8}.symptom-product-result h2{margin:5px 0 8px;font-size:clamp(25px,3vw,32px)}.symptom-product-result .notice{margin:18px 0 0}.symptom-path-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.symptom-path-grid article{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:16px;border:1px solid var(--border);border-radius:16px;background:#fff}.symptom-path-grid article>span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent-sky);color:var(--accent-sage);font-weight:700}.symptom-path-grid .eyebrow{margin:1px 0 3px;font-size:9px}.symptom-path-grid h3{margin:0;font-size:16px;line-height:1.35}.symptom-path-grid p:not(.eyebrow){margin:7px 0 10px;color:var(--muted);font-size:12px;line-height:1.55}.symptom-path-grid a{color:var(--accent-sage);font-size:12px;font-weight:700}.symptom-clinician-note{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--border);font-size:13px!important}.symptom-result-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px}.symptom-result-actions .button{font-size:12px}.symptom-source-context{margin-top:18px;padding:16px;border:1px solid var(--border);border-radius:14px;background:#fff}.symptom-source-context summary{font-weight:700}.symptom-source-context p{font-size:12px;line-height:1.6;color:var(--muted)}.symptom-source-context a{color:var(--link-color);text-decoration:underline;text-underline-offset:3px}@media(max-width:700px){.symptom-question-list,.symptom-question-list--quiet,.symptom-path-grid{grid-template-columns:1fr}.symptom-product-form,.symptom-product-result{padding:18px}.symptom-question-list{margin:16px 0}.symptom-question-list--quiet{margin-top:-8px}}
+  /* Keep every checkbox on the same axis, including multi-line questions. */
+  .symptom-product-form {
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  .symptom-product-form legend {
+    max-width: 760px;
+    padding: 0;
+  }
+
+  .symptom-question-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .symptom-question-list label {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+    min-height: 46px;
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .symptom-question-list input {
+    margin-top: 2px;
+  }
+
+  .symptom-question-list label:focus-within {
+    outline: 2px solid var(--accent-sage);
+    outline-offset: 2px;
+  }
+
+  .symptom-question-list--quiet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 700px) {
+    .symptom-question-list--quiet {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .symptom-question-list label {
+      padding: 11px 12px;
+      gap: 10px;
+    }
+  }
 </style>

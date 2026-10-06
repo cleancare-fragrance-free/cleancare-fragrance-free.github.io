@@ -8,11 +8,6 @@ import { url } from '../lib/paths';
     <p class="eyebrow">Fragrance-free products · private, in-browser tool</p>
     <h1>Ingredient checker</h1>
     <p class="intro">Paste a cosmetic ingredient list to spot declared fragrance terms, selected essential oils, and ingredients commonly included in <em>Malassezia</em> folliculitis screening lists.</p>
-    <section class="ingredient-context" aria-labelledby="malassezia-context-title">
-      <h2 id="malassezia-context-title">Why also check for Malassezia folliculitis?</h2>
-      <p><strong>Fragrance-free is only one part of choosing skincare.</strong> <em>Malassezia</em> folliculitis—often called “fungal acne,” although it is not ordinary acne—is inflammation of hair follicles associated with overgrowth of yeast normally found on skin. This is a separate concern from fragrance allergy. We include this check to help people managing the condition review their skincare choices, not to suggest that fragrance causes it. <a href="https://dermnetnz.org/topics/malassezia-folliculitis" target="_blank" rel="noopener noreferrer">Understand the condition →</a></p>
-      <p>The yeast uses lipids (fats), and some lipids may affect its growth. We flag selected oils, fatty acids and esters for further review—not proven triggers. <strong>Fragrance-free does not establish suitability for Malassezia folliculitis.</strong> Evidence about lipids applied to skin is limited; a flag cannot predict a flare, and no matches do not establish suitability. <a href="https://pubmed.ncbi.nlm.nih.gov/34304284/" target="_blank" rel="noopener noreferrer">Read the research review →</a></p>
-    </section>
     <div class="notice"><strong>What this can and can’t tell you.</strong> A label match is not proof an ingredient will cause a reaction or flare. Formulas and ingredient names vary, this small reference list is not exhaustive, and it does not diagnose fragrance allergy, “fungal acne,” or any other skin condition. For a persistent or itchy rash, ask a qualified clinician; <em>Malassezia</em> folliculitis can resemble other conditions and may need examination or testing.</div>
 
     <form id="ingredient-form" class="ingredient-form">
@@ -21,6 +16,12 @@ import { url } from '../lib/paths';
       <textarea id="ingredient-input" name="ingredients" rows="8" placeholder="Example: Water, Glycerin, Parfum, Lavandula Angustifolia Oil…" aria-describedby="ingredient-help" required></textarea>
       <div class="ingredient-actions"><button class="button" type="submit">Check ingredients <span aria-hidden="true">→</span></button><button class="check-secondary" id="ingredient-clear" type="reset">Clear</button></div>
     </form>
+
+    <section class="ingredient-context" aria-labelledby="malassezia-context-title">
+      <h2 id="malassezia-context-title">Why also check for Malassezia folliculitis?</h2>
+      <p><strong>Fragrance-free is only one part of choosing skincare.</strong> <em>Malassezia</em> folliculitis—often called “fungal acne,” although it is not ordinary acne—is inflammation of hair follicles associated with overgrowth of yeast normally found on skin. This is a separate concern from fragrance allergy. We include this check to help people managing the condition review their skincare choices, not to suggest that fragrance causes it. <a href="https://dermnetnz.org/topics/malassezia-folliculitis" target="_blank" rel="noopener noreferrer">Understand the condition →</a></p>
+      <p>The yeast uses lipids (fats), and some lipids may affect its growth. We flag selected oils, fatty acids and esters for further review—not proven triggers. <strong>Fragrance-free does not establish suitability for Malassezia folliculitis.</strong> Evidence about lipids applied to skin is limited; a flag cannot predict a flare, and no matches do not establish suitability. <a href="https://pubmed.ncbi.nlm.nih.gov/34304284/" target="_blank" rel="noopener noreferrer">Read the research review →</a></p>
+    </section>
 
     <section id="ingredient-results" class="ingredient-results" aria-live="polite" aria-atomic="true" hidden>
       <h2 id="ingredient-result-title" tabindex="-1">Screening results</h2>

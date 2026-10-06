@@ -22,15 +22,7 @@ const initialBrandGroups = categoryOrder.map(category => ({
   <p class="eyebrow">Practical alternatives</p>
   <h1>Go Fragrance Free.</h1>
   <p class="intro">Start with a category, choose a brand, then browse the exact product versions checked for your location and scent preferences. Official sources are checked—not personally tested—and links are not affiliate links. See <a href={url('about/#product-method')}>how products qualify and what each scent label means</a>.</p>
-  <p class="editorial-note">Review a formula with the <a href={url('ingredient-checker/')}>Ingredient checker →</a> or look up terms in the <a href={url('glossary/')}>Ingredient glossary →</a>.</p>
-  <p class="editorial-note">US additions inspired by <a href="https://nymag.com/strategist/article/fragrance-free-products-we-use.html" rel="external">The Strategist’s product roundup</a>, checked against official brand information. Product links are not affiliate links.</p>
   <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
-  <details class="directory-review"><summary>How we check products and country listings</summary>
-    <p>Fragrance may irritate sensitive skin or overwhelm a sensitive nose—and essential oils can trigger reactions too. Replace products one category at a time, from face care to laundry. Fragrance-free does not always mean odorless.</p>
-    <p>We check exact versions, not whole brands. Products with added perfume/parfum or unconfirmed fragrance-free formulas are excluded. Essential-oil alternatives are separately reviewed and clearly labelled; they never appear in the default fragrance-free results.</p>
-    <p>“No added fragrance or essential oils” means none are listed in the reviewed formula or an explicit brand statement confirms their absence—not laboratory-certified zero scent. Carrier oils are not essential oils. An unchecked essential-oil status is not evidence of absence; those products do not appear in the stricter filter. Devices have no product formula and are excluded from ingredient-based filters.</p>
-    <p>Country sources do not guarantee stock, delivery or an unchanged local formula. Manufacturer claims are not independent safety assessments. Check your current packaging. Ecostore’s catalogue includes scented products; only the six checked Ultra Sensitive home products are included here.</p>
-  </details>
   <div class="location-picker">
     <div role="group" aria-label="Choose a region" class="region-buttons"><button type="button" data-region-button="" aria-pressed="true">All regions</button>{regions.map(region => <button type="button" data-region-button={region.code} aria-pressed="false">{region.name}</button>)}</div>
   </div>
@@ -72,6 +64,16 @@ const initialBrandGroups = categoryOrder.map(category => ({
   <div class="directory-more"><button id="show-more-products" class="button" type="button" hidden>Show more products</button><p id="visible-product-count" class="editorial-note" aria-live="polite"></p></div>
   <div id="empty" class="empty" hidden><h2>No matches just yet.</h2><p id="empty-message">Try a broader search or reset the filters. Some countries do not yet have listings.</p><button class="button" id="empty-reset">Reset filters</button></div>
   <section class="directory-hubs" aria-labelledby="country-guides-title"><h2 id="country-guides-title">Explore checked country guides</h2><div class="topic-links">{countries.map(country=><a href={url('directory/'+country.slug+'/')}>{country.name} →</a>)}</div><h3>Browse a product category</h3><div class="topic-links">{productCategories.map(category=><a href={url('directory/categories/'+category.slug+'/')}>{category.title} →</a>)}</div><p class="editorial-note">Only countries with product listings are shown. A checked listing is not a promise of stock, delivery or an unchanged formula.</p></section>
+  <div class="directory-footnotes">
+    <p class="editorial-note">Review a formula with the <a href={url('ingredient-checker/')}>Ingredient checker →</a> or look up terms in the <a href={url('glossary/')}>Ingredient glossary →</a>.</p>
+    <p class="editorial-note">US additions inspired by <a href="https://nymag.com/strategist/article/fragrance-free-products-we-use.html" rel="external">The Strategist’s product roundup</a>, checked against official brand information. Product links are not affiliate links.</p>
+    <details class="directory-review"><summary>How we check products and country listings</summary>
+      <p>Fragrance may irritate sensitive skin or overwhelm a sensitive nose—and essential oils can trigger reactions too. Replace products one category at a time, from face care to laundry. Fragrance-free does not always mean odorless.</p>
+      <p>We check exact versions, not whole brands. Products with added perfume/parfum or unconfirmed fragrance-free formulas are excluded. Essential-oil alternatives are separately reviewed and clearly labelled; they never appear in the default fragrance-free results.</p>
+      <p>“No added fragrance or essential oils” means none are listed in the reviewed formula or an explicit brand statement confirms their absence—not laboratory-certified zero scent. Carrier oils are not essential oils. An unchecked essential-oil status is not evidence of absence; those products do not appear in the stricter filter. Devices have no product formula and are excluded from ingredient-based filters.</p>
+      <p>Country sources do not guarantee stock, delivery or an unchanged local formula. Manufacturer claims are not independent safety assessments. Check your current packaging. Ecostore’s catalogue includes scented products; only the six checked Ultra Sensitive home products are included here.</p>
+    </details>
+  </div>
 </section>
 </Layout>
 <script>
@@ -194,6 +196,9 @@ readURL(); render(false);
 </script>
 <style>
 .directory .intro { max-width: 970px; font-size: 15px; line-height: 1.75; }
+.directory-footnotes{max-width:880px;margin:32px 0 0;padding-top:18px;border-top:1px solid var(--border)}
+.directory-footnotes .editorial-note{margin:0 0 10px;line-height:1.6}
+.directory-footnotes a{color:var(--link-color,var(--accent-sage));text-decoration:underline!important;text-underline-offset:2px}
 .directory-more{display:grid;justify-items:center;margin-block:20px}.directory-more button[hidden]{display:none}.directory-hubs{margin-top:28px;padding:20px;border:1px solid var(--border);border-radius:20px;background:var(--card)}.directory-hubs h2{font-size:24px;margin:0 0 12px}.directory-hubs h3{font-size:18px}.topic-links{display:flex;flex-wrap:wrap;gap:10px}.topic-links a{font-size:13px;padding:10px;border:1px solid var(--border);border-radius:999px;min-height:44px}
 .directory a:not(.button) { text-decoration: none; }
 .scent-notice { background: var(--accent-sky, #E8F3F8); border-radius: 20px; padding: 14px 18px; font-size: 13px; margin: 18px 0; }
