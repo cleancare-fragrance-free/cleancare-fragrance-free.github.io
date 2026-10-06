@@ -7,10 +7,36 @@ export const primaryLabels = {
   'starter-checklist': 'Printable starter checklist', glossary: 'Glossary', products: 'Product notes', featured: 'Community stories',
   topics: 'Topics', categories: 'Categories',
 };
+// Menu groups do not always match URL folders. Link to real section pages,
+// rather than inventing intermediate routes or using browser history.
+const sectionParents = {
+  'guides/history-of-fragrance': ['Why fragrance free', 'why-fragrance-free/'],
+  'guides/fragrance-and-environment': ['Why fragrance free', 'why-fragrance-free/'],
+  'guides/fragrance-and-pets': ['Why fragrance free', 'why-fragrance-free/'],
+  'celebrity-stories': ['Why fragrance free', 'why-fragrance-free/'],
+  evidence: ['Articles & guides', 'guides/'],
+  experts: ['Articles & guides', 'guides/'],
+  glossary: ['Fragrance-free products', 'directory/'],
+  'ingredient-checker': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'guides/identify-and-prevent-vocs': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'non-toxic-home': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'self-check': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'starter-checklist': ['Starter toolkit', 'guides/fragrance-free-starter-toolkit/'],
+  'we-share-the-air': ['About us', 'about-us/'],
+  'take-action': ['About us', 'about-us/'],
+  about: ['About us', 'about-us/'],
+  privacy: ['About us', 'about-us/'],
+};
 export function makeBreadcrumbs(pathname, title, base = '/') {
   const parts = pathname.slice(base.replace(/\/$/, '').length).split('/').filter(Boolean);
   if (!parts.length || parts.at(-1) === '404.html') return [];
   const crumbs = [{ name: 'Home', path: base }];
+  const parent = sectionParents[parts.join('/')];
+  if (parent) return [
+    ...crumbs,
+    {name:parent[0], path:base + parent[1]},
+    {name:title.split(' | ')[0].replace(/ — CleanCare$/, ''), path:base + parts.join('/') + '/'},
+  ];
   let current = base.replace(/\/$/, '');
   for (let index = 0; index < parts.length; index++) {
     const part = parts[index]; current += '/' + part;
