@@ -18,7 +18,10 @@ test('celebrity stories live under Why fragrance free without breaking the exist
   assert.ok(why.includes("url('celebrity-stories/')"));
   assert.ok(!read.includes("url('celebrity-stories/')"));
   const page = source('../src/pages/celebrity-stories.astro');
-  assert.ok(page.includes('<h1>You are not alone.'));
+  assert.ok(page.includes('<h1>Celebrity stories &amp; fragrance-free choices.</h1>'));
+  assert.ok(!page.includes('You are not alone'));
+  assert.ok(!why.includes('You are not alone'));
+  assert.ok(!source('../src/pages/why-fragrance-free.astro').includes('You are not alone'));
   assert.ok(page.includes('breadcrumbs={breadcrumbs}'));
   assert.ok(source('../src/pages/why-fragrance-free.astro').includes("url('celebrity-stories/')"));
 });
