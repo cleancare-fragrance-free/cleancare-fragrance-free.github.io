@@ -46,7 +46,6 @@ const initialBrandGroups = categoryOrder.map(category => ({
     <label>Essential oils &amp; scent<select name="scent" id="scent" aria-describedby="scent-help">{scentOptions.map(option => <option value={option.value} selected={option.value === defaultScentFilter}>{option.label}</option>)}</select></label>
     <button type="reset" class="reset">Reset filters</button>
   </form>
-  <p id="scent-help" class="editorial-note">Fragrance-free claims do not automatically establish essential-oil absence. Use the stricter filter for separately checked formulas; ingredients can still have their own smell.</p>
   <noscript><p class="notice">JavaScript is needed to filter and open brand collections. The fragrance-free brand collections appear below.</p></noscript>
   <nav class="category-shortcuts" aria-label="Browse product categories">
     {initialBrandGroups.map(group => <button type="button" class="category-shortcut" data-category-shortcut={group.category} aria-label={'Show ' + group.label + ' brands'}>
@@ -86,6 +85,7 @@ const initialBrandGroups = categoryOrder.map(category => ({
       <p>“No added fragrance or essential oils” means none are listed in the reviewed formula or an explicit brand statement confirms their absence—not laboratory-certified zero scent. Carrier oils are not essential oils. An unchecked essential-oil status is not evidence of absence; those products do not appear in the stricter filter. Devices have no product formula and are excluded from ingredient-based filters.</p>
       <p>Country sources do not guarantee stock, delivery or an unchanged local formula. Manufacturer claims are not independent safety assessments. Check your current packaging. Ecostore’s catalogue includes scented products; only the six checked Ultra Sensitive home products are included here.</p>
     </details>
+    <p id="scent-help" class="editorial-note">Fragrance-free claims do not automatically establish essential-oil absence. Use the stricter filter for separately checked formulas; ingredients can still have their own smell.</p>
   </div>
 </section>
 </Layout>
