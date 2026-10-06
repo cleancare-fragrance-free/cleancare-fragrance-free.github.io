@@ -19,7 +19,7 @@ test('repeated symptoms and impact produce relevant guidance, never a diagnosis'
   assert.match(result.description, /not proof/);
   assert.equal(result.breathing, true);
   assert.equal(result.impact, true);
-  assert.match(result.answers.find(answer => answer.title === symptomQuestion.title).response, /Headaches or migraine episodes; Cough/);
+  assert.match(result.answers.find(answer => answer.title === symptomQuestion.title).response, /Do you get headaches or migraine episodes\?; Do you wheeze/);
 });
 test('one-off and uncertain answers keep uncertainty explicit', () => {
   assert.equal(summarizeAnswers({ ...baseline(), symptoms: ['skin'], frequency: ['once'] }).title, 'You have noticed symptoms worth recording');
@@ -39,6 +39,13 @@ test('invalid, missing, duplicated and exclusive selections are rejected', () =>
   }
   assert.equal(validAnswer(frequencyQuestion, ['never', 'often']), false);
   assert.throws(() => summarizeAnswers({}), /every question/);
+});
+test('the symptom prompt presents ten plain-language questions', () => {
+  const symptomPrompts = symptomQuestion.options.filter(([id]) => !['none', 'unsure'].includes(id)).map(([, label]) => label);
+  assert.equal(symptomPrompts.length, 10);
+  assert.ok(symptomPrompts.every(label => label.startsWith('Do you')));
+  assert.ok(symptomPrompts.includes('Do you have a runny or stuffy nose, or sneeze?'));
+  assert.ok(symptomPrompts.includes('Do you get itchy, irritated skin or a rash?'));
 });
 test('scented-product use is reported even with no symptoms and does not change symptom result', () => {
   const result = summarizeAnswers({ ...baseline(), products: ['candles', 'incense', 'softener', 'perfume', 'fresheners'] });

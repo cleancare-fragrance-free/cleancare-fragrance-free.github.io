@@ -42,3 +42,23 @@ test('community uses a locally stored Facebook logo rather than a styled letter'
   assert.ok(!source.includes('<span>f</span>'));
   assert.match(source, /community-mark" aria-hidden="true"><img[^>]+alt=""/);
 });
+
+test('about page presents the walk-the-path reflection with accurate attribution context', () => {
+  assert.ok(source.includes("url('images/about-walk-the-path.png')"));
+  assert.ok(existsSync(new URL('../public/images/about-walk-the-path.png', import.meta.url)));
+  assert.match(source, /alt="A wooden path winding through coastal grass toward a sunrise"/);
+  assert.ok(source.includes('A Buddhist-inspired reflection'));
+  assert.ok(source.includes('No one saves us but ourselves'));
+  assert.ok(source.includes('later rendering inspired by <em>Dhammapada</em> 165'));
+  assert.match(source, /\.path-reflection\{position:relative;isolation:isolate;overflow:hidden/);
+  assert.match(source, /@media\(max-width:620px\).*\.path-reflection\{min-height:365px\}/);
+});
+
+test('about page makes an evidence-led shared-air advocacy case without overstating health risk', () => {
+  for (const phrase of ['difficult to work, study, travel, seek care', 'Fragrance sensitivity is reported in population surveys', 'not a single, consistently diagnosed condition', 'This is also for people who do not identify as sensitive', 'meaningful ingredient disclosure, responsible policy, and public participation']) {
+    assert.ok(source.includes(phrase), phrase);
+  }
+  assert.ok(source.includes('do not claim that every synthetic fragrance has the same hazard or risk as a pesticide'));
+  assert.match(source, /pubmed\.ncbi\.nlm\.nih\.gov\/19326669/);
+  assert.match(source, /fda\.gov\/cosmetics\/cosmetic-ingredients\/fragrances-cosmetics/);
+});

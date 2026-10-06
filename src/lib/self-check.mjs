@@ -2,8 +2,18 @@ export const questions = [
   { id: 'products', title: 'Which scented products do you or your household use?', hint: 'Choose everything used in the past four weeks, even if you have no symptoms. Include products marketed as natural. This checklist does not verify whether an ingredient is synthetic.', multiple: true, options: [
     ['candles', 'Scented candles or wax melts'], ['incense', 'Incense'], ['perfume', 'Perfume, cologne, aftershave, or body spray'], ['softener', 'Scented fabric softener, dryer sheets, or scent beads'], ['detergent', 'Scented laundry detergent'], ['fresheners', 'Air fresheners, room sprays, plug-ins, or car scents'], ['cleaning', 'Scented cleaning or dishwashing products'], ['personal', 'Scented shampoo, soap, lotion, deodorant, or cosmetics'], ['oils', 'Essential oils or fragrance diffusers'], ['other', 'Other scented products'], ['none', 'None of these'], ['unsure', 'I’m not sure'],
   ] },
-  { id: 'symptoms', title: 'Which symptoms have you experienced in the past four weeks?', hint: 'Choose all that apply, whether or not you have noticed a link with fragrance. These symptoms have many possible causes; selecting one does not establish an allergy or sensitivity.', multiple: true, options: [
-    ['skin', 'Itchy, irritated skin or a rash'], ['irritation', 'Irritated eyes, nose, or throat; a runny or stuffy nose'], ['headache', 'Headaches or migraine episodes'], ['nausea', 'Nausea'], ['dizziness', 'Dizziness or lightheadedness'], ['concentration', 'Difficulty concentrating or feeling mentally foggy'], ['breathing', 'Cough, wheeze, chest tightness, or breathlessness'], ['other', 'Other symptoms'], ['none', 'No symptoms noticed'], ['unsure', 'I’m not sure'],
+  { id: 'symptoms', title: 'In the past four weeks, have you noticed any of these symptoms?', hint: 'Select every question that is true for you, whether or not you have noticed a link with fragrance. These symptoms have many possible causes and do not establish an allergy or sensitivity.', multiple: true, options: [
+    ['headache', 'Do you get headaches or migraine episodes?'],
+    ['skin', 'Do you get itchy, irritated skin or a rash?'],
+    ['eyes', 'Do your eyes feel itchy, red, watery, or irritated?'],
+    ['nose', 'Do you have a runny or stuffy nose, or sneeze?'],
+    ['throat', 'Do you have an irritated or sore throat?'],
+    ['cough', 'Do you cough?'],
+    ['breathing', 'Do you wheeze, feel chest tightness, or become short of breath?'],
+    ['nausea', 'Do you feel nauseated?'],
+    ['dizziness', 'Do you feel dizzy or lightheaded?'],
+    ['concentration', 'Do you have difficulty concentrating or feel mentally foggy?'],
+    ['none', 'None of these symptoms'], ['unsure', 'I’m not sure'],
   ] },
   { id: 'frequency', title: 'How often have you noticed symptoms around scented products?', hint: 'Think about the same four weeks. An association in time does not establish a cause.', options: [
     ['never', 'Never'], ['once', 'Once'], ['sometimes', 'On a few occasions'], ['often', 'Frequently'], ['unsure', 'I’m not sure / I had little or no exposure'],
@@ -78,7 +88,7 @@ export function summarizeAnswers(answers) {
     title, description,
     productSummary,
     alternatives: products.map(id => productAlternatives[id]),
-    breathing: symptoms.includes('breathing'),
+    breathing: symptoms.some(value => ['cough', 'breathing'].includes(value)),
     impact: ['repeated', 'significant'].includes(answers.impact[0]),
     answers: questions.map(question => ({ title: question.title, response: question.options.filter(([id]) => answers[question.id].includes(id)).map(([, label]) => label).join('; ') })),
   };

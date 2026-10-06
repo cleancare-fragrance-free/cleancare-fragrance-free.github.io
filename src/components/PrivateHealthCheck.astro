@@ -29,7 +29,7 @@ const Heading = standalone ? 'h1' : 'h2';
       {questions.map((question, index) => <fieldset data-step={index} hidden>
         <legend tabindex="-1">{question.title}</legend>
         <p id={`${question.id}-hint`} class="check-hint">{question.hint}</p>
-        <div class="check-options">{question.options.map(([value, label]) => <label class="check-option"><input type={question.multiple ? 'checkbox' : 'radio'} name={question.id} value={value} aria-describedby={`${question.id}-hint`}/><span>{label}</span></label>)}</div>
+        <div class:list={['check-options', {'check-options--symptoms': question.id === 'symptoms'}]}>{question.options.map(([value, label]) => <label class="check-option"><input type={question.multiple ? 'checkbox' : 'radio'} name={question.id} value={value} aria-describedby={`${question.id}-hint`}/><span>{label}</span></label>)}</div>
       </fieldset>)}
       <p id="check-error" class="check-error" role="alert" hidden>Please choose an answer before continuing.</p>
       <div class="check-actions"><button id="check-back" type="button" class="check-secondary">Back</button><button id="check-next" type="submit" class="button">Next question →</button></div>

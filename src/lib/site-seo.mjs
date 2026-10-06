@@ -13,6 +13,7 @@ const sectionParents = {
   'guides/history-of-fragrance': ['Why fragrance free', 'why-fragrance-free/'],
   'guides/fragrance-and-environment': ['Why fragrance free', 'why-fragrance-free/'],
   'guides/fragrance-and-pets': ['Why fragrance free', 'why-fragrance-free/'],
+  'why-fragrance-free/symptoms': ['Why fragrance free', 'why-fragrance-free/'],
   'celebrity-stories': ['Why fragrance free', 'why-fragrance-free/'],
   guides: ['Read & watch', 'read-watch/'],
   evidence: ['Read & watch', 'read-watch/'],

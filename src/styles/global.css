@@ -1435,6 +1435,15 @@ footer {
   gap:10px
 }
 
+.check-options--symptoms {
+  gap:8px
+}
+
+.check-options--symptoms .check-option {
+  min-height:48px;
+  padding:10px 14px
+}
+
 .check-option {
   display:flex;
   align-items:center;

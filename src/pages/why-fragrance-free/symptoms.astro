@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SymptomProductGuide from '../../components/SymptomProductGuide.astro';
+import { url } from '../../lib/paths';
+
+const breadcrumbs = [
+  { name: 'Home', path: url() },
+  { name: 'Why fragrance free', path: url('why-fragrance-free/') },
+  { name: 'Symptoms', path: url('why-fragrance-free/symptoms/') },
+];
+---
+
+<Layout title="Symptoms and practical fragrance-free swaps | CleanCare" description="Use ten plain-language symptom questions to identify practical fragrance-free product areas to review. Educational information, not a diagnostic test." breadcrumbs={breadcrumbs}>
+  <header class="container symptom-page-header">
+    <p class="eyebrow">Why fragrance free · Symptoms</p>
+    <h1>Notice a pattern.<br/><em>Choose a practical next step.</em></h1>
+    <p class="intro">Use these questions to reflect on symptoms you have already noticed. Your answers reveal practical categories where you could reduce optional added scent, without assuming fragrance is the cause.</p>
+    <p class="notice"><strong>Not a diagnostic test.</strong> Do not deliberately expose yourself to a product to check your reaction. If you have severe breathing difficulty, throat swelling, or fainting, seek emergency help.</p>
+  </header>
+  <div class="container"><SymptomProductGuide/></div>
+</Layout>
+
+<style>
+  .symptom-page-header{padding-top:28px}.symptom-page-header h1{max-width:760px;margin:8px 0 14px;font-size:clamp(36px,4.2vw,52px);letter-spacing:-1.6px;line-height:1.08}.symptom-page-header .intro{max-width:760px;font-size:15px;line-height:1.7}.symptom-page-header .notice{max-width:900px;margin:18px 0 0;font-size:13px;line-height:1.65}@media(max-width:700px){.symptom-page-header{padding-top:20px}.symptom-page-header h1{font-size:36px}}
+</style>

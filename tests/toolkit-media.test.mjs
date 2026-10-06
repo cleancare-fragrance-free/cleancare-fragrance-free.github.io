@@ -25,6 +25,14 @@ test('private health check is embedded in the toolkit and legacy URL uses the sa
   assert.match(home, /guides\/fragrance-free-starter-toolkit\/\#private-health-check/);
 });
 
+test('print action produces only the checkbox tiles, not the surrounding checklist copy', () => {
+  const toolkit = readFileSync(new URL('../src/pages/guides/fragrance-free-starter-toolkit.astro', import.meta.url), 'utf8');
+  assert.match(toolkit, /@media print\{@page\{margin:12mm\}/);
+  assert.ok(toolkit.includes('.quick-checklist-heading,.checklist-fields,.checklist-notice,.checklist-links,.quick-checklist>.editorial-note{display:none!important}'));
+  assert.match(toolkit, /\.checklist-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\);gap:7px\}/);
+  assert.match(toolkit, /\.checklist-grid article\{padding:10px;break-inside:avoid\}/);
+});
+
 test('learning videos use unique YouTube sources and include scope notes', () => {
   assert.ok(learningVideos.length >= 12);
   assert.equal(new Set(learningVideos.map(video => video.youtubeId)).size, learningVideos.length);
