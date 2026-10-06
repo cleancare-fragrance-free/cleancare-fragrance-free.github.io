@@ -19,7 +19,7 @@ test('repeated symptoms and impact produce relevant guidance, never a diagnosis'
   assert.match(result.description, /not proof/);
   assert.equal(result.breathing, true);
   assert.equal(result.impact, true);
-  assert.match(result.answers.find(answer => answer.title === symptomQuestion.title).response, /Do you get headaches or migraine episodes\?; Do you wheeze/);
+  assert.match(result.answers.find(answer => answer.title === symptomQuestion.title).response, /Do you get headaches, lightheaded or migraine episodes\?; Do you wheeze/);
 });
 test('one-off and uncertain answers keep uncertainty explicit', () => {
   assert.equal(summarizeAnswers({ ...baseline(), symptoms: ['skin'], frequency: ['once'] }).title, 'You have noticed symptoms worth recording');
@@ -34,18 +34,32 @@ test('conflicting answers do not become a reassuring or diagnostic result', () =
 });
 test('invalid, missing, duplicated and exclusive selections are rejected', () => {
   assert.equal(validAnswer(symptomQuestion, ['skin', 'headache']), true);
-  for (const values of [[], ['none', 'skin'], ['unsure', 'skin'], ['skin', 'skin'], ['bogus']]) {
+  for (const values of [[], ['none', 'skin'], ['unsure', 'skin'], ['all', 'skin'], ['skin', 'skin'], ['bogus']]) {
     assert.equal(validAnswer(symptomQuestion, values), false);
   }
   assert.equal(validAnswer(frequencyQuestion, ['never', 'often']), false);
   assert.throws(() => summarizeAnswers({}), /every question/);
 });
-test('the symptom prompt presents ten plain-language questions', () => {
-  const symptomPrompts = symptomQuestion.options.filter(([id]) => !['none', 'unsure'].includes(id)).map(([, label]) => label);
-  assert.equal(symptomPrompts.length, 10);
-  assert.ok(symptomPrompts.every(label => label.startsWith('Do you')));
-  assert.ok(symptomPrompts.includes('Do you have a runny or stuffy nose, or sneeze?'));
-  assert.ok(symptomPrompts.includes('Do you get itchy, irritated skin or a rash?'));
+test('the symptom checklist contains only the exact nine symptom prompts and three response choices requested', () => {
+  const symptomOptions = symptomQuestion.options.map(([, label]) => label);
+  assert.equal(symptomQuestion.title, 'When you are in contact with fragrances (skin, air, clothes)...which of these have you noticed?');
+  assert.deepEqual(symptomOptions, [
+    'Do you get headaches, lightheaded or migraine episodes?',
+    'Do you get itchy, irritated skin or a rash?',
+    'Do your eyes feel itchy, red, watery, or irritated?',
+    'Do you have a runny or stuffy nose, or sneeze?',
+    'Do you have an irritated or sore throat?',
+    'Do you cough?',
+    'Do you wheeze, feel chest tightness, or become short of breath?',
+    'Do you feel nauseated?',
+    'Do you have difficulty concentrating or feel mentally foggy and irritable mood?',
+    'None of these symptoms',
+    'All of them',
+    'I’m not sure',
+  ]);
+  const all = summarizeAnswers({ ...baseline(), symptoms: ['all'], frequency: ['often'] });
+  assert.equal(all.breathing, true);
+  assert.equal(all.answers.find(answer => answer.title === symptomQuestion.title).response, 'All of them');
 });
 test('scented-product use is reported even with no symptoms and does not change symptom result', () => {
   const result = summarizeAnswers({ ...baseline(), products: ['candles', 'incense', 'softener', 'perfume', 'fresheners'] });
@@ -64,7 +78,7 @@ test('uncertain and absent product use have distinct summaries without invented 
   assert.deepEqual(unsure.alternatives, []);
 });
 test('symptoms without a reported fragrance link are not attributed to fragrance', () => {
-  const result = summarizeAnswers({ ...baseline(), symptoms: ['dizziness', 'concentration', 'headache'] });
+  const result = summarizeAnswers({ ...baseline(), symptoms: ['concentration', 'headache'] });
   assert.equal(result.title, 'You report symptoms without a noticed fragrance link');
   assert.match(result.description, /does not attribute/);
 });

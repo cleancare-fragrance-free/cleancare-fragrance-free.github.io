@@ -33,6 +33,10 @@ This project is in the repository `cleancare-fragrance-free/cleancare-fragrance-
 
 The workflow follows [GitHub's Astro Pages setup](https://github.com/actions/starter-workflows/blob/main/pages/astro.yml). For another static host, upload `dist/` and set `SITE_URL` and `BASE_PATH` at build time so links and canonical URLs match the deployment path.
 
+### Google Search Console
+
+The site already publishes a sitemap at `https://cleancare-fragrance-free.github.io/sitemap.xml` and advertises it in `robots.txt`. To connect Search Console, add the URL-prefix property `https://cleancare-fragrance-free.github.io/` in the Google account that should own it, choose HTML-tag verification, and copy only the tag's `content` value. In the GitHub repository, open **Settings → Secrets and variables → Actions → Variables**, add a repository variable named `GOOGLE_SITE_VERIFICATION` with that value, and deploy. The workflow renders the verification meta tag only when this variable is present. Then return to Search Console, verify ownership, submit `/sitemap.xml`, and use URL Inspection on the homepage, `/guides/`, `/directory/`, and any newly published article. Review Performance queries and pages periodically; Search Console access and verification remain under the site owner's Google account.
+
 ## Illustrated journal and product profiles
 
 ## Reversible UX/SEO upgrade (5 October 2026)

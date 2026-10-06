@@ -2,8 +2,8 @@ export const questions = [
   { id: 'products', title: 'Which scented products do you or your household use?', hint: 'Choose everything used in the past four weeks, even if you have no symptoms. Include products marketed as natural. This checklist does not verify whether an ingredient is synthetic.', multiple: true, options: [
     ['candles', 'Scented candles or wax melts'], ['incense', 'Incense'], ['perfume', 'Perfume, cologne, aftershave, or body spray'], ['softener', 'Scented fabric softener, dryer sheets, or scent beads'], ['detergent', 'Scented laundry detergent'], ['fresheners', 'Air fresheners, room sprays, plug-ins, or car scents'], ['cleaning', 'Scented cleaning or dishwashing products'], ['personal', 'Scented shampoo, soap, lotion, deodorant, or cosmetics'], ['oils', 'Essential oils or fragrance diffusers'], ['other', 'Other scented products'], ['none', 'None of these'], ['unsure', 'I’m not sure'],
   ] },
-  { id: 'symptoms', title: 'In the past four weeks, have you noticed any of these symptoms?', hint: 'Select every question that is true for you, whether or not you have noticed a link with fragrance. These symptoms have many possible causes and do not establish an allergy or sensitivity.', multiple: true, options: [
-    ['headache', 'Do you get headaches or migraine episodes?'],
+  { id: 'symptoms', title: 'When you are in contact with fragrances (skin, air, clothes)...which of these have you noticed?', hint: 'Select every question that is true for you. These symptoms can have many possible causes; this checklist cannot determine whether fragrance caused them.', multiple: true, options: [
+    ['headache', 'Do you get headaches, lightheaded or migraine episodes?'],
     ['skin', 'Do you get itchy, irritated skin or a rash?'],
     ['eyes', 'Do your eyes feel itchy, red, watery, or irritated?'],
     ['nose', 'Do you have a runny or stuffy nose, or sneeze?'],
@@ -11,9 +11,8 @@ export const questions = [
     ['cough', 'Do you cough?'],
     ['breathing', 'Do you wheeze, feel chest tightness, or become short of breath?'],
     ['nausea', 'Do you feel nauseated?'],
-    ['dizziness', 'Do you feel dizzy or lightheaded?'],
-    ['concentration', 'Do you have difficulty concentrating or feel mentally foggy?'],
-    ['none', 'None of these symptoms'], ['unsure', 'I’m not sure'],
+    ['concentration', 'Do you have difficulty concentrating or feel mentally foggy and irritable mood?'],
+    ['none', 'None of these symptoms'], ['all', 'All of them'], ['unsure', 'I’m not sure'],
   ] },
   { id: 'frequency', title: 'How often have you noticed symptoms around scented products?', hint: 'Think about the same four weeks. An association in time does not establish a cause.', options: [
     ['never', 'Never'], ['once', 'Once'], ['sometimes', 'On a few occasions'], ['often', 'Frequently'], ['unsure', 'I’m not sure / I had little or no exposure'],
@@ -49,6 +48,7 @@ export function validAnswer(question, values = []) {
   return values.length > 0 && (question.multiple || values.length === 1)
     && new Set(values).size === values.length
     && values.every(value => question.options.some(([id]) => id === value))
+    && !(question.id === 'symptoms' && values.includes('all') && values.length > 1)
     && !(values.length > 1 && values.some(value => ['none', 'unsure'].includes(value)));
 }
 
@@ -57,7 +57,7 @@ export function summarizeAnswers(answers) {
     throw new Error('Please answer every question with a valid selection.');
   }
   const symptoms = answers.symptoms;
-  const hasSymptoms = symptoms.some(value => !['none', 'unsure'].includes(value));
+  const hasSymptoms = symptoms.includes('all') || symptoms.some(value => !['none', 'unsure', 'all'].includes(value));
   const recurrent = ['sometimes', 'often'].includes(answers.frequency[0]);
   const conflicting = symptoms.includes('none') && (['once', 'sometimes', 'often'].includes(answers.frequency[0]) || ['small', 'repeated', 'significant'].includes(answers.impact[0]));
   let title = 'Your pattern is not clear yet';
@@ -88,7 +88,7 @@ export function summarizeAnswers(answers) {
     title, description,
     productSummary,
     alternatives: products.map(id => productAlternatives[id]),
-    breathing: symptoms.some(value => ['cough', 'breathing'].includes(value)),
+    breathing: symptoms.includes('all') || symptoms.some(value => ['cough', 'breathing'].includes(value)),
     impact: ['repeated', 'significant'].includes(answers.impact[0]),
     answers: questions.map(question => ({ title: question.title, response: question.options.filter(([id]) => answers[question.id].includes(id)).map(([, label]) => label).join('; ') })),
   };

@@ -3,20 +3,20 @@ import { questions } from '../lib/self-check.mjs';
 import { url } from '../lib/paths';
 
 const symptomQuestion = questions.find(question => question.id === 'symptoms');
-const symptomOptions = symptomQuestion.options.filter(([id]) => !['none', 'unsure'].includes(id));
+const symptomOptions = symptomQuestion.options.filter(([id]) => !['none', 'all', 'unsure'].includes(id));
+const summaryOptions = symptomQuestion.options.filter(([id]) => ['none', 'all', 'unsure'].includes(id));
 ---
 
 <section class="symptom-product-guide" aria-labelledby="symptom-guide-title">
   <form id="symptom-product-form" class="symptom-product-form" novalidate>
     <fieldset>
-      <legend id="symptom-guide-title">Which of these have you noticed?</legend>
+      <legend id="symptom-guide-title">When you are in contact with fragrances (skin, air, clothes)...which of these have you noticed?</legend>
       <p>Select every question that is true for you. These symptoms have many possible causes. This tool cannot identify an allergy, diagnose a condition, or prove that fragrance caused a symptom.</p>
       <div class="symptom-question-list">
         {symptomOptions.map(([value, label]) => <label><input type="checkbox" name="symptoms" value={value}/><span>{label}</span></label>)}
       </div>
       <div class="symptom-question-list symptom-question-list--quiet">
-        <label><input type="checkbox" name="symptoms" value="none"/><span>None of these symptoms</span></label>
-        <label><input type="checkbox" name="symptoms" value="unsure"/><span>I’m not sure</span></label>
+        {summaryOptions.map(([value, label]) => <label><input type="checkbox" name="symptoms" value={value}/><span>{label}</span></label>)}
       </div>
       <p id="symptom-product-error" class="check-error" role="alert" hidden>Select at least one response to see practical areas to review.</p>
       <button class="button" type="submit">Show practical product areas to review <span aria-hidden="true">→</span></button>
@@ -65,21 +65,21 @@ const symptomOptions = symptomQuestion.options.filter(([id]) => !['none', 'unsur
     form.addEventListener('change', event => {
       const input = event.target as HTMLInputElement;
       if (!input.matches('input[name="symptoms"]')) return;
-      if (input.checked && ['none', 'unsure'].includes(input.value)) inputs.forEach(item => { if (item !== input) item.checked = false; });
-      if (input.checked && !['none', 'unsure'].includes(input.value)) inputs.filter(item => ['none', 'unsure'].includes(item.value)).forEach(item => item.checked = false);
+      if (input.checked && ['none', 'all', 'unsure'].includes(input.value)) inputs.forEach(item => { if (item !== input) item.checked = false; });
+      if (input.checked && !['none', 'all', 'unsure'].includes(input.value)) inputs.filter(item => ['none', 'all', 'unsure'].includes(item.value)).forEach(item => item.checked = false);
       error.hidden = true;
     });
     form.addEventListener('submit', event => {
       event.preventDefault();
       const selected = inputs.filter(input => input.checked).map(input => input.value);
       if (!selected.length) { error.hidden = false; inputs[0].focus(); return; }
-      const hasSymptom = selected.some(value => !['none', 'unsure'].includes(value));
+      const hasSymptom = selected.includes('all') || selected.some(value => !['none', 'unsure', 'all'].includes(value));
       result.querySelectorAll<HTMLElement>('[data-symptom-path]').forEach(card => {
-        const matches = hasSymptom && paths[card.dataset.symptomPath!].some(value => selected.includes(value));
+        const matches = selected.includes('all') || (hasSymptom && paths[card.dataset.symptomPath!].some(value => selected.includes(value)));
         card.hidden = !matches;
       });
       noMatch.hidden = hasSymptom;
-      urgent.hidden = !selected.some(value => ['cough', 'breathing'].includes(value));
+      urgent.hidden = !selected.includes('all') && !selected.some(value => ['cough', 'breathing'].includes(value));
       result.hidden = false;
       result.querySelector<HTMLElement>('#symptom-product-result-title')!.focus();
     });

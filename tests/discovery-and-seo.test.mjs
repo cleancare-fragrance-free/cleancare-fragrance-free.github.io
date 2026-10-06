@@ -19,6 +19,30 @@ test('topic hubs refer to existing articles and have meaningful collections',()=
     for(const slug of topic.slugs) assert.ok(articles.some(a=>a.slug===slug),slug);
   }
 });
+test('Search Console verification is optional and sitemap setup is documented',()=>{
+  const layout=readFileSync(new URL('../src/layouts/Layout.astro',import.meta.url),'utf8');
+  const workflow=readFileSync(new URL('../.github/workflows/deploy.yml',import.meta.url),'utf8');
+  const readme=readFileSync(new URL('../README.md',import.meta.url),'utf8');
+  assert.ok(layout.includes('GOOGLE_SITE_VERIFICATION'));
+  assert.ok(layout.includes('name="google-site-verification"'));
+  assert.ok(workflow.includes('vars.GOOGLE_SITE_VERIFICATION'));
+  assert.ok(readme.includes('Google Search Console'));
+  assert.ok(readme.includes('/sitemap.xml'));
+  const robots=readFileSync(new URL('../src/pages/robots.txt.ts',import.meta.url),'utf8');
+  assert.ok(robots.includes('sitemap.xml'));
+});
+test('journal exposes crawlable topical hubs and product pages summarize scent criteria',()=>{
+  const journal=readFileSync(new URL('../src/pages/guides/index.astro',import.meta.url),'utf8');
+  const product=readFileSync(new URL('../src/pages/products/[slug].astro',import.meta.url),'utf8');
+  const policy=readFileSync(new URL('../src/pages/about.astro',import.meta.url),'utf8');
+  assert.ok(journal.includes('topic-hub-grid'));
+  assert.ok(journal.includes("url('guides/topics/'+topic.slug+'/')"));
+  assert.ok(product.includes('product-quick-facts'));
+  assert.ok(product.includes('Essential-oil check'));
+  assert.ok(product.includes('Check an ingredient list'));
+  assert.ok(policy.includes('the type of evidence'));
+  assert.ok(policy.includes('How product sources are checked'));
+});
 test('breadcrumbs do not link to nonexistent intermediate collections',()=>{
   const crumbs=makeBreadcrumbs('/cleancare/directory/categories/haircare/','Haircare | CleanCare','/cleancare/');
   assert.deepEqual(crumbs.map(c=>c.path),['/cleancare/','/cleancare/directory/','/cleancare/directory/categories/haircare/']);
