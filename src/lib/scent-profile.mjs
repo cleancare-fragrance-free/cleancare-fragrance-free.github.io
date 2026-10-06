@@ -3,8 +3,9 @@ export const scentOptions = [
   { value: 'fragrance-free', label: 'Fragrance-free options (default)' },
   { value: 'no-essential-oils', label: 'No added fragrance or essential oils' },
   { value: 'essential-oils', label: 'Contains essential oils · scented' },
+  { value: 'naturally-scented', label: 'Naturally scented · no synthetic fragrance (brand claim)' },
   { value: 'not-reviewed', label: 'Essential-oil status not yet checked' },
-  { value: 'all', label: 'All options · includes essential oils' },
+  { value: 'all', label: 'All options · includes scented products' },
 ];
 
 export function getEssentialOilStatus(product) {
@@ -13,6 +14,7 @@ export function getEssentialOilStatus(product) {
 }
 
 export function getScentLabel(product) {
+  if (product.fragranceStatus === 'naturally-scented') return 'Naturally scented · no synthetic fragrance (brand claim)';
   const status = getEssentialOilStatus(product);
   if (status === 'contains') return 'Essential oils · not fragrance-free';
   if (status === 'none-listed') return 'No added fragrance or essential oils listed';
@@ -25,7 +27,8 @@ export function matchesScentProfile(product, scent) {
   const status = getEssentialOilStatus(product);
   if (scent === 'fragrance-free') return product.fragranceStatus === 'fragrance-free' || status === 'not-applicable';
   if (scent === 'no-essential-oils') return product.fragranceStatus === 'fragrance-free' && status === 'none-listed';
-  if (scent === 'essential-oils') return product.fragranceStatus === 'essential-oils-only' && status === 'contains';
+  if (scent === 'essential-oils') return ['essential-oils-only', 'naturally-scented'].includes(product.fragranceStatus) && status === 'contains';
+  if (scent === 'naturally-scented') return product.fragranceStatus === 'naturally-scented';
   if (scent === 'not-reviewed') return product.fragranceStatus === 'fragrance-free' && status === 'not-reviewed';
   return false;
 }

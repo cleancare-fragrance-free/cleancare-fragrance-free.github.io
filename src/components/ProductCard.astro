@@ -1,14 +1,17 @@
 ---
 import { url } from '../lib/paths';
 import BrandLogo from './BrandLogo.astro';
+import { getScentLabel } from '../lib/scent-profile.mjs';
 const { product, hidden = false } = Astro.props;
 ---
 <article class="product-card verified-card" data-product-id={product.id} hidden={hidden}>
+{['essential-oils-only', 'naturally-scented'].includes(product.fragranceStatus) && <p class="scented-card-label">{getScentLabel(product)}</p>}
 <a class="brand-product-image" href={url('products/' + product.id + '/')} aria-label={'Read profile: ' + product.title}>{product.image ? <img src={product.image} alt={product.imageAlt} loading="lazy" decoding="async" width="600" height="600" referrerpolicy="no-referrer"/> : <span class="product-image-placeholder"><strong>{product.brand}</strong><small>Product photo unavailable<br/>View the official brand page</small></span>}</a>
 <div class="card-body"><p class="product-brand"><BrandLogo brand={product.brand} variant="inline"/>{product.brand}</p><h3><a href={url('products/' + product.id + '/')}>{product.title}</a></h3><p class="product-summary">{product.description}</p><a class="product-detail-link" href={url('products/' + product.id + '/')}>View product details <span aria-hidden="true">→</span></a></div>
 </article>
 <style>
 .product-card[hidden] { display: none; }
+.scented-card-label{margin:0;padding:8px 12px;background:#E8F3F8;color:#45564e;font-size:10px;line-height:1.4}
 .product-brand{display:flex;align-items:center;gap:7px;min-height:30px}
 .product-image-placeholder { background: #f0ece5; min-height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 14px; text-align: center; font-size: 18px; color: #40584d; }
 .product-image-placeholder small { font-size: 10px; margin-top: 8px; }

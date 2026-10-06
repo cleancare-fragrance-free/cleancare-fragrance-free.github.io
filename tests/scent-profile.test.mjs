@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import products from '../src/data/product-catalog.mjs';
 import additions from '../src/data/us-strategist-products.json' with {type:'json'};
+import sukin from '../src/data/sukin-products.mjs';
 import { matchesProduct } from '../src/lib/filter.mjs';
 import { assertFragranceFreeCatalog, assertProductCatalog } from '../src/lib/product-policy.mjs';
 import { defaultScentFilter, matchesScentProfile, normalizeScentFilter } from '../src/lib/scent-profile.mjs';
@@ -54,7 +55,7 @@ test('strict filter never treats unreviewed oils or devices as scent-free formul
   assert.equal(matchesScentProfile(products.find(p => p.id === 'sofie-pavitt-omega-rich-moisturizer-us'),'no-essential-oils'),true);
 });
 test('scent combines with country, category and search rather than replacing them', () => {
-  assert.deepEqual(products.filter(p => matchesProduct(p,{country:'US',scent:'essential-oils'})).map(p=>p.id),[alternative.id]);
+  assert.deepEqual(products.filter(p => matchesProduct(p,{country:'US',scent:'essential-oils'})).map(p=>p.id),[alternative.id, ...sukin.filter(p => p.essentialOilStatus === 'contains').map(p => p.id)]);
   assert.equal(matchesProduct(alternative,{country:'US',scent:'essential-oils',category:'Skin & Body',query:'deodorant'}),true);
   for (const state of [{country:'SG',scent:'essential-oils'},{category:'Haircare',scent:'essential-oils'},{query:'toothpaste',scent:'essential-oils'}]) assert.equal(matchesProduct(alternative,state),false);
   assert.equal(matchesScentProfile(alternative,'all'),true);
@@ -63,7 +64,7 @@ test('scent combines with country, category and search rather than replacing the
 });
 test('related product profiles keep scented alternatives separate', () => {
   const source = readFileSync(new URL('../src/pages/products/[slug].astro',import.meta.url),'utf8');
-  assert.ok(source.includes("(p.fragranceStatus === 'essential-oils-only') === isEssentialOilAlternative"));
+  assert.ok(source.includes("['essential-oils-only', 'naturally-scented'].includes(p.fragranceStatus) === isScentedAlternative"));
   assert.ok(source.includes('getScentLabel(product)'));
   assert.ok(source.includes('American Dental Association'));
 });

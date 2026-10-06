@@ -1,5 +1,6 @@
 import existingProducts from './products.json' with { type: 'json' };
 import usAdditions from './us-strategist-products.json' with { type: 'json' };
+import sukinProducts from './sukin-products.mjs';
 
 const readingSource = 'https://nymag.com/strategist/article/fragrance-free-products-we-use.html';
 // Missing reviews remain missing: a fragrance-free claim alone does not prove
@@ -31,5 +32,5 @@ const additions = usAdditions.map(product => ({
   readingSource,
 }));
 
-export const products = [...originals, ...additions];
+export const products = [...originals, ...additions, ...sukinProducts];
 export default products;

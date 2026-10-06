@@ -14,11 +14,16 @@ export function assertFragranceFreeCatalog(products) {
 // Essential-oil alternatives require an explicit review and warning, and must
 // never be represented as fragrance-free or included in the default results.
 export function assertProductCatalog(products) {
-  assertFragranceFreeCatalog(products.filter(product => product.fragranceStatus !== 'essential-oils-only'));
+  assertFragranceFreeCatalog(products.filter(product => !['essential-oils-only', 'naturally-scented'].includes(product.fragranceStatus)));
   const ids = new Set();
   for (const product of products) {
     if (ids.has(product.id)) throw new Error(`Duplicate product id: ${product.id}`);
     ids.add(product.id);
+    if (product.fragranceStatus === 'naturally-scented'
+      && (!product.warning || !product.claim || !product.officialUrl || !product.checked
+        || !product.naturalFragranceSource || !product.naturalFragranceChecked || !product.scentEvidence)) {
+      throw new Error(`Product ${product.id}: naturally scented alternatives require a dated manufacturer claim, ingredient evidence and warning.`);
+    }
     if (['none-listed', 'contains'].includes(product.essentialOilStatus)
       && (!product.essentialOilEvidence || !product.essentialOilSource || !product.essentialOilChecked)) {
       throw new Error(`Product ${product.id}: essential-oil classification requires a dated source and review evidence.`);

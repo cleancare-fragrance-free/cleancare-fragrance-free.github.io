@@ -25,7 +25,7 @@ const initialBrandGroups = categoryOrder.map(category => ({
   <p class="eyebrow">Practical alternatives</p>
   <h1>Go Fragrance Free.</h1>
   <p class="intro">Start with a category, choose a brand, then browse the exact product versions checked for your location and scent preferences. Official sources are checked—not personally tested—and links are not affiliate links. See <a href={url('about/#product-method')}>how products qualify and what each scent label means</a>.</p>
-  <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil products appear only when you select their filter or “All options.” They are scented, not fragrance-free or automatically safer. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
+  <p class="scent-notice"><strong>Fragrance-free is the default.</strong> Essential-oil and naturally scented products appear only when you select a scented filter or “All options.” “No synthetic fragrance” is a manufacturer claim, not a fragrance-free or safety certification. <a href={url('guides/unscented-vs-fragrance-free/')}>Understand the labels →</a></p>
   <section id="product-preview" class="product-preview" aria-labelledby="product-preview-title">
     <h2 id="product-preview-title">Product photo preview</h2>
     <p id="product-preview-help">Photos matching your current filters. Tap a photo to see the product and its source.</p>
@@ -70,7 +70,7 @@ const initialBrandGroups = categoryOrder.map(category => ({
     <button id="back-to-brands" class="back-to-brands" type="button">← All brands</button>
     <p class="eyebrow">Checked product versions</p>
     <div class="selected-brand-heading">{[...new Set(products.map(product=>product.brand))].map(brand=><BrandLogo brand={brand} variant="profile" hidden/>)}<h2 id="selected-brand-title"></h2></div>
-    <p id="selected-brand-intro" class="editorial-note">Only the exact fragrance-free products matching your current filters are shown. A brand name is not an endorsement of every product it sells.</p>
+    <p id="selected-brand-intro" class="editorial-note">Only the exact products matching your current location and scent filters are shown. A brand name is not an endorsement of every product it sells.</p>
   </section>
   <div id="products" class="product-grid" hidden>{products.map(product => <ProductCard product={product} hidden={!matchesScentProfile(product, defaultScentFilter)}/>)}</div>
   <div class="directory-more"><button id="show-more-products" class="button" type="button" hidden>Show more products</button><p id="visible-product-count" class="editorial-note" aria-live="polite"></p></div>
@@ -81,7 +81,7 @@ const initialBrandGroups = categoryOrder.map(category => ({
     <p class="editorial-note">US additions inspired by <a href="https://nymag.com/strategist/article/fragrance-free-products-we-use.html" rel="external">The Strategist’s product roundup</a>, checked against official brand information. Product links are not affiliate links.</p>
     <details class="directory-review"><summary>How we check products and country listings</summary>
       <p>Fragrance may irritate sensitive skin or overwhelm a sensitive nose—and essential oils can trigger reactions too. Replace products one category at a time, from face care to laundry. Fragrance-free does not always mean odorless.</p>
-      <p>We check exact versions, not whole brands. Products with added perfume/parfum or unconfirmed fragrance-free formulas are excluded. Essential-oil alternatives are separately reviewed and clearly labelled; they never appear in the default fragrance-free results.</p>
+      <p>We check exact versions, not whole brands. Products with added perfume/parfum or unconfirmed fragrance-free formulas are excluded from fragrance-free results. Essential-oil and naturally scented alternatives are separately reviewed and clearly labelled; they never appear in the default results. Naturally scented entries require an official “no synthetic fragrance” statement, reported as a brand claim rather than independently certified scent origin. Sukin’s US best sellers use this separate classification.</p>
       <p>“No added fragrance or essential oils” means none are listed in the reviewed formula or an explicit brand statement confirms their absence—not laboratory-certified zero scent. Carrier oils are not essential oils. An unchecked essential-oil status is not evidence of absence; those products do not appear in the stricter filter. Devices have no product formula and are excluded from ingredient-based filters.</p>
       <p>Country sources do not guarantee stock, delivery or an unchanged local formula. Manufacturer claims are not independent safety assessments. Check your current packaging. Ecostore’s catalogue includes scented products; only the six checked Ultra Sensitive home products are included here.</p>
     </details>

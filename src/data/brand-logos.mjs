@@ -46,6 +46,7 @@ const assets = {
   'Skin Aqua': ['skin-aqua.gif', 'https://jp.rohto.com/-/media/com/skin-aqua/img_2023/top/logo_skin-aqua3.gif?sc_lang=ja-jp'],
   'Sofie Pavitt Face': ['sofie-pavitt.svg', 'https://www.sofiepavittface.com/cdn/shop/files/sofie-pavitt.svg?v=1736382304&width=150'],
   Surcare: ['surcare.png', 'https://surcare.co.uk/cdn/shop/files/Surcare_Logo_Dark.png?v=1772746438&width=80'],
+  Sukin: [null, null], // Official logo asset not separately verified; use readable brand text.
   'The Ordinary': ['the-ordinary.svg', 'https://theordinary.com/on/demandware.static/Sites-deciem-us-Site/-/default/dwfe11e1d2/images/brands-logo/theOrdinary-logo.svg'],
   Tide: ['tide.svg', 'https://tide.com/images/brand_main_logo.svg'],
   'Tubby Todd': ['tubby-todd.png', 'https://tubbytodd.com/cdn/shop/files/tubbytodd-logo.png?v=1718732098&width=600'],
