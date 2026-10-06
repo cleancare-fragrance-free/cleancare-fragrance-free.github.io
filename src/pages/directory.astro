@@ -231,14 +231,15 @@ brandButtons.forEach(button=>button.addEventListener('click',()=>{selectedBrand=
 categoryShortcuts.forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.categoryShortcut!;selectedBrand='';render();document.querySelector(`[data-brand-category="${CSS.escape(category.value)}"]`)?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}));
 document.querySelector('#back-to-brands')!.addEventListener('click',()=>{selectedBrand='';render();document.querySelector('#brand-index')!.scrollIntoView({behavior:'smooth',block:'start'});});
 form.addEventListener('submit', event => event.preventDefault());
-form.addEventListener('input', () => render());
-form.addEventListener('change', event => {
+function updateFilters(event: Event) {
   if (event.target === countrySelect) {
     selectedCountry = countrySelect.value;
     if (selectedCountry) selectedRegion = countries.find(country => country.code === selectedCountry)!.region;
   }
   render();
-});
+}
+form.addEventListener('input', updateFilters);
+form.addEventListener('change', updateFilters);
 form.addEventListener('reset', () => { query.value = ''; category.value = ''; scent.value = defaultScentFilter; selectedCountry = ''; selectedRegion = ''; selectedBrand=''; render(); });
 document.querySelector('#empty-reset')!.addEventListener('click', () => form.reset());
 window.addEventListener('popstate', () => { readURL(); render(false); });
