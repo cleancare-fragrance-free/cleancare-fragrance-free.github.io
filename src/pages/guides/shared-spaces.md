@@ -34,4 +34,4 @@ Agree on a manageable change and check in afterwards. Respect privacy: a conside
 
 Our [exposure guide](../reduce-fragrance-exposure/) offers more starting points. The [evidence library](../../evidence/) keeps research and agency guidance separate from personal stories.
 
-*Sources reviewed 29 September 2026. The conversation example is original editorial wording.*
+*The conversation example is original editorial wording.*

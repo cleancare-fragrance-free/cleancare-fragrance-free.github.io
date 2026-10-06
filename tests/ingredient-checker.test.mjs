@@ -33,3 +33,17 @@ test('checker page discloses limitations and offers a broader fungal-acne resour
   assert.ok(page.includes('dermnetnz.org/topics/malassezia-folliculitis'));
   assert.ok(!page.includes('fetch('));
 });
+
+test('checker explains why Malassezia screening is separate from fragrance screening', () => {
+  const page = readFileSync(new URL('../src/pages/ingredient-checker.astro', import.meta.url), 'utf8');
+  const context = page.slice(page.indexOf('<section class="ingredient-context"'), page.indexOf('<form id="ingredient-form"'));
+  assert.ok(context.includes('Why also check for Malassezia folliculitis?'));
+  assert.ok(context.includes('not ordinary acne'));
+  assert.ok(context.includes('separate concern from fragrance allergy'));
+  assert.ok(context.includes('not to suggest that fragrance causes it'));
+  assert.ok(context.includes('not proven triggers'));
+  assert.ok(context.includes('a flag cannot predict a flare'));
+  assert.ok(context.includes('dermnetnz.org/topics/malassezia-folliculitis'));
+  assert.ok(context.includes('pubmed.ncbi.nlm.nih.gov/34304284/'));
+  assert.ok(page.includes('Mayser &amp; Koch, 2021'));
+});

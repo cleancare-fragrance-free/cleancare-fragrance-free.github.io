@@ -1,0 +1,30 @@
+---
+import { getBrandLogo, brandInitials } from '../data/brand-logos.mjs';
+import { url } from '../lib/paths';
+const { brand, variant = 'tile', hidden = false } = Astro.props;
+const logo = getBrandLogo(brand);
+---
+<span class:list={['brand-logo', `brand-logo--${variant}`, { 'brand-logo--dark': logo?.theme === 'dark' }]} data-brand-logo data-brand-name={brand} aria-hidden="true" hidden={hidden}>
+  <span class="brand-logo-fallback" hidden={!!logo?.image}>{brandInitials(brand)}</span>
+  {logo?.image && <img src={url(logo.image)} alt="" width="80" height="56" loading="lazy" decoding="async"/>}
+</span>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-brand-logo]').forEach(mark => {
+    const image = mark.querySelector('img');
+    const fallback = mark.querySelector<HTMLElement>('.brand-logo-fallback');
+    if (!image || !fallback) return;
+    const showFallback = () => { image.hidden = true; fallback.hidden = false; };
+    image.addEventListener('error', showFallback, { once: true });
+    if (image.complete && image.naturalWidth === 0) showFallback();
+  });
+</script>
+<style>
+  .brand-logo{display:inline-grid;place-items:center;flex-shrink:0;width:66px;height:48px;padding:6px;background:#fff;border:1px solid #efebe4;border-radius:10px;vertical-align:middle;overflow:hidden}
+  .brand-logo[hidden],.brand-logo img[hidden],.brand-logo-fallback[hidden]{display:none}
+  .brand-logo img{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;border-radius:0}
+  .brand-logo-fallback{font-size:13px;font-weight:700;letter-spacing:.04em;color:#53695e}
+  .brand-logo--dark{background:#6d1936;border-color:#6d1936}
+  .brand-logo--inline{width:44px;height:30px;padding:4px;border-radius:6px}
+  .brand-logo--profile{width:100px;height:64px;padding:8px}
+  @media(max-width:560px){.brand-logo--tile{width:48px;height:40px;padding:4px}.brand-logo--profile{width:80px;height:54px}}
+</style>

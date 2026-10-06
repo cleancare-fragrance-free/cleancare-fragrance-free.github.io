@@ -52,4 +52,4 @@ Some chemicals have endocrine-disruption evidence, but that does not identify th
 
 For a sensitive person, reducing optional scent can be a practical choice without proving that every synthetic ingredient is harmful. Use the [fragrance-free product directory](/directory/?scent=no-essential-oils), check the exact local formula, and remember that a natural essential oil is still fragrance—not a scent-free alternative.
 
-*Original CleanCare summary and illustration. Historical and scientific sources reviewed October 5, 2026; this page does not reproduce a commercial perfume history or recommend scented products.*
+*Original CleanCare summary and illustration; this page does not reproduce a commercial perfume history or recommend scented products.*

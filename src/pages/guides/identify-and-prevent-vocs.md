@@ -36,4 +36,4 @@ Strong, persistent or unexplained odours can signal a building, moisture, combus
 
 For a fragrance-aware home, begin with the lowest-cost prevention: skip air fresheners and scent boosters, choose the exact fragrance-free product version, ventilate during activities that generate pollutants, and resolve the underlying source of unwanted odours.
 
-*Sources reviewed October 5, 2026: [EPA air-cleaner guidance](https://www.epa.gov/indoor-air-quality-iaq/air-cleaners-and-air-filters-home) and [MIT’s report on oxidation-based consumer air cleaners](https://news.mit.edu/2021/study-finds-indoor-air-cleaners-fall-short-removing-volatile-organic-compounds-1029). Original CleanCare summary; it does not recommend a specific product or guarantee VOC removal.*
+*Sources: [EPA air-cleaner guidance](https://www.epa.gov/indoor-air-quality-iaq/air-cleaners-and-air-filters-home) and [MIT’s report on oxidation-based consumer air cleaners](https://news.mit.edu/2021/study-finds-indoor-air-cleaners-fall-short-removing-volatile-organic-compounds-1029). Original CleanCare summary; it does not recommend a specific product or guarantee VOC removal.*

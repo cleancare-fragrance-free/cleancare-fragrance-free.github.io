@@ -47,4 +47,4 @@ Fragrance-free does not guarantee a low-impact product. It is one practical choi
 - [Polycyclic musks and aquatic organisms — literature review](https://pubmed.ncbi.nlm.nih.gov/30326456/)
 - [European Commission JRC: cosmetics and lifecycle considerations](https://susproc.jrc.ec.europa.eu/product-bureau/sites/default/files/2023-01/Preliminary%20ESPR%20WP%20Report_MERGED_CLEAN_.pdf)
 
-*Sources reviewed October 5, 2026. Original CleanCare illustrations and summary; this page does not assess individual products or make a universal environmental claim about all fragrances.*
+*Original CleanCare summary; this page does not assess individual products or make a universal environmental claim about all fragrances.*
